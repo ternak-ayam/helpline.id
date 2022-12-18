@@ -25,7 +25,7 @@ const Guest = ({ children, imageHeight, bottomFooter }) => {
         <div
             style={{
                 backgroundImage: `url(${
-                    process.env.MIX_APP_URL + "/storage/assets/helpline_bg.png"
+                    process.env.MIX_APP_URL + "/assets/helpline_bg.png"
                 })`,
                 backgroundPosition: "left",
                 backgroundRepeat: "no-repeat",

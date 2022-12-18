@@ -6,7 +6,7 @@ const Navbar = () => {
                     <img
                         src={
                             process.env.MIX_APP_URL +
-                            "/storage/assets/logo_helpline.png"
+                            "/assets/logo_helpline.png"
                         }
                         alt="Logo Helpline"
                     />

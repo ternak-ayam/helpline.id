@@ -28267,7 +28267,7 @@ var Guest = function Guest(_ref) {
   });
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
     style: {
-      backgroundImage: "url(".concat("http://localhost:8000" + "/storage/assets/helpline_bg.png", ")"),
+      backgroundImage: "url(".concat("http://localhost:8000" + "/assets/helpline_bg.png", ")"),
       backgroundPosition: "left",
       backgroundRepeat: "no-repeat",
       backgroundSize: "cover",
@@ -28319,7 +28319,7 @@ var Navbar = function Navbar() {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
         className: "w-48",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
-          src: "http://localhost:8000" + "/storage/assets/logo_helpline.png",
+          src: "http://localhost:8000" + "/assets/logo_helpline.png",
           alt: "Logo Helpline"
         })
       })
