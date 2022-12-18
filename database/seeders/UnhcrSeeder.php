@@ -17,7 +17,7 @@ class UnhcrSeeder extends Seeder
         $data = file_get_contents(storage_path('app/unhcr.json'));
 
         foreach (json_decode($data, true) as $unhcr) {
-            if (! blank($unhcr['unhcr_number'])) {
+            if (isset($unhcr['unhcr_number'])) {
                 Unhcr::create([
                     'unhcr_number' => $unhcr['unhcr_number'],
                 ]);
