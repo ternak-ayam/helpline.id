@@ -2,15 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Contracts\Auth\CanResetPassword;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Timedoor\TmdMembership\traits\Fcmable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements CanResetPassword
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, Fcmable;
 
     /**
      * The attributes that are mass assignable.
@@ -21,10 +23,6 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-        'unhcr_number',
-        'country',
-        'birthdate',
-        'sex'
     ];
 
     /**
