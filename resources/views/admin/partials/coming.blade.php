@@ -5,10 +5,6 @@
                 <i class="fas fa-praying-hands"></i>
             </div>
             <h2>Coming Soon</h2>
-            <p class="lead">
-                Sorry, I still busy and I will work on this page soon. <br>
-                Best Regards,
-            </p>
         </div>
     </div>
 </div>
