@@ -22,6 +22,10 @@ class User extends Authenticatable implements CanResetPassword
     protected $fillable = [
         'name',
         'email',
+        'country',
+        'unhcr_number',
+        'sex',
+        'birthdate',
         'password',
     ];
 
@@ -42,5 +46,9 @@ class User extends Authenticatable implements CanResetPassword
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+    ];
+
+    protected $dates = [
+        'birthdate',
     ];
 }

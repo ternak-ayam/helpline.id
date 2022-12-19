@@ -14,7 +14,7 @@
 
 <x-content>
     <x-slot name="modul">
-        <h1>Dashboard</h1>
+        <h1>Schedule</h1>
     </x-slot>
 
     @include('admin.partials.coming')

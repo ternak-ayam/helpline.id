@@ -18,6 +18,9 @@ class RouteServiceProvider extends ServiceProvider
      * @var string
      */
     public const HOME = '/';
+    public const TRANSLATOR = '/translator/counselling/schedule';
+    public const ADMIN = '/admin/list/user';
+    public const COUNSELLOR = '/psychologist/counselling/schedule';
 
     /**
      * The controller namespace for the application.
@@ -49,6 +52,18 @@ class RouteServiceProvider extends ServiceProvider
                 ->as('admin.')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/admin.php'));
+
+            Route::middleware('web')
+                ->prefix('translator')
+                ->as('translator.')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/translator.php'));
+
+            Route::middleware('web')
+                ->prefix('psychologist')
+                ->as('psychologist.')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/counsellor.php'));
 
             Route::middleware('web')
                 ->namespace($this->namespace)

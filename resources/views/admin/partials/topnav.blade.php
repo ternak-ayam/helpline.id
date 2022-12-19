@@ -17,9 +17,19 @@
                 onclick="document.querySelector('#logout_form').submit()">
                 <i class="fas fa-sign-out-alt"></i> Logout
             </a>
-            <form id="logout_form" action="" method="post">
+            @auth('admin')
+            <form id="logout_form" action="{{ route('admin.logout') }}" method="post">
                 @csrf
             </form>
+            @elseauth('translator')
+                <form id="logout_form" action="{{ route('translator.logout') }}" method="post">
+                    @csrf
+                </form>
+            @else
+                <form id="logout_form" action="{{ route('psychologist.logout') }}" method="post">
+                    @csrf
+                </form>
+            @endauth
         </div>
     </li>
 </ul>

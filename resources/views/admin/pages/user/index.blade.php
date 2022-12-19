@@ -7,6 +7,9 @@
 @endsection
 
 @section('js')
+    <script>
+        $('#detailUser').modal('show');
+    </script>
 @endsection
 
 @section('content')
@@ -19,15 +22,15 @@
     <x-section>
         <x-slot name="title">
         </x-slot>
-        
+
         <x-slot name="header">
             <h4>Data Users</h4>
             <div class="card-header-form row">
                 <div>
                     <form>
                         <div class="input-group">
-                            <input type="text" name="search" id="search" class="form-control" placeholder="Pencarian"
-                                value="{{ Request::input('search') ?? ''}}">
+                            <input type="text" name="query" id="query" class="form-control" placeholder="Search"
+                                value="{{ Request::input('query') ?? ''}}">
                             <div class="input-group-btn">
                                 <button class="btn btn-primary"><i class="fas fa-search"></i></button>
                             </div>
@@ -36,7 +39,7 @@
                 </div>
                 <div class="ml-2">
                     <a href="#" class="btn btn-sm btn-primary">
-                        Tambah Data <i class="fas fa-plus"></i>
+                        Add New User <i class="fas fa-plus"></i>
                     </a>
                 </div>
             </div>
@@ -48,8 +51,11 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Name</th>
+                            <th>UNHCR Number</th>
                             <th>Email</th>
+                            <th>Country</th>
+                            <th>Birthdate</th>
+                            <th>Sex</th>
                             <th style="width:150px">Action</th>
                         </tr>
                     </thead>
@@ -57,17 +63,19 @@
                         @forelse($users as $user)
                         <tr>
                             <td>{{ $loop->index + $users->firstItem() }}</td>
-                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->unhcr_number }}</td>
                             <td>{{ $user->email }}</td>
+                            <td>{{ $user->country }}</td>
+                            <td>{{ $user->birthdate->format('F j, Y') }}</td>
+                            <td>{{ Str::ucfirst($user->sex) }}</td>
                             <td>
                                 <a href="#"
                                     class="btn btn-icon btn-sm btn-primary" data-toggle="tooltip"
                                     data-placement="top" title="" data-original-title="Edit">
                                     <i class="far fa-edit"></i>
                                 </a>
-                                <a href="#"
-                                    class="btn btn-icon btn-sm btn-info" data-toggle="tooltip" data-placement="top"
-                                    title="" data-original-title="Detail">
+                                <a href="{{ route('admin.user.show', $user->id) }}"
+                                    class="btn btn-icon btn-sm btn-info">
                                     <i class="fas fa-info-circle"></i>
                                 </a>
 
@@ -78,9 +86,10 @@
                                 </a>
                             </td>
                         </tr>
+
                         @empty
                         <tr>
-                            <td colspan="3">
+                            <td colspan="7">
                                 <p class="text-center"><em>There is no record.</em></p>
                             </td>
                         </tr>
@@ -96,5 +105,7 @@
     </x-section>
 
 </x-content>
-
+@if(session('user'))
+    @include('admin.pages.user.modals.detail', ['user' => session('user')])
+@endif
 @endsection

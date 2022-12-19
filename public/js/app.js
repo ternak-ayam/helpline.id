@@ -28204,15 +28204,19 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
 
 
+
 var SimpleFooter = function SimpleFooter(_ref) {
   var _ref$bottomFooter = _ref.bottomFooter,
     bottomFooter = _ref$bottomFooter === void 0 ? "bottom-10" : _ref$bottomFooter;
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
     children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("footer", {
       className: "py-2 ".concat(bottomFooter, " left-4"),
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("p", {
         className: "text-blue-500",
-        children: "Managed by Bullyid Indonesia."
+        children: ["Managed by Bullyid Indonesia | This website created by", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+          href: "/",
+          children: "Arkaya"
+        }), " "]
       })
     })
   });
