@@ -9,6 +9,21 @@
 @section('js')
     <script>
         $('#detailTranslator').modal('show');
+
+        $(function () {
+            const formSubmit = document.getElementById("delete-form");
+
+            $("#deleteTranslatorModal").on("show.bs.modal", (e) => {
+                formSubmit.action = route(
+                    "admin.user.translator.destroy",
+                    $(e.relatedTarget).data("id")
+                );
+            });
+
+            $("#deleteTranslatorModal").on("hide.bs.modal", (e) => {
+                formSubmit.action = "";
+            });
+        });
     </script>
 @endsection
 
@@ -53,6 +68,7 @@
                             <th>No</th>
                             <th>Name</th>
                             <th>Email</th>
+                            <th>Language</th>
                             <th style="width:150px">Action</th>
                         </tr>
                     </thead>
@@ -62,6 +78,7 @@
                             <td>{{ $loop->index + $translators->firstItem() }}</td>
                             <td>{{ $translator->name }}</td>
                             <td>{{ $translator->email }}</td>
+                            <td>{{ $translator->language }}</td>
                             <td>
                                 <a href="#"
                                     class="btn btn-icon btn-sm btn-primary" data-toggle="tooltip"
@@ -70,14 +87,12 @@
                                 </a>
                                 <a href="{{ route('admin.user.translator.show', $translator->id) }}"
                                     class="btn btn-icon btn-sm btn-info">
-                                    <i class="fas fa-info-circle"></i>
+                                    <i class="fas fa-eye"></i>
                                 </a>
 
-                                <a href="javascript:;" data-url="#"
-                                    data-id="{{ $translator->id }}" data-redirect="#"
-                                    class="btn btn-sm btn-danger delete">
-                                    <i class="fas fa-times"></i>
-                                </a>
+                                <button data-toggle="modal" data-target="#deleteTranslatorModal" data-id="{{ $translator->id }}" class="btn btn-sm btn-danger delete">
+                                    <i class="fas fa-trash"></i>
+                                </button>
                             </td>
                         </tr>
 
@@ -100,6 +115,7 @@
 
 </x-content>
 @include('admin.pages.translator.modals.create')
+@include('admin.pages.translator.modals.delete')
 @if(session('translator'))
     @include('admin.pages.translator.modals.detail', ['translator' => session('translator')])
 @endif

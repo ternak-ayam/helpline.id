@@ -26,6 +26,7 @@ class TranslatorStoreRequest extends FormRequest
         return [
             'name' => 'required',
             'email' => 'required',
+            'language' => 'required',
             'password' => 'confirmed',
         ];
     }

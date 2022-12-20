@@ -23,6 +23,11 @@
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="my-2">
+                            <label for="language">Language</label>
+                            <input type="text" name="language" id="language" class="form-control" required>
+                            <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="my-2">
                             <label for="password">Password</label>
                             <input type="password" name="password" id="password" class="form-control" required>
                             <div class="invalid-feedback"></div>

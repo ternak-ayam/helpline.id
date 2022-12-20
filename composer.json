@@ -1,9 +1,9 @@
 {
-    "name": "laravel/laravel",
+    "name": "arkaya/helplineid",
     "type": "project",
-    "description": "The Laravel Framework.",
-    "keywords": ["framework", "laravel"],
-    "license": "MIT",
+    "description": "Helpline website project",
+    "keywords": ["framework", "laravel", "helpline", "arkaya"],
+    "license": "Arkaya",
     "require": {
         "php": "^7.3|^8.0",
         "fruitcake/laravel-cors": "^2.0",
@@ -12,6 +12,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
+        "tightenco/ziggy": "^1.5",
         "timedoor/tmd-membership": "^1.1"
     },
     "require-dev": {

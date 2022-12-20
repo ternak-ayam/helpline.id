@@ -38,7 +38,7 @@
                     </form>
                 </div>
                 <div class="ml-2">
-                    <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#createPsychologist">
+                    <a href="{{ route('admin.user.psychologist.create') }}" class="btn btn-sm btn-primary">
                         Add New Psychologist <i class="fas fa-plus"></i>
                     </a>
                 </div>
@@ -99,7 +99,6 @@
     </x-section>
 
 </x-content>
-@include('admin.pages.psychologist.modals.create')
 @if(session('psychologist'))
     @include('admin.pages.psychologist.modals.detail', ['psychologist' => session('psychologist')])
 @endif

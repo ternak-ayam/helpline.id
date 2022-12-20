@@ -16,6 +16,11 @@ class CounsellorController extends Controller
         ]);
     }
 
+    public function create()
+    {
+        return view('admin.pages.psychologist.create');
+    }
+
     public function show(Counsellor $psychologist)
     {
         return back()->with(['psychologist' => $psychologist]);

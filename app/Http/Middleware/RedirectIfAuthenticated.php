@@ -24,13 +24,13 @@ class RedirectIfAuthenticated
         foreach ($guards as $guard) {
 
             if ($guard == "admin" && Auth::guard($guard)->check()) {
-                return redirect('/admin');
+                return redirect(RouteServiceProvider::ADMIN);
             }
             if ($guard == "psychologist" && Auth::guard($guard)->check()) {
-                return redirect('/translator/counselling/schedule');
+                return redirect(RouteServiceProvider::COUNSELLOR);
             }
             if ($guard == "translator" && Auth::guard($guard)->check()) {
-                return redirect('/translator/counselling/schedule');
+                return redirect(RouteServiceProvider::TRANSLATOR);
             }
 
             if (Auth::guard($guard)->check()) {

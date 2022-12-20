@@ -24,6 +24,14 @@
                         <span>{{ $translator->email }}</span>
                     </div>
                 </div>
+                <div class="d-flex justify-content-between border-top">
+                    <div class="my-2">
+                        <span>Language</span>
+                    </div>
+                    <div class="my-2">
+                        <span>{{ $translator->language }}</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

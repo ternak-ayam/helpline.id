@@ -31,4 +31,11 @@ class TranslatorController extends Controller
 
         return back();
     }
+
+    public function destroy(Translator $translator)
+    {
+        $translator->delete();
+
+        return back();
+    }
 }

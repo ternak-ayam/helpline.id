@@ -4,14 +4,17 @@
 <head>
     @include('admin.partials.head')
     @include('admin.partials.style')
+    @routes
 </head>
 
 <body>
 <div class="main-wrapper main-wrapper-1" id="app">
     <div class="navbar-bg"></div>
+
     <nav class="navbar navbar-expand-lg main-navbar">
         @include('admin.partials.topnav')
     </nav>
+
     <div class="main-sidebar sidebar-style-2">
         @auth('admin')
             @include('admin.partials.sidebar')
