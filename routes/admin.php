@@ -11,16 +11,14 @@ Route::middleware('auth:admin')->group(function () {
 
     Route::prefix('list')->as('user.')->group(function () {
         Route::get('/user', [UserController::class, 'index'])->name('index');
+        Route::get('/user/create', [UserController::class, 'create'])->name('create');
         Route::get('/user/{user}', [UserController::class, 'show'])->name('show');
+        Route::get('/user/{user}/edit', [UserController::class, 'edit'])->name('edit');
+        Route::put('/user/{user}', [UserController::class, 'update'])->name('update');
+        Route::post('/user', [UserController::class, 'store'])->name('store');
+        Route::delete('/user/{user}', [UserController::class, 'destroy'])->name('destroy');
 
-        Route::get('/translator', [App\Http\Controllers\Translator\TranslatorController::class, 'index'])->name('translator.index');
-        Route::get('/translator/{translator}', [App\Http\Controllers\Translator\TranslatorController::class, 'show'])->name('translator.show');
-        Route::post('/translator', [App\Http\Controllers\Translator\TranslatorController::class, 'store'])->name('translator.store');
-        Route::delete('/translator/{translator}', [App\Http\Controllers\Translator\TranslatorController::class, 'destroy'])->name('translator.destroy');
-
-        Route::get('/psychologist', [App\Http\Controllers\Counsellor\CounsellorController::class, 'index'])->name('psychologist.index');
-        Route::get('/psychologist/create', [App\Http\Controllers\Counsellor\CounsellorController::class, 'create'])->name('psychologist.create');
-        Route::get('/psychologist/{psychologist}', [App\Http\Controllers\Counsellor\CounsellorController::class, 'show'])->name('psychologist.show');
-        Route::post('/psychologist', [App\Http\Controllers\Counsellor\CounsellorController::class, 'store'])->name('psychologist.store');
+        Route::resource('/translator', App\Http\Controllers\Translator\TranslatorController::class);
+        Route::resource('/psychologist', App\Http\Controllers\Counsellor\CounsellorController::class);
     });
 });

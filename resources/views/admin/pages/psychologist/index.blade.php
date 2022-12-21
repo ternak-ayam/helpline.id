@@ -9,6 +9,22 @@
 @section('js')
     <script>
         $('#detailPsychologist').modal('show');
+
+        $(function () {
+            const formSubmit = document.getElementById("delete-form");
+            const deleteTranslatorSelector = $("#deletePsychologistModal");
+
+            deleteTranslatorSelector.on("show.bs.modal", (e) => {
+                formSubmit.action = route(
+                    "admin.user.psychologist.destroy",
+                    $(e.relatedTarget).data("id")
+                );
+            });
+
+            deleteTranslatorSelector.on("hide.bs.modal", (e) => {
+                formSubmit.action = "";
+            });
+        });
     </script>
 @endsection
 
@@ -63,21 +79,20 @@
                             <td>{{ $psychologist->name }}</td>
                             <td>{{ $psychologist->email }}</td>
                             <td>
-                                <a href="#"
-                                    class="btn btn-icon btn-sm btn-primary" data-toggle="tooltip"
-                                    data-placement="top" title="" data-original-title="Edit">
+                                <a href="{{ route('admin.user.psychologist.edit', $psychologist->id) }}"
+                                    class="btn btn-icon btn-sm btn-primary">
                                     <i class="far fa-edit"></i>
                                 </a>
                                 <a href="{{ route('admin.user.psychologist.show', $psychologist->id) }}"
                                     class="btn btn-icon btn-sm btn-info">
-                                    <i class="fas fa-info-circle"></i>
+                                    <i class="fas fa-eye"></i>
                                 </a>
 
-                                <a href="javascript:;" data-url="#"
-                                    data-id="{{ $psychologist->id }}" data-redirect="#"
-                                    class="btn btn-sm btn-danger delete">
-                                    <i class="fas fa-times"></i>
-                                </a>
+                                <button data-toggle="modal" data-target="#deletePsychologistModal"
+                                        data-id="{{ $psychologist->id }}"
+                                        class="btn btn-sm btn-danger delete">
+                                    <i class="fas fa-trash"></i>
+                                </button>
                             </td>
                         </tr>
 
@@ -99,6 +114,7 @@
     </x-section>
 
 </x-content>
+    @include('admin.pages.psychologist.modals.delete')
 @if(session('psychologist'))
     @include('admin.pages.psychologist.modals.detail', ['psychologist' => session('psychologist')])
 @endif

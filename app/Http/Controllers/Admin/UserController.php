@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\User\UserStoreRequest;
+use App\Http\Requests\User\UserUpdateRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -15,14 +17,14 @@ class UserController extends Controller
         return view('admin.pages.user.index', compact('users'));
     }
 
-    public function create()
+    public function store(UserStoreRequest $request)
     {
-        //
-    }
+        $user = new User();
 
-    public function store(Request $request)
-    {
-        //
+        $user->fill($request->all());
+        $user->saveOrFail();
+
+        return redirect(route('admin.user.index'));
     }
 
     public function show(User $user)
@@ -30,14 +32,31 @@ class UserController extends Controller
         return back()->with(['user' => $user]);
     }
 
-    public function edit($id)
+    public function create()
     {
-        //
+        $countries = json_decode(file_get_contents(storage_path('app/local/countries.json')), true);
+
+        return view('admin.pages.user.create', [
+            'countries' => $countries
+        ]);
     }
 
-    public function update(Request $request, $id)
+    public function edit(User $user)
     {
-        //
+        $countries = json_decode(file_get_contents(storage_path('app/local/countries.json')), true);
+
+        return view('admin.pages.user.edit', [
+            'user' => $user,
+            'countries' => $countries
+        ]);
+    }
+
+    public function update(UserUpdateRequest $request, User $user)
+    {
+        $user->fill($request->all());
+        $user->saveOrFail();
+
+        return redirect(route('admin.user.index'));
     }
 
     public function destroy(User $user)

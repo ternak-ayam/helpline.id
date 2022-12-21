@@ -9,6 +9,22 @@
 @section('js')
     <script>
         $('#detailUser').modal('show');
+
+        $(function () {
+            const formSubmit = document.getElementById("delete-form");
+            const deleteTranslatorSelector = $("#deleteUserModal");
+
+            deleteTranslatorSelector.on("show.bs.modal", (e) => {
+                formSubmit.action = route(
+                    "admin.user.destroy",
+                    $(e.relatedTarget).data("id")
+                );
+            });
+
+            deleteTranslatorSelector.on("hide.bs.modal", (e) => {
+                formSubmit.action = "";
+            });
+        });
     </script>
 @endsection
 
@@ -38,7 +54,7 @@
                     </form>
                 </div>
                 <div class="ml-2">
-                    <a href="#" class="btn btn-sm btn-primary">
+                    <a href="{{ route('admin.user.create') }}" class="btn btn-sm btn-primary">
                         Add New User <i class="fas fa-plus"></i>
                     </a>
                 </div>
@@ -47,7 +63,7 @@
 
         <x-slot name="body">
             <div class="table-responsive">
-                <table class="table table-bordered  table-md">
+                <table class="table table-bordered table-md">
                     <thead>
                         <tr>
                             <th>No</th>
@@ -69,21 +85,21 @@
                             <td>{{ $user->birthdate->format('F j, Y') }}</td>
                             <td>{{ Str::ucfirst($user->sex) }}</td>
                             <td>
-                                <a href="#"
-                                    class="btn btn-icon btn-sm btn-primary" data-toggle="tooltip"
-                                    data-placement="top" title="" data-original-title="Edit">
+                                <a href="{{ route('admin.user.edit', $user->id) }}"
+                                    class="btn btn-icon btn-sm btn-primary">
                                     <i class="far fa-edit"></i>
                                 </a>
+
                                 <a href="{{ route('admin.user.show', $user->id) }}"
                                     class="btn btn-icon btn-sm btn-info">
-                                    <i class="fas fa-info-circle"></i>
+                                    <i class="fas fa-eye"></i>
                                 </a>
 
-                                <a href="javascript:;" data-url="#"
-                                    data-id="{{ $user->id }}" data-redirect="#"
-                                    class="btn btn-sm btn-danger delete">
-                                    <i class="fas fa-times"></i>
-                                </a>
+                                <button data-toggle="modal" data-target="#deleteUserModal"
+                                        data-id="{{ $user->id }}"
+                                        class="btn btn-sm btn-danger delete">
+                                    <i class="fas fa-trash"></i>
+                                </button>
                             </td>
                         </tr>
 
@@ -105,6 +121,7 @@
     </x-section>
 
 </x-content>
+    @include('admin.pages.user.modals.delete')
 @if(session('user'))
     @include('admin.pages.user.modals.detail', ['user' => session('user')])
 @endif

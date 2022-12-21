@@ -52,3 +52,24 @@ const displayLanguage = () => {
     language.value = "";
     displayLanguages.innerHTML = languagesElement;
 };
+
+btnAddEducation.addEventListener("click", () => {
+    educationContent += `
+                    <div class="row mt-4">
+                                        <div class="form-group col-md-6 col-sm-12">
+                                            <label>Major</label>
+                                            <input type="text" class="form-control" name="major[]" id="major"
+                                                   value="{{ old('major') }}"
+                                                   required>
+                                            <div class="invalid-feedback"></div>
+                                        </div>
+                                        <div class="form-group col-md-6 col-sm-12">
+                                            <label>School/Institution</label>
+                                            <input type="text" class="form-control" name="institution[]" id="institution"
+                                                   value="{{ old('institution') }}"
+                                                   required>
+                                            <div class="invalid-feedback"></div>
+                                        </div>
+                                    </div>
+           `;
+});

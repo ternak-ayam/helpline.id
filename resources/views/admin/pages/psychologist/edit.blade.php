@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Add New Psychologist')
+@section('title', 'Edit Psychologist')
 
 @section('css')
 
@@ -56,12 +56,14 @@
 
     <x-content>
         <x-slot name="modul">
-            <h1>Add New Psychologist</h1>
+            <h1>Edit Psychologist</h1>
         </x-slot>
         <div>
-            <form action="{{ route('admin.user.psychologist.store') }}" enctype="multipart/form-data" method="post"
+            <form action="{{ route('admin.user.psychologist.update', $psychologist->id) }}"
+                  enctype="multipart/form-data" method="post"
                   class="needs-validation" novalidate onkeydown="return event.key !== 'Enter';">
                 @csrf
+                @method('PUT')
                 <div class="row">
                     <div class="col-md-4 col-sm-12 my-1">
                         <div class="card">
@@ -72,7 +74,7 @@
                                 <div class="mt-1">
                                     <img style="height: 250px; object-fit: cover" class="w-100 rounded-lg"
                                          id="imageDisplay"
-                                         src="{{ asset('/assets/default_pp.jpeg') }}" alt="Profile Picture">
+                                         src="{{ $psychologist->getImageUrl() }}" alt="Profile Picture">
                                 </div>
                                 <input type="file" accept="image/png, image/jpg, image/jpeg" class="d-none form-control"
                                        name="image" id="image">
@@ -96,20 +98,20 @@
                                 <div class="form-group">
                                     <label>Name</label>
                                     <input type="text" class="form-control" name="name" id="name"
-                                           value="{{ old('name') }}"
+                                           value="{{ old('name', $psychologist->name) }}"
                                            required>
                                     <div class="invalid-feedback"></div>
                                 </div>
                                 <div class="form-group">
                                     <label>Email</label>
                                     <input type="text" class="form-control" name="email" id="email"
-                                           value="{{ old('email') }}" required>
+                                           value="{{ old('email', $psychologist->email) }}" required>
                                     <div class="invalid-feedback"></div>
                                 </div>
                                 <div class="form-group mb-0">
                                     <label>Bio</label>
                                     <textarea class="form-control" required name="bio" spellcheck="false"
-                                              style="height: 61px;">{{ old('bio') }}</textarea>
+                                              style="height: 61px;">{{ old('bio', $psychologist->bio) }}</textarea>
                                     <div class="invalid-feedback"></div>
                                 </div>
                                 <div class="row mt-4">
@@ -132,19 +134,23 @@
                                     </div>
                                 </div>
                                 <div class="section-title mt-0">Education Information</div>
-                                <div title="Education Information">
-                                    <div class="row mt-4">
-                                        <div class="form-group col-md-6 col-sm-12">
-                                            <label>Major</label>
-                                            <input type="text" class="form-control" name="education[major][]" required>
-                                            <div class="invalid-feedback"></div>
+                                <div title="Education Information" class="mt-4">
+                                    @foreach($psychologist->educations as $education)
+                                        <div class="row">
+                                            <div class="form-group col-md-6 col-sm-12">
+                                                <label>Major</label>
+                                                <input type="text" class="form-control" name="education[major][]"
+                                                       value="{{ $education->major }}" required>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
+                                            <div class="form-group col-md-6 col-sm-12">
+                                                <label>School/Institution</label>
+                                                <input type="text" class="form-control" name="education[institution][]"
+                                                       value="{{ $education->institution }}" required>
+                                                <div class="invalid-feedback"></div>
+                                            </div>
                                         </div>
-                                        <div class="form-group col-md-6 col-sm-12">
-                                            <label>School/Institution</label>
-                                            <input type="text" class="form-control" name="education[institution][]" required>
-                                            <div class="invalid-feedback"></div>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                     <div id="education"></div>
                                     <div class="mb-4">
                                         <button class="btn btn-success w-100" type="button" id="btn_add_education">Add
@@ -153,14 +159,17 @@
                                     </div>
                                 </div>
                                 <div class="section-title mt-0">Language Information</div>
-                                <div class="form-group">
-                                    <label>Language</label>
-                                    <input type="text" class="form-control" name="language[]" required>
-                                    <div class="invalid-feedback"></div>
-                                </div>
+                                @foreach($psychologist->languages as $language)
+                                    <div class="form-group">
+                                        <label>Language</label>
+                                        <input type="text" class="form-control" name="language[]"
+                                               value="{{ $language->language }}" required>
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                @endforeach
                                 <div id="language"></div>
                                 <div class="mb-4">
-                                    <button class="btn btn-success w-100" type="button" id="btn_add_language">Add New
+                                    <button class="btn btn-success w-100" type="button" id="btn_add_language">Edit
                                         Language
                                     </button>
                                 </div>
