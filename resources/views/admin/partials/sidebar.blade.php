@@ -54,11 +54,6 @@
                         <i class="fas fa-phone"></i> <span>Data</span>
                     </a>
                 </li>
-                <li {{ is_nav_active('dashboard') }}>
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-phone"></i> <span>Join Counselling</span>
-                    </a>
-                </li>
                 <li {{ is_nav_active('statistics') }}>
                     <a class="nav-link" href="#">
                         <i class="fas fa-chart-bar"></i> <span>Statistics</span>

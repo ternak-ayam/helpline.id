@@ -28190,6 +28190,127 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /***/ }),
 
+/***/ "./resources/js/components/footer/AdvanceFooter.jsx":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/footer/AdvanceFooter.jsx ***!
+  \**********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+
+var AdvanceFooter = function AdvanceFooter(_ref) {
+  var _ref$bottomFooter = _ref.bottomFooter,
+    bottomFooter = _ref$bottomFooter === void 0 ? "bottom-10" : _ref$bottomFooter;
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("footer", {
+      className: "mt-16",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "grid lg:grid-cols-4  grid-cols-1",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          className: "col-span-1 flex justify-center",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("img", {
+            src: "http://localhost:8000" + "/assets/logo_helpline.png",
+            alt: "",
+            className: "p-8"
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+          className: "col-span-3 flex items-center",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "bg-[#28c484] lg:rounded-l-full p-6 w-full flex justify-between items-center",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+              className: "text-white lg:text-5xl",
+              children: "We are here for you"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                href: "",
+                className: "text-center px-4 py-2  rounded-full  border border-2 border-white lg:text-2xl lg:font-normal text-white w-1/3",
+                children: "Chat With Us"
+              })
+            })]
+          })
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+        className: "grid lg:grid-cols-2 grid-cols-1 lg:ml-",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "col-span-1 lg:p-4 p-2",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "lg:w-1/2 bg-[#2769c5] text-lg text-white p-2 rounded-full text-center",
+            children: "About Helpline.id"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "p-8 rounded-3xl border border-1 border-[#2769c5] mt-[-1.5rem]",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
+              className: "list-disc text-xl font-normal text-[#2769c5]",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                children: "Short-term support for people who are feeling overwhelmed or having difficulty coping or staying safe"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                children: "Confidential one-to-one support with a trained Helpline counsellor"
+              })]
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "col-span-1 lg:p-4 p-2",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "lg:w-1/2 bg-[#2769c5] text-lg text-white p-2 rounded-full text-center",
+            children: "What we do during the call"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "p-8 rounded-3xl border border-1 border-[#2769c5] mt-[-1.5rem]",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("ul", {
+              className: "list-disc text-xl font-normal text-[#2769c5]",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                children: "Listen without judgment"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                children: "Provide a safe space to discuss your needs, worries or concerns"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("li", {
+                children: "Work with you to explore options for support"
+              })]
+            })
+          })]
+        })]
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+        className: "bg-[#2769c5] flex  items-center  p-4",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+          className: "container m-auto flex lg:justify-between flex-wrap justify-center",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+            className: "text-white text-2xl font-semibold lg:text-start text-center",
+            children: "A safe place to talk day or night"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsxs)("div", {
+            className: "text-white text-lg font-thin flex gap-4",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                href: "",
+                children: "Policies"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                href: "",
+                children: "Terms of Use"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("a", {
+                href: "",
+                children: "Privacy"
+              })
+            })]
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
+        className: "text-blue-500 p-4",
+        children: "Managed by Bullyid Indonesia"
+      })]
+    })
+  });
+};
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (AdvanceFooter);
+
+/***/ }),
+
 /***/ "./resources/js/components/footer/SimpleFooter.jsx":
 /*!*********************************************************!*\
   !*** ./resources/js/components/footer/SimpleFooter.jsx ***!
@@ -29324,13 +29445,281 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _components_footer_AdvanceFooter__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../components/footer/AdvanceFooter */ "./resources/js/components/footer/AdvanceFooter.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
 
 var Dashboard = function Dashboard() {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("div", {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_0__.jsx)("p", {
-      children: "Dashboard"
-    })
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      className: "h-screen",
+      style: {
+        backgroundImage: "url(".concat("http://localhost:8000" + "/assets/helpline_bg.png", ")")
+      },
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "bg-white w-full",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("nav", {
+          className: "container m-auto grid lg:grid-cols-6 grid-cols-1 py-2",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "col-span-1 flex justify-center lg:justify-start",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+              src: "http://localhost:8000" + "/assets/logo_helpline.png",
+              alt: "Logo"
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "lg:col-span-2 col-span-1 flex gap-2 items-center justify-center lg:mt-none ",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+              href: "#",
+              className: "-mt-12 mr-2",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+                className: "fa-solid fa-arrow-right text-[#2769c5] fa-2xl"
+              })
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                className: "text-2xl font-bold tracking-[2px] text-[#2769c5]",
+                children: "CRISIS SUPPORT"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                className: "text-2xl font-bold tracking-[2px] text-[#2769c5]",
+                children: "FOR REFUGEES"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                className: "text-sm text-[#28c484] font-semibold",
+                children: "IN INDONESIA"
+              })]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "col-span-1 flex flex-col gap-2 items-center lg:justify-start mt-2 lg:mt-none",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "bg-[#28c484] p-1 rounded-sm w-1/2 flex gap-2 items-center justify-center",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+                className: "w-[34px]",
+                src: "http://localhost:8000" + "/assets/livestreamicon.png",
+                alt: ""
+              }), " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+                href: "#",
+                className: "text-white text-lg",
+                children: "Online"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              className: "bg-[#2769c5] p-1 rounded-sm w-2/3 flex gap-2 items-center justify-center",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+                href: "#",
+                className: "text-white text-lg",
+                children: "Available 24/7"
+              })
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "lg:col-span-2 flex gap-8 justify-center lg:justify-start my-auto lg:mt-none lg:mb-none",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "flex gap-2 items-center justify-center",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+                className: "w-[34px]",
+                src: "http://localhost:8000" + "/assets/message.png",
+                alt: ""
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+                href: "",
+                className: "border-b-2 border-[#28c484] text-lg text-[#2769c5]",
+                children: "LIVE CHAT"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "flex gap-2 items-center justify-center",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+                className: "w-[30px]",
+                src: "http://localhost:8000" + "/assets/volume.png",
+                alt: ""
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+                href: "",
+                className: "border-b-2 border-[#28c484] text-lg text-[#2769c5]",
+                children: "LIVE AUDIO CHAT"
+              })]
+            })]
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "flex w-full bg-[#2769c5] p-8 justify-center flex-col items-center min-h-[10rem] gap-2 lg:mt-[20rem] md:mt-[15rem] mt-[15rem] lg:mb-0 mb-[15rem] ",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+          className: "lg:text-6xl lg:font-thin text-xl font-normal text-white text-center",
+          children: "You are not alone. We're here to listen."
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+          href: "",
+          className: "py-2 px-4 mt-4 rounded-full border border-[#28c484] lg:text-3xl text-white hover:bg-[#28c484]",
+          children: "Chat With Us"
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+        className: "container m-auto",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "grid lg:grid-cols-2 grid-cols-1 mt-8",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "col-span-1 p-2",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "flex flex-col gap-4",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                className: "lg:text-5xl text-blue-600 font-semibold text-2xl",
+                children: "We're waiting for your call"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                className: "lg:text-2xl text-xl text-blue-600 font-normal",
+                children: "Whatever you're going through, we will face it with you."
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                className: "lg:text-2xl text-xl text-blue-600 font-normal mt-4",
+                children: "We're here 24 hours a day, 365 days a year."
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+                  href: "",
+                  className: " text-center px-4 py-2  mt-4 rounded-full  bg-[#28c484] lg:text-2xl lg:font-normal text-white w-1/3",
+                  children: "Chat With Us"
+                })
+              })]
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "col-span-1 lg:mt-0 mt-4 p-2",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+              className: "flex flex-col gap-4 text-end justify-end",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                className: "lg:text-5xl text-blue-600 font-semibold text-2xl",
+                children: "\u0645\u0646\u062A\u0638\u0631 \u062A\u0645\u0627\u0633 \u0634\u0645\u0627 \u0647\u0633\u062A\u06CC\u0645"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                className: "lg:text-2xl text-xl text-blue-600 font-normal",
+                children: "\u0647\u0631 \u0686\u0647 \u0631\u0627 \u06A9\u0647 \u06AF\u0630\u0631\u0627\u0646\u062F\u0647 \u0627\u06CC\u062F\u060C \u0645\u0627 \u0628\u0627 \u0634\u0645\u0627 \u0631\u0648\u0628\u0631\u0648 \u062E\u0648\u0627\u0647\u06CC\u0645 \u0634\u062F."
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                className: "lg:text-2xl text-xl text-blue-600 font-normal mt-4",
+                children: "\u0645\u0627 24 \u0633\u0627\u0639\u062A \u0634\u0628\u0627\u0646\u0647 \u0631\u0648\u0632 \u0648 365 \u0631\u0648\u0632 \u0633\u0627\u0644 \u0627\u06CC\u0646\u062C\u0627 \u0647\u0633\u062A\u06CC\u0645."
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+                  href: "",
+                  className: "text-center px-4 py-2 bg-[#28c484]  mt-4 rounded-full   lg:text-2xl lg:font-normal text-white w-1/3",
+                  children: "\u062F\u0631\u062F\u0634 \u0645\u0639\u0646\u0627"
+                })
+              })]
+            })
+          })]
+        })
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+        className: "border-1 border-blue-500 mt-8",
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "bg-[#2769c5] lg:h-[5rem] lg:w-[90%] w-full rounded-r-full mt-4 p-2 flex items-center relative",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "px-4 rounded-full flex items-center lg:ml-4",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+              className: "w-[50px]  p-2 rounded-full bg-[#28c484]",
+              src: "http://localhost:8000" + "/assets/iconlove.png",
+              alt: ""
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "lg:text-3xl text-white font-semibold text-xl",
+            children: "A practical guide of stree management"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "lg:absolute right-8 md:absolute",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+              className: "lg:w-[30px] w-[20px] rotate-180",
+              src: "http://localhost:8000" + "/assets/segitiga.png",
+              alt: ""
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "lg:ml-8 lg:w-[80%] w-[90%] p-2 lg:p-8 border border-1 border-[#2769c5] rounded-2xl lg:mt-[-4rem] mt-[-1rem] ",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "text-justify text-[#2769c5] lg:mt-16 mt-2 text-lg font-semibold p-2",
+            children: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt doloribus voluptatem autem, illo quos velit ab maxime cumque consequuntur commodi quas esse est sint, rerum architecto aut, debitis tempora aliquam enim nisi non libero. Quam voluptatum maiores corporis, maxime alias omnis itaque officia non autem molestias temporibus fugiat porro? Fuga voluptas natus tenetur animi delectus dicta aliquid, atque maxime vero dolorem minima consequatur reiciendis repellat minus quisquam quaerat, quo est totam placeat laborum. Totam incidunt minus facere. Eligendi id expedita corporis fuga possimus quibusdam rerum ex molestiae minima. Magnam modi in at sequi quos cum placeat vero aspernatur odit illum."
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "mt-2 flex justify-end",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+              href: "",
+              className: "bg-[#28c484] py-2 px-4 text-white text-lg rounded-full",
+              children: "Read More ->"
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "flex items-center gap-2 fixed bottom-4 right-4",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "mr-14",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              className: "p-1 text-sm rounded bg-[#28c484] text-white font-medium h-auto",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+                href: "",
+                children: "Got Questions?"
+              })
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "bg-[#28c484] rounded-full p-4 absolute top-[-2.5rem] right-0",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+              href: "",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+                className: "fa-solid fa-envelope fa-xl text-white"
+              })
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "bg-[#2769c5] lg:h-[5rem] lg:w-[90%] w-full rounded-r-full mt-4 p-2 flex items-center relative",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: " px-4  rounded-full flex items-center lg:ml-4",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+              className: "w-[50px]  p-2 rounded-full bg-[#28c484]",
+              src: "http://localhost:8000" + "/assets/iconlove.png",
+              alt: ""
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            className: "lg:text-3xl text-white font-semibold text-xl",
+            children: ["Breathing exercise practice", " ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+              className: "fa-solid fa-camera p-2 bg-white lg:fa-xl rounded-full text-[#2769c5]"
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "lg:absolute right-8 md:absolute",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+              className: "lg:w-[30px] w-[20px] rotate-180",
+              src: "http://localhost:8000" + "/assets/segitiga.png",
+              alt: ""
+            })
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "lg:ml-8 lg:w-[80%] w-[90%] p-2 lg:p-8 border border-1 border-[#2769c5] rounded-2xl lg:mt-[-4rem] mt-[-1rem] ",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "text-justify text-[#2769c5] lg:mt-16 mt-2 text-lg font-semibold p-2",
+            children: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sunt doloribus voluptatem autem, illo quos velit ab maxime cumque consequuntur commodi quas esse est sint, rerum architecto aut, debitis tempora aliquam enim nisi non libero. Quam voluptatum maiores corporis,"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "p-2 lg:float-left float-none",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("img", {
+              className: "w-[15rem]",
+              src: "https://www.tripsavvy.com/thmb/qFqPcg6Wo24Hu4fLokNfAZdC-xQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/fuji-mountain-in-autumn-822273028-5a6a8a9c3418c600363958d3.jpg",
+              alt: ""
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              className: "text-justify text-[#2769c5] text-lg font-semibold p-2",
+              children: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis iste quod nostrum repudiandae laborum odit deleniti repellat inventore asperiores minus ipsa temporibus iusto rerum sint, consequuntur eius eligendi nisi sapiente ducimus quidem cupiditate delectus eaque voluptates saepe. Vitae aut qui, beatae, totam omnis minima illo vel debitis dolor, necessitatibus rem."
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              className: "mt-2 flex justify-end",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+                href: "",
+                className: "bg-[#28c484] py-2 px-4 text-white text-lg rounded-full",
+                children: "Read More ->"
+              })
+            })]
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
+          className: "flex items-center gap-2 fixed bottom-4 right-4",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "mr-14",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+              className: "p-1 text-sm rounded bg-[#28c484] text-white font-medium h-auto",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+                href: "",
+                children: "Got Questions?"
+              })
+            })
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("div", {
+            className: "bg-[#28c484] rounded-full p-4 absolute top-[-2.5rem] right-0",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("a", {
+              href: "",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("i", {
+                className: "fa-solid fa-envelope fa-xl text-white"
+              })
+            })
+          })]
+        })]
+      })]
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)(_components_footer_AdvanceFooter__WEBPACK_IMPORTED_MODULE_0__["default"], {})]
   });
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Dashboard);
