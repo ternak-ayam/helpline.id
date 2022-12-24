@@ -1,6 +1,5 @@
 import React from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
-import * as url from "url";
 import SimpleFooter from "../footer/SimpleFooter";
 import { Toaster } from "react-hot-toast";
 
