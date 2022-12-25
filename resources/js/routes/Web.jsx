@@ -11,6 +11,7 @@ import AfterBooking from "../pages/user/booking/AfterBooking";
 import AfterCounselling from "../pages/user/counselling/AfterCounselling";
 import Chat from "../pages/user/counselling/Chat";
 import Call from "../pages/user/counselling/Call";
+import NotFound from "../pages/errors/NotFound";
 
 const Web = () => {
     return (
@@ -59,6 +60,7 @@ const Web = () => {
                     component={CounsellorDashboard}
                     exact
                 />
+                <Route component={NotFound} />
             </Switch>
         </React.Fragment>
     );

@@ -12,6 +12,8 @@ class Counsellor extends Authenticatable
 {
     use HasFactory, HashPassword, HandleUpload;
 
+    protected $with = ['educations', 'languages'];
+
     protected $fillable = [
         'name',
         'email',
@@ -32,6 +34,11 @@ class Counsellor extends Authenticatable
     public function languages()
     {
         return $this->hasMany(CounsellorLanguage::class, 'counsellor_id');
+    }
+
+    public function schedules()
+    {
+        return $this->hasMany(CounsellorSchedule::class, 'counsellor_id');
     }
 
     public function imageAttribute(): string

@@ -1,7 +1,25 @@
 import Navbar from "../../../components/layouts/Navbar";
 import App from "../../../components/layouts/App";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getDetailCounsellor } from "../../../actions/user";
+import { useParams } from "react-router-dom";
+import moment from "moment";
 
 const Booking = () => {
+    const dispatch = useDispatch();
+    const { counsellorId } = useParams();
+    const [bookDate, setBookDate] = useState({
+        date: "",
+        time: "",
+    });
+
+    const { counsellor } = useSelector((state) => state.user);
+
+    useEffect(() => {
+        dispatch(getDetailCounsellor(counsellorId));
+    }, []);
+
     return (
         <App>
             <Navbar />
@@ -14,12 +32,12 @@ const Booking = () => {
                         <div className="m-auto">
                             <img
                                 className="w-[6rem] h-[6rem] rounded-full"
-                                src="https://pyxis.nymag.com/v1/imgs/f47/788/caac0f6d9bc8edc26a8c8b17d69a41e447-02-sherlock.rsquare.w330.jpg"
+                                src={counsellor.profilePicture}
                                 alt=""
                             />
                         </div>
                         <p className="m-auto text-sm font-semibold text-[#2769c5]">
-                            Counsellor Name
+                            {counsellor.name}
                         </p>
                         <p className="m-auto text-xs font-medium text-[#2769c5]">
                             Counsellor
@@ -37,24 +55,18 @@ const Booking = () => {
                         <div className="flex gap-4">
                             <i className="fa-solid fa-user text-blue-300 mt-1"></i>
                             <div className=" text-blue-600 text-lg font-normal">
-                                I'm a trained counsellor and a reader in the
-                                world of children and family. In both roles, I
-                                believe that our lives are made from lots of
-                                stories. In my practice, I ask, challenge, and
-                                empower the thoughts and patterns people bring
-                                in their stories–and give them deeper meaning.
+                                {counsellor.bio}
                             </div>
                         </div>
                         <div className="flex gap-3 mt-6">
                             <i className="fa-solid fa-graduation-cap text-blue-300 mt-1"></i>
                             <div className=" text-blue-600 text-lg font-normal">
                                 <ul>
-                                    <li>Bachelors Degree in Psychology</li>
-                                    <li>Universitas Surabaya</li>
-                                    <li>
-                                        Masters Degree in Clinical Psychology
-                                    </li>
-                                    <li>Universitas Surabaya</li>
+                                    {counsellor.educations.map((item, i) => (
+                                        <li key={i}>
+                                            {item.major} - {item.institution}
+                                        </li>
+                                    ))}
                                 </ul>
                             </div>
                         </div>
@@ -62,8 +74,9 @@ const Booking = () => {
                             <i className="fa-solid fa-language text-blue-300 mt-1"></i>
                             <div className=" text-blue-600 text-lg font-normal">
                                 <ul>
-                                    <li>Bahasa indonesia</li>
-                                    <li>English</li>
+                                    {counsellor.languages.map((item, i) => (
+                                        <li key={i}>{item.language}</li>
+                                    ))}
                                 </ul>
                             </div>
                         </div>
@@ -89,11 +102,11 @@ const Booking = () => {
                                     className="rounded-full h-4 w-4 border border-2 border-blue-300"
                                     type="radio"
                                     value=""
-                                    id="flexCheckDefault"
+                                    id="arabic"
                                 />
                                 <label
                                     className="form-check-label inline-block text-[#2769c5] font-medium text-xs py-2 px-4 bg-[#fff4dc] rounded-lg"
-                                    htmlFor="flexCheckDefault"
+                                    htmlFor="arabic"
                                 >
                                     Arabic
                                 </label>
@@ -104,11 +117,11 @@ const Booking = () => {
                                     className="rounded-full h-4 w-4 border border-2 border-blue-300"
                                     type="radio"
                                     value=""
-                                    id="flexCheckDefault"
+                                    id="tamil"
                                 />
                                 <label
                                     className="form-check-label inline-block text-[#2769c5] font-medium text-xs py-2 px-4 bg-[#fff4dc] rounded-lg"
-                                    htmlFor="flexCheckDefault"
+                                    htmlFor="tamil"
                                 >
                                     Tamil
                                 </label>
@@ -119,11 +132,11 @@ const Booking = () => {
                                     className="rounded-full h-4 w-4 border border-2 border-blue-300"
                                     type="radio"
                                     value=""
-                                    id="flexCheckDefault"
+                                    id="rohingya"
                                 />
                                 <label
                                     className="form-check-label inline-block text-[#2769c5] font-medium text-xs py-2 px-4 bg-[#fff4dc] rounded-lg"
-                                    htmlFor="flexCheckDefault"
+                                    htmlFor="rohingya"
                                 >
                                     Rohingya
                                 </label>
@@ -203,181 +216,34 @@ const Booking = () => {
                     </div>
                     <div className="w-full border border-2  border-blue-300 rounded-xl p-2 mt-4 flex gap-2 overflow-x-scroll">
                         <div className="flex gap-2 justify-center m-auto">
-                            <div>
-                                <div className="text-blue-700 bg-blue-300 flex flex-col p-2 rounded-tl-xl">
-                                    <div className="text-xs  font-medium">
-                                        Monday
+                            {counsellor.calendars.map((date, i) => (
+                                <div key={i}>
+                                    <div className="text-blue-700 bg-blue-300 flex flex-col p-2 rounded-tl-xl">
+                                        <div className="text-xs  font-medium">
+                                            {moment(date.date).format("dddd")}
+                                        </div>
+                                        <div className="text-xs font-medium ">
+                                            {moment(date.date).format("MMM DD")}
+                                        </div>
                                     </div>
-                                    <div className="text-xs font-medium ">
-                                        11 Apr
-                                    </div>
+                                    {date.times.map((time, i) => (
+                                        <div
+                                            onClick={() => {
+                                                setBookDate({
+                                                    date: date.date,
+                                                    time: time,
+                                                });
+                                            }}
+                                            key={i}
+                                            className="text-blue-700 bg-blue-100 flex flex-col p-4 mt-2 hover:bg-blue-200 cursor-pointer"
+                                        >
+                                            <div className="text-xs text-center font-medium">
+                                                {time}
+                                            </div>
+                                        </div>
+                                    ))}
                                 </div>
-                                <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2">
-                                    <div className="text-xs text-center font-medium">
-                                        9:15
-                                    </div>
-                                </div>
-                                <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2">
-                                    <div className="text-xs text-center font-medium">
-                                        10:15
-                                    </div>
-                                </div>
-                                <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2 rounded-bl-xl">
-                                    <div className="text-xs text-center font-medium">
-                                        11:15
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div className=" text-blue-700 bg-blue-300 flex flex-col p-2 ">
-                                    <div className="text-xs  font-medium">
-                                        Tuesday
-                                    </div>
-                                    <div className="text-xs font-medium">
-                                        12 Apr
-                                    </div>
-                                </div>
-                                <div className="text-white bg-red-500 flex flex-col p-4 mt-2">
-                                    <div className="text-xs text-center font-medium">
-                                        Booked
-                                    </div>
-                                </div>
-                                <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2">
-                                    <div className="text-xs text-center font-medium">
-                                        10:15
-                                    </div>
-                                </div>
-                                <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2">
-                                    <div className="text-xs text-center font-medium">
-                                        11:15
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div className="text-blue-700 bg-blue-300 flex flex-col p-2">
-                                    <div className="text-xs font-medium">
-                                        Wednesday
-                                    </div>
-                                    <div className="text-xs font-medium">
-                                        13 Apr
-                                    </div>
-                                </div>
-                                <div className="text-white bg-blue-500 flex flex-col p-4 mt-2">
-                                    <div className="text-xs text-center font-medium">
-                                        9:15
-                                    </div>
-                                </div>
-                                <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2">
-                                    <div className="text-xs text-center font-medium">
-                                        10:15
-                                    </div>
-                                </div>
-                                <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2">
-                                    <div className="text-xs text-center font-medium">
-                                        11:15
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div className=" text-blue-700 bg-blue-300 flex flex-col p-2 ">
-                                    <div className="text-xs  font-medium">
-                                        Thursday
-                                    </div>
-                                    <div className="text-xs font-medium ">
-                                        13 Apr
-                                    </div>
-                                </div>
-                                <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2">
-                                    <div className="text-xs text-center font-medium">
-                                        9:15
-                                    </div>
-                                </div>
-                                <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2">
-                                    <div className="text-xs text-center font-medium">
-                                        10:15
-                                    </div>
-                                </div>
-                                <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2">
-                                    <div className="text-xs text-center font-medium">
-                                        11:15
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div className=" text-blue-700 bg-blue-300 flex flex-col p-2 ">
-                                    <div className="text-xs  font-medium">
-                                        Friday
-                                    </div>
-                                    <div className="text-xs font-medium ">
-                                        13 Apr
-                                    </div>
-                                </div>
-                                <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2">
-                                    <div className="text-xs text-center font-medium">
-                                        9:15
-                                    </div>
-                                </div>
-                                <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2">
-                                    <div className="text-xs text-center font-medium">
-                                        10:15
-                                    </div>
-                                </div>
-                                <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2">
-                                    <div className="text-xs text-center font-medium">
-                                        11:15
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div className=" text-blue-700 bg-blue-300 flex flex-col p-2 ">
-                                    <div className="text-xs  font-medium">
-                                        Saturday
-                                    </div>
-                                    <div className="text-xs font-medium ">
-                                        13 Apr
-                                    </div>
-                                </div>
-                                <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2">
-                                    <div className="text-xs text-center font-medium">
-                                        9:15
-                                    </div>
-                                </div>
-                                <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2">
-                                    <div className="text-xs text-center font-medium">
-                                        10:15
-                                    </div>
-                                </div>
-                                <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2">
-                                    <div className="text-xs text-center font-medium">
-                                        11:15
-                                    </div>
-                                </div>
-                            </div>
-                            <div>
-                                <div className=" text-blue-700 bg-blue-300 flex flex-col p-2 rounded-tr-xl">
-                                    <div className="text-xs font-medium">
-                                        Sunday
-                                    </div>
-                                    <div className="text-xs font-medium ">
-                                        13 Apr
-                                    </div>
-                                </div>
-                                <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2">
-                                    <div className="text-xs text-center font-medium">
-                                        9:15
-                                    </div>
-                                </div>
-                                <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2">
-                                    <div className="text-xs text-center font-medium">
-                                        10:15
-                                    </div>
-                                </div>
-                                <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2 rounded-br-xl">
-                                    <div className="text-xs text-center font-medium">
-                                        11:15
-                                    </div>
-                                </div>
-                            </div>
+                            ))}
                         </div>
                     </div>
                     <div className="w-full flex mt-8 justify-end lg:mb-0 mb-32">

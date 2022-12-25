@@ -21,4 +21,5 @@ Route::post('password/reset', [\App\Http\Controllers\Api\V1\User\Auth\ResetPassw
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('counsellors', [\App\Http\Controllers\Api\V1\Counsellor\User\CounsellorController::class, 'index']);
+    Route::get('counsellors/{counsellor}', [\App\Http\Controllers\Api\V1\Counsellor\User\CounsellorController::class, 'show']);
 });

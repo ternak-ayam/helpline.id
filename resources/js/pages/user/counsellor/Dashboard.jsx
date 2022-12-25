@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 const Dashboard = () => {
     const dispatch = useDispatch();
-    const { data } = useSelector((state) => state.user);
+    const { counsellors } = useSelector((state) => state.user);
 
     useEffect(() => {
         dispatch(getCounsellor(1));
@@ -26,7 +26,7 @@ const Dashboard = () => {
                         </div>
                     </div>
                     <div className="lg:w-2/3 w-full grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-4 pl-8 lg:pl-0 mt-4 m-auto">
-                        {data.map((item, i) => (
+                        {counsellors.map((item, i) => (
                             <div
                                 key={i}
                                 className="w-[12rem] bg-[#f0f4fc] rounded-2xl p-4"
