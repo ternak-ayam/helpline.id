@@ -3,20 +3,19 @@ import authHeader from "../auth/header";
 
 const API_URL = process.env.MIX_API_URL;
 
+const getCounsellor = () => {
+    return axios
+        .get(API_URL + "/counsellors", { headers: authHeader() })
+        .then((response) => {
+            return response.data;
+        });
+};
+
 const getUserBoard = () => {
-    return axios.get(API_URL + "/user", { headers: authHeader() });
-};
-
-const getModeratorBoard = () => {
-    return axios.get(API_URL + "/mod", { headers: authHeader() });
-};
-
-const getAdminBoard = () => {
-    return axios.get(API_URL + "/admin", { headers: authHeader() });
+    return axios.get(API_URL + "/", { headers: authHeader() });
 };
 
 export default {
     getUserBoard,
-    getModeratorBoard,
-    getAdminBoard,
+    getCounsellor,
 };

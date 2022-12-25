@@ -70,8 +70,9 @@ const Booking = () => {
                         <div className="flex p-8 gap-1 flex-wrap">
                             <div className="form-check flex items-center gap-2">
                                 <input
-                                    className="rounded-full  form-check-input appearance-none h-4 w-4 border border-2 border-blue-300"
-                                    type="checkbox"
+                                    name={"language"}
+                                    className="rounded-full  h-4 w-4 border border-2 border-blue-300"
+                                    type="radio"
                                     value=""
                                     id="flexCheckDefault"
                                 />
@@ -84,8 +85,9 @@ const Booking = () => {
                             </div>
                             <div className="form-check flex items-center gap-2">
                                 <input
-                                    className="rounded-full form-check-input appearance-none h-4 w-4 border border-2 border-blue-300"
-                                    type="checkbox"
+                                    name={"language"}
+                                    className="rounded-full h-4 w-4 border border-2 border-blue-300"
+                                    type="radio"
                                     value=""
                                     id="flexCheckDefault"
                                 />
@@ -93,16 +95,16 @@ const Booking = () => {
                                     className="form-check-label inline-block text-[#2769c5] font-medium text-xs py-2 px-4 bg-[#fff4dc] rounded-lg"
                                     htmlFor="flexCheckDefault"
                                 >
-                                    arabic
+                                    Arabic
                                 </label>
                             </div>
                             <div className="form-check flex items-center gap-2">
                                 <input
-                                    className="rounded-full form-check-input appearance-none h-4 w-4 border border-2 border-blue-300"
-                                    type="checkbox"
+                                    name={"language"}
+                                    className="rounded-full h-4 w-4 border border-2 border-blue-300"
+                                    type="radio"
                                     value=""
-                                    id="flexCheckDefault "
-                                    defaultChecked
+                                    id="flexCheckDefault"
                                 />
                                 <label
                                     className="form-check-label inline-block text-[#2769c5] font-medium text-xs py-2 px-4 bg-[#fff4dc] rounded-lg"
@@ -113,8 +115,9 @@ const Booking = () => {
                             </div>
                             <div className="form-check flex items-center gap-2">
                                 <input
-                                    className="rounded-full form-check-input appearance-none h-4 w-4 border border-2 border-blue-300"
-                                    type="checkbox"
+                                    name={"language"}
+                                    className="rounded-full h-4 w-4 border border-2 border-blue-300"
+                                    type="radio"
                                     value=""
                                     id="flexCheckDefault"
                                 />
@@ -151,14 +154,15 @@ const Booking = () => {
                         <div className="flex flex-wrap gap-2 mt-4">
                             <div className="form-check flex items-center gap-2">
                                 <input
-                                    className="rounded-full form-check-input appearance-none h-4 w-4 border border-2 border-blue-300"
-                                    type="checkbox"
+                                    name={"method"}
+                                    className="rounded-full h-4 w-4 border border-2 border-blue-300"
+                                    type="radio"
                                     value=""
-                                    id="flexCheckDefault"
+                                    id="chatCounsellingMethod"
                                 />
                                 <label
                                     className="form-check-label inline-block text-[#2769c5] font-medium text-xs py-2 px-4 bg-[#fff4dc] rounded-lg"
-                                    htmlFor="flexCheckDefault"
+                                    htmlFor="chatCounsellingMethod"
                                 >
                                     <i className="fa-solid fa-envelope text-[#2769c5] text-base"></i>{" "}
                                     Live Chat
@@ -166,15 +170,15 @@ const Booking = () => {
                             </div>
                             <div className="form-check flex items-center gap-2">
                                 <input
-                                    defaultChecked
-                                    className="rounded-full form-check-input appearance-none h-4 w-4 border border-2 border-blue-300"
-                                    type="checkbox"
+                                    name={"method"}
+                                    className="rounded-full h-4 w-4 border border-2 border-blue-300"
+                                    type="radio"
                                     value=""
-                                    id="flexCheckDefault"
+                                    id="callCounsellingMethod"
                                 />
                                 <label
                                     className=" flex gap-2 form-check-label inline-block text-[#2769c5] font-medium text-xs py-2 px-4 bg-[#fff4dc] rounded-lg"
-                                    htmlFor="flexCheckDefault"
+                                    htmlFor="callCounsellingMethod"
                                 >
                                     <img
                                         src={
@@ -229,13 +233,13 @@ const Booking = () => {
                                     <div className="text-xs  font-medium">
                                         Tuesday
                                     </div>
-                                    <div className="text-xs font-medium ">
+                                    <div className="text-xs font-medium">
                                         12 Apr
                                     </div>
                                 </div>
-                                <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2">
+                                <div className="text-white bg-red-500 flex flex-col p-4 mt-2">
                                     <div className="text-xs text-center font-medium">
-                                        9:15
+                                        Booked
                                     </div>
                                 </div>
                                 <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2">
@@ -250,15 +254,15 @@ const Booking = () => {
                                 </div>
                             </div>
                             <div>
-                                <div className=" text-blue-700 bg-blue-300 flex flex-col p-2">
-                                    <div className="text-xs  font-medium">
+                                <div className="text-blue-700 bg-blue-300 flex flex-col p-2">
+                                    <div className="text-xs font-medium">
                                         Wednesday
                                     </div>
-                                    <div className="text-xs font-medium ">
+                                    <div className="text-xs font-medium">
                                         13 Apr
                                     </div>
                                 </div>
-                                <div className=" text-blue-700 bg-blue-100 flex flex-col p-4 mt-2">
+                                <div className="text-white bg-blue-500 flex flex-col p-4 mt-2">
                                     <div className="text-xs text-center font-medium">
                                         9:15
                                     </div>

@@ -19,6 +19,6 @@ Route::post('register', [\App\Http\Controllers\Api\V1\User\Auth\RegisterControll
 Route::post('password/email', [\App\Http\Controllers\Api\V1\User\Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 Route::post('password/reset', [\App\Http\Controllers\Api\V1\User\Auth\ResetPasswordController::class, 'reset'])->name('password.update');
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->group(function () {
+    Route::get('counsellors', [\App\Http\Controllers\Api\V1\Counsellor\User\CounsellorController::class, 'index']);
 });

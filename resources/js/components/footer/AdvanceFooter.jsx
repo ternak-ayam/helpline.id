@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 const AdvanceFooter = ({ bottomFooter = "bottom-10" }) => {
     return (
         <>
@@ -19,12 +21,12 @@ const AdvanceFooter = ({ bottomFooter = "bottom-10" }) => {
                                 We are here for you
                             </div>
                             <div>
-                                <a
-                                    href=""
+                                <Link
+                                    to={"/counsellors"}
                                     className="text-center px-4 py-2  rounded-full  border border-2 border-white lg:text-2xl lg:font-normal text-white w-1/3"
                                 >
                                     Chat With Us
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>

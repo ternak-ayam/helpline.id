@@ -2,8 +2,15 @@ import React from "react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Toaster } from "react-hot-toast";
 import SimpleFooter from "../footer/SimpleFooter";
+import { useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 const App = ({ children, bottomFooter }) => {
+    const history = useHistory();
+    const { isLoggedIn } = useSelector((state) => state.auth);
+
+    if (!isLoggedIn) history.push("/login");
+
     const theme = createTheme({
         radio: {
             "&$checked": {

@@ -1,4 +1,6 @@
 import AdvanceFooter from "../../../components/footer/AdvanceFooter";
+import FloatQuestionButton from "../../../components/button/FloatQuestionButton";
+import { Link } from "react-router-dom";
 
 const Dashboard = () => {
     return (
@@ -98,12 +100,12 @@ const Dashboard = () => {
                     <div className="lg:text-6xl lg:font-thin text-xl font-normal text-white text-center">
                         You are not alone. We're here to listen.
                     </div>
-                    <a
-                        href=""
+                    <Link
+                        to={"/counsellors"}
                         className="py-2 px-4 mt-4 rounded-full border border-[#28c484] lg:text-3xl text-white hover:bg-[#28c484]"
                     >
                         Chat With Us
-                    </a>
+                    </Link>
                 </div>
             </div>
             <div>
@@ -122,12 +124,12 @@ const Dashboard = () => {
                                     We're here 24 hours a day, 365 days a year.
                                 </div>
                                 <div>
-                                    <a
-                                        href=""
+                                    <Link
+                                        to={"/counsellors"}
                                         className=" text-center px-4 py-2  mt-4 rounded-full  bg-[#28c484] lg:text-2xl lg:font-normal text-white w-1/3"
                                     >
                                         Chat With Us
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -145,12 +147,12 @@ const Dashboard = () => {
                                     هستیم.
                                 </div>
                                 <div>
-                                    <a
-                                        href=""
+                                    <Link
+                                        to={"/counsellors"}
                                         className="text-center px-4 py-2 bg-[#28c484]  mt-4 rounded-full   lg:text-2xl lg:font-normal text-white w-1/3"
                                     >
                                         دردش معنا
-                                    </a>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -209,19 +211,7 @@ const Dashboard = () => {
                             </a>
                         </div>
                     </div>
-                    <div className="flex items-center gap-2 fixed bottom-4 right-4">
-                        <div className="mr-14">
-                            <div className="p-1 text-sm rounded bg-[#28c484] text-white font-medium h-auto">
-                                <a href="">Got Questions?</a>
-                            </div>
-                        </div>
-                        <div className="bg-[#28c484] rounded-full p-4 absolute top-[-2.5rem] right-0">
-                            <a href="">
-                                <i className="fa-solid fa-envelope fa-xl text-white"></i>
-                            </a>
-                        </div>
-                    </div>
-
+                    <FloatQuestionButton />
                     <div className="bg-[#2769c5] lg:h-[5rem] lg:w-[90%] w-full rounded-r-full mt-4 p-2 flex items-center relative">
                         <div className=" px-4  rounded-full flex items-center lg:ml-4">
                             <img

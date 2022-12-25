@@ -7,3 +7,5 @@ export const LOGOUT = "LOGOUT";
 export const SET_MESSAGE = "SET_MESSAGE";
 export const CLEAR_MESSAGE = "CLEAR_MESSAGE";
 export const IS_LOADING = "IS_LOADING";
+
+export const GET_COUNSELLOR = "GET_COUNSELLOR";
