@@ -2,23 +2,27 @@ import Navbar from "../../../components/layouts/Navbar";
 import App from "../../../components/layouts/App";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetailCounsellor } from "../../../actions/user";
+import { getDetailCounsellor, setBookDate } from "../../../actions/user";
 import { useParams } from "react-router-dom";
 import moment from "moment";
 
 const Booking = () => {
     const dispatch = useDispatch();
     const { counsellorId } = useParams();
-    const [bookDate, setBookDate] = useState({
-        date: "",
-        time: "",
-    });
 
     const { counsellor } = useSelector((state) => state.user);
+    const { bookDate } = useSelector((state) => state.booking);
 
     useEffect(() => {
         dispatch(getDetailCounsellor(counsellorId));
     }, []);
+
+    const getFormattedBookDate = (date, time) => {
+        let datetime = date + "T" + time + ":00";
+        datetime = new moment(datetime, "YYYY-MM-DD HH:mm").utc();
+
+        return datetime.format("YYYY-MM-DD HH:mm");
+    };
 
     return (
         <App>
@@ -226,22 +230,48 @@ const Booking = () => {
                                             {moment(date.date).format("MMM DD")}
                                         </div>
                                     </div>
-                                    {date.times.map((time, i) => (
-                                        <div
-                                            onClick={() => {
-                                                setBookDate({
-                                                    date: date.date,
-                                                    time: time,
-                                                });
-                                            }}
-                                            key={i}
-                                            className="text-blue-700 bg-blue-100 flex flex-col p-4 mt-2 hover:bg-blue-200 cursor-pointer"
-                                        >
-                                            <div className="text-xs text-center font-medium">
-                                                {time}
+                                    {date.times.map((time, i) =>
+                                        !counsellor.schedules.includes(
+                                            getFormattedBookDate(
+                                                date.date,
+                                                time
+                                            )
+                                        ) ? (
+                                            <div
+                                                onClick={() => {
+                                                    dispatch(
+                                                        setBookDate(
+                                                            date.date,
+                                                            time
+                                                        )
+                                                    );
+                                                }}
+                                                key={i}
+                                                className={`text-blue-700 ${
+                                                    getFormattedBookDate(
+                                                        date.date,
+                                                        time
+                                                    ) === bookDate
+                                                        ? "bg-blue-200"
+                                                        : "bg-blue-100 hover:bg-blue-200"
+                                                } flex flex-col p-4 mt-2 cursor-pointer`}
+                                            >
+                                                <div className="text-xs text-center font-medium">
+                                                    {time}
+                                                </div>
                                             </div>
-                                        </div>
-                                    ))}
+                                        ) : (
+                                            <div key={i}>
+                                                <div
+                                                    className={`text-white bg-red-500 flex flex-col p-4 mt-2`}
+                                                >
+                                                    <div className="text-xs text-center font-medium">
+                                                        Booked
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )
+                                    )}
                                 </div>
                             ))}
                         </div>

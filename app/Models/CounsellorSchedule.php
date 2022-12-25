@@ -14,6 +14,9 @@ class CounsellorSchedule extends Model
         'counselling_id',
         'date',
         'time',
+        'datetime',
         'deleted_at',
     ];
+
+    protected $dates = ['datetime'];
 }

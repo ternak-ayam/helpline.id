@@ -14,9 +14,6 @@ class GetCounsellorScheduleResource extends JsonResource
      */
     public function toArray($request)
     {
-        return [
-            'date' => $this->date,
-            'time' => $this->time,
-        ];
+        return $this->datetime->format('Y-m-d H:i');
     }
 }
