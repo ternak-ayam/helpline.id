@@ -7,6 +7,7 @@ const login = (email, password) => {
         .post(API_URL + "/login", {
             email: email,
             password: password,
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         })
         .then((response) => {
             const user = response.data.data.user;
@@ -28,6 +29,7 @@ const register = (userData) => {
             birthdate: userData.birthdate,
             sex: userData.sex,
             password: userData.password,
+            timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         })
         .then((response) => {
             const user = response.data.data.user;

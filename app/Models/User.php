@@ -26,6 +26,7 @@ class User extends Authenticatable implements CanResetPassword
         'country',
         'unhcr_number',
         'sex',
+        'timezone',
         'birthdate',
         'password',
     ];

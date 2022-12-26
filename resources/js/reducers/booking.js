@@ -1,4 +1,4 @@
-import { SET_BOOK_DATE } from "../actions/type";
+import { SET_BOOK_DATE, SET_BOOKING } from "../actions/type";
 
 export default (state = { bookDate: null }, action) => {
     const { type, payload } = action;

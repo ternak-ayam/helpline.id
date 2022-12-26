@@ -21,6 +21,23 @@ const getDetailCounsellor = (counsellorId) => {
         });
 };
 
+const storeBooking = (bookingData, counsellorId, bookDate) => {
+    return axios
+        .post(
+            API_URL + "/booking",
+            {
+                counsellor_id: counsellorId,
+                counselling_method: bookingData.counsellingMethod,
+                translator_language: bookingData.translatorLanguage,
+                schedule: bookDate,
+            },
+            { headers: authHeader() }
+        )
+        .then((response) => {
+            return response.data;
+        });
+};
+
 const getUserBoard = () => {
     return axios.get(API_URL + "/", { headers: authHeader() });
 };
@@ -29,4 +46,5 @@ export default {
     getUserBoard,
     getCounsellor,
     getDetailCounsellor,
+    storeBooking,
 };

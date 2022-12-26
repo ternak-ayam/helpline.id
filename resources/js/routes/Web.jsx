@@ -36,7 +36,7 @@ const Web = () => {
                     exact
                 />
                 <Route
-                    path={"/booking/:bookingId/success"}
+                    path={"/booking/success"}
                     component={AfterBooking}
                     exact
                 />
@@ -46,12 +46,12 @@ const Web = () => {
                     exact
                 />
                 <Route
-                    path={"/counselling/:counsellingId/chat"}
+                    path={"/text-chat/:counsellingId"}
                     component={Chat}
                     exact
                 />
                 <Route
-                    path={"/counselling/:counsellingId/call"}
+                    path={"/audio-chat/:counsellingId"}
                     component={Call}
                     exact
                 />

@@ -2,16 +2,28 @@ import Navbar from "../../../components/layouts/Navbar";
 import App from "../../../components/layouts/App";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetailCounsellor, setBookDate } from "../../../actions/user";
-import { useParams } from "react-router-dom";
+import {
+    getDetailCounsellor,
+    setBookDate,
+    storeBooking,
+} from "../../../actions/user";
+import { useHistory, useParams } from "react-router-dom";
 import moment from "moment";
+import LoadingButton from "@mui/lab/LoadingButton";
 
 const Booking = () => {
+    const history = useHistory();
     const dispatch = useDispatch();
     const { counsellorId } = useParams();
 
     const { counsellor } = useSelector((state) => state.user);
     const { bookDate } = useSelector((state) => state.booking);
+    const { status } = useSelector((state) => state.message);
+
+    const [bookingData, setBookingData] = useState({
+        counsellingMethod: "",
+        translatorLanguage: "",
+    });
 
     useEffect(() => {
         dispatch(getDetailCounsellor(counsellorId));
@@ -22,6 +34,12 @@ const Booking = () => {
         datetime = new moment(datetime, "YYYY-MM-DD HH:mm").utc();
 
         return datetime.format("YYYY-MM-DD HH:mm");
+    };
+
+    const handleBooking = () => {
+        dispatch(storeBooking(bookingData, counsellorId, bookDate)).then(() => {
+            history.push("/booking/success");
+        });
     };
 
     return (
@@ -90,7 +108,13 @@ const Booking = () => {
                                     name={"language"}
                                     className="rounded-full  h-4 w-4 border border-2 border-blue-300"
                                     type="radio"
-                                    value=""
+                                    value="farsi"
+                                    onChange={(e) => {
+                                        setBookingData({
+                                            ...bookingData,
+                                            translatorLanguage: e.target.value,
+                                        });
+                                    }}
                                     id="flexCheckDefault"
                                 />
                                 <label
@@ -105,7 +129,13 @@ const Booking = () => {
                                     name={"language"}
                                     className="rounded-full h-4 w-4 border border-2 border-blue-300"
                                     type="radio"
-                                    value=""
+                                    value="arabic"
+                                    onChange={(e) => {
+                                        setBookingData({
+                                            ...bookingData,
+                                            translatorLanguage: e.target.value,
+                                        });
+                                    }}
                                     id="arabic"
                                 />
                                 <label
@@ -120,7 +150,13 @@ const Booking = () => {
                                     name={"language"}
                                     className="rounded-full h-4 w-4 border border-2 border-blue-300"
                                     type="radio"
-                                    value=""
+                                    value="tamil"
+                                    onChange={(e) => {
+                                        setBookingData({
+                                            ...bookingData,
+                                            translatorLanguage: e.target.value,
+                                        });
+                                    }}
                                     id="tamil"
                                 />
                                 <label
@@ -135,7 +171,13 @@ const Booking = () => {
                                     name={"language"}
                                     className="rounded-full h-4 w-4 border border-2 border-blue-300"
                                     type="radio"
-                                    value=""
+                                    value="rohingya"
+                                    onChange={(e) => {
+                                        setBookingData({
+                                            ...bookingData,
+                                            translatorLanguage: e.target.value,
+                                        });
+                                    }}
                                     id="rohingya"
                                 />
                                 <label
@@ -174,7 +216,13 @@ const Booking = () => {
                                     name={"method"}
                                     className="rounded-full h-4 w-4 border border-2 border-blue-300"
                                     type="radio"
-                                    value=""
+                                    onChange={(e) => {
+                                        setBookingData({
+                                            ...bookingData,
+                                            counsellingMethod: e.target.value,
+                                        });
+                                    }}
+                                    value={"text-chat"}
                                     id="chatCounsellingMethod"
                                 />
                                 <label
@@ -190,7 +238,13 @@ const Booking = () => {
                                     name={"method"}
                                     className="rounded-full h-4 w-4 border border-2 border-blue-300"
                                     type="radio"
-                                    value=""
+                                    onChange={(e) => {
+                                        setBookingData({
+                                            ...bookingData,
+                                            counsellingMethod: e.target.value,
+                                        });
+                                    }}
+                                    value={"audio-chat"}
                                     id="callCounsellingMethod"
                                 />
                                 <label
@@ -277,15 +331,17 @@ const Booking = () => {
                         </div>
                     </div>
                     <div className="w-full flex mt-8 justify-end lg:mb-0 mb-32">
-                        <button
-                            type="submit"
-                            className="p-2 bg-blue-700 rounded-lg px-4"
+                        <LoadingButton
+                            loading={status}
+                            onClick={() => {
+                                handleBooking();
+                            }}
+                            variant="contained"
+                            sx={{ mt: 3, mb: 2 }}
                         >
-                            <i className="fa-solid fa-arrow-right fa-xl text-white"></i>{" "}
-                            <span className="text-white text-lg">
-                                Book Counselling
-                            </span>
-                        </button>
+                            <i className="fa-solid fa-arrow-right fa-xl text-white mr-2"></i>{" "}
+                            Book Counselling
+                        </LoadingButton>
                     </div>
                 </div>
             </div>

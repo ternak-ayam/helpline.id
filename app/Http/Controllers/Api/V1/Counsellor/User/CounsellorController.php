@@ -7,6 +7,7 @@ use App\Http\Resources\Api\V1\User\Counsellor\GetCounsellorResource;
 use App\Http\Resources\Api\V1\User\Counsellor\GetDetailCounsellorResource;
 use App\Models\Counsellor;
 use Illuminate\Http\Request;
+use function GuzzleHttp\Promise\all;
 
 class CounsellorController extends Controller
 {

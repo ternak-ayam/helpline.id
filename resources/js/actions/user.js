@@ -2,11 +2,13 @@ import User from "../services/user/service";
 import {
     GET_ALL_COUNSELLOR,
     GET_COUNSELLOR,
+    IS_LOADING,
     SET_BOOK_DATE,
     SET_MESSAGE,
     SET_SCHEDULE,
 } from "./type";
 import moment from "moment";
+import { showErrorAlerts, showSuccessAlert } from "./alert";
 
 export const getCounsellor = (page) => (dispatch) => {
     return User.getCounsellor(page).then(
@@ -53,6 +55,43 @@ export const getDetailCounsellor = (counsellorId) => (dispatch) => {
         }
     );
 };
+
+export const storeBooking =
+    (bookingData, counsellorId, bookDate) => (dispatch) => {
+        dispatch({
+            type: IS_LOADING,
+            payload: true,
+        });
+
+        return User.storeBooking(bookingData, counsellorId, bookDate).then(
+            () => {
+                showSuccessAlert("Booking successfully");
+
+                setTimeout(() => {
+                    // console.log("Waiting...");
+                }, 1000);
+
+                dispatch({
+                    type: IS_LOADING,
+                    payload: false,
+                });
+
+                return Promise.resolve();
+            },
+            (error) => {
+                const message = error.response.data.error;
+
+                showErrorAlerts(message.errors);
+
+                dispatch({
+                    type: IS_LOADING,
+                    payload: false,
+                });
+
+                return Promise.reject();
+            }
+        );
+    };
 
 export const setBookDate = (date, time) => (dispatch) => {
     let datetime = date + "T" + time + ":00";

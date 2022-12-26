@@ -33,7 +33,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('guest:web');
     }
 
     /**
@@ -49,6 +49,7 @@ class RegisterController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
             'country' => ['required', 'string'],
+            'timezone' => ['nullable', 'string'],
             'birthdate' => ['required', 'string'],
             'sex' => ['required', 'string', Rule::in([
                 'male',
@@ -69,6 +70,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => explode('@', $data['email'])[0],
             'email' => $data['email'],
+            'timezone' => $data['timezone'],
             'unhcr_number' => $data['unhcr_number'],
             'country' => $data['country'],
             'birthdate' => $data['birthdate'],

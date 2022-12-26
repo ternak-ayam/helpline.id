@@ -12,3 +12,5 @@ export const SET_BOOK_DATE = "SET_BOOK_DATE";
 export const GET_ALL_COUNSELLOR = "GET_ALL_COUNSELLOR";
 export const GET_COUNSELLOR = "GET_COUNSELLOR";
 export const SET_SCHEDULE = "SET_SCHEDULE";
+
+export const SET_BOOKING = "SET_BOOKING";

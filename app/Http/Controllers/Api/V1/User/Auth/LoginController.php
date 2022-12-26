@@ -47,6 +47,11 @@ class LoginController extends Controller
         }
 
         if ($this->attemptLogin($request)) {
+
+            $request->user()->update([
+                'timezone' => $request->timezone
+            ]);
+
             return new LoginResource($request->user());
         }
 
