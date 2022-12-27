@@ -30,6 +30,7 @@
         "@mui/icons-material": "^5.11.0",
         "@mui/lab": "^5.0.0-alpha.112",
         "@mui/material": "^5.11.0",
+        "agora-rtc-sdk-ng": "^4.15.1",
         "moment": "^2.29.4",
         "react-hot-toast": "^2.4.0",
         "react-redux": "^8.0.5",

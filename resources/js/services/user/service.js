@@ -21,10 +21,20 @@ const getDetailCounsellor = (counsellorId) => {
         });
 };
 
+const getCounsellorForCallPage = (counsellingId) => {
+    return axios
+        .get(API_URL + "/counselling/" + counsellingId, {
+            headers: authHeader(),
+        })
+        .then((response) => {
+            return response.data;
+        });
+};
+
 const storeBooking = (bookingData, counsellorId, bookDate) => {
     return axios
         .post(
-            API_URL + "/booking",
+            API_URL + "/counselling",
             {
                 counsellor_id: counsellorId,
                 counselling_method: bookingData.counsellingMethod,
@@ -47,4 +57,5 @@ export default {
     getCounsellor,
     getDetailCounsellor,
     storeBooking,
+    getCounsellorForCallPage,
 };

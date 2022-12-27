@@ -56,6 +56,43 @@ export const getDetailCounsellor = (counsellorId) => (dispatch) => {
     );
 };
 
+export const getDetailCounsellorForCallPage = (counsellingId) => (dispatch) => {
+    dispatch({
+        type: IS_LOADING,
+        payload: true,
+    });
+    return User.getCounsellorForCallPage(counsellingId).then(
+        (response) => {
+            dispatch({
+                type: GET_COUNSELLOR,
+                payload: { data: response.data },
+            });
+
+            dispatch({
+                type: IS_LOADING,
+                payload: false,
+            });
+
+            return Promise.resolve();
+        },
+        (error) => {
+            const message = error.response.data.error;
+
+            dispatch({
+                type: SET_MESSAGE,
+                payload: message,
+            });
+
+            dispatch({
+                type: IS_LOADING,
+                payload: false,
+            });
+
+            return Promise.reject();
+        }
+    );
+};
+
 export const storeBooking =
     (bookingData, counsellorId, bookDate) => (dispatch) => {
         dispatch({

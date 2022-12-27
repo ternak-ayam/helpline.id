@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1\Counselling\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\Counselling\StoreCounsellingRequest;
+use App\Http\Resources\Api\V1\User\Counselling\CounsellorDetailResource;
 use App\Models\Counselling;
 use App\Models\CounsellorSchedule;
 use App\Models\Translator;
@@ -49,5 +50,10 @@ class CounsellingController extends Controller
     public function needTranslator($request): bool
     {
         return !blank($request->translator_language);
+    }
+
+    public function show(Counselling $counselling)
+    {
+        return new CounsellorDetailResource($counselling);
     }
 }
