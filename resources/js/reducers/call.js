@@ -25,11 +25,6 @@ export default (state = initialState, action) => {
                 ...state,
                 connected: payload,
             };
-        case CALL_DISCONNECTED:
-            return {
-                ...state,
-                connected: payload,
-            };
         case CALL_AUDIO_MUTED:
             return {
                 ...state,

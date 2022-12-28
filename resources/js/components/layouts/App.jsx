@@ -5,12 +5,13 @@ import SimpleFooter from "../footer/SimpleFooter";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-const App = ({ children, bottomFooter }) => {
+const App = ({ children, bottomFooter, needAuth = true }) => {
     const history = useHistory();
     const { isLoggedIn } = useSelector((state) => state.auth);
 
-    if (!isLoggedIn) history.push("/login");
-
+    if (needAuth) {
+        if (!isLoggedIn) history.push("/login");
+    }
     const theme = createTheme({
         radio: {
             "&$checked": {

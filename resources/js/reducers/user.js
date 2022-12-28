@@ -7,6 +7,7 @@ const initialState = {
         languages: [],
         schedules: [],
         calendars: [],
+        user: null,
     },
 };
 

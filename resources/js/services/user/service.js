@@ -55,10 +55,39 @@ const getUserBoard = () => {
 const getCounsellingToken = (counsellingId, userId) => {
     return axios
         .get(
-            `https://agorageneratetoken.arthaputra.repl.co/rtcToken?channelName=${counsellingId}&uid=${userId}`,
+            `${process.env.MIX_TOKEN_GENERATOR_URL}rtcToken?channelName=${counsellingId}&uid=${userId}`,
             {
                 "Access-Control-Allow-Origin": "*",
             }
+        )
+        .then((response) => {
+            return response.data;
+        });
+};
+
+const updateDuration = (duration, userId, channel, userType) => {
+    return axios
+        .put(
+            API_URL + "/" + userType + "/call/" + channel,
+            {
+                userId: userId,
+                duration: duration,
+            },
+            { headers: authHeader() }
+        )
+        .then((response) => {
+            return response.data;
+        });
+};
+
+const storeDuration = (userId, channel, userType) => {
+    return axios
+        .post(
+            API_URL + "/" + userType + "/call/" + channel,
+            {
+                userId: userId,
+            },
+            { headers: authHeader() }
         )
         .then((response) => {
             return response.data;
@@ -72,4 +101,6 @@ export default {
     storeBooking,
     getCounsellorForCallPage,
     getCounsellingToken,
+    updateDuration,
+    storeDuration,
 };

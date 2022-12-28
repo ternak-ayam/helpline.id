@@ -25,4 +25,10 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('counselling/{counselling:counselling_id}', [\App\Http\Controllers\Api\V1\Counselling\User\CounsellingController::class, 'show']);
     Route::post('counselling', [\App\Http\Controllers\Api\V1\Counselling\User\CounsellingController::class, 'store']);
+
+    Route::post('user/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'storeUser']);
+    Route::put('user/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'updateUser']);
+
+    Route::put('counsellor/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'counsellor']);
+    Route::put('translator/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'translator']);
 });

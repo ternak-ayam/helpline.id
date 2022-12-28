@@ -1,6 +1,6 @@
 import App from "../../../components/layouts/App";
 import Navbar from "../../../components/layouts/Navbar";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailCounsellorForCallPage } from "../../../actions/user";
@@ -10,10 +10,15 @@ import {
     toggleAudio,
     toggleMic,
 } from "../../../actions/call";
+import { useStopwatch } from "react-timer-hook";
 
 const Call = () => {
     const { counsellingId } = useParams();
     const dispatch = useDispatch();
+
+    const { seconds, minutes, hours, start } = useStopwatch({
+        autoStart: false,
+    });
 
     const { counsellor } = useSelector((state) => state.user);
     const { status } = useSelector((state) => state.message);
@@ -26,7 +31,7 @@ const Call = () => {
     }, []);
 
     return (
-        <App>
+        <App needAuth={false}>
             <Navbar />
             <div className="container flex m-auto justify-center p-2 mb-24 mt-20">
                 <div className="border-blue-200 border border-2  rounded-xl w-full flex flex-col justify-center p-2 h-full">
@@ -44,10 +49,25 @@ const Call = () => {
                                 Counsellor
                             </p>
                         </div>
-                        <div className="">
+                        <div>
                             <hr className="w-[10rem] border-1 border-[#28c484] border-dashed rounded-xl rotate-90 mt-24 m-auto" />
                         </div>
                     </div>
+                    {status ? (
+                        <div className={"text-center mt-2 mb-4"}>
+                            <span className={"text-black"}>
+                                Joining channel...
+                            </span>
+                        </div>
+                    ) : null}
+                    {connected ? (
+                        <div className={"text-center mt-2 mb-4"}>
+                            <span className={"text-black"}>
+                                {hours}:{minutes}:{seconds}
+                            </span>
+                        </div>
+                    ) : null}
+
                     <div className="flex justify-center mb-2">
                         <div>
                             <button
@@ -68,9 +88,12 @@ const Call = () => {
                                         dispatch(
                                             joinChannel(
                                                 counsellingId,
-                                                counsellor.userId
+                                                counsellor.user.id,
+                                                counsellor.user.type
                                             )
-                                        );
+                                        ).then(() => {
+                                            start();
+                                        });
                                     }}
                                     className={`p-4 bg-[#28c484] rounded-full mx-1`}
                                 >

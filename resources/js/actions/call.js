@@ -5,6 +5,7 @@ import {
     CALL_CONNECTED,
     CALL_DISCONNECTED,
     CALL_MIC_MUTED,
+    IS_LOADING,
     USER_JOIN,
     USER_LEFT,
 } from "./type";
@@ -23,70 +24,110 @@ let options = {
     channel: "",
     token: "",
     uid: "",
+    userType: "",
 };
 
 let agoraEngine = null;
 
-export const joinChannel = (channel, userId) => (dispatch) => {
+export const joinChannel = (channel, userId, userType) => (dispatch) => {
+    dispatch({
+        type: IS_LOADING,
+        payload: true,
+    });
     User.getCounsellingToken(channel, userId).then((response) => {
         options.token = response.token;
-        dispatch(handleJoinChannel(channel, userId));
+        dispatch(handleJoinChannel(channel, userId, userType));
     });
+
+    return Promise.resolve();
 };
 
-export const handleJoinChannel = (channel, userId) => async (dispatch) => {
-    agoraEngine = AgoraRTC.createClient({
-        mode: "rtc",
-        codec: "vp8",
-    });
-
-    options.channel = channel;
-    options.uid = userId;
-
-    agoraEngine.on("user-published", async (user, mediaType) => {
-        await agoraEngine.subscribe(user, mediaType);
-
-        dispatch({
-            type: USER_JOIN,
-            payload: {
-                user: user,
-                status: true,
-            },
+export const handleJoinChannel =
+    (channel, userId, userType) => async (dispatch) => {
+        agoraEngine = AgoraRTC.createClient({
+            mode: "rtc",
+            codec: "vp8",
         });
 
-        if (mediaType == "audio") {
-            channelParameters.remoteUid = user.uid;
-            channelParameters.remoteAudioTrack = user.audioTrack;
-            channelParameters.remoteAudioTrack.play();
-        }
+        options.channel = channel;
+        options.uid = userId;
+        options.userType = userType;
 
-        agoraEngine.on("user-unpublished", (user) => {
+        agoraEngine.on("connection-state-change", (event) => {
+            if (event === "DISCONNECTED") {
+                let rtcStats = agoraEngine.getRTCStats();
+
+                User.updateDuration(
+                    rtcStats.Duration,
+                    options.uid,
+                    options.channel,
+                    options.userType
+                );
+
+                setTimeout(() => {
+                    window.location.href =
+                        "/counselling/" + options.channel + "/done";
+                }, 2000);
+            }
+
+            if (event === "CONNECTED") {
+                User.storeDuration(
+                    options.uid,
+                    options.channel,
+                    options.userType
+                );
+            }
+        });
+
+        agoraEngine.on("user-published", async (user, mediaType) => {
+            await agoraEngine.subscribe(user, mediaType);
+
             dispatch({
-                type: USER_LEFT,
+                type: USER_JOIN,
                 payload: {
                     user: user,
                     status: true,
                 },
             });
+
+            if (mediaType == "audio") {
+                channelParameters.remoteUid = user.uid;
+                channelParameters.remoteAudioTrack = user.audioTrack;
+                channelParameters.remoteAudioTrack.play();
+            }
+
+            agoraEngine.on("user-unpublished", (user) => {
+                dispatch({
+                    type: USER_LEFT,
+                    payload: {
+                        user: user,
+                        status: true,
+                    },
+                });
+            });
         });
-    });
 
-    await agoraEngine.join(
-        options.appId,
-        options.channel,
-        options.token,
-        options.uid
-    );
+        await agoraEngine.join(
+            options.appId,
+            options.channel,
+            options.token,
+            options.uid
+        );
 
-    channelParameters.localAudioTrack =
-        await AgoraRTC.createMicrophoneAudioTrack();
-    await agoraEngine.publish([channelParameters.localAudioTrack]);
+        channelParameters.localAudioTrack =
+            await AgoraRTC.createMicrophoneAudioTrack();
+        await agoraEngine.publish([channelParameters.localAudioTrack]);
 
-    dispatch({
-        type: CALL_CONNECTED,
-        payload: true,
-    });
-};
+        dispatch({
+            type: CALL_CONNECTED,
+            payload: true,
+        });
+
+        dispatch({
+            type: IS_LOADING,
+            payload: false,
+        });
+    };
 
 export const toggleMic = () => (dispatch) => {
     channelParameters.localAudioTrack.setEnabled(isMicMuted);
@@ -111,13 +152,12 @@ export const toggleAudio = () => (dispatch) => {
     });
 };
 
-export const leaveChannel = () => (dispatch) => {
+export const leaveChannel = () => async (dispatch) => {
     channelParameters.localAudioTrack.close();
+    await agoraEngine.leave();
 
     dispatch({
-        type: CALL_DISCONNECTED,
-        payload: true,
+        type: CALL_CONNECTED,
+        payload: false,
     });
-
-    window.location.reload();
 };

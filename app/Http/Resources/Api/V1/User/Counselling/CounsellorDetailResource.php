@@ -15,11 +15,22 @@ class CounsellorDetailResource extends JsonResource
      */
     public function toArray($request): array
     {
+       if(auth('translator')->check()) {
+           $userType = "translator";
+       } elseif (auth('counsellor')->check()) {
+           $userType = "counsellor";
+       } else {
+           $userType = "user";
+       };
+
         return [
             'id' => $this->counsellor['id'],
             'name' => $this->counsellor['name'],
             'profilePicture' => $this->counsellor->getImageUrl(),
-            'userId' => $this->user['id']
+            'user' => [
+                'id' => auth()->user()->id,
+                'type' => $userType
+            ]
         ];
     }
 }
