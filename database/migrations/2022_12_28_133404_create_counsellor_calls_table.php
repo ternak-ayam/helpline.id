@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateUserCallsTable extends Migration
+class CreateCounsellorCallsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateUserCallsTable extends Migration
      */
     public function up()
     {
-        Schema::create('user_calls', function (Blueprint $table) {
+        Schema::create('counsellor_calls', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('counsellor_id');
             $table->unsignedBigInteger('counselling_id');
             $table->double('duration')->default(0);
             $table->dateTime('end_at')->nullable();
@@ -30,6 +30,6 @@ class CreateUserCallsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_calls');
+        Schema::dropIfExists('counsellor_calls');
     }
 }

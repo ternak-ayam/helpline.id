@@ -29,6 +29,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('user/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'storeUser']);
     Route::put('user/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'updateUser']);
 
-    Route::put('counsellor/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'counsellor']);
-    Route::put('translator/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'translator']);
+    Route::post('counsellor/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'storeCounsellor']);
+    Route::put('counsellor/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'updateCounsellor']);
+
+    Route::post('translator/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'storeTranslator']);
+    Route::put('translator/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'updateTranslator']);
 });
