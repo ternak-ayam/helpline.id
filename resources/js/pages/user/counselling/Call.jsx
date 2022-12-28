@@ -1,94 +1,25 @@
 import App from "../../../components/layouts/App";
 import Navbar from "../../../components/layouts/Navbar";
-import AgoraRTC from "agora-rtc-sdk-ng";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailCounsellorForCallPage } from "../../../actions/user";
+import {
+    joinChannel,
+    leaveChannel,
+    toggleAudio,
+    toggleMic,
+} from "../../../actions/call";
 
 const Call = () => {
     const { counsellingId } = useParams();
     const dispatch = useDispatch();
-    const [connected, setConnected] = useState(false);
-    const [isMicMuted, setMicMuted] = useState(false);
-    const [isAudioMuted, setAudioMuted] = useState(false);
-    const [channelParameters, setChannelParameters] = useState({
-        localAudioTrack: null,
-        remoteAudioTrack: null,
-        remoteUid: null,
-    });
 
     const { counsellor } = useSelector((state) => state.user);
     const { status } = useSelector((state) => state.message);
-
-    let options = {
-        appId: "41a005d083e7461c95e25698edc77346",
-        channel: counsellingId,
-        token: "007eJxTYBB7M3H1dv6eSWwbPc+FsXzX+CWYdPrpL/duF11Xq7NbQncqMJgYJhoYmKYYWBinmpuYGSZbmqYamZpZWqSmJJubG5uYLedendwQyMjQHH6LgREKQXwRBmcnT11nXSMDIyNDIyMzQwMjQ1NTBgYAOOoheA==",
-        uid: counsellor.userId,
-    };
-
-    let agoraEngine = null;
-
-    async function joinChannel() {
-        agoraEngine = AgoraRTC.createClient({
-            mode: "rtc",
-            codec: "vp8",
-        });
-
-        agoraEngine.on("user-published", async (user, mediaType) => {
-            await agoraEngine.subscribe(user, mediaType);
-            console.log("subscribe success");
-            // Subscribe and play the remote audio track.
-            if (mediaType == "audio") {
-                channelParameters.remoteUid = user.uid;
-                channelParameters.remoteAudioTrack = user.audioTrack;
-                channelParameters.remoteAudioTrack.play();
-            }
-
-            // Listen for the "user-unpublished" event.
-            agoraEngine.on("user-unpublished", (user) => {
-                console.log(user.uid + "has left the channel");
-            });
-        });
-
-        await agoraEngine.join(
-            options.appId,
-            options.channel,
-            options.token,
-            options.uid
-        );
-
-        showMessage("Joined channel: " + options.channel);
-
-        channelParameters.localAudioTrack =
-            await AgoraRTC.createMicrophoneAudioTrack();
-        await agoraEngine.publish([channelParameters.localAudioTrack]);
-
-        setConnected(true);
-    }
-
-    const muteMic = () => {
-        channelParameters.localAudioTrack.setEnabled(isMicMuted);
-        setMicMuted(!isMicMuted);
-    };
-
-    const muteAudio = () => {
-        channelParameters.remoteAudioTrack.setVolume(!isAudioMuted ? 0 : 100);
-        setAudioMuted(!isAudioMuted);
-    };
-
-    // Listen to the Leave button click event.
-    async function leaveChannel() {
-        // Destroy the local audio track.
-        channelParameters.localAudioTrack.close();
-
-        window.location.reload();
-    }
-
-    function showMessage(text) {
-        console.log(text);
-    }
+    const { user, micMuted, audioMuted, connected } = useSelector(
+        (state) => state.call
+    );
 
     useEffect(() => {
         dispatch(getDetailCounsellorForCallPage(counsellingId));
@@ -120,11 +51,12 @@ const Call = () => {
                     <div className="flex justify-center mb-2">
                         <div>
                             <button
+                                disabled={!connected}
                                 onClick={() => {
-                                    muteMic();
+                                    dispatch(toggleMic(micMuted));
                                 }}
                                 className={`py-2 px-3 ${
-                                    isMicMuted ? "bg-red-500" : "bg-gray-400"
+                                    micMuted ? "bg-red-500" : "bg-gray-400"
                                 } rounded-full mx-1`}
                             >
                                 <i className="fa-solid fa-microphone fa-xl text-white"></i>
@@ -133,7 +65,12 @@ const Call = () => {
                                 <button
                                     disabled={status}
                                     onClick={() => {
-                                        joinChannel();
+                                        dispatch(
+                                            joinChannel(
+                                                counsellingId,
+                                                counsellor.userId
+                                            )
+                                        );
                                     }}
                                     className={`p-4 bg-[#28c484] rounded-full mx-1`}
                                 >
@@ -142,7 +79,7 @@ const Call = () => {
                             ) : (
                                 <button
                                     onClick={() => {
-                                        leaveChannel();
+                                        dispatch(leaveChannel());
                                     }}
                                     className={`p-4 bg-red-500 rounded-full mx-1`}
                                 >
@@ -150,11 +87,12 @@ const Call = () => {
                                 </button>
                             )}
                             <button
+                                disabled={!connected}
                                 onClick={() => {
-                                    muteAudio();
+                                    dispatch(toggleAudio(audioMuted));
                                 }}
                                 className={`py-2 px-3 ${
-                                    isAudioMuted ? "bg-red-500" : "bg-gray-400"
+                                    audioMuted ? "bg-red-500" : "bg-gray-400"
                                 } rounded-full mx-1`}
                             >
                                 <i className="fa-solid fa-volume-high fa-sm text-white"></i>

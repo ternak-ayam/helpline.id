@@ -52,10 +52,24 @@ const getUserBoard = () => {
     return axios.get(API_URL + "/", { headers: authHeader() });
 };
 
+const getCounsellingToken = (counsellingId, userId) => {
+    return axios
+        .get(
+            `https://agorageneratetoken.arthaputra.repl.co/rtcToken?channelName=${counsellingId}&uid=${userId}`,
+            {
+                "Access-Control-Allow-Origin": "*",
+            }
+        )
+        .then((response) => {
+            return response.data;
+        });
+};
+
 export default {
     getUserBoard,
     getCounsellor,
     getDetailCounsellor,
     storeBooking,
     getCounsellorForCallPage,
+    getCounsellingToken,
 };

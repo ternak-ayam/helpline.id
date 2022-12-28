@@ -14,3 +14,11 @@ export const GET_COUNSELLOR = "GET_COUNSELLOR";
 export const SET_SCHEDULE = "SET_SCHEDULE";
 
 export const SET_BOOKING = "SET_BOOKING";
+
+export const CALL_CONNECTED = "CALL_CONNECTED";
+export const CALL_DISCONNECTED = "CALL_DISCONNECTED";
+export const CALL_MIC_MUTED = "CALL_MIC_MUTED";
+export const CALL_AUDIO_MUTED = "CALL_AUDIO_MUTED";
+export const USER_LEFT = "USER_LEFT";
+export const USER_JOIN = "USER_JOIN";
+export const USERS_JOIN_AMOUNT = "USERS_JOIN_AMOUNT";
