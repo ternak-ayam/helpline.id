@@ -9,7 +9,7 @@ import CounsellorDashboard from "../pages/user/counsellor/Dashboard";
 import Booking from "../pages/user/booking/Booking";
 import AfterBooking from "../pages/user/booking/AfterBooking";
 import AfterCounselling from "../pages/user/counselling/AfterCounselling";
-import Chat from "../pages/user/counselling/Chat";
+import TextChat from "../pages/user/counselling/TextChat";
 import Call from "../pages/user/counselling/Call";
 import NotFound from "../pages/errors/NotFound";
 
@@ -47,7 +47,7 @@ const Web = () => {
                 />
                 <Route
                     path={"/text-chat/:counsellingId"}
-                    component={Chat}
+                    component={TextChat}
                     exact
                 />
                 <Route
