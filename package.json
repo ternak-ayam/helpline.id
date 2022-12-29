@@ -31,6 +31,7 @@
         "@mui/lab": "^5.0.0-alpha.112",
         "@mui/material": "^5.11.0",
         "agora-access-token": "^2.0.4",
+        "agora-chat-uikit": "^1.0.8",
         "agora-rtc-sdk-ng": "^4.15.1",
         "moment": "^2.29.4",
         "react-hot-toast": "^2.4.0",
