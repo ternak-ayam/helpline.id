@@ -20,7 +20,7 @@ let isMicMuted = false;
 let isAudioMuted = false;
 
 let options = {
-    appId: "41a005d083e7461c95e25698edc77346",
+    appId: process.env.MIX_AGORA_APP_ID,
     channel: "",
     token: "",
     uid: "",

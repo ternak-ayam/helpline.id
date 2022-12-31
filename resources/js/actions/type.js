@@ -22,3 +22,7 @@ export const CALL_AUDIO_MUTED = "CALL_AUDIO_MUTED";
 export const USER_LEFT = "USER_LEFT";
 export const USER_JOIN = "USER_JOIN";
 export const USERS_JOIN_AMOUNT = "USERS_JOIN_AMOUNT";
+
+export const USER_TEXT_CHAT = "USER_TEXT_CHAT";
+export const MESSAGES = "MESSAGES";
+export const TEXT_CHANNEL = "TEXT_CHANNEL";

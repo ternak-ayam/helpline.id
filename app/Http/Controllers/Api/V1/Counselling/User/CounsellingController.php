@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Api\V1\Counselling\User;
 
+use App\Http\Controllers\Api\V1\AccessTokenController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\Counselling\StoreCounsellingRequest;
 use App\Http\Resources\Api\V1\User\Counselling\CounsellorDetailResource;
@@ -24,7 +25,7 @@ class CounsellingController extends Controller
             $counselling = Counselling::create([
                 'counselling_id' => $counsellingId,
                 'counsellor_id' => $request->counsellor_id,
-                'translator_id' => $this->needTranslator($request) ? Translator::random()->first() : null,
+                'translator_id' => $this->needTranslator($request) ? Translator::where('language', $request->translator_language)->first() : null,
                 'user_id' => $user->id,
                 'due' => Carbon::create($request->schedule),
                 'counselling_method' => $request->counselling_method,
@@ -41,7 +42,13 @@ class CounsellingController extends Controller
                 'datetime' => $counselling->due,
             ]);
 
-            $user->notify(new SendBookingDetailNotification($counselling));
+            $token = (new AccessTokenController())->generate($counselling);
+
+            $user->notify(new SendBookingDetailNotification($counselling, $token['user_token']));
+            $counselling->counsellor->notify(new SendBookingDetailNotification($counselling, $token['counsellor_token']));
+            if($counselling->is_need_translator) {
+                $counselling->translator->notify(new SendBookingDetailNotification($counselling, $token['translator_token']));
+            }
 
             return $this->success();
         });

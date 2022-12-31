@@ -31,6 +31,16 @@ const getCounsellorForCallPage = (counsellingId) => {
         });
 };
 
+const getCounsellorForTextPage = (counsellingId) => {
+    return axios
+        .get(API_URL + "/counselling/" + counsellingId, {
+            headers: authHeader(),
+        })
+        .then((response) => {
+            return response.data;
+        });
+};
+
 const storeBooking = (bookingData, counsellorId, bookDate) => {
     return axios
         .post(
@@ -52,10 +62,12 @@ const getUserBoard = () => {
     return axios.get(API_URL + "/", { headers: authHeader() });
 };
 
-const getCounsellingToken = (counsellingId, userId) => {
+const getCounsellingToken = (counsellingId, userId, tokenType = "rtcToken") => {
     return axios
         .get(
-            `${process.env.MIX_TOKEN_GENERATOR_URL}rtcToken?channelName=${counsellingId}&uid=${userId}`,
+            `${
+                process.env.MIX_TOKEN_GENERATOR_URL + tokenType
+            }?channelName=${counsellingId}&uid=${userId}`,
             {
                 "Access-Control-Allow-Origin": "*",
             }
@@ -94,12 +106,22 @@ const storeDuration = (userId, channel, userType) => {
         });
 };
 
+const parseChatAccessToken = (token) => {
+    return axios
+        .get(API_URL + "/parse/accesstoken/" + token, { headers: authHeader() })
+        .then((response) => {
+            return response.data;
+        });
+};
+
 export default {
     getUserBoard,
     getCounsellor,
     getDetailCounsellor,
+    parseChatAccessToken,
     storeBooking,
     getCounsellorForCallPage,
+    getCounsellorForTextPage,
     getCounsellingToken,
     updateDuration,
     storeDuration,

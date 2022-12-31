@@ -19,7 +19,7 @@ Route::post('register', [\App\Http\Controllers\Api\V1\User\Auth\RegisterControll
 Route::post('password/email', [\App\Http\Controllers\Api\V1\User\Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 Route::post('password/reset', [\App\Http\Controllers\Api\V1\User\Auth\ResetPasswordController::class, 'reset'])->name('password.update');
 
-Route::middleware('auth:sanctum')->group(function () {
+Route::middleware('auth:sanctum,counsellor,translator')->group(function () {
     Route::get('counsellors', [\App\Http\Controllers\Api\V1\Counsellor\User\CounsellorController::class, 'index']);
     Route::get('counsellors/{counsellor}', [\App\Http\Controllers\Api\V1\Counsellor\User\CounsellorController::class, 'show']);
 
@@ -35,3 +35,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('translator/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'storeTranslator']);
     Route::put('translator/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'updateTranslator']);
 });
+
+Route::get('parse/accesstoken/{accessToken}', [\App\Http\Controllers\Api\V1\AccessTokenController::class, 'parse']);

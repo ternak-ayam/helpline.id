@@ -7,10 +7,11 @@ use App\Models\Traits\HashPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
 class Counsellor extends Authenticatable
 {
-    use HasFactory, HashPassword, HandleUpload;
+    use HasFactory, HashPassword, HandleUpload, Notifiable;
 
     protected $with = ['educations', 'languages'];
 

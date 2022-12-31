@@ -17,10 +17,13 @@ class CounsellorDetailResource extends JsonResource
     {
        if(auth('translator')->check()) {
            $userType = "translator";
+           $userId = auth('translator')->user()->id;
        } elseif (auth('counsellor')->check()) {
            $userType = "counsellor";
+           $userId = auth('counsellor')->user()->id;
        } else {
            $userType = "user";
+           $userId = auth()->user()->id;
        };
 
         return [
@@ -28,7 +31,7 @@ class CounsellorDetailResource extends JsonResource
             'name' => $this->counsellor['name'],
             'profilePicture' => $this->counsellor->getImageUrl(),
             'user' => [
-                'id' => auth()->user()->id,
+                'id' => $userId,
                 'type' => $userType
             ]
         ];

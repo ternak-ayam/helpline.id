@@ -6,9 +6,11 @@ import {
     SET_BOOK_DATE,
     SET_MESSAGE,
     SET_SCHEDULE,
+    USER_TEXT_CHAT,
 } from "./type";
 import moment from "moment";
 import { showErrorAlerts, showSuccessAlert } from "./alert";
+import { generateRtmToken } from "./text";
 
 export const getCounsellor = (page) => (dispatch) => {
     return User.getCounsellor(page).then(
@@ -93,6 +95,51 @@ export const getDetailCounsellorForCallPage = (counsellingId) => (dispatch) => {
     );
 };
 
+export const getDetailCounsellorForTextPage =
+    (counsellingId, userId) => (dispatch) => {
+        dispatch({
+            type: IS_LOADING,
+            payload: true,
+        });
+
+        return User.getCounsellorForTextPage(counsellingId).then(
+            (response) => {
+                dispatch({
+                    type: USER_TEXT_CHAT,
+                    payload: { data: response.data },
+                });
+
+                dispatch({
+                    type: IS_LOADING,
+                    payload: false,
+                });
+
+                console.log(response.data);
+
+                dispatch(
+                    generateRtmToken(counsellingId, response.data.user.id)
+                );
+
+                return Promise.resolve();
+            },
+            (error) => {
+                const message = error.response.data.error;
+
+                dispatch({
+                    type: SET_MESSAGE,
+                    payload: message,
+                });
+
+                dispatch({
+                    type: IS_LOADING,
+                    payload: false,
+                });
+
+                return Promise.reject();
+            }
+        );
+    };
+
 export const storeBooking =
     (bookingData, counsellorId, bookDate) => (dispatch) => {
         dispatch({
@@ -103,10 +150,6 @@ export const storeBooking =
         return User.storeBooking(bookingData, counsellorId, bookDate).then(
             () => {
                 showSuccessAlert("Booking successfully");
-
-                setTimeout(() => {
-                    // console.log("Waiting...");
-                }, 1000);
 
                 dispatch({
                     type: IS_LOADING,
