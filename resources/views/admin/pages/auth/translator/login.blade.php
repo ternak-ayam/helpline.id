@@ -31,6 +31,7 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <input type="hidden" name="timezone" id="timezone">
                                     <button type="submit" class="btn btn-primary btn-lg btn-block" tabindex="4">
                                         Login
                                     </button>

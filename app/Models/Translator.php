@@ -17,6 +17,7 @@ class Translator extends Authenticatable
         'name',
         'email',
         'language',
+        'timezone',
         'password',
     ];
 

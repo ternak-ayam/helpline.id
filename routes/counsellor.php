@@ -9,7 +9,7 @@ Route::post('login', [\App\Http\Controllers\Counsellor\Auth\LoginController::cla
 Route::post('logout', [\App\Http\Controllers\Counsellor\Auth\LoginController::class, 'logout'])->name('logout');
 
 Route::middleware('auth:counsellor')->group(function () {
-    Route::prefix('counselling')->group(function () {
-        Route::get('/schedule', [\App\Http\Controllers\Counsellor\ScheduleController::class, 'index'])->name('counselling.index');
+    Route::prefix('counselling')->as('counselling.')->group(function () {
+        Route::get('/schedule', [\App\Http\Controllers\Counsellor\ScheduleController::class, 'index'])->name('schedule.index');
     });
 });

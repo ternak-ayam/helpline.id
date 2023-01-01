@@ -15,7 +15,10 @@ const Dashboard = () => {
             >
                 <div className="bg-white w-full">
                     <nav className="container m-auto grid lg:grid-cols-6 grid-cols-1 py-2">
-                        <div className="col-span-1 flex justify-center lg:justify-start">
+                        <a
+                            href={"/"}
+                            className="col-span-1 flex justify-center lg:justify-start"
+                        >
                             <img
                                 src={
                                     process.env.MIX_APP_URL +
@@ -23,9 +26,9 @@ const Dashboard = () => {
                                 }
                                 alt="Logo"
                             />
-                        </div>
+                        </a>
                         <div className="lg:col-span-2 col-span-1 flex gap-2 items-center justify-center lg:mt-none ">
-                            <a href="#" className={"-mt-12 mr-2"}>
+                            <a className={"-mt-12 mr-2"}>
                                 <i className="fa-solid fa-arrow-right text-[#2769c5] fa-2xl"></i>
                             </a>
                             <div>
@@ -50,12 +53,10 @@ const Dashboard = () => {
                                     }
                                     alt=""
                                 />{" "}
-                                <a href="#" className="text-white text-lg">
-                                    Online
-                                </a>
+                                <a className="text-white text-lg">Online</a>
                             </div>
                             <div className="bg-[#2769c5] p-1 rounded-sm w-2/3 flex gap-2 items-center justify-center">
-                                <a href="#" className="text-white text-lg">
+                                <a className="text-white text-lg">
                                     Available 24/7
                                 </a>
                             </div>
@@ -70,10 +71,7 @@ const Dashboard = () => {
                                     }
                                     alt=""
                                 />
-                                <a
-                                    href=""
-                                    className="border-b-2 border-[#28c484] text-lg text-[#2769c5]"
-                                >
+                                <a className="border-b-2 border-[#28c484] text-lg text-[#2769c5]">
                                     LIVE CHAT
                                 </a>
                             </div>
@@ -86,10 +84,7 @@ const Dashboard = () => {
                                     }
                                     alt=""
                                 />
-                                <a
-                                    href=""
-                                    className="border-b-2 border-[#28c484] text-lg text-[#2769c5]"
-                                >
+                                <a className="border-b-2 border-[#28c484] text-lg text-[#2769c5]">
                                     LIVE AUDIO CHAT
                                 </a>
                             </div>

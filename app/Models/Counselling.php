@@ -26,6 +26,9 @@ class Counselling extends Model
     const BOOKED = "BOOKED";
     const ENDED  = "ENDED";
 
+    const TEXTCHAT  = "text-chat";
+    const AUDIOCHAT  = "audio-chat";
+
     protected $attributes = [
         'status' => self::BOOKED
     ];
@@ -33,6 +36,35 @@ class Counselling extends Model
     protected $dates = [
         'due'
     ];
+
+    public function getChatUrl()
+    {
+        $userId = $this->user_id;
+
+        if(auth('counsellor')->check()) {
+            $userId = $this->counsellor_id;
+        } else if(auth('translator')->check()) {
+            $userId = $this->translator_id;
+        }
+
+        $token = ChatAccessToken::where([['user_id', $userId], ['counselling_id', $this->id]])->first();
+
+        return $this->chat_url . '?token=' . $token->token;
+    }
+
+    public function getCounsellingMethod()
+    {
+        if($this->counselling_method === self::TEXTCHAT) {
+            return "Text Chat";
+        }
+
+        return "Audio Chat";
+    }
+
+    public function accessToken()
+    {
+        return $this->hasMany(ChatAccessToken::class, 'counselling_id');
+    }
 
     public function counsellor()
     {

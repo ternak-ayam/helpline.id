@@ -20,6 +20,7 @@ class Counsellor extends Authenticatable
         'email',
         'bio',
         'image',
+        'timezone',
         'password',
     ];
 

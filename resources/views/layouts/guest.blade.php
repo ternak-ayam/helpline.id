@@ -12,6 +12,14 @@
     @yield('content')
 </main>
 
+<script>
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+    const timezoneField = document.getElementById("timezone");
+
+    if(timezoneField) {
+        timezoneField.value = timezone;
+    }
+</script>
 @include('admin.partials.script')
 @include('admin.partials.notif')
 </body>
