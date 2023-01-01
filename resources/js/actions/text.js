@@ -1,8 +1,13 @@
-import { IS_LOADING, MESSAGES, TEXT_CHANNEL, USER_TEXT_CHAT } from "./type";
+import {
+    IS_LOADING,
+    MESSAGE,
+    MESSAGES,
+    TEXT_CHANNEL,
+    USER_TEXT_CHAT,
+} from "./type";
 import User from "../services/user/service";
 import { showErrorAlert, showSuccessAlert } from "./alert";
 import AgoraRTM from "agora-rtm-sdk";
-import { getParsedAccessToken } from "./user";
 
 let options = {
     token: "",
@@ -10,6 +15,15 @@ let options = {
 };
 
 let client = null;
+
+export const getMessages = (channelId) => (dispatch) => {
+    User.getMessages(channelId).then((response) => {
+        dispatch({
+            type: MESSAGES,
+            payload: { message: response.data },
+        });
+    });
+};
 
 export const generateRtmToken = (channelId, userId) => (dispatch) => {
     User.getCounsellingToken(channelId, userId, "rtmToken").then((response) => {
@@ -74,16 +88,12 @@ export const joinTextChannel = (channelId, userId) => async (dispatch) => {
 
     channel.on("ChannelMessage", (message, userId) => {
         dispatch({
-            type: MESSAGES,
+            type: MESSAGE,
             payload: {
                 message: message,
                 userId: userId,
             },
         });
-
-        const messages = JSON.parse(message.text);
-
-        User.storeMessages(channel.channelId, JSON.parse(message.text));
     });
 
     dispatch({

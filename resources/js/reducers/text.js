@@ -1,4 +1,9 @@
-import { MESSAGES, TEXT_CHANNEL, USER_TEXT_CHAT } from "../actions/type";
+import {
+    MESSAGE,
+    MESSAGES,
+    TEXT_CHANNEL,
+    USER_TEXT_CHAT,
+} from "../actions/type";
 
 const initialState = {
     user: {
@@ -9,7 +14,8 @@ const initialState = {
         translator_image: null,
     },
     channel: null,
-    messages: null,
+    message: null,
+    messages: [],
 };
 
 export default (state = initialState, action) => {
@@ -25,10 +31,15 @@ export default (state = initialState, action) => {
                 ...state,
                 channel: payload,
             };
-        case MESSAGES:
+        case MESSAGE:
             return {
                 ...state,
                 message: payload.message,
+            };
+        case MESSAGES:
+            return {
+                ...state,
+                messages: payload.message,
             };
 
         default:

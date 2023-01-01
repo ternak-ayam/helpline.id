@@ -26,4 +26,5 @@ export const USER_AUDIO_CHAT = "USER_AUDIO_CHAT";
 
 export const USER_TEXT_CHAT = "USER_TEXT_CHAT";
 export const MESSAGES = "MESSAGES";
+export const MESSAGE = "MESSAGE";
 export const TEXT_CHANNEL = "TEXT_CHANNEL";

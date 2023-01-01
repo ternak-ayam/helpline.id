@@ -106,18 +106,31 @@ const storeDuration = (userId, channelId, userType) => {
         });
 };
 
-const storeMessages = (channelId, data) => {
+const storeMessages = (channelId, message, attachment = null) => {
+    const formData = new FormData();
+
+    formData.append("userId", message.userId);
+    formData.append("text", message.text);
+    if (attachment) {
+        formData.append("attachment", attachment);
+    }
+    formData.append("type", message.type);
+    formData.append("userType", message.userType);
+
     return axios
-        .post(
-            API_URL + "/" + data.userType + "/chat/" + channelId,
-            {
-                userId: data.userId,
-                text: data.text,
-                attachment: data.attachment,
-                type: data.type,
-            },
-            { headers: authHeader() }
-        )
+        .post(API_URL + "/chat/" + channelId, formData, {
+            headers: authHeader(),
+        })
+        .then((response) => {
+            return response.data;
+        });
+};
+
+const getMessages = (channelId) => {
+    return axios
+        .get(API_URL + "/chat/" + channelId, {
+            headers: authHeader(),
+        })
         .then((response) => {
             return response.data;
         });
@@ -142,5 +155,6 @@ export default {
     getCounsellingToken,
     updateDuration,
     storeDuration,
+    getMessages,
     storeMessages,
 };

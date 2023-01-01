@@ -34,6 +34,9 @@ Route::middleware('auth:sanctum,counsellor,translator')->group(function () {
 
     Route::post('translator/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'storeTranslator']);
     Route::put('translator/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'updateTranslator']);
+
+    Route::post('chat/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\ChatController::class, 'store']);
+    Route::get('chat/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\ChatController::class, 'show']);
 });
 
 Route::get('parse/accesstoken/{accessToken}', [\App\Http\Controllers\Api\V1\AccessTokenController::class, 'parse']);

@@ -3,13 +3,14 @@ import { useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import useQuery from "../../../services/query/useQuery";
 import { useDispatch, useSelector } from "react-redux";
-import { initiateTextChannel } from "../../../actions/text";
+import { getMessages, initiateTextChannel } from "../../../actions/text";
+import User from "../../../services/user/service";
 
 const TextChat = () => {
     const { counsellingId } = useParams();
     const query = useQuery();
     const dispatch = useDispatch();
-    const [messages, setMessages] = useState([]);
+    const [allMessages, setMessages] = useState([]);
     const [inputMessage, setInputMessage] = useState({
         userId: "",
         profilePicture: "..",
@@ -20,19 +21,28 @@ const TextChat = () => {
     let fileRef = useRef(null);
 
     const { status } = useSelector((state) => state.message);
-    const { user, channel, message } = useSelector((state) => state.text);
+    const { user, channel, message, messages } = useSelector(
+        (state) => state.text
+    );
 
     useEffect(() => {
         dispatch(initiateTextChannel(query.get("token"), counsellingId));
+        dispatch(getMessages(counsellingId));
     }, []);
 
     useEffect(() => {
-        message ? setMessages([...messages, JSON.parse(message.text)]) : null;
+        message
+            ? setMessages([...allMessages, JSON.parse(message.text)])
+            : null;
     }, [message]);
 
     useEffect(() => {
-        messageRef.current.scrollTop = messageRef.current.scrollHeight;
+        messages.length > 0 ? setMessages(messages) : null;
     }, [messages]);
+
+    useEffect(() => {
+        messageRef.current.scrollTop = messageRef.current.scrollHeight;
+    }, [allMessages]);
 
     const handleSendMessage = (e) => {
         e.preventDefault();
@@ -47,7 +57,7 @@ const TextChat = () => {
         });
     };
 
-    const sendMessage = () => {
+    const sendMessage = async () => {
         let message = {
             user: {
                 image:
@@ -66,10 +76,12 @@ const TextChat = () => {
 
         channel.sendMessage({ text: JSON.stringify(message) });
 
-        setMessages([...messages, message]);
+        setMessages([...allMessages, message]);
+
+        await User.storeMessages(counsellingId, message);
     };
 
-    const sendFileMessage = (e) => {
+    const sendFileMessage = async (e) => {
         const file = e.target.files[0];
         const fileUrl = URL.createObjectURL(file);
 
@@ -92,7 +104,9 @@ const TextChat = () => {
 
         channel.sendMessage({ text: JSON.stringify(message) });
 
-        setMessages([...messages, message]);
+        setMessages([...allMessages, message]);
+
+        await User.storeMessages(counsellingId, message, file);
     };
 
     return (
@@ -104,7 +118,7 @@ const TextChat = () => {
                         className="flex w-full flex-col overflow-y-auto gap-4 h-full p-2"
                         ref={messageRef}
                     >
-                        {messages.map((message, key) => (
+                        {allMessages.map((message, key) => (
                             <div key={key}>
                                 {message.userId !== user.user_id && (
                                     <div className="flex">
