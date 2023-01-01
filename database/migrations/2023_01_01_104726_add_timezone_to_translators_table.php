@@ -14,7 +14,7 @@ class AddTimezoneToTranslatorsTable extends Migration
     public function up()
     {
         Schema::table('translators', function (Blueprint $table) {
-            $table->string('timezone')->after('password');
+            $table->string('timezone')->after('password')->nullable();
         });
     }
 

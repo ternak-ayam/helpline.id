@@ -14,7 +14,7 @@ class AddTimezoneToCounsellorsTable extends Migration
     public function up()
     {
         Schema::table('counsellors', function (Blueprint $table) {
-            $table->string('timezone')->after('password');
+            $table->string('timezone')->after('password')->nullable();
         });
     }
 
