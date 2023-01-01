@@ -21,11 +21,12 @@ class CounsellingController extends Controller
         return DB::transaction(function () use ($request) {
             $user = $request->user();
             $counsellingId = (new Counselling())->generateCounsellingId($request->schedule);
+            $translatorId = $this->needTranslator($request) ? Translator::where('language', $request->translator_language)->first()->id : null;
 
             $counselling = Counselling::create([
                 'counselling_id' => $counsellingId,
                 'counsellor_id' => $request->counsellor_id,
-                'translator_id' => $this->needTranslator($request) ? Translator::where('language', $request->translator_language)->first() : null,
+                'translator_id' => $translatorId,
                 'user_id' => $user->id,
                 'due' => Carbon::create($request->schedule),
                 'counselling_method' => $request->counselling_method,
