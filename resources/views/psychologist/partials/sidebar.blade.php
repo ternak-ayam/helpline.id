@@ -19,8 +19,8 @@
                         <i class="fas fa-calendar"></i> <span>Schedule</span>
                     </a>
                 </li>
-                <li {{ is_nav_active('patient/records') }}>
-                    <a class="nav-link" href="#}">
+                <li {{ is_nav_active('patient/*') }}>
+                    <a class="nav-link" href="{{ route('psychologist.counselling.patient.index') }}">
                         <i class="fas fa-file-signature"></i> <span>Patient Records</span>
                     </a>
                 </li>

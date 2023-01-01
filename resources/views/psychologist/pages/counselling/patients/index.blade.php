@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Schedule')
+@section('title', 'Patient Records')
 
 @section('css')
 
@@ -14,11 +14,11 @@
 
     <x-content>
         <x-slot name="modul">
-            <h1>Schedule</h1>
+            <h1>Patient Records</h1>
         </x-slot>
         <div class="card">
             <div class="card-header">
-                <h4>Counsellor Schedules</h4>
+                <h4>Patient Records</h4>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive table-invoice">
@@ -28,7 +28,6 @@
                             <th>Counselling ID</th>
                             <th>Counselling Method</th>
                             <th>Date & Time</th>
-                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                         @forelse($schedules as $schedule)
@@ -37,15 +36,9 @@
                                 <td>{{ $schedule->getCounsellingMethod() }}</td>
                                 <td>{{ $schedule->due->timezone(auth()->user()->timezone)->format('F j, Y H:i') }}</td>
                                 <td>
-                                    @if($schedule->status === \App\Models\Counselling::BOOKED)
-                                        <div class="badge badge-success">{{ Str::lower($schedule->status) }}</div>
-                                    @elseif($schedule->status === \App\Models\Counselling::ENDED)
-                                        <div class="badge badge-danger">{{ Str::lower($schedule->status) }}</div>
-                                    @endif
-                                </td>
-                                <td>
-                                    <a href="{{ $schedule->getChatUrl() }}" target="_blank" class="btn btn-danger">Start <i
-                                            class="fas fa-chevron-right"></i></a>
+                                    <a href="{{ route('psychologist.counselling.patient.show', $schedule->counselling_id) }}" class="btn btn-danger"><i
+                                            class="fas fa-eye"></i>
+                                    </a>
                                 </td>
                             </tr>
                         @empty

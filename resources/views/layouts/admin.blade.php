@@ -16,12 +16,12 @@
     </nav>
 
     <div class="main-sidebar sidebar-style-2">
-        @auth('admin')
-            @include('admin.partials.sidebar')
+        @auth('counsellor')
+            @include('psychologist.partials.sidebar')
         @elseauth('translator')
             @include('translator.partials.sidebar')
         @else
-            @include('psychologist.partials.sidebar')
+            @include('admin.partials.sidebar')
         @endauth
     </div>
 

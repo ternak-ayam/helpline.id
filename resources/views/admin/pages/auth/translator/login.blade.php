@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="simple-footer">
-            Managed by Bullyid Indonesia | This website created by <a href="">Arkaya</a>
+            Managed by Bullyid Indonesia
         </div>
     </section>
 @endsection
