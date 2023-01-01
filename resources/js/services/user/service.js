@@ -77,10 +77,10 @@ const getCounsellingToken = (counsellingId, userId, tokenType = "rtcToken") => {
         });
 };
 
-const updateDuration = (duration, userId, channel, userType) => {
+const updateDuration = (duration, userId, channelId, userType) => {
     return axios
         .put(
-            API_URL + "/" + userType + "/call/" + channel,
+            API_URL + "/" + userType + "/call/" + channelId,
             {
                 userId: userId,
                 duration: duration,
@@ -92,12 +92,29 @@ const updateDuration = (duration, userId, channel, userType) => {
         });
 };
 
-const storeDuration = (userId, channel, userType) => {
+const storeDuration = (userId, channelId, userType) => {
     return axios
         .post(
-            API_URL + "/" + userType + "/call/" + channel,
+            API_URL + "/" + userType + "/call/" + channelId,
             {
                 userId: userId,
+            },
+            { headers: authHeader() }
+        )
+        .then((response) => {
+            return response.data;
+        });
+};
+
+const storeMessages = (channelId, data) => {
+    return axios
+        .post(
+            API_URL + "/" + data.userType + "/chat/" + channelId,
+            {
+                userId: data.userId,
+                text: data.text,
+                attachment: data.attachment,
+                type: data.type,
             },
             { headers: authHeader() }
         )
@@ -125,4 +142,5 @@ export default {
     getCounsellingToken,
     updateDuration,
     storeDuration,
+    storeMessages,
 };

@@ -5,16 +5,19 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getDetailCounsellorForCallPage } from "../../../actions/user";
 import {
+    initiateCallChannel,
     joinChannel,
     leaveChannel,
     toggleAudio,
     toggleMic,
 } from "../../../actions/call";
 import { useStopwatch } from "react-timer-hook";
+import useQuery from "../../../services/query/useQuery";
 
 const Call = () => {
     const { counsellingId } = useParams();
     const dispatch = useDispatch();
+    const query = useQuery();
 
     const { seconds, minutes, hours, start } = useStopwatch({
         autoStart: false,
@@ -27,7 +30,7 @@ const Call = () => {
     );
 
     useEffect(() => {
-        dispatch(getDetailCounsellorForCallPage(counsellingId));
+        dispatch(initiateCallChannel(counsellingId, query.get("token")));
     }, []);
 
     return (
@@ -39,14 +42,23 @@ const Call = () => {
                         <div className="flex-col flex justify-center p-2">
                             <img
                                 className="lg:w-32 w-24 rounded-full m-auto"
-                                src={counsellor.profilePicture}
+                                src={
+                                    user.user_type === "user"
+                                        ? user.counsellor_image
+                                        : process.env
+                                              .MIX_DEFAULT_PROFILE_PICTURE
+                                }
                                 alt=""
                             />
                             <p className="m-auto text-lg font-semibold text-[#2769c5]">
-                                {counsellor.name}
+                                {user.user_type === "user"
+                                    ? counsellor.name
+                                    : "User"}
                             </p>
                             <p className="m-auto text-sm font-medium text-[#2769c5]">
-                                Counsellor
+                                {user.user_type === "user"
+                                    ? "Counsellor"
+                                    : "User"}
                             </p>
                         </div>
                         <div>
@@ -88,8 +100,8 @@ const Call = () => {
                                         dispatch(
                                             joinChannel(
                                                 counsellingId,
-                                                counsellor.user.id,
-                                                counsellor.user.type
+                                                user.user_id,
+                                                user.user_type
                                             )
                                         ).then(() => {
                                             start();

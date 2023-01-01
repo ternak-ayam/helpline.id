@@ -1,7 +1,8 @@
 import { IS_LOADING, MESSAGES, TEXT_CHANNEL, USER_TEXT_CHAT } from "./type";
 import User from "../services/user/service";
-import { showSuccessAlert } from "./alert";
+import { showErrorAlert, showSuccessAlert } from "./alert";
 import AgoraRTM from "agora-rtm-sdk";
+import { getParsedAccessToken } from "./user";
 
 let options = {
     token: "",
@@ -9,19 +10,6 @@ let options = {
 };
 
 let client = null;
-
-export const getParsedAccessToken = (token, channelId) => (dispatch) => {
-    User.parseChatAccessToken(token).then((response) => {
-        dispatch({
-            type: USER_TEXT_CHAT,
-            payload: { data: response.data },
-        });
-
-        dispatch(generateRtmToken(channelId, response.data.user_id));
-    });
-
-    return Promise.resolve();
-};
 
 export const generateRtmToken = (channelId, userId) => (dispatch) => {
     User.getCounsellingToken(channelId, userId, "rtmToken").then((response) => {
@@ -32,6 +20,32 @@ export const generateRtmToken = (channelId, userId) => (dispatch) => {
     });
 
     return Promise.resolve();
+};
+
+export const initiateTextChannel = (token, channelId) => (dispatch) => {
+    User.parseChatAccessToken(token).then(
+        (response) => {
+            dispatch({
+                type: USER_TEXT_CHAT,
+                payload: { data: response.data },
+            });
+
+            dispatch(generateRtmToken(channelId, response.data.user_id));
+
+            return Promise.resolve();
+        },
+        (error) => {
+            const errorData = error.response.data;
+
+            showErrorAlert(errorData);
+
+            setTimeout(() => {
+                window.location.href = "/";
+            }, 1000);
+
+            return Promise.reject();
+        }
+    );
 };
 
 export const joinTextChannel = (channelId, userId) => async (dispatch) => {
@@ -66,6 +80,10 @@ export const joinTextChannel = (channelId, userId) => async (dispatch) => {
                 userId: userId,
             },
         });
+
+        const messages = JSON.parse(message.text);
+
+        User.storeMessages(channel.channelId, JSON.parse(message.text));
     });
 
     dispatch({
@@ -74,8 +92,4 @@ export const joinTextChannel = (channelId, userId) => async (dispatch) => {
     });
 
     return Promise.resolve();
-};
-
-export const sendMessage = () => (dispatch) => {
-    //
 };

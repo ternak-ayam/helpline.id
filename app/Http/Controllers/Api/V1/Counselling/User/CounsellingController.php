@@ -46,6 +46,7 @@ class CounsellingController extends Controller
 
             $user->notify(new SendBookingDetailNotification($counselling, $token['user_token']));
             $counselling->counsellor->notify(new SendBookingDetailNotification($counselling, $token['counsellor_token']));
+
             if($counselling->is_need_translator) {
                 $counselling->translator->notify(new SendBookingDetailNotification($counselling, $token['translator_token']));
             }

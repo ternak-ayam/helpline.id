@@ -3,8 +3,10 @@ import {
     CALL_CONNECTED,
     CALL_DISCONNECTED,
     CALL_MIC_MUTED,
+    USER_AUDIO_CHAT,
     USER_JOIN,
     USER_LEFT,
+    USER_TEXT_CHAT,
     USERS_JOIN_AMOUNT,
 } from "../actions/type";
 
@@ -12,7 +14,13 @@ const initialState = {
     connected: false,
     audioMuted: false,
     micMuted: false,
-    user: null,
+    user: {
+        counselling_id: null,
+        user_id: null,
+        owner_type: null,
+        counsellor_image: null,
+        translator_image: null,
+    },
     amount: 0,
 };
 
@@ -44,6 +52,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 user: payload,
+            };
+        case USER_AUDIO_CHAT:
+            return {
+                ...state,
+                user: payload.data,
             };
         case USERS_JOIN_AMOUNT:
             return {

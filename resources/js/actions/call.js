@@ -6,9 +6,13 @@ import {
     CALL_DISCONNECTED,
     CALL_MIC_MUTED,
     IS_LOADING,
+    USER_AUDIO_CHAT,
     USER_JOIN,
     USER_LEFT,
+    USER_TEXT_CHAT,
 } from "./type";
+import { getDetailCounsellorForCallPage } from "./user";
+import { showErrorAlert } from "./alert";
 
 let channelParameters = {
     localAudioTrack: null,
@@ -29,17 +33,49 @@ let options = {
 
 let agoraEngine = null;
 
-export const joinChannel = (channel, userId, userType) => (dispatch) => {
+export const joinChannel = (channelId, userId, userType) => (dispatch) => {
     dispatch({
         type: IS_LOADING,
         payload: true,
     });
-    User.getCounsellingToken(channel, userId).then((response) => {
-        options.token = response.token;
-        dispatch(handleJoinChannel(channel, userId, userType));
-    });
+
+    dispatch(generateRtcToken(channelId, userId, userType));
 
     return Promise.resolve();
+};
+
+export const initiateCallChannel = (channelId, token) => (dispatch) => {
+    User.parseChatAccessToken(token).then(
+        (response) => {
+            dispatch({
+                type: USER_AUDIO_CHAT,
+                payload: { data: response.data },
+            });
+
+            dispatch(getDetailCounsellorForCallPage(channelId));
+
+            return Promise.resolve();
+        },
+        (error) => {
+            const errorData = error.response.data;
+
+            showErrorAlert(errorData);
+
+            setTimeout(() => {
+                window.location.href = "/";
+            }, 1000);
+
+            return Promise.reject();
+        }
+    );
+};
+
+const generateRtcToken = (channelId, userId, userType) => (dispatch) => {
+    User.getCounsellingToken(channelId, userId).then((response) => {
+        options.token = response.token;
+
+        dispatch(handleJoinChannel(channelId, userId, userType));
+    });
 };
 
 export const handleJoinChannel =

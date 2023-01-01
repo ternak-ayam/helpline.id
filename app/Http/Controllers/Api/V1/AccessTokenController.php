@@ -14,6 +14,10 @@ class AccessTokenController extends Controller
     {
         $data = ChatAccessToken::where('token', $accessToken)->first();
 
+        if(blank($data)) return response()->json([
+            'message' => "You don't have access to this channel"
+        ], 403);
+
         return new ChatAccessTokenResource($data);
     }
 

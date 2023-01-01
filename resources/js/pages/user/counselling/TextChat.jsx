@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
 import useQuery from "../../../services/query/useQuery";
 import { useDispatch, useSelector } from "react-redux";
-import { getParsedAccessToken } from "../../../actions/text";
+import { initiateTextChannel } from "../../../actions/text";
 
 const TextChat = () => {
     const { counsellingId } = useParams();
@@ -23,7 +23,7 @@ const TextChat = () => {
     const { user, channel, message } = useSelector((state) => state.text);
 
     useEffect(() => {
-        dispatch(getParsedAccessToken(query.get("token"), counsellingId));
+        dispatch(initiateTextChannel(query.get("token"), counsellingId));
     }, []);
 
     useEffect(() => {
@@ -54,9 +54,10 @@ const TextChat = () => {
                     user.user_type === "counsellor"
                         ? user.counsellor_image
                         : user.user_type === "translator"
-                        ? user.translatpr_image
-                        : "https://media.istockphoto.com/id/1087531642/vector/male-face-silhouette-or-icon-man-avatar-profile-unknown-or-anonymous-person-vector.jpg?s=170667a&w=0&k=20&c=2BM-cif-x0i68L_JU3mchnl9NFhUIGEAWg003bUyn5k=",
+                        ? user.translator_image
+                        : process.env.MIX_DEFAULT_PROFILE_PICTURE,
             },
+            userType: user.user_type,
             text: inputMessage.text,
             userId: user.user_id,
             attachment: null,
@@ -78,11 +79,12 @@ const TextChat = () => {
                     user.user_type === "counsellor"
                         ? user.counsellor_image
                         : user.user_type === "translator"
-                        ? user.translatpr_image
-                        : "https://media.istockphoto.com/id/1087531642/vector/male-face-silhouette-or-icon-man-avatar-profile-unknown-or-anonymous-person-vector.jpg?s=170667a&w=0&k=20&c=2BM-cif-x0i68L_JU3mchnl9NFhUIGEAWg003bUyn5k=",
+                        ? user.translator_image
+                        : process.env.MIX_DEFAULT_PROFILE_PICTURE,
             },
             text: file.name,
             userId: user.user_id,
+            userType: user.user_type,
             file: file,
             attachment: fileUrl,
             type: "attachment",

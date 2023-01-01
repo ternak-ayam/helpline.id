@@ -6,6 +6,7 @@ import {
     SET_BOOK_DATE,
     SET_MESSAGE,
     SET_SCHEDULE,
+    USER_AUDIO_CHAT,
     USER_TEXT_CHAT,
 } from "./type";
 import moment from "moment";
