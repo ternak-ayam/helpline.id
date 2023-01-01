@@ -76,6 +76,11 @@ class Counselling extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
+    public function translator()
+    {
+        return $this->belongsTo(Translator::class, 'translator_id');
+    }
+
     public function generateCounsellingId($due)
     {
         $user = auth()->user();
