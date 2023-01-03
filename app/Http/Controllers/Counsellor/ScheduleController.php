@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Counsellor;
 
 use App\Http\Controllers\Controller;
+use App\Models\Counselling;
 use App\Models\CounsellorSchedule;
 use Illuminate\Http\Request;
 
@@ -22,5 +23,14 @@ class ScheduleController extends Controller
         return view('psychologist.pages.counselling.schedule-detail', [
             'schedule' => $schedule
         ]);
+    }
+
+    public function update(Request $request, CounsellorSchedule $schedule)
+    {
+        $schedule->counselling()->update([
+            'status' => Counselling::DONE
+        ]);
+
+        return back();
     }
 }

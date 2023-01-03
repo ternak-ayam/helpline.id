@@ -116,7 +116,7 @@
 
                     <div class="mt-4 d-flex justify-content-end">
                         <div class="mx-1">
-                            <a href="{{ url()->previous() }}" class="btn border bg-white"
+                            <a href="{{ route('psychologist.counselling.schedule.index') }}" class="btn border bg-white"
                                type="button">Back</a>
                         </div>
 
@@ -127,7 +127,7 @@
 
                         @if($schedule->counselling['status'] === \App\Models\Counselling::BOOKED)
                             <div class="mx-1">
-                                <button class="btn btn-success" type="submit">Done</button>
+                                <a href="{{ route('psychologist.counselling.schedule.update', $schedule->id) }}" class="btn btn-success">Done</a>
                             </div>
                             <div class="mx-1">
                                 <a href="{{ $schedule->counselling->getChatUrl() }}" target="_blank" class="btn btn-danger"

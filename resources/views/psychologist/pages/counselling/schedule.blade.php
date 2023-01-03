@@ -37,14 +37,12 @@
                                 <td>{{ $schedule->counselling->getCounsellingMethod() }}</td>
                                 <td>{{ $schedule->counselling['due']->timezone(auth()->user()->timezone)->format('F j, Y H:i') }}</td>
                                 <td>
-                                    @if($schedule->counselling['status'] === \App\Models\Counselling::BOOKED)
-                                        <div class="badge badge-success">{{ Str::lower($schedule->counselling['status']) }}</div>
-                                    @elseif($schedule->counselling['status'] === \App\Models\Counselling::ENDED)
-                                        <div class="badge badge-danger">{{ Str::lower($schedule->counselling['status']) }}</div>
-                                    @endif
+                                    <div
+                                        class="badge badge-success text-capitalize">{{ Str::lower($schedule->counselling['status']) }}</div>
                                 </td>
                                 <td>
-                                    <a href="{{ route('psychologist.counselling.schedule.show', $schedule->id) }}" class="btn btn-danger">Detail <i
+                                    <a href="{{ route('psychologist.counselling.schedule.show', $schedule->id) }}"
+                                       class="btn btn-danger">Detail <i
                                             class="fas fa-chevron-right"></i>
                                     </a>
                                 </td>
