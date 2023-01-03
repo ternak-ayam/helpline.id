@@ -19,4 +19,13 @@ class CounsellorSchedule extends Model
     ];
 
     protected $dates = ['datetime'];
+
+    public function counsellor()
+    {
+        return $this->belongsTo(Counsellor::class, 'counsellor_id');
+    }
+    public function counselling()
+    {
+        return $this->belongsTo(Counselling::class, 'counselling_id');
+    }
 }

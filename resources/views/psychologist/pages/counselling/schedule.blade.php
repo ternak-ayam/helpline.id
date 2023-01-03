@@ -33,19 +33,20 @@
                         </tr>
                         @forelse($schedules as $schedule)
                             <tr>
-                                <td>{{ $schedule->counselling_id }}</td>
-                                <td>{{ $schedule->getCounsellingMethod() }}</td>
-                                <td>{{ $schedule->due->timezone(auth()->user()->timezone)->format('F j, Y H:i') }}</td>
+                                <td>{{ $schedule->counselling['counselling_id'] }}</td>
+                                <td>{{ $schedule->counselling->getCounsellingMethod() }}</td>
+                                <td>{{ $schedule->counselling['due']->timezone(auth()->user()->timezone)->format('F j, Y H:i') }}</td>
                                 <td>
-                                    @if($schedule->status === \App\Models\Counselling::BOOKED)
-                                        <div class="badge badge-success">{{ Str::lower($schedule->status) }}</div>
-                                    @elseif($schedule->status === \App\Models\Counselling::ENDED)
-                                        <div class="badge badge-danger">{{ Str::lower($schedule->status) }}</div>
+                                    @if($schedule->counselling['status'] === \App\Models\Counselling::BOOKED)
+                                        <div class="badge badge-success">{{ Str::lower($schedule->counselling['status']) }}</div>
+                                    @elseif($schedule->counselling['status'] === \App\Models\Counselling::ENDED)
+                                        <div class="badge badge-danger">{{ Str::lower($schedule->counselling['status']) }}</div>
                                     @endif
                                 </td>
                                 <td>
-                                    <a href="{{ $schedule->getChatUrl() }}" target="_blank" class="btn btn-danger">Start <i
-                                            class="fas fa-chevron-right"></i></a>
+                                    <a href="{{ route('psychologist.counselling.schedule.show', $schedule->id) }}" class="btn btn-danger">Detail <i
+                                            class="fas fa-chevron-right"></i>
+                                    </a>
                                 </td>
                             </tr>
                         @empty
