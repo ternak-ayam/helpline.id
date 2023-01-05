@@ -2,4 +2,4 @@
 !public/
 !.gitignore
 !unhcr.json
-!local/
+!local/countries.json

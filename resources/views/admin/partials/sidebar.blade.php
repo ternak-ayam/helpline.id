@@ -45,12 +45,12 @@
             </a>
             <ul class="dropdown-menu">
                 <li {{ is_nav_active('schedule') }}>
-                    <a class="nav-link" href="../counselling/schedule">
+                    <a class="nav-link" href="{{ route('admin.counselling.schedule.index') }}">
                         <i class="fas fa-calendar"></i> <span>Schedule</span>
                     </a>
                 </li>
                 <li {{ is_nav_active('data') }}>
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('admin.counselling.data.index') }}">
                         <i class="fas fa-phone"></i> <span>Data</span>
                     </a>
                 </li>

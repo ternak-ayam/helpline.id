@@ -21,4 +21,11 @@ Route::middleware('auth:admin')->group(function () {
         Route::resource('/translator', App\Http\Controllers\Translator\TranslatorController::class);
         Route::resource('/psychologist', App\Http\Controllers\Counsellor\CounsellorController::class);
     });
+
+    Route::prefix('counselling')->as('counselling.')->group(function () {
+        Route::get('/schedule', [\App\Http\Controllers\Admin\ScheduleController::class, 'index'])->name('schedule.index');
+
+        Route::get('/data', [\App\Http\Controllers\Admin\DataController::class, 'index'])->name('data.index');
+        Route::get('/data/{schedule}', [\App\Http\Controllers\Admin\DataController::class, 'show'])->name('data.show');
+    });
 });

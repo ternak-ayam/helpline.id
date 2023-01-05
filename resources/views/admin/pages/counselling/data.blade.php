@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Schedule')
+@section('title', 'Counselling Data')
 
 @section('css')
 
@@ -14,12 +14,11 @@
 
     <x-content>
         <x-slot name="modul">
-            <h1>Schedule</h1>
+            <h1>Counselling</h1>
         </x-slot>
-
         <div class="card">
             <div class="card-header">
-                <h4>Counselling Schedules</h4>
+                <h4>Counselling Data</h4>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive table-invoice">
@@ -30,7 +29,9 @@
                             <th>Counsellor</th>
                             <th>Counselling Method</th>
                             <th>Date & Time</th>
+                            <th>Session</th>
                             <th>Status</th>
+                            <th>Action</th>
                         </tr>
                         @forelse($schedules as $schedule)
                             <tr>
@@ -38,9 +39,16 @@
                                 <td>{{ $schedule->counsellor['name'] }}</td>
                                 <td>{{ $schedule->counselling->getCounsellingMethod() }}</td>
                                 <td>{{ $schedule->counselling['due']->timezone(auth()->user()->timezone)->format('F j, Y H:i') }}</td>
+                                <td>{{ $schedule->counselling->getSessionQuantity() }}</td>
                                 <td>
                                     <div
                                         class="badge badge-success text-capitalize">{{ Str::lower($schedule->counselling['status']) }}</div>
+                                </td>
+                                <td>
+                                    <a href="{{ route('admin.counselling.data.show', $schedule->id) }}"
+                                       class="btn btn-danger">Detail <i
+                                            class="fas fa-chevron-right"></i>
+                                    </a>
                                 </td>
                             </tr>
                         @empty
@@ -54,7 +62,6 @@
                     </table>
                 </div>
             </div>
-            {{ $schedules->onEachSide(2)->appends($_GET)->links('admin.partials.pagination') }}
         </div>
     </x-content>
 

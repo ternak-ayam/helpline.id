@@ -87,4 +87,9 @@ class Counselling extends Model
 
         return 'CBI-C-' . now()->format('Ymd') . $user->id . Carbon::create($due)->format('hi') . rand(0, 9);
     }
+
+    public function getSessionQuantity()
+    {
+        return Counselling::where([['counsellor_id', $this->counsellor_id], ['user_id', $this->user_id]])->count();
+    }
 }
