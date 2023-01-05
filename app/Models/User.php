@@ -53,4 +53,9 @@ class User extends Authenticatable implements CanResetPassword
     protected $dates = [
         'birthdate',
     ];
+
+    public function isAgreeToTerm()
+    {
+        return $this->is_agree_to_term ? "Setuju" : "Tidak Setuju";
+    }
 }

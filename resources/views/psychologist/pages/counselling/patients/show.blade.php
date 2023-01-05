@@ -43,121 +43,128 @@
                                 <div class="col-sm-8">
 
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="issues[]"
-                                               id="discrimination">
+                                        <input type="checkbox" class="custom-control-input" name="issues[discrimination]"
+                                               id="discrimination" @if(old('discrimination', $issues['discrimination'] ?? "")) checked @endif>
                                         <label class="custom-control-label"
                                                for="discrimination">Discrimination/Racism</label>
                                     </div>
 
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="issues[]"
-                                               id="relationship">
+                                        <input type="checkbox" class="custom-control-input" name="issues[relationship]"
+                                               id="relationship" @if(old('relationship', $issues['relationship'] ?? "")) checked @endif>
                                         <label class="custom-control-label" for="relationship">Relationship
                                             Issues</label>
                                     </div>
 
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="issues[]" id="family">
+                                        <input type="checkbox" class="custom-control-input" name="issues[family]" id="family"
+                                               @if(old('family', $issues['family'] ?? "")) checked @endif>
                                         <label class="custom-control-label" for="family">Family Issues</label>
                                     </div>
 
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="issues[]"
-                                               id="anxiety">
+                                        <input type="checkbox" class="custom-control-input" name="issues[anxiety]"
+                                               id="anxiety" @if(old('anxiety', $issues['anxiety'] ?? "")) checked @endif>
                                         <label class="custom-control-label" for="anxiety">Anxiety Disorders</label>
                                     </div>
 
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="issues[]"
-                                               id="bipolar">
+                                        <input type="checkbox" class="custom-control-input" name="issues[bipolar]"
+                                               id="bipolar" @if(old('bipolar', $issues['bipolar'] ?? "")) checked @endif>
                                         <label class="custom-control-label" for="bipolar">Bipolar Disorders</label>
                                     </div>
 
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="issues[]"
-                                               id="depression">
+                                        <input type="checkbox" class="custom-control-input" name="issues[depression]"
+                                               id="depression" @if(old('depression', $issues['depression'] ?? "")) checked @endif>
                                         <label class="custom-control-label" for="depression">Depression</label>
                                     </div>
 
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="issues[]"
-                                               id="dissociative">
+                                        <input type="checkbox" class="custom-control-input" name="issues[dissociative]"
+                                               id="dissociative" @if(old('dissociative', $issues['dissociative'] ?? "")) checked @endif>
                                         <label class="custom-control-label" for="dissociative">Dissociative
                                             Disorders</label>
                                     </div>
 
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="issues[]" id="eating">
+                                        <input type="checkbox" class="custom-control-input" name="issues[eating]" id="eating"
+                                               @if(old('eating', $issues['eating'] ?? "")) checked @endif>
                                         <label class="custom-control-label" for="eating">Eating Disorders</label>
                                     </div>
 
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="issues[]" id="grief">
+                                        <input type="checkbox" class="custom-control-input" name="issues[grief]" id="grief"
+                                               @if(old('grief', $issues['grief'] ?? "")) checked @endif>
                                         <label class="custom-control-label" for="grief">Grief and Bereavement</label>
                                     </div>
 
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="issues[]"
-                                               id="obsessive">
+                                        <input type="checkbox" class="custom-control-input" name="issues[obsessive]"
+                                               id="obsessive" @if(old('obsessive', $issues['obsessive'] ?? "")) checked @endif>
                                         <label class="custom-control-label" for="obsessive">Obsessive-Compulsive
                                             Disorders</label>
                                     </div>
 
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="issues[]"
-                                               id="psychosis">
+                                        <input type="checkbox" class="custom-control-input" name="issues[psychosis]"
+                                               id="psychosis" @if(old('psychosis', $issues['psychosis'] ?? "")) checked @endif>
                                         <label class="custom-control-label" for="psychosis">Psychosis</label>
                                     </div>
 
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="issues[]"
-                                               id="schizoaffective">
+                                        <input type="checkbox" class="custom-control-input" name="issues[schizoaffective]"
+                                               id="schizoaffective" @if(old('schizoaffective', $issues['schizoaffective'] ?? "")) checked @endif>
                                         <label class="custom-control-label" for="schizoaffective">Schizoaffective
                                             Disorder</label>
                                     </div>
 
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="issues[]"
-                                               id="schizophrenia">
+                                        <input type="checkbox" class="custom-control-input" name="issues[schizophrenia]"
+                                               id="schizophrenia" @if(old('schizophrenia', $issues['schizophrenia'] ?? "")) checked @endif>
                                         <label class="custom-control-label" for="schizophrenia">Schizophrenia</label>
                                     </div>
 
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="issues[]" id="self">
+                                        <input type="checkbox" class="custom-control-input" name="issues[self]" id="self"
+                                               @if(old('self', $issues['self'] ?? "")) checked @endif>
                                         <label class="custom-control-label" for="self">Self Harm/Suicidal
                                             Attempt</label>
                                     </div>
 
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="issues[]"
-                                               id="suicidal">
+                                        <input type="checkbox" class="custom-control-input" name="issues[suicidal]"
+                                               id="suicidal" @if(old('suicidal', $issues['suicidal'] ?? "")) checked @endif>
                                         <label class="custom-control-label" for="suicidal">Suicidal Ideation</label>
                                     </div>
 
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="issues[]"
-                                               id="domestic">
+                                        <input type="checkbox" class="custom-control-input" name="issues[domestic]"
+                                               id="domestic" @if(old('domestic', $issues['domestic'] ?? "")) checked @endif>
                                         <label class="custom-control-label" for="domestic">Domestic Violence</label>
                                     </div>
 
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="issues[]"
-                                               id="physical">
+                                        <input type="checkbox" class="custom-control-input" name="issues[physical]"
+                                               id="physical" @if(old('physical', $issues['physical'] ?? "")) checked @endif>
                                         <label class="custom-control-label" for="physical">Physical Harassment</label>
                                     </div>
 
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="issues[]" id="verbal">
+                                        <input type="checkbox" class="custom-control-input" name="issues[verbal]" id="verbal"
+                                               @if(old('verbal', $issues['verbal'] ?? "")) checked @endif>
                                         <label class="custom-control-label" for="verbal">Verbal Harassment</label>
                                     </div>
 
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="issues[]" id="online">
+                                        <input type="checkbox" class="custom-control-input" name="issues[online]" id="online"
+                                               @if(old('online', $issues['online'] ?? "")) checked @endif>
                                         <label class="custom-control-label" for="online">Online Harassment</label>
                                     </div>
 
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="issues[]" id="sexual">
+                                        <input type="checkbox" class="custom-control-input" name="issues[sexual]" id="sexual"
+                                               @if(old('sexual', $issues['sexual'] ?? "")) checked @endif>
                                         <label class="custom-control-label" for="sexual">Sexual Harassment</label>
                                     </div>
                                 </div>
@@ -167,29 +174,29 @@
                                     Konselor/Psikolog</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" name="counsellor_name" id="counsellor_name"
-                                           value="{{ old('counsellor_name') }}">
+                                           value="{{ $counselling->counsellor['name'] }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="client_name" class="col-sm-4 col-form-label">Nama Klien</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" name="client_name" id="client_name"
-                                           value="{{ old('client_name') }}">
+                                           value="{{ old('client_name', $patient->client_name) }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="counselling_date" class="col-sm-4 col-form-label">Tanggal & Waktu
                                     Konseling</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="counselling_date"
-                                           id="counselling_date" value="{{ old('counselling_date') }}">
+                                    <input type="datetime-local" class="form-control" name="counselling_date"
+                                           id="counselling_date" value="{{ $counselling->due->timezone($counselling->counsellor['timezone'])->format('Y-m-d H:i') }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="session" class="col-sm-4 col-form-label">Sesi</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" name="session" id="session"
-                                           value="{{ old('session') }}">
+                                           value="Ke-{{ $counselling->getSessionQuantity() }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -197,15 +204,15 @@
                                     Konsultasi</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" name="consultation_package"
-                                           id="consultation_package" value="{{ old('consultation_package') }}">
+                                           id="consultation_package" value="{{ Str::replace('-', ' ', $counselling->counselling_method) }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="client_birthdate" class="col-sm-4 col-form-label">Tanggal Lahir Klien
                                     (yyyy-mm-dd)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="client_birthdate"
-                                           id="client_birthdate" value="{{ old('client_birthdate') }}">
+                                    <input type="date" class="form-control" name="client_birthdate"
+                                           id="client_birthdate" value="{{ $counselling->user['birthdate']->format('Y-m-d') }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -213,14 +220,14 @@
                                     Kota, Provinsi, jika ada)</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" name="client_address" id="client_address"
-                                           value="{{ old('client_address') }}">
+                                           value="{{ old('client_address', $patient->client_address) }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="informed_consent" class="col-sm-4 col-form-label">Informed Consent</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" name="informed_consent"
-                                           id="informed_consent" value="{{ old('informed_consent') }}">
+                                           id="informed_consent" value="{{ $counselling->user->isAgreeToTerm() }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -231,7 +238,8 @@
                                 <div class="col-sm-8">
                                     <select type="text" class="form-control" name="is_sex_harassment"
                                             id="is_sex_harassment">
-                                        <option value="tidak">Tidak</option>
+                                        <option value="YES" @if($patient->is_sex_harassment == \App\Models\PatientRecord::YES) selected @endif>Ya</option>
+                                        <option value="NO" @if($patient->is_sex_harassment == \App\Models\PatientRecord::NO) selected @endif>Tidak</option>
                                     </select>
                                 </div>
                             </div>
@@ -244,7 +252,8 @@
                                 <div class="col-sm-8">
                                     <select type="text" class="form-control" name="is_client_agree"
                                             id="is_client_agree">
-                                        <option value="tidak">Tidak</option>
+                                        <option value="YES" @if($patient->is_client_agree == \App\Models\PatientRecord::YES) selected @endif>Ya</option>
+                                        <option value="NO" @if($patient->is_client_agree == \App\Models\PatientRecord::NO) selected @endif>Tidak</option>
                                     </select>
                                 </div>
                             </div>
@@ -252,14 +261,14 @@
                                 <label for="referred_to" class="col-sm-4 col-form-label">Dirujuk oleh (jika klien
                                     dirujuk oleh Expert Bullyid lain)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="referred_to" id="referred_to">
+                                    <input type="text" class="form-control" name="referred_to" id="referred_to" value="{{ old('referred_to', $patient->referred_to) }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="referred_reason" class="col-sm-4 col-form-label">Alasan dirujuk/referral
                                     (jika ada)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="referred_reason" id="referred_reason">
+                                    <input type="text" class="form-control" name="referred_reason" id="referred_reason" value="{{ old('referred_reason', $patient->referred_reason) }}">
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -267,15 +276,15 @@
                                     Bantuan</label>
                                 <div class="col-sm-8">
                                     <textarea type="text" class="form-control" name="complaint" id="complaint"
-                                              maxlength="250"></textarea>
+                                              maxlength="250">{{ old('complaint', $patient->complaint) }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="assessment_method" class="col-sm-4 col-form-label">Metode Asesmen yang
                                     Dilakukan (jika ada)</label>
                                 <div class="col-sm-8">
-                                    <textarea type="text" class="form-control" name="counsellor_name"
-                                              id="assessment_method" maxlength="250"></textarea>
+                                    <textarea type="text" class="form-control" name="assessment_method"
+                                              id="assessment_method" maxlength="250">{{ old('assessment_method', $patient->assessment_method) }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -283,7 +292,7 @@
                                     ada)</label>
                                 <div class="col-sm-8">
                                     <textarea type="text" class="form-control" name="assessment_result"
-                                              id="assessment_result" maxlength="250"></textarea>
+                                              id="assessment_result" maxlength="250">{{ old('assessment_result', $patient->assessment_result) }}</textarea>
                                 </div>
                             </div>
                             <div class="section-title">Riwayat Hidup Klien</div>
@@ -292,7 +301,7 @@
                                     pernikahan, jumlah anak, pekerjaan, pendidikan, dll)</label>
                                 <div class="col-sm-8">
                                     <textarea type="text" class="form-control" name="client_data" id="client_data"
-                                              maxlength="250"></textarea>
+                                              maxlength="250">{{ old('client_data', $patient->client_data) }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -300,7 +309,7 @@
                                     (diagnosa/ treatment sebelumnya)</label>
                                 <div class="col-sm-8">
                                     <textarea type="text" class="form-control" name="psychologist_history"
-                                              id="psychologist_history" maxlength="250"></textarea>
+                                              id="psychologist_history" maxlength="250">{{ old('psychologist_history', $patient->psychologist_history) }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -308,7 +317,7 @@
                                     kesehatan, riwayat penyakit, konsumsi obat, dll)</label>
                                 <div class="col-sm-8">
                                     <textarea type="text" class="form-control" name="medical_history"
-                                              id="medical_history" maxlength="250"></textarea>
+                                              id="medical_history" maxlength="250">{{ old('medical_history', $patient->medical_history) }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -316,7 +325,7 @@
                                     (keluarga, perkembangan masa kecil, dll)</label>
                                 <div class="col-sm-8">
                                     <textarea type="text" class="form-control" name="client_history" id="client_history"
-                                              maxlength="250"></textarea>
+                                              maxlength="250">{{ old('client_history', $patient->client_history) }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -324,7 +333,7 @@
                                     tidak klien menjadi korban/pelaku dari tindak pidana)</label>
                                 <div class="col-sm-8">
                                     <textarea type="text" class="form-control" name="law_history" id="law_history"
-                                              maxlength="250"></textarea>
+                                              maxlength="250">{{ old('law_history', $patient->law_history) }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -332,7 +341,7 @@
                                     Traumatis (jika ada)</label>
                                 <div class="col-sm-8">
                                     <textarea type="text" class="form-control" name="traumatic_history"
-                                              id="traumatic_history" maxlength="250"></textarea>
+                                              id="traumatic_history" maxlength="250">{{ old('traumatic_history', $patient->traumatic_history) }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -340,7 +349,7 @@
                                     (perilaku & status mental)</label>
                                 <div class="col-sm-8">
                                     <textarea type="text" class="form-control" name="observation_result"
-                                              id="observation_result" maxlength="250"></textarea>
+                                              id="observation_result" maxlength="250">{{ old('observation_result', $patient->observation_result) }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -348,7 +357,7 @@
                                     (jika ada)</label>
                                 <div class="col-sm-8">
                                     <textarea type="text" class="form-control" name="psychological_symptoms"
-                                              id="psychological_symptoms" maxlength="250"></textarea>
+                                              id="psychological_symptoms" maxlength="250">{{ old('psychological_symptoms', $patient->psychological_symptoms) }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -356,7 +365,7 @@
                                     ini (misal strategi coping)</label>
                                 <div class="col-sm-8">
                                     <textarea type="text" class="form-control" name="symptoms_management"
-                                              id="symptoms_management" maxlength="250"></textarea>
+                                              id="symptoms_management" maxlength="250">{{ old('symptoms_management', $patient->symptoms_management) }}</textarea>
                                 </div>
                             </div>
                             <div class="section-title">Asesmen Risiko</div>
@@ -367,7 +376,8 @@
                                 <div class="col-sm-8">
                                     <select type="text" class="form-control" name="assessment_risk"
                                             id="assessment_risk">
-                                        <option value="tidak">Tidak</option>
+                                        <option value="YES" @if($patient->assessment_risk == \App\Models\PatientRecord::YES) selected @endif>Ya</option>
+                                        <option value="NO" @if($patient->assessment_risk == \App\Models\PatientRecord::NO) selected @endif>Tidak</option>
                                     </select>
                                 </div>
                             </div>
@@ -378,7 +388,8 @@
                                 <div class="col-sm-8">
                                     <select type="text" class="form-control" name="suicide_thinking"
                                             id="suicide_thinking">
-                                        <option value="tidak">Tidak</option>
+                                        <option value="YES" @if($patient->suicide_thinking == \App\Models\PatientRecord::YES) selected @endif>Ya</option>
+                                        <option value="NO" @if($patient->suicide_thinking == \App\Models\PatientRecord::NO) selected @endif>Tidak</option>
                                     </select>
                                 </div>
                             </div>
@@ -389,7 +400,8 @@
                                 <div class="col-sm-8">
                                     <select type="text" class="form-control" name="suicide_attempt"
                                             id="suicide_attempt">
-                                        <option value="tidak">Tidak</option>
+                                        <option value="YES" @if($patient->suicide_attempt == \App\Models\PatientRecord::YES) selected @endif>Ya</option>
+                                        <option value="NO" @if($patient->suicide_attempt == \App\Models\PatientRecord::NO) selected @endif>Tidak</option>
                                     </select>
                                 </div>
                             </div>
@@ -399,7 +411,7 @@
                                 </label>
                                 <div class="col-sm-8">
                                     <textarea type="text" class="form-control" name="another_risk" id="another_risk"
-                                              maxlength="250"></textarea>
+                                              maxlength="250">{{ old('another_risk', $patient->another_risk) }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -408,7 +420,8 @@
                                 </label>
                                 <div class="col-sm-8">
                                     <select type="text" class="form-control" name="need_referred" id="need_referred">
-                                        <option value="tidak">Tidak</option>
+                                        <option value="YES" @if($patient->need_referred == \App\Models\PatientRecord::YES) selected @endif>Ya</option>
+                                        <option value="NO" @if($patient->need_referred == \App\Models\PatientRecord::NO) selected @endif>Tidak</option>
                                     </select>
                                 </div>
                             </div>
@@ -418,7 +431,7 @@
                                 </label>
                                 <div class="col-sm-8">
                                     <textarea type="text" class="form-control" name="conclusion" id="conclusion"
-                                              maxlength="500"></textarea>
+                                              maxlength="500">{{ old('conclusion', $patient->conclusion) }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -427,7 +440,7 @@
                                 </label>
                                 <div class="col-sm-8">
                                     <textarea type="text" class="form-control" name="treatment_recommend"
-                                              id="treatment_recommend" maxlength="250"></textarea>
+                                              id="treatment_recommend" maxlength="250">{{ old('treatment_recommend', $patient->treatment_recommend) }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -436,7 +449,7 @@
                                 </label>
                                 <div class="col-sm-8">
                                     <textarea type="text" class="form-control" name="session_obstacle"
-                                              id="session_obstacle" maxlength="250"></textarea>
+                                              id="session_obstacle" maxlength="250">{{ old('session_obstacle', $patient->session_obstacle) }}</textarea>
                                 </div>
                             </div>
                         </div>

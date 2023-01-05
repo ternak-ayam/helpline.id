@@ -16,5 +16,6 @@ Route::middleware('auth:counsellor')->group(function () {
 
         Route::get('/patient/records', [\App\Http\Controllers\Counsellor\PatientRecordController::class, 'index'])->name('patient.index');
         Route::get('/patient/{counselling:counselling_id}/records', [\App\Http\Controllers\Counsellor\PatientRecordController::class, 'show'])->name('patient.show');
+        Route::put('/patient/{counselling:counselling_id}/records', [\App\Http\Controllers\Counsellor\PatientRecordController::class, 'update'])->name('patient.store');
     });
 });

@@ -39,6 +39,9 @@
                                     <a href="{{ route('psychologist.counselling.patient.show', $schedule->counselling_id) }}" class="btn btn-danger"><i
                                             class="fas fa-eye"></i>
                                     </a>
+                                    <a href="" class="btn btn-success"><i
+                                            class="fas fa-download"></i>
+                                    </a>
                                 </td>
                             </tr>
                         @empty

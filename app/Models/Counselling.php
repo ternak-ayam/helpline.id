@@ -92,4 +92,9 @@ class Counselling extends Model
     {
         return Counselling::where([['counsellor_id', $this->counsellor_id], ['user_id', $this->user_id]])->count();
     }
+
+    public function patientRecords()
+    {
+        return $this->hasOne(PatientRecord::class, 'counselling_id');
+    }
 }
