@@ -25,7 +25,7 @@
                     </a>
                 </li>
                 <li {{ is_nav_active('statistics') }}>
-                    <a class="nav-link" href="#">
+                    <a class="nav-link" href="{{ route('psychologist.counselling.statistics.index') }}">
                         <i class="fas fa-chart-bar"></i> <span>Statistics</span>
                     </a>
                 </li>
