@@ -14,17 +14,21 @@
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                labels: [@foreach ($dates as $date) "{{ $date }}", @endforeach],
                 datasets: [{
+                    label: 'Total Counselling',
+                    data: [@foreach ($counsellings as $counselling) {{ $counselling }}, @endforeach],
+                    borderWidth: 1
+                }, {
                     label: 'Completed Counselling',
-                    data: [12, 19, 3, 5, 2, 3],
+                    data: [@foreach ($completeds as $completed) {{ $completed }}, @endforeach],
                     borderWidth: 1
                 }]
             },
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        beginAtZero: true,
                     }
                 }
             }
@@ -50,7 +54,7 @@
                                 <h4>Total Counselling</h4>
                             </div>
                             <div class="card-body">
-                                10
+                                {{ $totalCounselling }}
                             </div>
                         </div>
                     </div>
@@ -65,7 +69,7 @@
                                 <h4>Completed Counselling</h4>
                             </div>
                             <div class="card-body">
-                                42
+                                {{ $completedCounselling }}
                             </div>
                         </div>
                     </div>
@@ -80,7 +84,7 @@
                                 <h4>Today's Counselling</h4>
                             </div>
                             <div class="card-body">
-                                1,201
+                                {{ $todayCounselling }}
                             </div>
                         </div>
                     </div>
@@ -95,7 +99,7 @@
                                 <h4>Upcoming Counselling</h4>
                             </div>
                             <div class="card-body">
-                                47
+                                {{ $upcomingCounselling }}
                             </div>
                         </div>
                     </div>
@@ -120,13 +124,17 @@
                     </div>
                     <div class="card-body">
                         <ul class="list-unstyled list-unstyled-border">
+                            @foreach($recentCounsellings as $recent)
                             <li class="media">
                                 <div class="media-body">
-                                    <div class="float-right text-primary">Now</div>
-                                    <div class="media-title">C-CBI-278382989</div>
-                                    <span class="text-small text-muted">Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin.</span>
+                                    <div class="float-right text-primary">{{ $recent->updated_at->diffForHumans() }}</div>
+                                    <div class="media-title">{{ $recent->counselling_id }}</div>
+                                    <span class="text-small text-muted">{{ $recent->getCounsellingMethod() }}</span>
+                                    <br>
+                                    <div class="badge badge-success text-capitalize">{{ Str::lower($recent->status) }}</div>
                                 </div>
                             </li>
+                            @endforeach
                         </ul>
                         <div class="text-center pt-1 pb-1">
                             <a href="#" class="btn btn-primary btn-lg btn-round">

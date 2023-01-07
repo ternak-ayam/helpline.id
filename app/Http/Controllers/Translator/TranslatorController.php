@@ -5,9 +5,12 @@ namespace App\Http\Controllers\Translator;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Translator\TranslatorStoreRequest;
 use App\Http\Requests\Translator\TranslatorUpdateRequest;
+use App\Imports\Admin\ImportTranslator;
+use App\Imports\Admin\ImportUser;
 use App\Models\Counsellor;
 use App\Models\Translator;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class TranslatorController extends Controller
 {
@@ -55,6 +58,13 @@ class TranslatorController extends Controller
     public function destroy(Translator $translator)
     {
         $translator->delete();
+
+        return back();
+    }
+
+    public function import()
+    {
+        Excel::import(new ImportTranslator, request()->file('user_file'));
 
         return back();
     }

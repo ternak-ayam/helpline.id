@@ -54,6 +54,9 @@
                                 <span class="text-title">Client Information</span>
                             </div>
                             <div>
+                                <span>{{ $schedule->counselling['user']['email'] }}</span>
+                            </div>
+                            <div>
                                 <span>{{ $schedule->counselling['user']['country'] }}</span>
                             </div>
                             <div>
@@ -118,6 +121,10 @@
                         <div class="mx-1">
                             <a href="{{ route('admin.counselling.schedule.index') }}" class="btn border bg-white"
                                type="button">Back</a>
+                        </div>
+                        <div class="mx-1">
+                            <a href="#" class="btn btn-primary"
+                               type="button">Download Patient Records</a>
                         </div>
                     </div>
                 </div>

@@ -5,8 +5,10 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserStoreRequest;
 use App\Http\Requests\User\UserUpdateRequest;
+use App\Imports\Admin\ImportUser;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Maatwebsite\Excel\Facades\Excel;
 
 class UserController extends Controller
 {
@@ -62,6 +64,13 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
+
+        return back();
+    }
+
+    public function import()
+    {
+        Excel::import(new ImportUser, request()->file('user_file'));
 
         return back();
     }

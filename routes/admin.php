@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Translator\TranslatorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 
@@ -18,6 +19,9 @@ Route::middleware('auth:admin')->group(function () {
         Route::post('/user', [UserController::class, 'store'])->name('store');
         Route::delete('/user/{user}', [UserController::class, 'destroy'])->name('destroy');
 
+        Route::post('import/user', [UserController::class, 'import'])->name('import');
+        Route::post('import/translator', [TranslatorController::class, 'import'])->name('translator.import');
+
         Route::resource('/translator', App\Http\Controllers\Translator\TranslatorController::class);
         Route::resource('/psychologist', App\Http\Controllers\Counsellor\CounsellorController::class);
     });
@@ -27,5 +31,9 @@ Route::middleware('auth:admin')->group(function () {
 
         Route::get('/data', [\App\Http\Controllers\Admin\DataController::class, 'index'])->name('data.index');
         Route::get('/data/{schedule}', [\App\Http\Controllers\Admin\DataController::class, 'show'])->name('data.show');
+
+        Route::get('/statistics', [\App\Http\Controllers\Admin\StatisticController::class, 'index'])->name('statistics.index');
+        Route::get('/statistics/{user}', [\App\Http\Controllers\Admin\StatisticController::class, 'show'])->name('statistics.show');
+        Route::get('/statistics/{user}/export', [\App\Http\Controllers\Admin\StatisticController::class, 'export'])->name('statistics.export');
     });
 });

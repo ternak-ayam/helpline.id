@@ -11,5 +11,6 @@ Route::post('logout', [\App\Http\Controllers\Translator\Auth\LoginController::cl
 Route::middleware('auth:translator')->group(function () {
     Route::prefix('counselling')->as('counselling.')->group(function () {
         Route::get('/schedule', [\App\Http\Controllers\Translator\ScheduleController::class, 'index'])->name('schedule.index');
+        Route::get('/statistics', [\App\Http\Controllers\Translator\StatisticController::class, 'index'])->name('statistics.index');
     });
 });

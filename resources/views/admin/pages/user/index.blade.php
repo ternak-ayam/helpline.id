@@ -54,6 +54,9 @@
                     </form>
                 </div>
                 <div class="ml-2">
+                    <button data-target="#importUserModal" data-toggle="modal" class="btn btn-sm btn-success">
+                        Import Users <i class="fas fa-upload"></i>
+                    </button>
                     <a href="{{ route('admin.user.create') }}" class="btn btn-sm btn-primary">
                         Add New User <i class="fas fa-plus"></i>
                     </a>
@@ -122,6 +125,7 @@
 
 </x-content>
     @include('admin.pages.user.modals.delete')
+    @include('admin.pages.user.modals.import')
 @if(session('user'))
     @include('admin.pages.user.modals.detail', ['user' => session('user')])
 @endif
