@@ -36,4 +36,16 @@ Route::middleware('auth:admin')->group(function () {
         Route::get('/statistics/{user}', [\App\Http\Controllers\Admin\StatisticController::class, 'show'])->name('statistics.show');
         Route::get('/statistics/{user}/export', [\App\Http\Controllers\Admin\StatisticController::class, 'export'])->name('statistics.export');
     });
+
+    Route::prefix('blog')->as('blog.')->group(function () {
+        Route::get('/posts', [\App\Http\Controllers\Admin\PostController::class, 'index'])->name('post.index');
+        Route::get('/post/{id}/create', [\App\Http\Controllers\Admin\PostController::class, 'create'])->name('post.create');
+        Route::get('/posts/{post}/edit', [\App\Http\Controllers\Admin\PostController::class, 'edit'])->name('post.edit')
+        ;
+        Route::post('/posts/{id}', [\App\Http\Controllers\Admin\PostController::class, 'store'])->name('post.store');
+        Route::put('/posts/{post}', [\App\Http\Controllers\Admin\PostController::class, 'update'])->name('post.update');
+        Route::post('upload/posts/image', [\App\Http\Controllers\Admin\PostController::class, 'storeImage'])->name('post.storeImage');
+
+        Route::delete('/posts/{post}', [\App\Http\Controllers\Admin\PostController::class, 'destroy'])->name('post.destroy');
+    });
 });

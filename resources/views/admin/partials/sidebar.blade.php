@@ -61,18 +61,18 @@
                 </li>
             </ul>
         </li>
-        <li class="dropdown">
+        <li class="dropdown {{ is_drop_active('blog') }}">
             <a href="#" class="nav-link has-dropdown">
                 <i class="fas fa-edit"></i> <span>Blogs</span>
             </a>
             <ul class="dropdown-menu">
-                <li {{ is_nav_active('dashboard') }}>
-                    <a class="nav-link" href="#">
+                <li {{ is_nav_active('post/*/create') }}>
+                    <a class="nav-link" href="{{ route('admin.blog.post.create', rand()) }}">
                         <i class="fas fa-edit"></i> <span>Create New Post</span>
                     </a>
                 </li>
-                <li {{ is_nav_active('dashboard') }}>
-                    <a class="nav-link" href="#">
+                <li {{ is_nav_active('posts') }}>
+                    <a class="nav-link" href="{{ route('admin.blog.post.index') }}">
                         <i class="fas fa-list"></i> <span>Post List</span>
                     </a>
                 </li>
