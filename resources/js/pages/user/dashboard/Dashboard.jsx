@@ -6,6 +6,7 @@ import AdvanceNavbar from "../../../components/layouts/AdvanceNavbar";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getPostList } from "../../../actions/blog";
+import ReactPaginate from "react-paginate";
 
 const Dashboard = () => {
     const dispatch = useDispatch();
@@ -70,11 +71,8 @@ const Dashboard = () => {
                     </div>
                 </div>
                 <FloatQuestionButton />
-                {posts.map((post, key) => (
-                    <PostCard key={key} post={post} />
-                ))}
+                <PostCard itemsPerPage={2} posts={posts} />
             </div>
-
             <AdvanceFooter />
         </div>
     );
