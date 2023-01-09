@@ -40,3 +40,6 @@ Route::middleware('auth:sanctum,counsellor,translator')->group(function () {
 });
 
 Route::get('parse/accesstoken/{accessToken}', [\App\Http\Controllers\Api\V1\AccessTokenController::class, 'parse']);
+
+Route::get('posts', [\App\Http\Controllers\Api\V1\Blog\PostController::class, 'index']);
+Route::get('posts/{post}', [\App\Http\Controllers\Api\V1\Blog\PostController::class, 'show']);

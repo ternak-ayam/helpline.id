@@ -28,3 +28,6 @@ export const USER_TEXT_CHAT = "USER_TEXT_CHAT";
 export const MESSAGES = "MESSAGES";
 export const MESSAGE = "MESSAGE";
 export const TEXT_CHANNEL = "TEXT_CHANNEL";
+
+export const POSTS = "POSTS";
+export const DETAIL_POST = "DETAIL_POST";

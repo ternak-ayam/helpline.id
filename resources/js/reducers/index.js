@@ -5,6 +5,7 @@ import message from "./message";
 import booking from "./booking";
 import call from "./call";
 import text from "./text";
+import blog from "./blog";
 
 export default combineReducers({
     auth,
@@ -13,4 +14,5 @@ export default combineReducers({
     message,
     call,
     text,
+    blog,
 });

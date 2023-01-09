@@ -12,6 +12,7 @@ import AfterCounselling from "../pages/user/counselling/AfterCounselling";
 import TextChat from "../pages/user/counselling/TextChat";
 import Call from "../pages/user/counselling/Call";
 import NotFound from "../pages/errors/NotFound";
+import Post from "../pages/user/blog/Post";
 
 const Web = () => {
     return (
@@ -60,6 +61,7 @@ const Web = () => {
                     component={CounsellorDashboard}
                     exact
                 />
+                <Route path={"/posts/:postId"} component={Post} exact />
                 <Route component={NotFound} />
             </Switch>
         </React.Fragment>
