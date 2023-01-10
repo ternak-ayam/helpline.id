@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Counsellor;
 use App\Http\Controllers\Controller;
 use App\Models\Counselling;
 use App\Models\PatientRecord;
+use App\Models\PatientRecordDetail;
+use App\Models\PatientRecordQuestion;
 use Illuminate\Http\Request;
 
 class PatientRecordController extends Controller
@@ -20,17 +22,34 @@ class PatientRecordController extends Controller
     {
         return view('psychologist.pages.counselling.patients.show', [
             'counselling' => $counselling,
-            'patient' => $counselling->patientRecords,
-            'issues' => json_decode($counselling->patientRecords->issues, true)['issues']
+            'issues' => $counselling->patientRecords['details'],
+            'patient' => []
         ]);
     }
 
     public function update(Request $request, Counselling $counselling)
     {
-        $counselling->patientRecords()->updateOrCreate(['counsellor_id' => $counselling->counsellor_id], $request->except(['_token', '_method', 'issues']));
-        $counselling->patientRecords()->update([
-            'issues' => json_encode($request->only(['issues']))
-        ]);
+        $patientRecord = $counselling->patientRecords;
+
+        if (!$patientRecord) {
+            $patientRecord = PatientRecord::create([
+                'counselling_id' => $counselling->id
+            ]);
+        }
+
+        foreach ($request->issues as $key => $issue) {
+            $question = PatientRecordQuestion::where('key', $key)->first();
+
+            PatientRecordDetail::updateOrCreate([
+                'patient_record_id' => $patientRecord->id,
+                'question_id' => $question->id,
+            ],
+                [
+                    'question_id' => $question->id,
+                    'patient_record_id' => $patientRecord->id,
+                    'answer' => $issue,
+                ]);
+        }
 
         return redirect(route('psychologist.counselling.patient.index'));
     }

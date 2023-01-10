@@ -27,19 +27,14 @@
                     <div class="table-responsive table-invoice">
                         <div class="card-body">
                             <div class="text-center mb-4">
-                                <p>Based on Record Keeping Guidelines (APA, 2007) and Kode Etik Psikologi Indonesia
-                                    (Himpsi, 2010).</p>
                                 <div class="mt-2">
-                                    <h4>EMOTIONAL SUPPORT CLIENT REPORT
-                                        CHAT WITH EXPERTS
+                                    <h4>EMOTIONAL SUPPORT PATIENT REPORT
                                     </h4>
                                 </div>
-                                <p>Silahkan mengisi beberapa pertanyaan berikut sesuai dengan informasi yang diperoleh
-                                    saat konseling ya! Jika ada pertanyaan yang tidak bisa terjawab, silahkan dilewati.
-                                    Mohon mengingat bahwa data klien bersifat rahasia. Terima kasih.</p>
+                                <p>Please fill in the following questions according to the information obtained during the counselling! If a question cannot be answered, please skip it. Please remember that patient data is confidential.</p>
                             </div>
                             <div class="form-group row mt-4">
-                                <div class="col-sm-4">Isu yang dialami oleh Client</div>
+                                <div class="col-sm-4">Issues experienced by the patient:</div>
                                 <div class="col-sm-8">
 
                                     <div class="custom-control custom-checkbox">
@@ -126,9 +121,9 @@
                                     </div>
 
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" name="issues[self]" id="self"
-                                               @if(old('self', $issues['self'] ?? "")) checked @endif>
-                                        <label class="custom-control-label" for="self">Self Harm/Suicidal
+                                        <input type="checkbox" class="custom-control-input" name="issues[self_harm]" id="self_harm"
+                                               @if(old('self_harm', $issues['self_harm'] ?? "")) checked @endif>
+                                        <label class="custom-control-label" for="self_harm">Self Harm/Suicidal
                                             Attempt</label>
                                     </div>
 
@@ -170,286 +165,272 @@
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="counsellor_name" class="col-sm-4 col-form-label">Nama
-                                    Konselor/Psikolog</label>
+                                <label for="counsellor_name" class="col-sm-4 col-form-label">Counsellor/Psychologist</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="counsellor_name" id="counsellor_name"
+                                    <input type="text" class="form-control" name="issues[counsellor_name]" id="counsellor_name"
                                            value="{{ $counselling->counsellor['name'] }}">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="client_name" class="col-sm-4 col-form-label">Nama Klien</label>
+                                <label for="patient_name" class="col-sm-4 col-form-label">Patient Name</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="client_name" id="client_name"
-                                           value="{{ old('client_name', $patient->client_name) }}">
+                                    <input type="text" class="form-control" name="issues[patient_name]" id="patient_name"
+                                           value="{{ old('patient_name') }}">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="counselling_date" class="col-sm-4 col-form-label">Tanggal & Waktu
-                                    Konseling</label>
+                                <label for="counselling_date" class="col-sm-4 col-form-label">Counselling Date and Time</label>
                                 <div class="col-sm-8">
-                                    <input type="datetime-local" class="form-control" name="counselling_date"
+                                    <input type="datetime-local" class="form-control" name="issues[counselling_date]"
                                            id="counselling_date" value="{{ $counselling->due->timezone($counselling->counsellor['timezone'])->format('Y-m-d H:i') }}">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="session" class="col-sm-4 col-form-label">Sesi</label>
+                                <label for="session" class="col-sm-4 col-form-label">Session</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="session" id="session"
+                                    <input type="text" class="form-control" name="issues[session]" id="session"
                                            value="Ke-{{ $counselling->getSessionQuantity() }}">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="consultation_package" class="col-sm-4 col-form-label">Paket
-                                    Konsultasi</label>
+                                <label for="consultation_package" class="col-sm-4 col-form-label">Counselling Method</label>
                                 <div class="col-sm-8">
                                     <input type="text" class="form-control" name="consultation_package"
                                            id="consultation_package" value="{{ Str::replace('-', ' ', $counselling->counselling_method) }}">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="client_birthdate" class="col-sm-4 col-form-label">Tanggal Lahir Klien
-                                    (yyyy-mm-dd)</label>
+                                <label for="patient_birthdate" class="col-sm-4 col-form-label">Patient Birthdate (yyyy-mm-dd)</label>
                                 <div class="col-sm-8">
-                                    <input type="date" class="form-control" name="client_birthdate"
-                                           id="client_birthdate" value="{{ $counselling->user['birthdate']->format('Y-m-d') }}">
+                                    <input type="date" class="form-control" name="issues[patient_birthdate]"
+                                           id="patient_birthdate" value="{{ $counselling->user['birthdate']->format('Y-m-d') }}">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="client_address" class="col-sm-4 col-form-label">Domisili Klien (Kabupaten/
-                                    Kota, Provinsi, jika ada)</label>
+                                <label for="patient_address" class="col-sm-4 col-form-label">Client's Domicile (Regency/ City, Province, if any)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="client_address" id="client_address"
-                                           value="{{ old('client_address', $patient->client_address) }}">
+                                    <input type="text" class="form-control" name="issues[patient_address]" id="patient_address"
+                                           value="{{ old('patient_address') }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="informed_consent" class="col-sm-4 col-form-label">Informed Consent</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="informed_consent"
+                                    <input type="text" class="form-control" name="issues[informed_consent]"
                                            id="informed_consent" value="{{ $counselling->user->isAgreeToTerm() }}">
                                 </div>
                             </div>
+                            <div class="section-title">Mandated Disclosure </div>
                             <div class="form-group row">
                                 <label for="is_sex_harassment" class="col-sm-4 col-form-label">
-                                    Apakah ini merupakan kasus kekerasan seksual, pelecehan, atau perundungan, atau
-                                    kasus lain yang memiliki kepentingan hukum?
+                                    Is this a case of sexual violence, harassment, or bullying, or is it another case of legal interest?
                                 </label>
                                 <div class="col-sm-8">
-                                    <select type="text" class="form-control" name="is_sex_harassment"
+                                    <select type="text" class="form-control" name="issues[is_sex_harassment]"
                                             id="is_sex_harassment">
-                                        <option value="YES" @if($patient->is_sex_harassment == \App\Models\PatientRecord::YES) selected @endif>Ya</option>
-                                        <option value="NO" @if($patient->is_sex_harassment == \App\Models\PatientRecord::NO) selected @endif>Tidak</option>
+                                        <option value="YES" @if(1 == \App\Models\PatientRecord::YES) selected @endif>Yes</option>
+                                        <option value="NO" @if(1 == \App\Models\PatientRecord::NO) selected @endif>No</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="is_client_agree" class="col-sm-4 col-form-label">
-                                    Apakah klien setuju jika informasinya digunakan untuk kepentingan hukum? *INGAT:
-                                    Bahkan dalam kepentingan hukum, setiap foto atau informasi pribadi hanya dapat
-                                    dibagikan dengan persetujuan tertulis dari klien
+                                <label for="is_patient_agree" class="col-sm-4 col-form-label">
+                                    Does the patient agree if his/her information is used for legal purposes? *REMEMBER: Even in the interests of law, any photos or personal information can only be shared with written consent from the patient
                                 </label>
                                 <div class="col-sm-8">
-                                    <select type="text" class="form-control" name="is_client_agree"
-                                            id="is_client_agree">
-                                        <option value="YES" @if($patient->is_client_agree == \App\Models\PatientRecord::YES) selected @endif>Ya</option>
-                                        <option value="NO" @if($patient->is_client_agree == \App\Models\PatientRecord::NO) selected @endif>Tidak</option>
+                                    <select type="text" class="form-control" name="issues[is_patient_agree]"
+                                            id="is_patient_agree">
+                                        <option value="YES" @if(1 == \App\Models\PatientRecord::YES) selected @endif>Yes</option>
+                                        <option value="NO" @if(1 == \App\Models\PatientRecord::NO) selected @endif>No</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="referred_to" class="col-sm-4 col-form-label">Dirujuk oleh (jika klien
-                                    dirujuk oleh Expert Bullyid lain)</label>
+                                <label for="referenced_by" class="col-sm-4 col-form-label">Referenced by</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="referred_to" id="referred_to" value="{{ old('referred_to', $patient->referred_to) }}">
+                                    <input type="text" class="form-control" name="issues[referenced_by]" id="referenced_by" value="{{ old('referenced_by') }}">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="referred_reason" class="col-sm-4 col-form-label">Alasan dirujuk/referral
-                                    (jika ada)</label>
+                                <label for="reason_for_referral" class="col-sm-4 col-form-label">Reason for referral (if any)</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="referred_reason" id="referred_reason" value="{{ old('referred_reason', $patient->referred_reason) }}">
+                                    <input type="text" class="form-control" name="issues[reason_for_referral]" id="reason_for_referral" value="{{ old('reason_for_referral') }}">
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="complaint" class="col-sm-4 col-form-label">Keluhan/ Alasan Mencari
-                                    Bantuan</label>
+                                <label for="reason_for_seeking_help" class="col-sm-4 col-form-label">Reasons for seeking help</label>
                                 <div class="col-sm-8">
-                                    <textarea type="text" class="form-control" name="complaint" id="complaint"
-                                              maxlength="250">{{ old('complaint', $patient->complaint) }}</textarea>
+                                    <textarea type="text" class="form-control" name="issues[reason_for_seeking_help]" id="reason_for_seeking_help"
+                                              maxlength="250"></textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="assessment_method" class="col-sm-4 col-form-label">Metode Asesmen yang
-                                    Dilakukan (jika ada)</label>
+                                <label for="assessment_method" class="col-sm-4 col-form-label">Method of the assessment conducted (if any)</label>
                                 <div class="col-sm-8">
                                     <textarea type="text" class="form-control" name="assessment_method"
-                                              id="assessment_method" maxlength="250">{{ old('assessment_method', $patient->assessment_method) }}</textarea>
+                                              id="assessment_method" maxlength="250">{{ old('assessment_method') }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="assessment_result" class="col-sm-4 col-form-label">Hasil Asesmen (jika
-                                    ada)</label>
+                                <label for="assessment_result" class="col-sm-4 col-form-label">Assessment results (if any)</label>
                                 <div class="col-sm-8">
                                     <textarea type="text" class="form-control" name="assessment_result"
-                                              id="assessment_result" maxlength="250">{{ old('assessment_result', $patient->assessment_result) }}</textarea>
+                                              id="assessment_result" maxlength="250">{{ old('assessment_result') }}</textarea>
                                 </div>
                             </div>
-                            <div class="section-title">Riwayat Hidup Klien</div>
+                            <div class="section-title">Patient History</div>
                             <div class="form-group row">
-                                <label for="client_data" class="col-sm-4 col-form-label">Data Diri Klien (usia, status
-                                    pernikahan, jumlah anak, pekerjaan, pendidikan, dll)</label>
+                                <label for="patient_background_history" class="col-sm-4 col-form-label">Patient background history</label>
                                 <div class="col-sm-8">
-                                    <textarea type="text" class="form-control" name="client_data" id="client_data"
-                                              maxlength="250">{{ old('client_data', $patient->client_data) }}</textarea>
+                                    <textarea type="text" class="form-control" name="issues[patient_background_history]" id="patient_background_history"
+                                              maxlength="250">{{ old('patient_background_history') }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="psychologist_history" class="col-sm-4 col-form-label">Riwayat Psikologi
-                                    (diagnosa/ treatment sebelumnya)</label>
+                                <label for="patient_personal_data" class="col-sm-4 col-form-label">Patient's Personal Data (age, marital status, number of children, occupation, education, etc.)</label>
                                 <div class="col-sm-8">
-                                    <textarea type="text" class="form-control" name="psychologist_history"
-                                              id="psychologist_history" maxlength="250">{{ old('psychologist_history', $patient->psychologist_history) }}</textarea>
+                                    <textarea type="text" class="form-control" name="patient_personal_data" id="patient_personal_data"
+                                              maxlength="250">{{ old('patient_personal_data') }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="medical_history" class="col-sm-4 col-form-label">Riwayat Medis (kondisi
-                                    kesehatan, riwayat penyakit, konsumsi obat, dll)</label>
+                                <label for="psychological_history" class="col-sm-4 col-form-label">Psychological history (diagnosis/previous treatment)</label>
                                 <div class="col-sm-8">
-                                    <textarea type="text" class="form-control" name="medical_history"
-                                              id="medical_history" maxlength="250">{{ old('medical_history', $patient->medical_history) }}</textarea>
+                                    <textarea type="text" class="form-control" name="issues[psychological_history]"
+                                              id="psychological_history" maxlength="250">{{ old('psychological_history') }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="client_history" class="col-sm-4 col-form-label">Anamnesa/ Sejarah Klien
-                                    (keluarga, perkembangan masa kecil, dll)</label>
+                                <label for="medical_history" class="col-sm-4 col-form-label">Medical history (health conditions, medical history, drug consumption, etc.)</label>
                                 <div class="col-sm-8">
-                                    <textarea type="text" class="form-control" name="client_history" id="client_history"
-                                              maxlength="250">{{ old('client_history', $patient->client_history) }}</textarea>
+                                    <textarea type="text" class="form-control" name="issues[medical_history]"
+                                              id="medical_history" maxlength="250">{{ old('medical_history') }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="law_history" class="col-sm-4 col-form-label">Riwayat Hukum (Pernah atau
-                                    tidak klien menjadi korban/pelaku dari tindak pidana)</label>
+                                <label for="patient_history" class="col-sm-4 col-form-label">Anamnesis/history of the client (family, childhood development, etc.)</label>
                                 <div class="col-sm-8">
-                                    <textarea type="text" class="form-control" name="law_history" id="law_history"
-                                              maxlength="250">{{ old('law_history', $patient->law_history) }}</textarea>
+                                    <textarea type="text" class="form-control" name="issues[patient_history]" id="patient_history"
+                                              maxlength="250">{{ old('patient_history') }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="traumatic_history" class="col-sm-4 col-form-label">Riwayat Pengalaman
-                                    Traumatis (jika ada)</label>
+                                <label for="legal_history" class="col-sm-4 col-form-label">Legal History (Ever or not the client became a victim/perpetrator of a crime)</label>
                                 <div class="col-sm-8">
-                                    <textarea type="text" class="form-control" name="traumatic_history"
-                                              id="traumatic_history" maxlength="250">{{ old('traumatic_history', $patient->traumatic_history) }}</textarea>
+                                    <textarea type="text" class="form-control" name="issues[legal_history]" id="legal_history"
+                                              maxlength="250">{{ old('legal_history') }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="observation_result" class="col-sm-4 col-form-label">Hasil Observasi
-                                    (perilaku & status mental)</label>
+                                <label for="traumatic_experience" class="col-sm-4 col-form-label">Traumatic Experience History (if any)</label>
                                 <div class="col-sm-8">
-                                    <textarea type="text" class="form-control" name="observation_result"
-                                              id="observation_result" maxlength="250">{{ old('observation_result', $patient->observation_result) }}</textarea>
+                                    <textarea type="text" class="form-control" name="issues[traumatic_experience]"
+                                              id="traumatic_experience" maxlength="250">{{ old('traumatic_experience') }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="psychological_symptoms" class="col-sm-4 col-form-label">Gejala Psikologis
-                                    (jika ada)</label>
+                                <label for="observation_result" class="col-sm-4 col-form-label">Observation Results (behaviour & mental status)</label>
                                 <div class="col-sm-8">
-                                    <textarea type="text" class="form-control" name="psychological_symptoms"
-                                              id="psychological_symptoms" maxlength="250">{{ old('psychological_symptoms', $patient->psychological_symptoms) }}</textarea>
+                                    <textarea type="text" class="form-control" name="issues[observation_result]"
+                                              id="observation_result" maxlength="250">{{ old('observation_result') }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="symptoms_management" class="col-sm-4 col-form-label">Pengelolaan gejala saat
-                                    ini (misal strategi coping)</label>
+                                <label for="psychological_symptoms" class="col-sm-4 col-form-label">Psychological Symptoms (if any)</label>
                                 <div class="col-sm-8">
-                                    <textarea type="text" class="form-control" name="symptoms_management"
-                                              id="symptoms_management" maxlength="250">{{ old('symptoms_management', $patient->symptoms_management) }}</textarea>
+                                    <textarea type="text" class="form-control" name="issues[psychological_symptoms]"
+                                              id="psychological_symptoms" maxlength="250">{{ old('psychological_symptoms') }}</textarea>
                                 </div>
                             </div>
-                            <div class="section-title">Asesmen Risiko</div>
                             <div class="form-group row">
-                                <label for="assessment_risk" class="col-sm-4 col-form-label">
-                                    Perilaku Melukai Diri (Self-Harm)
+                                <label for="symptoms_management" class="col-sm-4 col-form-label">"Management of current symptoms (e.g. coping strategies)</label>
+                                <div class="col-sm-8">
+                                    <textarea type="text" class="form-control" name="issues[symptoms_management]"
+                                              id="symptoms_management" maxlength="250">{{ old('symptoms_management') }}</textarea>
+                                </div>
+                            </div>
+                            <div class="section-title">Risk Assessment</div>
+                            <div class="form-group row">
+                                <label for="self_harm" class="col-sm-4 col-form-label">
+                                    Self-Harm Behavior
                                 </label>
                                 <div class="col-sm-8">
-                                    <select type="text" class="form-control" name="assessment_risk"
-                                            id="assessment_risk">
-                                        <option value="YES" @if($patient->assessment_risk == \App\Models\PatientRecord::YES) selected @endif>Ya</option>
-                                        <option value="NO" @if($patient->assessment_risk == \App\Models\PatientRecord::NO) selected @endif>Tidak</option>
+                                    <select type="text" class="form-control" name="issues[self_harm]"
+                                            id="self_harm">
+                                        <option value="YES" @if(1 == \App\Models\PatientRecord::YES) selected @endif>Yes</option>
+                                        <option value="NO" @if(1 == \App\Models\PatientRecord::NO) selected @endif>No</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="suicide_thinking" class="col-sm-4 col-form-label">
-                                    Pikiran Bunuh Diri
+                                <label for="suicidal_thoughts" class="col-sm-4 col-form-label">
+                                    Suicidal Thoughts
                                 </label>
                                 <div class="col-sm-8">
-                                    <select type="text" class="form-control" name="suicide_thinking"
-                                            id="suicide_thinking">
-                                        <option value="YES" @if($patient->suicide_thinking == \App\Models\PatientRecord::YES) selected @endif>Ya</option>
-                                        <option value="NO" @if($patient->suicide_thinking == \App\Models\PatientRecord::NO) selected @endif>Tidak</option>
+                                    <select type="text" class="form-control" name="issues[suicidal_thoughts]"
+                                            id="suicidal_thoughts">
+                                        <option value="YES" @if(1 == \App\Models\PatientRecord::YES) selected @endif>Yes</option>
+                                        <option value="NO" @if(1 == \App\Models\PatientRecord::NO) selected @endif>No</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="suicide_attempt" class="col-sm-4 col-form-label">
-                                    Perilaku/ Percobaan Bunuh Diri
+                                <label for="suicidal_behavior" class="col-sm-4 col-form-label">
+                                    Suicidal Behavior/Attempt
                                 </label>
                                 <div class="col-sm-8">
-                                    <select type="text" class="form-control" name="suicide_attempt"
-                                            id="suicide_attempt">
-                                        <option value="YES" @if($patient->suicide_attempt == \App\Models\PatientRecord::YES) selected @endif>Ya</option>
-                                        <option value="NO" @if($patient->suicide_attempt == \App\Models\PatientRecord::NO) selected @endif>Tidak</option>
+                                    <select type="text" class="form-control" name="issues[suicidal_behavior]"
+                                            id="suicidal_behavior">
+                                        <option value="YES" @if(1 == \App\Models\PatientRecord::YES) selected @endif>Yes</option>
+                                        <option value="NO" @if(1 == \App\Models\PatientRecord::NO) selected @endif>No</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="another_risk" class="col-sm-4 col-form-label">
-                                    Risiko lain (jika ada)
+                                <label for="other_risks" class="col-sm-4 col-form-label">
+                                    Other risks (if any)
                                 </label>
                                 <div class="col-sm-8">
-                                    <textarea type="text" class="form-control" name="another_risk" id="another_risk"
-                                              maxlength="250">{{ old('another_risk', $patient->another_risk) }}</textarea>
+                                    <textarea type="text" class="form-control" name="issues[other_risks]" id="other_risks"
+                                              maxlength="250">{{ old('other_risks') }}</textarea>
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="need_referred" class="col-sm-4 col-form-label">
-                                    Perlu dirujuk ke layanan setempat (offline psychological services)
+                                    Need to be referred to local services (offline psychological services)
                                 </label>
                                 <div class="col-sm-8">
-                                    <select type="text" class="form-control" name="need_referred" id="need_referred">
-                                        <option value="YES" @if($patient->need_referred == \App\Models\PatientRecord::YES) selected @endif>Ya</option>
-                                        <option value="NO" @if($patient->need_referred == \App\Models\PatientRecord::NO) selected @endif>Tidak</option>
+                                    <select type="text" class="form-control" name="issues[need_referred]" id="need_referred">
+                                        <option value="YES" @if(1 == \App\Models\PatientRecord::YES) selected @endif>Yes</option>
+                                        <option value="NO" @if(1 == \App\Models\PatientRecord::NO) selected @endif>No</option>
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="conclusion" class="col-sm-4 col-form-label">
-                                    Kesimpulan, Diagnosis, dan Prognosis (jika ada)
-                                </label>
-                                <div class="col-sm-8">
-                                    <textarea type="text" class="form-control" name="conclusion" id="conclusion"
-                                              maxlength="500">{{ old('conclusion', $patient->conclusion) }}</textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label for="treatment_recommend" class="col-sm-4 col-form-label">
-                                    Rekomendasi Treatment (jika ada)
-                                </label>
-                                <div class="col-sm-8">
-                                    <textarea type="text" class="form-control" name="treatment_recommend"
-                                              id="treatment_recommend" maxlength="250">{{ old('treatment_recommend', $patient->treatment_recommend) }}</textarea>
-                                </div>
-                            </div>
-                            <div class="form-group row">
                                 <label for="session_obstacle" class="col-sm-4 col-form-label">
-                                    Hambatan selama Sesi (jika ada)
+                                    Barriers during Session (if any)
                                 </label>
                                 <div class="col-sm-8">
-                                    <textarea type="text" class="form-control" name="session_obstacle"
-                                              id="session_obstacle" maxlength="250">{{ old('session_obstacle', $patient->session_obstacle) }}</textarea>
+                                    <textarea type="text" class="form-control" name="issues[session_obstacle]"
+                                              id="session_obstacle" maxlength="250">{{ old('session_obstacle') }}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="conclusion" class="col-sm-4 col-form-label">
+                                    Conclusion, Diagnosis and Prognosis (if any)
+                                </label>
+                                <div class="col-sm-8">
+                                    <textarea type="text" class="form-control" name="issues[conclusion]" id="conclusion"
+                                              maxlength="500">{{ old('conclusion') }}</textarea>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="treatment_recommendation" class="col-sm-4 col-form-label">
+                                    Treatment recommendation (if any)
+                                </label>
+                                <div class="col-sm-8">
+                                    <textarea type="text" class="form-control" name="issues[treatment_recommendation]"
+                                              id="treatment_recommendation" maxlength="250">{{ old('treatment_recommendation') }}</textarea>
                                 </div>
                             </div>
                         </div>
