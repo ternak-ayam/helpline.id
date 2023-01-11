@@ -1,0 +1,459 @@
+[
+    {
+        "question": "Discrimination/Racism",
+        "type": "CHECKBOX",
+        "key": "discrimination",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Relationship Issues",
+        "type": "CHECKBOX",
+        "key": "relationship",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Family Issues",
+        "type": "CHECKBOX",
+        "key": "family",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Anxiety Disorders",
+        "type": "CHECKBOX",
+        "key": "anxiety",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Bipolar Disorders",
+        "type": "CHECKBOX",
+        "key": "bipolar",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Depression",
+        "type": "CHECKBOX",
+        "key": "depression",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Dissociative Disorders",
+        "type": "CHECKBOX",
+        "key": "dissociative",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Eating Disorders",
+        "type": "CHECKBOX",
+        "key": "eating",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Grief and Bereavement",
+        "type": "CHECKBOX",
+        "key": "grief",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Obsessive-Compulsive Disorders",
+        "type": "CHECKBOX",
+        "key": "obsessive",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Psychosis",
+        "type": "CHECKBOX",
+        "key": "psychosis",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Schizoaffective Disorder",
+        "type": "CHECKBOX",
+        "key": "schizoaffective",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Schizophrenia",
+        "type": "CHECKBOX",
+        "key": "schizophrenia",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Self Harm/Suicidal Attempt",
+        "type": "CHECKBOX",
+        "key": "self_harm",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Suicidal Ideation",
+        "type": "CHECKBOX",
+        "key": "suicidal",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Domestic Violence",
+        "type": "CHECKBOX",
+        "key": "domestic",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Physical Harassment",
+        "type": "CHECKBOX",
+        "key": "physical",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Verbal Harassment",
+        "type": "CHECKBOX",
+        "key": "verbal",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Online Harassment",
+        "type": "CHECKBOX",
+        "key": "online",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Sexual Harassment",
+        "type": "CHECKBOX",
+        "key": "sexual",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "1",
+        "question": "Counsellor/Psychologist",
+        "type": "TEXT",
+        "key": "counsellor_name",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": true
+    },
+    {
+        "no": "2",
+        "question": "Patient Name",
+        "type": "TEXT",
+        "key": "patient_name",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": true
+    },
+    {
+        "no": "3",
+        "question": "Counselling Date and Time",
+        "type": "TEXT",
+        "key": "counselling_date",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": true
+    },
+    {
+        "no": "4",
+        "question": "Session",
+        "type": "TEXT",
+        "key": "session",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": true
+    },
+    {
+        "no": "5",
+        "question": "Counselling Method",
+        "type": "TEXT",
+        "key": "counselling_method",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": true
+    },
+    {
+        "no": "6",
+        "question": "Patient Birthdate (yyyy-mm-dd)",
+        "type": "TEXT",
+        "key": "patient_birthdate",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": true
+    },
+    {
+        "no": "7",
+        "question": "Client's Domicile (Regency/ City, Province, if any)",
+        "type": "TEXT",
+        "key": "patient_address",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": true
+    },
+    {
+        "no": "8",
+        "question": "Informed Consent",
+        "type": "TEXT",
+        "key": "informed_consent",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": true
+    },
+    {
+        "no": "9",
+        "question": "Is this a case of sexual violence, harassment, or bullying, or is it another case of legal interest?",
+        "type": "SELECT",
+        "key": "is_sex_harassment",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "",
+        "question": "Does the patient agree if his/her information is used for legal purposes? *REMEMBER: Even in the interests of law, any photos or personal information can only be shared with written consent from the patient",
+        "type": "SELECT",
+        "key": "is_patient_agree",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "10",
+        "question": "Referenced by",
+        "type": "TEXT",
+        "key": "referenced_by",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "11",
+        "question": "Reason for referral (if any)",
+        "type": "TEXT",
+        "key": "reason_for_referral",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "12",
+        "question": "Reasons for seeking help",
+        "type": "TEXTAREA",
+        "key": "reason_for_seeking_help",
+        "max_value": 500,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "13",
+        "question": "Method of the assessment conducted (if any)",
+        "type": "TEXTAREA",
+        "key": "method_of_assessment",
+        "max_value": 500,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "14",
+        "question": "Assessment results (if any)",
+        "type": "TEXTAREA",
+        "key": "assessment_result",
+        "max_value": 500,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "15",
+        "question": "Patient background history",
+        "type": "TEXTAREA",
+        "key": "patient_background_history",
+        "max_value": 500,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "15.a",
+        "question": "Patient's Personal Data (age, marital status, number of children, occupation, education, etc.)",
+        "type": "TEXTAREA",
+        "key": "patient_personal_data",
+        "max_value": 500,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "15.b",
+        "question": "Psychological history (diagnosis/previous treatment)",
+        "type": "TEXTAREA",
+        "key": "psychological_history",
+        "max_value": 500,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "15.c",
+        "question": "Medical history (health conditions, medical history, drug consumption, etc.)",
+        "type": "TEXTAREA",
+        "key": "medical_history",
+        "max_value": 500,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "15.d",
+        "question": "Anamnesis/history of the client (family, childhood development, etc.)",
+        "type": "TEXTAREA",
+        "key": "patient_history",
+        "max_value": 500,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "15.e",
+        "question": "Legal History (Ever or not the client became a victim/perpetrator of a crime)",
+        "type": "TEXTAREA",
+        "key": "legal_history",
+        "max_value": 500,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "15.f",
+        "question": "Traumatic Experience History (if any)",
+        "type": "TEXTAREA",
+        "key": "traumatic_experience",
+        "max_value": 500,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "16",
+        "question": "Observation Results (behaviour & mental status)",
+        "type": "TEXTAREA",
+        "key": "observation_result",
+        "max_value": 500,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "17",
+        "question": "Psychological Symptoms (if any)",
+        "type": "TEXTAREA",
+        "key": "psychological_symptoms",
+        "max_value": 500,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "18",
+        "question": "Management of current symptoms (e.g. coping strategies)",
+        "type": "TEXTAREA",
+        "key": "symptoms_management",
+        "max_value": 500,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "19.a",
+        "question": "Self-Harm Behavior",
+        "type": "SELECT",
+        "key": "self_harm",
+        "max_value": 500,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "19.b",
+        "question": "Suicidal Thoughts",
+        "type": "SELECT",
+        "key": "suicidal_thoughts",
+        "max_value": 500,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "19.c",
+        "question": "Suicidal Behavior/Attempt",
+        "type": "SELECT",
+        "key": "suicidal_behavior",
+        "max_value": 500,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "19.d",
+        "question": "Other risks (if any)",
+        "type": "SELECT",
+        "key": "other_risks",
+        "max_value": 500,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "19.e",
+        "question": "Need to be referred to local services (offline psychological services)",
+        "type": "SELECT",
+        "key": "need_referred",
+        "max_value": 500,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "19.f",
+        "question": "Barriers during Session (if any)",
+        "type": "TEXTAREA",
+        "key": "session_obstacle",
+        "max_value": 500,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "20",
+        "question": "Conclusion, Diagnosis and Prognosis (if any)",
+        "type": "TEXTAREA",
+        "key": "conclusion",
+        "max_value": 500,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "no": "21",
+        "question": "Treatment recommendation (if any)",
+        "type": "TEXTAREA",
+        "key": "treatment_recommendation",
+        "max_value": 500,
+        "questionable": "",
+        "default_value": false
+    }
+]

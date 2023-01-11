@@ -3,3 +3,4 @@
 !.gitignore
 !unhcr.json
 !local/countries.json
+!patientRecordQuestions.json
