@@ -21,7 +21,14 @@ class CounsellingController extends Controller
         return DB::transaction(function () use ($request) {
             $user = $request->user();
             $counsellingId = (new Counselling())->generateCounsellingId($request->schedule);
-            $translatorId = $this->needTranslator($request) ? Translator::where('language', $request->translator_language)->first()->id : null;
+
+            $request->validate([
+                'translator_language' => ['exists:translators,language']
+            ], [
+                'translator_language.exists' => 'Translator is not available'
+            ]);
+
+            $translatorId = $this->needTranslator($request) ? Translator::where('language', $request->translator_language)->inRandomOrder()->first()->id : null;
 
             $counselling = Counselling::create([
                 'counselling_id' => $counsellingId,

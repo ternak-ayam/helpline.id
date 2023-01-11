@@ -26,6 +26,7 @@ class Counselling extends Model
 
     const BOOKED = "BOOKED";
     const DONE  = "DONE";
+    const ENDED  = "ENDED";
 
     const TEXTCHAT  = "text-chat";
     const AUDIOCHAT  = "audio-chat";
