@@ -39,7 +39,7 @@
                                 <td>{{ $schedule->due->timezone(auth()->user()->timezone)->format('F j, Y H:i') }}</td>
                                 <td>{{ Str::ucfirst($schedule->translator_language) }}</td>
                                 <td>
-                                    @if($schedule->status === \App\Models\Counselling::BOOKED)
+                                    @if(in_array($schedule->status, [\App\Models\Counselling::BOOKED, \App\Models\Counselling::DONE]))
                                         <div class="badge badge-success">{{ Str::lower($schedule->status) }}</div>
                                     @elseif($schedule->status === \App\Models\Counselling::ENDED)
                                         <div class="badge badge-danger">{{ Str::lower($schedule->status) }}</div>
