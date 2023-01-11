@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
+use App\Models\Traits\SavePdfTrait;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Counselling extends Model
 {
-    use HasFactory;
+    use HasFactory, SavePdfTrait;
 
     protected $fillable = [
         'counselling_id',
@@ -96,5 +97,23 @@ class Counselling extends Model
     public function patientRecords()
     {
         return $this->hasOne(PatientRecord::class, 'counselling_id');
+    }
+
+    public function fetchPatientRecords()
+    {
+        $issues = [];
+        foreach ($this->patientRecords['details'] as $detail) {
+            $issues[$detail->question['key']] = $detail->answer;
+        }
+
+        return $issues;
+    }
+
+    public function data()
+    {
+        return [
+            'issues' => optional($this->fetchPatientRecords()),
+            'questions' => PatientRecordQuestion::where('type', '<>', PatientRecordQuestion::CHECKBOX)->get()
+        ];
     }
 }

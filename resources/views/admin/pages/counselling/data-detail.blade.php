@@ -123,7 +123,7 @@
                                type="button">Back</a>
                         </div>
                         <div class="mx-1">
-                            <a href="#" class="btn btn-primary"
+                            <a target="_blank" href="{{ route('psychologist.patient.download', $schedule->counselling['counselling_id']) }}" class="btn btn-primary"
                                type="button">Download Patient Records</a>
                         </div>
                     </div>

@@ -21,3 +21,5 @@ Route::middleware('auth:counsellor')->group(function () {
         Route::get('/statistics', [\App\Http\Controllers\Counsellor\StatisticController::class, 'index'])->name('statistics.index');
     });
 });
+
+Route::get('/patient/records/{counselling:counselling_id}/download', [\App\Http\Controllers\Counsellor\PatientRecordController::class, 'download'])->name('patient.download');

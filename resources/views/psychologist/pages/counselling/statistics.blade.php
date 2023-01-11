@@ -137,7 +137,7 @@
                             @endforeach
                         </ul>
                         <div class="text-center pt-1 pb-1">
-                            <a href="#" class="btn btn-primary btn-lg btn-round">
+                            <a href="{{ route('psychologist.counselling.schedule.index') }}" class="btn btn-primary btn-lg btn-round">
                                 View All
                             </a>
                         </div>

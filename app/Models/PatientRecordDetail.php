@@ -14,4 +14,9 @@ class PatientRecordDetail extends Model
         'patient_record_id',
         'answer',
     ];
+
+    public function question()
+    {
+        return $this->belongsTo(PatientRecordQuestion::class, 'question_id');
+    }
 }

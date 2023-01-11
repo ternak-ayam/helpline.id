@@ -20,10 +20,11 @@ class PatientRecordController extends Controller
 
     public function show(Counselling $counselling)
     {
+        $issues = $counselling->fetchPatientRecords();
+
         return view('psychologist.pages.counselling.patients.show', [
             'counselling' => $counselling,
-            'issues' => $counselling->patientRecords['details'],
-            'patient' => []
+            'issues' => optional($issues),
         ]);
     }
 
@@ -37,8 +38,11 @@ class PatientRecordController extends Controller
             ]);
         }
 
+        PatientRecordDetail::where('patient_record_id', $patientRecord->id)->delete();
+
         foreach ($request->issues as $key => $issue) {
             $question = PatientRecordQuestion::where('key', $key)->first();
+
 
             PatientRecordDetail::updateOrCreate([
                 'patient_record_id' => $patientRecord->id,
@@ -52,5 +56,10 @@ class PatientRecordController extends Controller
         }
 
         return redirect(route('psychologist.counselling.patient.index'));
+    }
+
+    public function download(Counselling $counselling)
+    {
+        return $counselling->export();
     }
 }

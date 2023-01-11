@@ -17,4 +17,9 @@ class PatientRecordQuestion extends Model
         'questionable',
         'default_value',
     ];
+
+    const CHECKBOX = "CHECKBOX";
+    const TEXT = "TEXT";
+    const SELECT = "SELECT";
+    const TEXTAREA = "TEXTAREA";
 }
