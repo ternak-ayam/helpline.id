@@ -22,11 +22,13 @@ class CounsellingController extends Controller
             $user = $request->user();
             $counsellingId = (new Counselling())->generateCounsellingId($request->schedule);
 
-            $request->validate([
-                'translator_language' => ['exists:translators,language']
-            ], [
-                'translator_language.exists' => 'Translator is not available'
-            ]);
+            if ($request->translator_language) {
+                $request->validate([
+                    'translator_language' => ['exists:translators,language']
+                ], [
+                    'translator_language.exists' => 'Translator is not available'
+                ]);
+            }
 
             $translatorId = $this->needTranslator($request) ? Translator::where('language', $request->translator_language)->inRandomOrder()->first()->id : null;
 
@@ -55,7 +57,7 @@ class CounsellingController extends Controller
             $user->notify(new SendBookingDetailNotification($counselling, $token['user_token']));
             $counselling->counsellor->notify(new SendBookingDetailNotification($counselling, $token['counsellor_token']));
 
-            if($counselling->translator_id) {
+            if ($counselling->translator_id) {
                 $counselling->translator->notify(new SendBookingDetailNotification($counselling, $token['translator_token']));
             }
 

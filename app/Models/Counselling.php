@@ -103,7 +103,7 @@ class Counselling extends Model
     public function fetchPatientRecords()
     {
         $issues = [];
-        foreach ($this->patientRecords['details'] as $detail) {
+        foreach ($this->patientRecords['details'] ?? [] as $detail) {
             $issues[$detail->question['key']] = $detail->answer;
         }
 

@@ -13,7 +13,7 @@ class StatisticController extends Controller
         $totalCounselling = Counselling::where('counsellor_id', auth()->user()->id)->count();
         $todayCounselling = Counselling::where('counsellor_id', auth()->user()->id)->whereDate('due', today()->format('Y-m-d'))->count();
         $completedCounselling = Counselling::where([['counsellor_id', auth()->user()->id], ['status', Counselling::DONE]])->count();
-        $upcomingCounselling = Counselling::where('counsellor_id', auth()->user()->id)->whereDate('due', '>', today()->format('Y-m-d'))->count();
+        $upcomingCounselling = Counselling::where([['counsellor_id', auth()->user()->id], ['status', Counselling::BOOKED]])->whereDate('due', '>', today()->format('Y-m-d'))->count();
         $recentCounsellings = Counselling::where('counsellor_id', auth()->user()->id)->whereDate('due', '<=', today()->format('Y-m-d'))->orderby('id', 'DESC')->limit(5)->get();
 
         $dates = [];

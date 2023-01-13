@@ -55,9 +55,9 @@
                     </form>
                 </div>
                 <div class="ml-2">
-                    <button data-target="#importTranslatorModal" data-toggle="modal" class="btn btn-sm btn-success">
-                        Import Translator <i class="fas fa-upload"></i>
-                    </button>
+{{--                    <button data-target="#importTranslatorModal" data-toggle="modal" class="btn btn-sm btn-success">--}}
+{{--                        Import Translator <i class="fas fa-upload"></i>--}}
+{{--                    </button>--}}
                     <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#createTranslator">
                         Add New Translator <i class="fas fa-plus"></i>
                     </a>

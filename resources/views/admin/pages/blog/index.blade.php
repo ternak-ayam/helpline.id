@@ -86,7 +86,7 @@
                                         <i class="far fa-edit"></i>
                                     </a>
 
-                                    <a href="#"
+                                    <a target="_blank" href="{{ url('/posts/' . $post->id) }}"
                                        class="btn btn-icon btn-sm btn-info">
                                         <i class="fas fa-eye"></i>
                                     </a>

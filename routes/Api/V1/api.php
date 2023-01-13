@@ -23,7 +23,6 @@ Route::middleware('auth:sanctum,counsellor,translator')->group(function () {
     Route::get('counsellors', [\App\Http\Controllers\Api\V1\Counsellor\User\CounsellorController::class, 'index']);
     Route::get('counsellors/{counsellor}', [\App\Http\Controllers\Api\V1\Counsellor\User\CounsellorController::class, 'show']);
 
-    Route::get('counselling/{counselling:counselling_id}', [\App\Http\Controllers\Api\V1\Counselling\User\CounsellingController::class, 'show']);
     Route::post('counselling', [\App\Http\Controllers\Api\V1\Counselling\User\CounsellingController::class, 'store']);
 
     Route::post('user/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'storeUser']);
@@ -41,5 +40,6 @@ Route::middleware('auth:sanctum,counsellor,translator')->group(function () {
 
 Route::get('parse/accesstoken/{accessToken}', [\App\Http\Controllers\Api\V1\AccessTokenController::class, 'parse']);
 
+Route::get('counselling/{counselling:counselling_id}', [\App\Http\Controllers\Api\V1\Counselling\User\CounsellingController::class, 'show']);
 Route::get('posts', [\App\Http\Controllers\Api\V1\Blog\PostController::class, 'index']);
 Route::get('posts/{post}', [\App\Http\Controllers\Api\V1\Blog\PostController::class, 'show']);

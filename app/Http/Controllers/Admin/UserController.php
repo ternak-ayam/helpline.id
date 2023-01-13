@@ -70,7 +70,11 @@ class UserController extends Controller
 
     public function import()
     {
-        Excel::import(new ImportUser, request()->file('user_file'));
+        try {
+            Excel::import(new ImportUser, request()->file('user_file'));
+        } catch (\Exception $e) {
+            return back()->withErrors(['status' => 'Wrong Column Format']);
+        }
 
         return back();
     }

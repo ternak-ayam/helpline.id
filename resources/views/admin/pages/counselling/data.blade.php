@@ -53,7 +53,7 @@
                             </tr>
                         @empty
                             <tr>
-                                <td colspan="5">
+                                <td colspan="7">
                                     <p class="text-center"><em>There is no record.</em></p>
                                 </td>
                             </tr>

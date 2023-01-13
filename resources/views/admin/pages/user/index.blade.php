@@ -37,6 +37,9 @@
 
     <x-section>
         <x-slot name="title">
+            @error('status')
+            <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
         </x-slot>
 
         <x-slot name="header">
