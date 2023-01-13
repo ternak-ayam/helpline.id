@@ -24,19 +24,19 @@ Route::middleware('auth:sanctum,counsellor,translator')->group(function () {
     Route::get('counsellors/{counsellor}', [\App\Http\Controllers\Api\V1\Counsellor\User\CounsellorController::class, 'show']);
 
     Route::post('counselling', [\App\Http\Controllers\Api\V1\Counselling\User\CounsellingController::class, 'store']);
-
-    Route::post('user/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'storeUser']);
-    Route::put('user/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'updateUser']);
-
-    Route::post('counsellor/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'storeCounsellor']);
-    Route::put('counsellor/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'updateCounsellor']);
-
-    Route::post('translator/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'storeTranslator']);
-    Route::put('translator/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'updateTranslator']);
-
-    Route::post('chat/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\ChatController::class, 'store']);
-    Route::get('chat/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\ChatController::class, 'show']);
 });
+
+Route::post('user/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'storeUser']);
+Route::put('user/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'updateUser']);
+
+Route::post('counsellor/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'storeCounsellor']);
+Route::put('counsellor/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'updateCounsellor']);
+
+Route::post('translator/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'storeTranslator']);
+Route::put('translator/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'updateTranslator']);
+
+Route::post('chat/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\ChatController::class, 'store']);
+Route::get('chat/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\ChatController::class, 'show']);
 
 Route::get('parse/accesstoken/{accessToken}', [\App\Http\Controllers\Api\V1\AccessTokenController::class, 'parse']);
 
