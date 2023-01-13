@@ -76,20 +76,47 @@ const AdvanceFooter = ({ bottomFooter = "bottom-10" }) => {
                         </div>
                         <div className="text-white text-lg font-thin flex gap-4">
                             <div>
-                                <a href="">Policies</a>
+                                <a
+                                    target={"_blank"}
+                                    href="https://bullyid.org/privacy-policy/"
+                                >
+                                    Policies
+                                </a>
                             </div>
                             <div>
-                                <a href="">Terms of Use</a>
+                                <a
+                                    target={"_blank"}
+                                    href="https://bullyid.org/terms-and-conditions/"
+                                >
+                                    Terms of Use
+                                </a>
                             </div>
                             <div>
-                                <a href="">Privacy</a>
+                                <a
+                                    target={"_blank"}
+                                    href="https://bullyid.org/privacy-policy/"
+                                >
+                                    Privacy
+                                </a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <p className={"text-blue-500 p-4"}>
-                    Managed by Bullyid Indonesia
-                </p>
+                <div className={"flex"}>
+                    <div className={"my-auto"}>
+                        <span className={"text-blue-500 p-4"}>
+                            Managed by Bullyid Indonesia. Supported and
+                            supervised by:{" "}
+                        </span>
+                    </div>
+                    <div>
+                        <img
+                            className={"w-20"}
+                            src={process.env.MIX_APP_URL + "/assets/iom.png"}
+                            alt="IOM Logo"
+                        />
+                    </div>
+                </div>
             </footer>
         </>
     );

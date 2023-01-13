@@ -41,23 +41,37 @@ const AdvanceNavbar = () => {
                         </div>
                     </div>
                     <div className="col-span-1 flex flex-col gap-2 items-center lg:justify-start mt-2 lg:mt-none">
-                        <div className="bg-[#28c484] p-1 rounded-sm w-1/2 flex gap-2 items-center justify-center">
-                            <img
-                                className="w-[34px]"
-                                src={
-                                    process.env.MIX_APP_URL +
-                                    "/assets/livestreamicon.png"
+                        <div className="bg-[#28c484] p-1 rounded-sm w-1/2">
+                            <a
+                                href="/login"
+                                className={
+                                    " flex gap-2 items-center justify-center"
                                 }
-                                alt=""
-                            />{" "}
-                            <a className="text-white text-lg">Online</a>
+                            >
+                                <img
+                                    className="w-[34px]"
+                                    src={
+                                        process.env.MIX_APP_URL +
+                                        "/assets/livestreamicon.png"
+                                    }
+                                    alt=""
+                                />{" "}
+                                <span className="text-white text-lg">
+                                    Online
+                                </span>
+                            </a>
                         </div>
                         <div className="bg-[#2769c5] p-1 rounded-sm w-2/3 flex gap-2 items-center justify-center">
-                            <a className="text-white text-lg">Available 24/7</a>
+                            <a href="/login" className="text-white text-lg">
+                                Available 24/7
+                            </a>
                         </div>
                     </div>
                     <div className="lg:col-span-2 flex gap-8 justify-center lg:justify-start my-auto lg:mt-none lg:mb-none">
-                        <div className="flex gap-2 items-center justify-center">
+                        <a
+                            href="/login"
+                            className="flex gap-2 items-center justify-center"
+                        >
                             <img
                                 className="w-[34px]"
                                 src={
@@ -69,8 +83,11 @@ const AdvanceNavbar = () => {
                             <a className="border-b-2 border-[#28c484] text-lg text-[#2769c5]">
                                 LIVE CHAT
                             </a>
-                        </div>
-                        <div className="flex gap-2 items-center justify-center">
+                        </a>
+                        <a
+                            href="/login"
+                            className="flex gap-2 items-center justify-center"
+                        >
                             <img
                                 className="w-[30px]"
                                 src={
@@ -82,7 +99,7 @@ const AdvanceNavbar = () => {
                             <a className="border-b-2 border-[#28c484] text-lg text-[#2769c5]">
                                 LIVE AUDIO CHAT
                             </a>
-                        </div>
+                        </a>
                     </div>
                 </nav>
             </div>

@@ -35,8 +35,7 @@ const PostCard = ({ posts, itemsPerPage }) => {
                                     />
                                 </div>
                                 <div className="lg:text-3xl text-white font-semibold text-xl">
-                                    {post.title}{" "}
-                                    <i className="fa-solid fa-camera p-2 bg-white lg:fa-xl rounded-full text-[#2769c5]"></i>
+                                    {post.title}
                                 </div>
                                 <div className="lg:absolute right-8 md:absolute">
                                     <img

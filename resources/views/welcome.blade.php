@@ -7,6 +7,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
         <title>{{ config('app.name') }}</title>
+        <link rel="icon" href="{{ asset('assets/icon.jpg') }}">
+        <link rel="apple-touch-icon" href="{{ asset('assets/icon.jpg') }}">
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
