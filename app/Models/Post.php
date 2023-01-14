@@ -14,6 +14,7 @@ class Post extends Model
         'id',
         'title',
         'body',
+        'cover_text',
         'cover',
         'tags',
         'created_by',

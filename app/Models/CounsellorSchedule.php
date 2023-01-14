@@ -22,7 +22,7 @@ class CounsellorSchedule extends Model
 
     public function counsellor()
     {
-        return $this->belongsTo(Counsellor::class, 'counsellor_id');
+        return $this->belongsTo(Counsellor::class, 'counsellor_id')->withTrashed();
     }
     public function counselling()
     {

@@ -6,12 +6,13 @@ use App\Models\Traits\HandleUpload;
 use App\Models\Traits\HashPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class Counsellor extends Authenticatable
 {
-    use HasFactory, HashPassword, HandleUpload, Notifiable;
+    use HasFactory, HashPassword, HandleUpload, Notifiable, SoftDeletes;
 
     protected $with = ['educations', 'languages'];
 
@@ -22,6 +23,7 @@ class Counsellor extends Authenticatable
         'image',
         'timezone',
         'password',
+        'deleted_at',
     ];
 
     protected $hidden = [

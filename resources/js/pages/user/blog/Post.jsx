@@ -43,7 +43,12 @@ const Post = () => {
                         </div>
                         <div>
                             <div
-                                dangerouslySetInnerHTML={{ __html: post.body }}
+                                dangerouslySetInnerHTML={{
+                                    __html: post.body?.replace(
+                                        "Powered by Froala Editor",
+                                        ""
+                                    ),
+                                }}
                             ></div>
                         </div>
                         <div className={"mt-4"}>

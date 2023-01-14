@@ -70,17 +70,17 @@ class Counselling extends Model
 
     public function counsellor()
     {
-        return $this->belongsTo(Counsellor::class, 'counsellor_id');
+        return $this->belongsTo(Counsellor::class, 'counsellor_id')->withTrashed();
     }
 
     public function user()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(User::class, 'user_id')->withTrashed();
     }
 
     public function translator()
     {
-        return $this->belongsTo(Translator::class, 'translator_id');
+        return $this->belongsTo(Translator::class, 'translator_id')->withTrashed();
     }
 
     public function generateCounsellingId($due)

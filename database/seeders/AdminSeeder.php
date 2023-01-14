@@ -16,12 +16,11 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
-        $faker = Factory::create();
-
         Admin::create([
-            'name' => $faker->name,
+            'name' => 'Admin',
             'email' => 'admin@helpline.id',
-            'password' => Hash::make('password'),
+            'password' => Hash::make('A5ylum.t0day22'),
+            'timezone' => 'Asia/Jakarta',
         ]);
     }
 }

@@ -19,6 +19,7 @@ class Translator extends Authenticatable
         'language',
         'timezone',
         'password',
+        'deleted_at',
     ];
 
     protected $hidden = [

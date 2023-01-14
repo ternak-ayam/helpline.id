@@ -11,28 +11,31 @@ const AdvanceNavbar = () => {
             }}
         >
             <div className="bg-white w-full">
-                <nav className="container m-auto grid lg:grid-cols-6 grid-cols-1 py-2">
-                    <a
-                        href={"/"}
-                        className="col-span-1 flex justify-center lg:justify-start"
-                    >
-                        <img
-                            src={
-                                process.env.MIX_APP_URL +
-                                "/assets/logo_helpline.png"
-                            }
-                            alt="Logo"
-                        />
-                    </a>
+                <nav className="container m-auto grid md:grid-cols-6 grid-cols-2 py-2">
+                    <div>
+                        <a
+                            href={"/"}
+                            className="col-span-1 md:flex justify-center lg:justify-start"
+                        >
+                            <img
+                                className={"w-32 md:w-full"}
+                                src={
+                                    process.env.MIX_APP_URL +
+                                    "/assets/logo_helpline.png"
+                                }
+                                alt="Logo"
+                            />
+                        </a>
+                    </div>
                     <div className="lg:col-span-2 col-span-1 flex gap-2 items-center justify-center lg:mt-none ">
                         <a className={"-mt-12 mr-2"}>
-                            <i className="fa-solid fa-arrow-right text-[#2769c5] fa-2xl"></i>
+                            <i className="fa-solid fa-arrow-right text-[#2769c5] md:fa-2xl fa-sm"></i>
                         </a>
                         <div>
-                            <div className="text-2xl font-bold tracking-[2px] text-[#2769c5]">
+                            <div className="md:text-2xl font-bold tracking-[2px] text-[#2769c5]">
                                 CRISIS SUPPORT
                             </div>
-                            <div className="text-2xl font-bold tracking-[2px] text-[#2769c5]">
+                            <div className="md:text-2xl font-bold tracking-[2px] text-[#2769c5]">
                                 FOR REFUGEES
                             </div>
                             <div className="text-sm text-[#28c484] font-semibold">
@@ -56,13 +59,16 @@ const AdvanceNavbar = () => {
                                     }
                                     alt=""
                                 />{" "}
-                                <span className="text-white text-lg">
+                                <span className="text-white text-sm md:text-lg">
                                     Online
                                 </span>
                             </a>
                         </div>
                         <div className="bg-[#2769c5] p-1 rounded-sm w-2/3 flex gap-2 items-center justify-center">
-                            <a href="/login" className="text-white text-lg">
+                            <a
+                                href="/login"
+                                className="text-white md:text-lg text-sm"
+                            >
                                 Available 24/7
                             </a>
                         </div>
@@ -80,7 +86,7 @@ const AdvanceNavbar = () => {
                                 }
                                 alt=""
                             />
-                            <a className="border-b-2 border-[#28c484] text-lg text-[#2769c5]">
+                            <a className="border-b-2 border-[#28c484] text-sm md:text-lg text-[#2769c5]">
                                 LIVE CHAT
                             </a>
                         </a>
@@ -96,7 +102,7 @@ const AdvanceNavbar = () => {
                                 }
                                 alt=""
                             />
-                            <a className="border-b-2 border-[#28c484] text-lg text-[#2769c5]">
+                            <a className="border-b-2 border-[#28c484] text-sm md:text-lg text-[#2769c5]">
                                 LIVE AUDIO CHAT
                             </a>
                         </a>

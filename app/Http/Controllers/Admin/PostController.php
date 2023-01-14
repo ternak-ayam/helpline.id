@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
@@ -34,6 +35,7 @@ class PostController extends Controller
     public function update(Request $request, Post $post)
     {
         $post->fill($request->all());
+        $post->cover_text = substr(strip_tags($request->body), 0, 300) . '...';
         $post->saveOrFail();
 
         return redirect(route('admin.blog.post.index'));
@@ -44,7 +46,13 @@ class PostController extends Controller
         $post = new Post();
 
         $post->id = $id;
-        $post->fill($request->all());
+        $post->fill([
+            'title' => $request->tags,
+            'tags' => $request->tags,
+            'body' => Str::replace('Powered by Froala Editor', '', $request->body),
+        ]);
+
+        $post->cover_text = substr(strip_tags($request->body), 0, 200);
         $post->created_by = auth('admin')->user()->id;
         $post->saveOrFail();
 

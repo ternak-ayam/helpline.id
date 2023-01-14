@@ -11,7 +11,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::orderby('id', 'DESC')->paginate(2);
+        $posts = Post::orderby('id', 'DESC')->get();
 
         return PostResource::collection($posts);
     }

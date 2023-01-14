@@ -12,6 +12,7 @@ class PostResource extends JsonResource
             'postId' => $this->id,
             'title' => $this->title,
             'body' => $this->body,
+            'coverText' => $this->cover_text,
             'cover' => $this->cover,
             'tags' => explode(',', $this->tags),
             'createdBy' => $this->creator['name'],
