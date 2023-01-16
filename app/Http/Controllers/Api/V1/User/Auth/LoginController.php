@@ -7,6 +7,7 @@ use App\Http\Resources\Api\V1\User\Auth\LoginResource;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -58,5 +59,18 @@ class LoginController extends Controller
         $this->incrementLoginAttempts($request);
 
         return $this->sendFailedLoginResponse($request);
+    }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('web')->logout();
+
+        if ($response = $this->loggedOut($request)) {
+            return $response;
+        }
+
+        return $request->wantsJson()
+            ? new JsonResponse([], 204)
+            : redirect('/');
     }
 }

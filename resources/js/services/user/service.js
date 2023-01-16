@@ -59,7 +59,30 @@ const storeBooking = (bookingData, counsellorId, bookDate) => {
 };
 
 const getUserBoard = () => {
-    return axios.get(API_URL + "/", { headers: authHeader() });
+    return axios
+        .get(API_URL + "/profile", { headers: authHeader() })
+        .then((response) => {
+            return response.data;
+        });
+};
+
+const UpdateUserProfile = (user) => {
+    return axios
+        .put(
+            API_URL + "/profile",
+            {
+                name: user.name,
+                email: user.email,
+                country: user.country,
+                birthdate: user.birthdate,
+                sex: user.sex,
+                password: user.password,
+            },
+            { headers: authHeader() }
+        )
+        .then((response) => {
+            return response.data;
+        });
 };
 
 const getCounsellingToken = (counsellingId, userId, tokenType = "rtcToken") => {
@@ -156,5 +179,6 @@ export default {
     updateDuration,
     storeDuration,
     getMessages,
+    UpdateUserProfile,
     storeMessages,
 };

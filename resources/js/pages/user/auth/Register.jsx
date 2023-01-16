@@ -50,7 +50,7 @@ const Register = () => {
         setLoading(true);
         dispatch(register(userData))
             .then(() => {
-                history.push("/");
+                history.push("/counsellors");
             })
             .catch(() => {
                 setLoading(false);
@@ -60,7 +60,7 @@ const Register = () => {
     return (
         <>
             <Guest imageHeight={"146vh"} bottomFooter={"-bottom-72"}>
-                <Navbar />
+                <Navbar showUser={false} />
                 <Container component="main" maxWidth="xs">
                     <CssBaseline />
                     <Box

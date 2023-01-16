@@ -2,6 +2,7 @@ import User from "../services/user/service";
 import {
     GET_ALL_COUNSELLOR,
     GET_COUNSELLOR,
+    GET_PROFILE,
     IS_LOADING,
     SET_BOOK_DATE,
     SET_MESSAGE,
@@ -12,6 +13,80 @@ import {
 import moment from "moment";
 import { showErrorAlerts, showSuccessAlert } from "./alert";
 import { generateRtmToken } from "./text";
+
+export const updateUserProfile = (user) => (dispatch) => {
+    dispatch({
+        type: IS_LOADING,
+        payload: true,
+    });
+
+    return User.UpdateUserProfile(user).then(
+        () => {
+            dispatch({
+                type: IS_LOADING,
+                payload: false,
+            });
+
+            showSuccessAlert("Success update user profile");
+
+            return Promise.resolve();
+        },
+        (error) => {
+            const message = error.response.data.error;
+
+            dispatch({
+                type: SET_MESSAGE,
+                payload: message,
+            });
+
+            dispatch({
+                type: IS_LOADING,
+                payload: false,
+            });
+
+            showErrorAlerts(message.errors);
+
+            return Promise.reject();
+        }
+    );
+};
+
+export const getUserProfile = () => (dispatch) => {
+    dispatch({
+        type: IS_LOADING,
+        payload: true,
+    });
+    return User.getUserBoard().then(
+        (response) => {
+            dispatch({
+                type: GET_PROFILE,
+                payload: response.data,
+            });
+
+            dispatch({
+                type: IS_LOADING,
+                payload: false,
+            });
+
+            return Promise.resolve();
+        },
+        (error) => {
+            const message = error.response.data.error;
+
+            dispatch({
+                type: SET_MESSAGE,
+                payload: message,
+            });
+
+            dispatch({
+                type: IS_LOADING,
+                payload: false,
+            });
+
+            return Promise.reject();
+        }
+    );
+};
 
 export const getCounsellor = (page) => (dispatch) => {
     return User.getCounsellor(page).then(

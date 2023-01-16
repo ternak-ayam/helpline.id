@@ -20,10 +20,14 @@ Route::post('password/email', [\App\Http\Controllers\Api\V1\User\Auth\ForgotPass
 Route::post('password/reset', [\App\Http\Controllers\Api\V1\User\Auth\ResetPasswordController::class, 'reset'])->name('password.update');
 
 Route::middleware('auth:sanctum,counsellor,translator')->group(function () {
+    Route::post('logout', [\App\Http\Controllers\Api\V1\User\Auth\LoginController::class, 'logout'])->name('logout');
     Route::get('counsellors', [\App\Http\Controllers\Api\V1\Counsellor\User\CounsellorController::class, 'index']);
     Route::get('counsellors/{counsellor}', [\App\Http\Controllers\Api\V1\Counsellor\User\CounsellorController::class, 'show']);
 
     Route::post('counselling', [\App\Http\Controllers\Api\V1\Counselling\User\CounsellingController::class, 'store']);
+
+    Route::get('profile', [\App\Http\Controllers\Api\V1\Counselling\User\ProfileController::class, 'index']);
+    Route::put('profile', [\App\Http\Controllers\Api\V1\Counselling\User\ProfileController::class, 'update']);
 });
 
 Route::post('user/call/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\CallController::class, 'storeUser']);

@@ -31,3 +31,5 @@ export const TEXT_CHANNEL = "TEXT_CHANNEL";
 
 export const POSTS = "POSTS";
 export const DETAIL_POST = "DETAIL_POST";
+
+export const GET_PROFILE = "GET_PROFILE";

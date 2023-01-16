@@ -6,6 +6,7 @@ import booking from "./booking";
 import call from "./call";
 import text from "./text";
 import blog from "./blog";
+import profile from "./profile";
 
 export default combineReducers({
     auth,
@@ -15,4 +16,5 @@ export default combineReducers({
     call,
     text,
     blog,
+    profile,
 });

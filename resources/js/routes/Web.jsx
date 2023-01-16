@@ -13,6 +13,7 @@ import TextChat from "../pages/user/counselling/TextChat";
 import Call from "../pages/user/counselling/Call";
 import NotFound from "../pages/errors/NotFound";
 import Post from "../pages/user/blog/Post";
+import Profile from "../pages/user/profile/Profile";
 
 const Web = () => {
     return (
@@ -61,6 +62,7 @@ const Web = () => {
                     component={CounsellorDashboard}
                     exact
                 />
+                <Route path={"/profile"} component={Profile} exact />
                 <Route path={"/posts/:postId"} component={Post} exact />
                 <Route component={NotFound} />
             </Switch>

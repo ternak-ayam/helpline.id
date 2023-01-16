@@ -23,7 +23,7 @@ const Login = () => {
     const { message } = useSelector((state) => state.message);
     const { isLoggedIn } = useSelector((state) => state.auth);
 
-    if (isLoggedIn) history.push("/");
+    if (isLoggedIn) history.push("/counsellors");
 
     const handleLogin = () => {
         setLoading(true);
@@ -39,7 +39,7 @@ const Login = () => {
     return (
         <>
             <Guest>
-                <Navbar />
+                <Navbar showUser={false} />
                 <Container component="main" maxWidth="xs">
                     <CssBaseline />
                     <Box

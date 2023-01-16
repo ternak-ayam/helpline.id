@@ -60,4 +60,9 @@ class User extends Authenticatable implements CanResetPassword
     {
         return (bool) $this->is_agree_to_term;
     }
+
+    public function counsellings()
+    {
+        return $this->hasMany(Counselling::class, 'user_id');
+    }
 }

@@ -69,10 +69,22 @@ export const login = (email, password) => (dispatch) => {
 };
 
 export const logout = () => (dispatch) => {
+    dispatch({
+        type: IS_LOADING,
+        payload: true,
+    });
+
     Auth.logout().then(() => {
         dispatch({
             type: LOGOUT,
         });
+
+        dispatch({
+            type: IS_LOADING,
+            payload: false,
+        });
+
+        return Promise.resolve();
     });
 };
 

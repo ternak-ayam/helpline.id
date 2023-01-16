@@ -1,4 +1,5 @@
 import axios from "axios";
+import authHeader from "./header";
 
 const API_URL = process.env.MIX_API_URL;
 
@@ -46,20 +47,13 @@ const register = (userData) => {
 
 const logout = () => {
     return axios
-        .post(API_URL + "/logout")
+        .post(API_URL + "/logout", {}, { headers: authHeader() })
         .then((response) => {
-            const user = response.data.data.user;
-
-            if (user.access_token) {
+            if (localStorage.getItem("user")) {
                 localStorage.removeItem("user");
             }
 
             return response.data;
-        })
-        .catch((err) => {
-            if (err.response.status === 403) {
-                window.location.href = "/login";
-            }
         });
 };
 
