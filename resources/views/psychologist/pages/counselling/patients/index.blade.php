@@ -25,16 +25,18 @@
                     <table class="table table-striped">
                         <tbody>
                         <tr>
-                            <th>Counselling ID</th>
+                            <th>No</th>
+                            <th>Name</th>
+                            <th>Counselling Time</th>
                             <th>Counselling Method</th>
-                            <th>Date & Time</th>
                             <th>Action</th>
                         </tr>
                         @forelse($schedules as $schedule)
                             <tr>
-                                <td>{{ $schedule->counselling_id }}</td>
-                                <td>{{ $schedule->getCounsellingMethod() }}</td>
+                                <td>{{ $schedules->firstItem() + $loop->index }}</td>
+                                <td>{{ $schedule->user['name'] }}</td>
                                 <td>{{ $schedule->due->timezone(auth()->user()->timezone)->format('F j, Y H:i') }}</td>
+                                <td>{{ $schedule->getCounsellingMethod() }}</td>
                                 <td>
                                     <a href="{{ route('psychologist.counselling.patient.show', $schedule->counselling_id) }}" class="btn btn-danger"><i
                                             class="fas fa-eye"></i>

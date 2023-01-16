@@ -29,7 +29,7 @@ const Login = () => {
         setLoading(true);
         dispatch(login(email, password))
             .then(() => {
-                history.push("/");
+                history.push("/counsellors");
             })
             .catch(() => {
                 setLoading(false);

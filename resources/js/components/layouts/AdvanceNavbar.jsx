@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 const AdvanceNavbar = () => {
     return (
         <div
-            className={"h-screen"}
+            className={"h-screen bg-center md:bg-right bg-cover"}
             style={{
                 backgroundImage: `url(${
                     process.env.MIX_APP_URL + "/assets/helpline_bg.png"

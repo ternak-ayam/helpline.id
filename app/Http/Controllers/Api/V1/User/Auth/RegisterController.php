@@ -45,7 +45,8 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'unhcr_number' => ['required', 'string', 'unique:users', 'exists:unhcrs'],
+            'name' => ['required', 'string', 'unique:users'],
+            'unhcr_number' => ['required', 'string', 'exists:unhcrs'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
             'country' => ['required', 'string'],
@@ -56,6 +57,9 @@ class RegisterController extends Controller
                 'female',
                 'others'
             ])],
+            'informed_consent' => ['required']
+        ], [
+            'informed_consent.required' => 'Please check the informed consent'
         ]);
     }
 
@@ -68,7 +72,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         return User::create([
-            'name' => explode('@', $data['email'])[0],
+            'name' => $data['name'],
             'email' => $data['email'],
             'timezone' => $data['timezone'],
             'unhcr_number' => $data['unhcr_number'],

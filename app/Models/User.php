@@ -58,6 +58,6 @@ class User extends Authenticatable implements CanResetPassword
 
     public function isAgreeToTerm()
     {
-        return $this->is_agree_to_term ? "Setuju" : "Tidak Setuju";
+        return (bool) $this->is_agree_to_term;
     }
 }

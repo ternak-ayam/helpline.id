@@ -23,12 +23,14 @@ const login = (email, password) => {
 const register = (userData) => {
     return axios
         .post(API_URL + "/register", {
+            name: userData.name,
             email: userData.email,
             unhcr_number: userData.unhcr,
             country: userData.country,
             birthdate: userData.birthdate,
             sex: userData.sex,
             password: userData.password,
+            informed_consent: userData.informedConsent,
             timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         })
         .then((response) => {

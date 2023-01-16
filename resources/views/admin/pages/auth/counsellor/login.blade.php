@@ -1,5 +1,5 @@
 @extends('layouts.guest')
-@section('title', 'Login Admin')
+@section('title', 'Login Psychologist')
 @section('content')
     <section class="section">
         <div class="container mt-5">

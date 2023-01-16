@@ -44,6 +44,9 @@
 </head>
 
 <body>
+<div class="text-right">
+    <img style="width: 240px" src="{{ base_path('public/assets/logo_helpline.png') }}" alt="Logo Helpline">
+</div>
 <div class="text-center mb-4">
     <div class="mt-2">
         <h4>EMOTIONAL SUPPORT PATIENT REPORT

@@ -167,42 +167,42 @@
                             <div class="form-group row">
                                 <label for="counsellor_name" class="col-sm-4 col-form-label">Counsellor/Psychologist</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="issues[counsellor_name]" id="counsellor_name"
+                                    <input type="text" class="form-control" name="issues[counsellor_name]" id="counsellor_name" readonly
                                            value="{{ $counselling->counsellor['name'] }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="patient_name" class="col-sm-4 col-form-label">Patient Name</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="issues[patient_name]" id="patient_name"
-                                           value="{{ old('patient_name', $issues['patient_name']) }}">
+                                    <input type="text" class="form-control" name="issues[patient_name]" id="patient_name" readonly
+                                           value="{{ old('patient_name', $counselling->user['name']) }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="counselling_date" class="col-sm-4 col-form-label">Counselling Date and Time</label>
                                 <div class="col-sm-8">
-                                    <input type="datetime-local" class="form-control" name="issues[counselling_date]"
-                                           id="counselling_date" value="{{ $counselling->due->timezone($counselling->counsellor['timezone'])->format('Y-m-d H:i') }}">
+                                    <input type="text" class="form-control" name="issues[counselling_date]"
+                                           id="counselling_date" readonly value="{{ $counselling->due->timezone('Asia/Jakarta')->format('Y-m-d H:i') }} WIB">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="session" class="col-sm-4 col-form-label">Session</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="issues[session]" id="session"
-                                           value="Ke-{{ $counselling->getSessionQuantity() }}">
+                                    <input type="text" class="form-control" name="issues[session]" id="session" readonly
+                                           value="Session {{ $counselling->getSessionQuantity() }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="counselling_method" class="col-sm-4 col-form-label">Counselling Method</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="issues[counselling_method]"
+                                    <input type="text" class="form-control" name="issues[counselling_method]" readonly
                                            id="counselling_method" value="{{ $counselling->getCounsellingMethod() }}">
                                 </div>
                             </div>
                             <div class="form-group row">
                                 <label for="patient_birthdate" class="col-sm-4 col-form-label">Patient Birthdate (yyyy-mm-dd)</label>
                                 <div class="col-sm-8">
-                                    <input type="date" class="form-control" name="issues[patient_birthdate]"
+                                    <input type="text" class="form-control" name="issues[patient_birthdate]" readonly
                                            id="patient_birthdate" value="{{ $counselling->user['birthdate']->format('Y-m-d') }}">
                                 </div>
                             </div>
@@ -216,11 +216,12 @@
                             <div class="form-group row">
                                 <label for="informed_consent" class="col-sm-4 col-form-label">Informed Consent</label>
                                 <div class="col-sm-8">
-                                    <input type="text" class="form-control" name="issues[informed_consent]"
-                                           id="informed_consent" value="{{ $counselling->user->isAgreeToTerm() }}">
+                                    @if($counselling->user->isAgreeToTerm())
+                                        <i class="fas fa-check text-success" style="font-size: 24px"></i>
+                                    @endif
                                 </div>
                             </div>
-                            <div class="section-title">Mandated Disclosure </div>
+                            <div class="section-title">Mandated Disclosure</div>
                             <div class="form-group row">
                                 <label for="is_sex_harassment" class="col-sm-4 col-form-label">
                                     Is this a case of sexual violence, harassment, or bullying, or is it another case of legal interest?

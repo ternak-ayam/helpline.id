@@ -56,4 +56,13 @@ class LoginController extends Controller
             'timezone' => $request->timezone,
         ]);
     }
+
+    protected function attemptLogin(Request $request)
+    {
+        $request->session()->flush();
+
+        return $this->guard()->attempt(
+            $this->credentials($request), $request->boolean('remember')
+        );
+    }
 }

@@ -27,12 +27,14 @@ import LoadingButton from "@mui/lab/LoadingButton";
 
 const Register = () => {
     const [userData, setUserData] = useState({
+        name: "",
         email: "",
         unhcr: "",
         birthdate: "",
         country: "",
         sex: "",
         password: "",
+        informedConsent: "",
     });
 
     const [loading, setLoading] = useState(false);
@@ -42,7 +44,7 @@ const Register = () => {
 
     const { isLoggedIn } = useSelector((state) => state.auth);
 
-    if (isLoggedIn) history.push("/");
+    if (isLoggedIn) history.push("/counsellors");
 
     const handleRegister = () => {
         setLoading(true);
@@ -86,6 +88,33 @@ const Register = () => {
                         </Typography>
                         <Box component="form" noValidate sx={{ mt: 1 }}>
                             <InputLabel
+                                id="select-name"
+                                className={"text-[#1565c0] font-bold mt-2"}
+                            >
+                                Name
+                            </InputLabel>
+                            <TextField
+                                sx={{
+                                    label: { color: "#1565c0" },
+                                }}
+                                className={"bg-blue-50 border-0 mt-0"}
+                                required
+                                fullWidth
+                                type="text"
+                                onChange={(e) =>
+                                    setUserData({
+                                        ...userData,
+                                        name: e.target.value,
+                                    })
+                                }
+                                value={userData.name}
+                                id="name"
+                                labelid="select-name"
+                                name="name"
+                                InputLabelProps={{ shrink: true }}
+                                autoFocus
+                            />
+                            <InputLabel
                                 id="select-email"
                                 className={"text-[#1565c0] font-bold mt-2"}
                             >
@@ -110,7 +139,6 @@ const Register = () => {
                                 labelid="select-email"
                                 name="email"
                                 InputLabelProps={{ shrink: true }}
-                                autoFocus
                             />
                             <InputLabel
                                 id="select-unhcr"
@@ -270,7 +298,16 @@ const Register = () => {
                             <FormControlLabel
                                 className={"text-[#1565c0] text-xs"}
                                 value="end"
-                                control={<Checkbox />}
+                                control={
+                                    <Checkbox
+                                        onChange={(e) => {
+                                            setUserData({
+                                                ...userData,
+                                                informedConsent: e.target.value,
+                                            });
+                                        }}
+                                    />
+                                }
                                 label={
                                     <Typography variant="body3" color="primary">
                                         Bullyid Indonesia provides a national

@@ -29,6 +29,13 @@
                             <div class="section-title mt-0">Basic Information</div>
                             <div class="form-group">
                                 <div class="my-2">
+                                    <label for="name">Name</label>
+                                    <input type="text" name="name" id="name" class="form-control" required>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="my-2">
                                     <label for="name">UNHCR Number</label>
                                     <input type="text" name="unhcr_number" id="unhcr_number" class="form-control" required>
                                     <div class="invalid-feedback"></div>
