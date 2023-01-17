@@ -6,6 +6,7 @@ use App\Http\Controllers\Api\V1\AccessTokenController;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Api\V1\Counselling\StoreCounsellingRequest;
 use App\Http\Resources\Api\V1\User\Counselling\CounsellorDetailResource;
+use App\Models\Admin;
 use App\Models\Counselling;
 use App\Models\CounsellorSchedule;
 use App\Models\Translator;
@@ -54,11 +55,15 @@ class CounsellingController extends Controller
 
             $token = (new AccessTokenController())->generate($counselling);
 
-            $user->notify(new SendBookingDetailNotification($counselling, $token['user_token']));
-            $counselling->counsellor->notify(new SendBookingDetailNotification($counselling, $token['counsellor_token']));
+            $admin = Admin::where('email', 'hellohelpline@gmail.com')->first();
+
+            $admin->notify(new SendBookingDetailNotification($counselling, $token['user_token'], $admin));
+
+            $user->notify(new SendBookingDetailNotification($counselling, $token['user_token'], $user));
+            $counselling->counsellor->notify(new SendBookingDetailNotification($counselling, $token['counsellor_token'], $counselling->counsellor));
 
             if ($counselling->translator_id) {
-                $counselling->translator->notify(new SendBookingDetailNotification($counselling, $token['translator_token']));
+                $counselling->translator->notify(new SendBookingDetailNotification($counselling, $token['translator_token'], $counselling->translator));
             }
 
             return $this->success();

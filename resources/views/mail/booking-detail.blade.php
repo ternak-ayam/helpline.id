@@ -1,21 +1,20 @@
 @component('mail::message')
-# Hi Anonim,
+# Hi {{ $user['name'] }},
 
 Congratulations, something good has happened!
-As your book has already been confirmed, you will receive the notification once your
-scheduled consulting time is approved at 1x 24 hour after you received this email.
-Your appointment as follows:
+As your book has already been confirmed, please click on the "Start Consultation" button below at your booked date and time.
+Your appointment is as follows:
 
 ## Booking Details:
 @component('mail::table')
 |     |          |
 | ------------- |:-------------:|
+| Name of Patient      | {{ $booking['user']['name'] }}      |
 | Name of Experts      | {{ $booking['counsellor']['name'] }}      |
-@if(! blank($booking['user']['timezone']))
-| Time of Appointment      | {{ $booking['due']->timezone($booking['user']['timezone'])->format('F j, Y H:i') }}      |
-@else
-| Time of Appointment      | {{ $booking['due']->format('F j, Y H:i') }} UTC      |
+@if($booking['is_need_translator'])
+| Name of Translator      | {{ $booking['translator']['name'] }}      |
 @endif
+| Time of Appointment      | {{ $booking['due']->timezone('Asia/Jakarta')->format('F j, Y H:i') }} WIB      |
 | Type of Consultation      | {{ Str::replace('-', ' ', $booking['counselling_method']) }}      |
 | Book Via      | Website      |
 @endcomponent

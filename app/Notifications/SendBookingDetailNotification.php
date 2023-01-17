@@ -19,10 +19,13 @@ class SendBookingDetailNotification extends Notification
 
     public $booking;
     public $token;
-    public function __construct($booking, $token)
+    public $user;
+
+    public function __construct($booking, $token, $user)
     {
         $this->booking = $booking;
         $this->token = $token;
+        $this->user = $user;
     }
 
     /**
@@ -47,7 +50,7 @@ class SendBookingDetailNotification extends Notification
         return (new MailMessage)
                     ->subject("Your consultation booking [{$this->booking->counselling_id}].")
                     ->action('Start Consultation', $this->booking->chat_url . '?token=' . $this->token)
-                    ->markdown('mail.booking-detail', ['booking' => $this->booking]);
+                    ->markdown('mail.booking-detail', ['booking' => $this->booking, 'user' => $this->user]);
     }
 
     /**

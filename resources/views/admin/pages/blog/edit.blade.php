@@ -3,27 +3,30 @@
 @section('title', 'Edit Post')
 
 @section('css')
-    <link href='https://cdn.jsdelivr.net/npm/froala-editor@4.0.10/css/froala_editor.pkgd.min.css' rel='stylesheet'
-          type='text/css'/>
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
 @endsection
 
 @section('js')
-    <script type='text/javascript'
-            src='https://cdn.jsdelivr.net/npm/froala-editor@4.0.10/js/froala_editor.pkgd.min.js'></script>
+    <script src="https://cdn.quilljs.com/1.3.6/quill.js"></script>
     <script>
-        let editor = new FroalaEditor('#bodyEditor', {
-            imageUploadURL: '{{ route('admin.blog.post.storeImage') }}',
-            videoUploadURL: '{{ route('admin.blog.post.storeImage') }}',
-            fileUploadURL: '{{ route('admin.blog.post.storeImage') }}',
-            imageUploadParams: {
-                id: {{ $post->id }}
-            },
-            videoUploadParams: {
-                id: {{ $post->id }}
-            },
-            fileUploadParams: {
-                id: {{ $post->id }}
+        let quill = new Quill('#bodyEditor', {
+            theme: 'snow',
+            modules: {
+                'toolbar': [
+                    [{ 'font': [] }, { 'size': [] }],
+                    [ 'bold', 'italic', 'underline', 'strike' ],
+                    [{ 'color': [] }, { 'background': [] }],
+                    [{ 'script': 'super' }, { 'script': 'sub' }],
+                    [{ 'header': '1' }, { 'header': '2' }, 'blockquote', 'code-block' ],
+                    [{ 'list': 'ordered' }, { 'list': 'bullet'}, { 'indent': '-1' }, { 'indent': '+1' }],
+                    [ 'direction', { 'align': [] }],
+                    [ 'link', 'image', 'video', 'formula' ],
+                    [ 'clean' ]
+                ]
             }
+        });
+        quill.on('text-change', function(delta, oldDelta, source) {
+            document.querySelector("input[name='body']").value = quill.root.innerHTML;
         });
     </script>
 @endsection
@@ -57,7 +60,8 @@
                         <div class="invalid-feedback"></div>
                     </div>
                     <div class="section-title mt-0">Body Content</div>
-                    <textarea id="bodyEditor" name="body">{{ old('body', $post->body) }}</textarea>
+                    <input type="hidden" name="body" value="{{ $post->body }}">
+                    <div id="bodyEditor" style="min-height: 160px;">{!! $post->body !!}</div>
                 </div>
                 <div class="card-footer">
                     <div class="d-flex justify-content-end">

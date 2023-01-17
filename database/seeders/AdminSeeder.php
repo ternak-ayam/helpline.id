@@ -16,9 +16,18 @@ class AdminSeeder extends Seeder
      */
     public function run()
     {
+        Admin::truncate();
+
         Admin::create([
             'name' => 'Admin',
             'email' => 'admin@helpline.id',
+            'password' => Hash::make('A5ylum.t0day22'),
+            'timezone' => 'Asia/Jakarta',
+        ]);
+
+        Admin::create([
+            'name' => 'Admin',
+            'email' => 'hellohelpline@gmail.com',
             'password' => Hash::make('A5ylum.t0day22'),
             'timezone' => 'Asia/Jakarta',
         ]);

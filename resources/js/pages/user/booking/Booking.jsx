@@ -311,13 +311,13 @@ const Booking = () => {
                                                 } flex flex-col p-4 mt-2 cursor-pointer`}
                                             >
                                                 <div className="text-xs text-center font-medium">
-                                                    {time}
+                                                    {time} WIB
                                                 </div>
                                             </div>
                                         ) : (
                                             <div key={i}>
                                                 <div
-                                                    className={`text-white bg-red-500 flex flex-col p-4 mt-2`}
+                                                    className={`text-white bg-red-500 flex flex-col px-4 py-6 mt-2`}
                                                 >
                                                     <div className="text-xs text-center font-medium">
                                                         Booked
