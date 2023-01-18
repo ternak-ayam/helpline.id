@@ -63,6 +63,18 @@
                         @endforeach
                     </div>
                 </div>
+                    <div class="d-flex justify-content-between border-bottom">
+                        <div class="my-2">
+                            <span>Schedules</span>
+                        </div>
+                        <div class="my-2">
+                            @foreach($psychologist->availables as $available)
+                                <div>
+                                    <span>{{ Str::ucfirst($available->day) }}</span>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
             </div>
         </div>
     </div>

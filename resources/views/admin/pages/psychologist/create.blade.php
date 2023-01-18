@@ -164,6 +164,39 @@
                                         Language
                                     </button>
                                 </div>
+                                <div class="section-title mt-0">Schedule Information</div>
+                                <div class="form-group">
+                                    <div class="selectgroup selectgroup-pills">
+                                        <label class="selectgroup-item">
+                                            <input type="checkbox" name="day[]" value="monday" class="selectgroup-input" checked>
+                                            <span class="selectgroup-button">Monday</span>
+                                        </label>
+                                        <label class="selectgroup-item">
+                                            <input type="checkbox" name="day[]" value="tuesday" class="selectgroup-input" checked>
+                                            <span class="selectgroup-button">Tuesday</span>
+                                        </label>
+                                        <label class="selectgroup-item">
+                                            <input type="checkbox" name="day[]" value="wednesday" class="selectgroup-input" checked>
+                                            <span class="selectgroup-button">Wednesday</span>
+                                        </label>
+                                        <label class="selectgroup-item">
+                                            <input type="checkbox" name="day[]" value="thursday" class="selectgroup-input" checked>
+                                            <span class="selectgroup-button">Thursday</span>
+                                        </label>
+                                        <label class="selectgroup-item">
+                                            <input type="checkbox" name="day[]" value="friday" class="selectgroup-input" checked>
+                                            <span class="selectgroup-button">Friday</span>
+                                        </label>
+                                        <label class="selectgroup-item">
+                                            <input type="checkbox" name="day[]" value="saturday" class="selectgroup-input">
+                                            <span class="selectgroup-button">Saturday</span>
+                                        </label>
+                                        <label class="selectgroup-item">
+                                            <input type="checkbox" name="day[]" value="sunday" class="selectgroup-input">
+                                            <span class="selectgroup-button">Sunday</span>
+                                        </label>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="d-flex justify-content-end">

@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Counsellor\CounsellorStoreRequest;
 use App\Http\Requests\Counsellor\CounsellorUpdateRequest;
 use App\Models\Counsellor;
+use App\Models\CounsellorAvailableTime;
 use App\Models\CounsellorEducation;
 use App\Models\CounsellorLanguage;
 use Illuminate\Http\Request;
@@ -28,7 +29,8 @@ class CounsellorController extends Controller
     public function edit(Counsellor $psychologist)
     {
         return view('admin.pages.psychologist.edit', [
-            'psychologist' => $psychologist
+            'psychologist' => $psychologist,
+            'availables' => $psychologist->availables->pluck('day')->toArray()
         ]);
     }
 
@@ -60,6 +62,18 @@ class CounsellorController extends Controller
                 ]);
             }
 
+            CounsellorAvailableTime::where('counsellor_id', $counsellor->id)->delete();
+
+            foreach ($request->day as $day) {
+                CounsellorAvailableTime::updateOrCreate([
+                    'counsellor_id' => $counsellor->id,
+                    'day' => $day,
+                ],[
+                    'counsellor_id' => $counsellor->id,
+                    'day' => $day,
+                ]);
+            }
+
             return redirect(route('admin.user.psychologist.index'));
         });
     }
@@ -85,6 +99,18 @@ class CounsellorController extends Controller
                 CounsellorLanguage::create([
                     'counsellor_id' => $psychologist->id,
                     'language' => $language,
+                ]);
+            }
+
+            CounsellorAvailableTime::where('counsellor_id', $psychologist->id)->delete();
+
+            foreach ($request->day as $day) {
+                CounsellorAvailableTime::updateOrCreate([
+                    'counsellor_id' => $psychologist->id,
+                    'day' => $day,
+                ],[
+                    'counsellor_id' => $psychologist->id,
+                    'day' => $day,
                 ]);
             }
 

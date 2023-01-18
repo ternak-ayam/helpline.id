@@ -5,6 +5,7 @@ namespace App\Http\Resources\Api\V1\User\Counsellor;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Str;
 
 class GetDetailCounsellorResource extends JsonResource
 {
@@ -30,20 +31,26 @@ class GetDetailCounsellorResource extends JsonResource
     public function getCalendars(): array
     {
         $calendars = [];
+        $i = 0;
 
-        for ($i = 1; $i <= 7; $i++) {
+        do {
             $datetime = Carbon::create(now()->addDays($i)->format('Y-m-d'));
             $date = $datetime->format('Y-m-d');
 
-            $calendars[] = [
-                "date" => $date,
-                "times" => [
-                    "09:15",
-                    "10:15",
-                    "11:15"
-                ]
-            ];
+            if (in_array(Str::lower($datetime->format('l')), $this->availables->pluck('day')->toArray())) {
+                $calendars[] = [
+                    "date" => $date,
+                    "times" => [
+                        "09:15",
+                        "10:15",
+                        "11:15"
+                    ]
+                ];
+            }
+
+            $i++;
         }
+        while(count($calendars) <= 6);
 
         return $calendars;
     }

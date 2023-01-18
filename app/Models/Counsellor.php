@@ -45,6 +45,11 @@ class Counsellor extends Authenticatable
         return $this->hasMany(CounsellorSchedule::class, 'counsellor_id');
     }
 
+    public function availables()
+    {
+        return $this->hasMany(CounsellorAvailableTime::class, 'counsellor_id');
+    }
+
     public function imageAttribute(): string
     {
         return 'image';
