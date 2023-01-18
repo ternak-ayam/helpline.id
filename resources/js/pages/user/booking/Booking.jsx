@@ -211,57 +211,95 @@ const Booking = () => {
                             </div>
                         </div>
                         <div className="flex flex-wrap gap-2 mt-4">
-                            <div className="form-check flex items-center gap-2">
-                                <input
-                                    name={"method"}
-                                    className="rounded-full h-4 w-4 border border-2 border-blue-300"
-                                    type="radio"
-                                    onChange={(e) => {
-                                        setBookingData({
-                                            ...bookingData,
-                                            counsellingMethod: e.target.value,
-                                        });
-                                    }}
-                                    value={"text-chat"}
-                                    id="chatCounsellingMethod"
-                                />
-                                <label
-                                    className="form-check-label inline-block text-[#2769c5] font-medium text-xs py-2 px-4 bg-[#fff4dc] rounded-lg"
-                                    htmlFor="chatCounsellingMethod"
-                                >
-                                    <i className="fa-solid fa-envelope text-[#2769c5] text-base"></i>{" "}
-                                    Live Chat
-                                </label>
-                            </div>
-                            <div className="form-check flex items-center gap-2">
-                                <input
-                                    name={"method"}
-                                    className="rounded-full h-4 w-4 border border-2 border-blue-300"
-                                    type="radio"
-                                    onChange={(e) => {
-                                        setBookingData({
-                                            ...bookingData,
-                                            counsellingMethod: e.target.value,
-                                        });
-                                    }}
-                                    value={"audio-chat"}
-                                    id="callCounsellingMethod"
-                                />
-                                <label
-                                    className=" flex gap-2 form-check-label inline-block text-[#2769c5] font-medium text-xs py-2 px-4 bg-[#fff4dc] rounded-lg"
-                                    htmlFor="callCounsellingMethod"
-                                >
-                                    <img
-                                        src={
-                                            process.env.MIX_APP_URL +
-                                            "/assets/volume.png"
-                                        }
-                                        alt=""
-                                        className="w-4"
+                            {counsellor.methods?.includes("text-chat") && (
+                                <div className="form-check flex items-center gap-2">
+                                    <input
+                                        name={"method"}
+                                        className="rounded-full h-4 w-4 border border-2 border-blue-300"
+                                        type="radio"
+                                        onChange={(e) => {
+                                            setBookingData({
+                                                ...bookingData,
+                                                counsellingMethod:
+                                                    e.target.value,
+                                            });
+                                        }}
+                                        value={"text-chat"}
+                                        id="chatCounsellingMethod"
                                     />
-                                    <span>Live Audio Chat</span>
-                                </label>
-                            </div>
+                                    <label
+                                        className="form-check-label inline-block text-[#2769c5] font-medium text-xs py-2 px-4 bg-[#fff4dc] rounded-lg"
+                                        htmlFor="chatCounsellingMethod"
+                                    >
+                                        <i className="fa-solid fa-envelope text-[#2769c5] text-base"></i>{" "}
+                                        Live Chat
+                                    </label>
+                                </div>
+                            )}
+                            {counsellor.methods?.includes("audio-chat") && (
+                                <div className="form-check flex items-center gap-2">
+                                    <input
+                                        name={"method"}
+                                        className="rounded-full h-4 w-4 border border-2 border-blue-300"
+                                        type="radio"
+                                        onChange={(e) => {
+                                            setBookingData({
+                                                ...bookingData,
+                                                counsellingMethod:
+                                                    e.target.value,
+                                            });
+                                        }}
+                                        value={"audio-chat"}
+                                        id="callCounsellingMethod"
+                                    />
+                                    <label
+                                        className=" flex gap-2 form-check-label inline-block text-[#2769c5] font-medium text-xs py-2 px-4 bg-[#fff4dc] rounded-lg"
+                                        htmlFor="callCounsellingMethod"
+                                    >
+                                        <img
+                                            src={
+                                                process.env.MIX_APP_URL +
+                                                "/assets/volume.png"
+                                            }
+                                            alt=""
+                                            className="w-4"
+                                        />
+                                        <span>Live Audio Chat</span>
+                                    </label>
+                                </div>
+                            )}
+                            {counsellor.methods?.includes("video-chat") && (
+                                <div className="form-check flex items-center gap-2">
+                                    <input
+                                        name={"method"}
+                                        className="rounded-full h-4 w-4 border border-2 border-blue-300"
+                                        type="radio"
+                                        onChange={(e) => {
+                                            setBookingData({
+                                                ...bookingData,
+                                                counsellingMethod:
+                                                    e.target.value,
+                                            });
+                                        }}
+                                        value={"audio-chat"}
+                                        id="callCounsellingMethod"
+                                    />
+                                    <label
+                                        className=" flex gap-2 form-check-label inline-block text-[#2769c5] font-medium text-xs py-2 px-4 bg-[#fff4dc] rounded-lg"
+                                        htmlFor="callCounsellingMethod"
+                                    >
+                                        <img
+                                            src={
+                                                process.env.MIX_APP_URL +
+                                                "/assets/volume.png"
+                                            }
+                                            alt=""
+                                            className="w-4"
+                                        />
+                                        <span>Live Video Chat</span>
+                                    </label>
+                                </div>
+                            )}
                         </div>
                     </div>
                     <div className="flex mt-4">

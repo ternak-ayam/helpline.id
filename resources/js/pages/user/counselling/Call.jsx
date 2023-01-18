@@ -35,7 +35,7 @@ const Call = () => {
 
     return (
         <App needAuth={false}>
-            <Navbar />
+            <Navbar showUser={false} />
             <div className="container flex m-auto justify-center p-2 mb-24 mt-20">
                 <div className="border-blue-200 border border-2  rounded-xl w-full flex flex-col justify-center p-2 h-full">
                     <div className="mb-24">
@@ -81,6 +81,37 @@ const Call = () => {
                     ) : null}
 
                     <div className="flex justify-center mb-2">
+                        {!connected ? (
+                            <button
+                                disabled={status}
+                                onClick={() => {
+                                    dispatch(
+                                        joinChannel(
+                                            counsellingId,
+                                            user.user_id,
+                                            user.user_type
+                                        )
+                                    ).then(() => {
+                                        start();
+                                    });
+                                }}
+                                className={`p-4 bg-[#28c484] rounded-full mx-1`}
+                            >
+                                <i className="fa-sharp fa-solid fa-phone fa-xl text-white"></i>
+                            </button>
+                        ) : (
+                            <button
+                                onClick={() => {
+                                    dispatch(leaveChannel());
+                                }}
+                                className={`p-4 bg-red-500 rounded-full mx-1`}
+                            >
+                                <i className="fa-sharp fa-solid fa-phone fa-xl text-white"></i>
+                            </button>
+                        )}
+                    </div>
+
+                    <div className="flex justify-center mb-2">
                         <div>
                             <button
                                 disabled={!connected}
@@ -93,34 +124,13 @@ const Call = () => {
                             >
                                 <i className="fa-solid fa-microphone fa-xl text-white"></i>
                             </button>
-                            {!connected ? (
-                                <button
-                                    disabled={status}
-                                    onClick={() => {
-                                        dispatch(
-                                            joinChannel(
-                                                counsellingId,
-                                                user.user_id,
-                                                user.user_type
-                                            )
-                                        ).then(() => {
-                                            start();
-                                        });
-                                    }}
-                                    className={`p-4 bg-[#28c484] rounded-full mx-1`}
-                                >
-                                    <i className="fa-sharp fa-solid fa-phone fa-xl text-white"></i>
-                                </button>
-                            ) : (
-                                <button
-                                    onClick={() => {
-                                        dispatch(leaveChannel());
-                                    }}
-                                    className={`p-4 bg-red-500 rounded-full mx-1`}
-                                >
-                                    <i className="fa-sharp fa-solid fa-phone fa-xl text-white"></i>
-                                </button>
-                            )}
+                            <button
+                                disabled={!connected}
+                                className={`p-3 bg-gray-400 rounded-full mx-1`}
+                            >
+                                <i className="fa-solid fa-camera fa-xl text-white"></i>
+                            </button>
+
                             <button
                                 disabled={!connected}
                                 onClick={() => {

@@ -30,7 +30,8 @@ class CounsellorController extends Controller
     {
         return view('admin.pages.psychologist.edit', [
             'psychologist' => $psychologist,
-            'availables' => $psychologist->availables->pluck('day')->toArray()
+            'availables' => $psychologist->availables->pluck('day')->toArray(),
+            'methods' => json_decode($psychologist->methods, true)
         ]);
     }
 
@@ -44,7 +45,8 @@ class CounsellorController extends Controller
         return DB::transaction(function () use ($request) {
             $counsellor = new Counsellor();
 
-            $counsellor->fill($request->all());
+            $counsellor->fill($request->except('methods'));
+            $counsellor->methods = json_encode($request->methods);
             $counsellor->saveOrFail();
 
             foreach ($request->education['institution'] as $key => $education) {

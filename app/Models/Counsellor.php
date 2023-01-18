@@ -23,6 +23,7 @@ class Counsellor extends Authenticatable
         'image',
         'timezone',
         'password',
+        'methods',
         'deleted_at',
     ];
 

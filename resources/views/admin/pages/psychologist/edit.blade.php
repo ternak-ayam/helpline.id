@@ -177,34 +177,71 @@
                                 <div class="form-group">
                                     <div class="selectgroup selectgroup-pills">
                                         <label class="selectgroup-item">
-                                            <input type="checkbox" name="day[]" value="monday" class="selectgroup-input" @if(in_array('monday', $availables)) checked @endif>
+                                            <input type="checkbox" name="day[]" value="monday" class="selectgroup-input"
+                                                   @if(in_array('monday', $availables)) checked @endif>
                                             <span class="selectgroup-button">Monday</span>
                                         </label>
                                         <label class="selectgroup-item">
-                                            <input type="checkbox" name="day[]" value="tuesday" class="selectgroup-input" @if(in_array('tuesday', $availables)) checked @endif>
+                                            <input type="checkbox" name="day[]" value="tuesday"
+                                                   class="selectgroup-input"
+                                                   @if(in_array('tuesday', $availables)) checked @endif>
                                             <span class="selectgroup-button">Tuesday</span>
                                         </label>
                                         <label class="selectgroup-item">
-                                            <input type="checkbox" name="day[]" value="wednesday" class="selectgroup-input" @if(in_array('wednesday', $availables)) checked @endif>
+                                            <input type="checkbox" name="day[]" value="wednesday"
+                                                   class="selectgroup-input"
+                                                   @if(in_array('wednesday', $availables)) checked @endif>
                                             <span class="selectgroup-button">Wednesday</span>
                                         </label>
                                         <label class="selectgroup-item">
-                                            <input type="checkbox" name="day[]" value="thursday" class="selectgroup-input" @if(in_array('thursday', $availables)) checked @endif>
+                                            <input type="checkbox" name="day[]" value="thursday"
+                                                   class="selectgroup-input"
+                                                   @if(in_array('thursday', $availables)) checked @endif>
                                             <span class="selectgroup-button">Thursday</span>
                                         </label>
                                         <label class="selectgroup-item">
-                                            <input type="checkbox" name="day[]" value="friday" class="selectgroup-input" @if(in_array('friday', $availables)) checked @endif>
+                                            <input type="checkbox" name="day[]" value="friday" class="selectgroup-input"
+                                                   @if(in_array('friday', $availables)) checked @endif>
                                             <span class="selectgroup-button">Friday</span>
                                         </label>
                                         <label class="selectgroup-item">
-                                            <input type="checkbox" name="day[]" value="saturday" class="selectgroup-input" @if(in_array('saturday', $availables)) checked @endif>
+                                            <input type="checkbox" name="day[]" value="saturday"
+                                                   class="selectgroup-input"
+                                                   @if(in_array('saturday', $availables)) checked @endif>
                                             <span class="selectgroup-button">Saturday</span>
                                         </label>
                                         <label class="selectgroup-item">
-                                            <input type="checkbox" name="day[]" value="sunday" class="selectgroup-input" @if(in_array('sunday', $availables)) checked @endif>
+                                            <input type="checkbox" id="day" name="day[]" value="sunday" class="selectgroup-input"
+                                                   @if(in_array('sunday', $availables)) checked @endif>
                                             <span class="selectgroup-button">Sunday</span>
                                         </label>
                                     </div>
+                                    @error('day')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="section-title mt-0">Counselling Methods</div>
+                                <div class="form-group">
+                                    <div class="selectgroup selectgroup-pills">
+                                        <label class="selectgroup-item">
+                                            <input type="checkbox" name="methods[]" value="audio-chat"
+                                                   class="selectgroup-input" @if(in_array('audio-chat', $methods)) checked @endif>
+                                            <span class="selectgroup-button">Audio Chat</span>
+                                        </label>
+                                        <label class="selectgroup-item">
+                                            <input type="checkbox" name="methods[]" value="text-chat"
+                                                   class="selectgroup-input" @if(in_array('text-chat', $methods)) checked @endif>
+                                            <span class="selectgroup-button">Text Chat</span>
+                                        </label>
+                                        <label class="selectgroup-item">
+                                            <input type="checkbox" id="methods" name="methods[]" value="video-chat"
+                                                   class="selectgroup-input" @if(in_array('video-chat', $methods)) checked @endif>
+                                            <span class="selectgroup-button">Video Chat</span>
+                                        </label>
+                                    </div>
+                                    @error('methods')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>

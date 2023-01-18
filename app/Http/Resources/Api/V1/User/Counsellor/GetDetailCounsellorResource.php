@@ -24,6 +24,7 @@ class GetDetailCounsellorResource extends JsonResource
             'languages' => GetCounsellorLanguageResource::collection($this->languages),
             'educations' => GetCounsellorEducationResource::collection($this->educations),
             'schedules' => GetCounsellorScheduleResource::collection($this->schedules),
+            'methods' => json_decode($this->methods, true),
             'calendars' => $this->getCalendars()
         ];
     }

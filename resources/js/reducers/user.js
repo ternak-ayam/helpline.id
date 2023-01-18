@@ -6,6 +6,7 @@ const initialState = {
         educations: [],
         languages: [],
         schedules: [],
+        methods: [],
         calendars: [],
         user: null,
     },

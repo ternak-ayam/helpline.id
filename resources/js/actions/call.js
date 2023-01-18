@@ -16,7 +16,9 @@ import { showErrorAlert } from "./alert";
 
 let channelParameters = {
     localAudioTrack: null,
+    localVideoTrack: null,
     remoteAudioTrack: null,
+    remoteVideoTrack: null,
     remoteUid: null,
 };
 
@@ -125,6 +127,18 @@ export const handleJoinChannel =
                     status: true,
                 },
             });
+
+            if (mediaType == "video") {
+                channelParameters.remoteVideoTrack = user.videoTrack;
+                channelParameters.remoteAudioTrack = user.audioTrack;
+                channelParameters.remoteUid = user.uid.toString();
+                remotePlayerContainer.id = user.uid.toString();
+                channelParameters.remoteUid = user.uid.toString();
+
+                document.body.append(remotePlayerContainer);
+
+                channelParameters.remoteVideoTrack.play(remotePlayerContainer);
+            }
 
             if (mediaType == "audio") {
                 channelParameters.remoteUid = user.uid;

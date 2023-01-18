@@ -63,18 +63,30 @@
                         @endforeach
                     </div>
                 </div>
-                    <div class="d-flex justify-content-between border-bottom">
-                        <div class="my-2">
-                            <span>Schedules</span>
-                        </div>
-                        <div class="my-2">
-                            @foreach($psychologist->availables as $available)
-                                <div>
-                                    <span>{{ Str::ucfirst($available->day) }}</span>
-                                </div>
-                            @endforeach
-                        </div>
+                <div class="d-flex justify-content-between border-bottom">
+                    <div class="my-2">
+                        <span>Schedules</span>
                     </div>
+                    <div class="my-2">
+                        @foreach($psychologist->availables as $available)
+                            <div>
+                                <span>{{ Str::ucfirst($available->day) }}</span>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="d-flex justify-content-between border-bottom">
+                    <div class="my-2">
+                        <span>Counselliong Methods</span>
+                    </div>
+                    <div class="my-2">
+                        @foreach(json_decode($psychologist->methods, true) ?? [] as $method)
+                            <div>
+                                <span class="text-capitalize">{{ Str::replace('-', ' ', $method) }}</span>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
             </div>
         </div>
     </div>

@@ -9,8 +9,6 @@ const PostCard = ({ posts, itemsPerPage }) => {
     const currentItems = posts.slice(itemOffset, endOffset);
     const pageCount = Math.ceil(posts.length / itemsPerPage);
 
-    console.log(pageCount);
-
     const handlePageClick = (event) => {
         const newOffset = (event.selected * itemsPerPage) % posts.length;
 

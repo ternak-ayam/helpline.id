@@ -141,7 +141,8 @@
                                         </div>
                                         <div class="form-group col-md-6 col-sm-12">
                                             <label>School/Institution</label>
-                                            <input type="text" class="form-control" name="education[institution][]" required>
+                                            <input type="text" class="form-control" name="education[institution][]"
+                                                   required>
                                             <div class="invalid-feedback"></div>
                                         </div>
                                     </div>
@@ -168,34 +169,67 @@
                                 <div class="form-group">
                                     <div class="selectgroup selectgroup-pills">
                                         <label class="selectgroup-item">
-                                            <input type="checkbox" name="day[]" value="monday" class="selectgroup-input" checked>
+                                            <input type="checkbox" name="day[]" value="monday" class="selectgroup-input"
+                                                   checked>
                                             <span class="selectgroup-button">Monday</span>
                                         </label>
                                         <label class="selectgroup-item">
-                                            <input type="checkbox" name="day[]" value="tuesday" class="selectgroup-input" checked>
+                                            <input type="checkbox" name="day[]" value="tuesday"
+                                                   class="selectgroup-input" checked>
                                             <span class="selectgroup-button">Tuesday</span>
                                         </label>
                                         <label class="selectgroup-item">
-                                            <input type="checkbox" name="day[]" value="wednesday" class="selectgroup-input" checked>
+                                            <input type="checkbox" name="day[]" value="wednesday"
+                                                   class="selectgroup-input" checked>
                                             <span class="selectgroup-button">Wednesday</span>
                                         </label>
                                         <label class="selectgroup-item">
-                                            <input type="checkbox" name="day[]" value="thursday" class="selectgroup-input" checked>
+                                            <input type="checkbox" name="day[]" value="thursday"
+                                                   class="selectgroup-input" checked>
                                             <span class="selectgroup-button">Thursday</span>
                                         </label>
                                         <label class="selectgroup-item">
-                                            <input type="checkbox" name="day[]" value="friday" class="selectgroup-input" checked>
+                                            <input type="checkbox" name="day[]" value="friday" class="selectgroup-input"
+                                                   checked>
                                             <span class="selectgroup-button">Friday</span>
                                         </label>
                                         <label class="selectgroup-item">
-                                            <input type="checkbox" name="day[]" value="saturday" class="selectgroup-input">
+                                            <input type="checkbox" name="day[]" value="saturday"
+                                                   class="selectgroup-input">
                                             <span class="selectgroup-button">Saturday</span>
                                         </label>
                                         <label class="selectgroup-item">
-                                            <input type="checkbox" name="day[]" value="sunday" class="selectgroup-input">
+                                            <input type="checkbox" name="day[]" value="sunday"
+                                                   class="selectgroup-input">
                                             <span class="selectgroup-button">Sunday</span>
                                         </label>
                                     </div>
+                                    @error('day')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
+                                </div>
+                                <div class="section-title mt-0">Counselling Methods</div>
+                                <div class="form-group">
+                                    <div class="selectgroup selectgroup-pills">
+                                        <label class="selectgroup-item">
+                                            <input type="checkbox" name="methods[]" value="audio-chat"
+                                                   class="selectgroup-input" checked>
+                                            <span class="selectgroup-button">Audio Chat</span>
+                                        </label>
+                                        <label class="selectgroup-item">
+                                            <input type="checkbox" name="methods[]" value="text-chat"
+                                                   class="selectgroup-input" checked>
+                                            <span class="selectgroup-button">Text Chat</span>
+                                        </label>
+                                        <label class="selectgroup-item">
+                                            <input type="checkbox" id="methods" name="methods[]" value="video-chat"
+                                                   class="selectgroup-input">
+                                            <span class="selectgroup-button">Video Chat</span>
+                                        </label>
+                                    </div>
+                                    @error('methods')
+                                    <div class="invalid-feedback d-block">{{ $message }}</div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
