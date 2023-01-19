@@ -226,17 +226,12 @@
                                         <label class="selectgroup-item">
                                             <input type="checkbox" name="methods[]" value="audio-chat"
                                                    class="selectgroup-input" @if(in_array('audio-chat', $methods)) checked @endif>
-                                            <span class="selectgroup-button">Audio Chat</span>
+                                            <span class="selectgroup-button">Audio/Video Chat</span>
                                         </label>
                                         <label class="selectgroup-item">
                                             <input type="checkbox" name="methods[]" value="text-chat"
                                                    class="selectgroup-input" @if(in_array('text-chat', $methods)) checked @endif>
                                             <span class="selectgroup-button">Text Chat</span>
-                                        </label>
-                                        <label class="selectgroup-item">
-                                            <input type="checkbox" id="methods" name="methods[]" value="video-chat"
-                                                   class="selectgroup-input" @if(in_array('video-chat', $methods)) checked @endif>
-                                            <span class="selectgroup-button">Video Chat</span>
                                         </label>
                                     </div>
                                     @error('methods')

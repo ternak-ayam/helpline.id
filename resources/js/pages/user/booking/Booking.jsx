@@ -1,6 +1,6 @@
 import Navbar from "../../../components/layouts/Navbar";
 import App from "../../../components/layouts/App";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
     getDetailCounsellor,
@@ -15,6 +15,7 @@ const Booking = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const { counsellorId } = useParams();
+    const videoRef = useRef(null);
 
     const { counsellor } = useSelector((state) => state.user);
     const { bookDate } = useSelector((state) => state.booking);
@@ -264,39 +265,7 @@ const Booking = () => {
                                             alt=""
                                             className="w-4"
                                         />
-                                        <span>Live Audio Chat</span>
-                                    </label>
-                                </div>
-                            )}
-                            {counsellor.methods?.includes("video-chat") && (
-                                <div className="form-check flex items-center gap-2">
-                                    <input
-                                        name={"method"}
-                                        className="rounded-full h-4 w-4 border border-2 border-blue-300"
-                                        type="radio"
-                                        onChange={(e) => {
-                                            setBookingData({
-                                                ...bookingData,
-                                                counsellingMethod:
-                                                    e.target.value,
-                                            });
-                                        }}
-                                        value={"audio-chat"}
-                                        id="callCounsellingMethod"
-                                    />
-                                    <label
-                                        className=" flex gap-2 form-check-label inline-block text-[#2769c5] font-medium text-xs py-2 px-4 bg-[#fff4dc] rounded-lg"
-                                        htmlFor="callCounsellingMethod"
-                                    >
-                                        <img
-                                            src={
-                                                process.env.MIX_APP_URL +
-                                                "/assets/volume.png"
-                                            }
-                                            alt=""
-                                            className="w-4"
-                                        />
-                                        <span>Live Video Chat</span>
+                                        <span>Live Audio/Video Chat</span>
                                     </label>
                                 </div>
                             )}
