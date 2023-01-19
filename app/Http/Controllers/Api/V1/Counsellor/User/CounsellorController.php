@@ -13,7 +13,7 @@ class CounsellorController extends Controller
 {
     public function index()
     {
-        $counsellors = Counsellor::orderBy('id', 'DESC')->paginate(6);
+        $counsellors = Counsellor::orderBy('id', 'DESC')->get();
 
         return GetCounsellorResource::collection($counsellors);
     }

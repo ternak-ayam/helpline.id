@@ -19,6 +19,8 @@ Your appointment is as follows:
 | Book Via      | Website      |
 @endcomponent
 
+@if($user['name'] != "Admin")
+
 @component('mail::subcopy')
 To start consultation you can click this link
 @endcomponent
@@ -26,6 +28,8 @@ To start consultation you can click this link
 @component('mail::button', ['url' => $actionUrl, 'color' => 'error'])
 {{ $actionText }}
 @endcomponent
+
+@endif
 
 Thanks,<br>
 {{ config('app.name') }}

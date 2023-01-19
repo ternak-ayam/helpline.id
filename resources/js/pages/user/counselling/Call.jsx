@@ -47,11 +47,12 @@ const Call = () => {
                         ></div>
                         <div
                             id={"remoteVideoContainer"}
-                            className={
-                                "videoContainer w-72 h-48 flex justify-center"
-                            }
+                            className={"flex justify-center gap-2"}
                         >
-                            <div id="remotePlayerContainer"></div>
+                            <div
+                                id="remotePlayerContainer"
+                                className={"videoContainer w-72 h-48"}
+                            ></div>
                         </div>
                     </div>
 

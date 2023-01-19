@@ -123,9 +123,9 @@ const TextChat = () => {
                                 {message.userId !== user.user_id && (
                                     <div className="flex">
                                         <div className="flex gap-4">
-                                            <div>
+                                            <div className="w-16 w-16">
                                                 <img
-                                                    className="w-16 w-16 rounded-full m-auto"
+                                                    className="rounded-full m-auto object-cover"
                                                     src={message.user.image}
                                                     alt=""
                                                 />
@@ -133,7 +133,7 @@ const TextChat = () => {
 
                                             <div>
                                                 {message.type === "text" ? (
-                                                    <div className="lg:max-w-lg w-full border py-2 px-4 border-2 border-blue-200 rounded-br-2xl text-black rounded-tr-2xl rounded-tl-2xl lg:text-lg text-sm">
+                                                    <div className="break-all lg:max-w-lg w-full border py-2 px-4 border-2 border-blue-200 rounded-br-2xl text-black rounded-tr-2xl rounded-tl-2xl lg:text-lg text-sm">
                                                         {message.text}
                                                     </div>
                                                 ) : (
@@ -144,7 +144,7 @@ const TextChat = () => {
                                                                 "_blank"
                                                             );
                                                         }}
-                                                        className="cursor-pointer lg:max-w-lg w-full border py-2 px-4 border-2 border-blue-200 rounded-br-2xl text-black rounded-tr-2xl rounded-tl-2xl lg:text-lg text-sm"
+                                                        className="break-all cursor-pointer lg:max-w-lg w-full border py-2 px-4 border-2 border-blue-200 rounded-br-2xl text-black rounded-tr-2xl rounded-tl-2xl lg:text-lg text-sm"
                                                     >
                                                         <i className="fa-solid fa-file-arrow-down"></i>{" "}
                                                         {message.text}
@@ -159,7 +159,7 @@ const TextChat = () => {
                                         <div className="flex gap-4">
                                             <div>
                                                 {message.type === "text" ? (
-                                                    <div className="lg:max-w-lg w-full border py-2 px-4 border-2 border-blue-200 rounded-br-2xl text-black rounded-tr-2xl rounded-tl-2xl lg:text-lg text-sm">
+                                                    <div className="break-all lg:max-w-lg w-full border py-2 px-4 border-2 border-blue-200 rounded-br-2xl text-black rounded-tr-2xl rounded-tl-2xl lg:text-lg text-sm">
                                                         {message.text}
                                                     </div>
                                                 ) : (
@@ -170,16 +170,16 @@ const TextChat = () => {
                                                                 "_blank"
                                                             );
                                                         }}
-                                                        className="cursor-pointer lg:max-w-lg w-full border py-2 px-4 border-2 border-blue-200 rounded-br-2xl text-black rounded-tr-2xl rounded-tl-2xl lg:text-lg text-sm"
+                                                        className="break-all cursor-pointer lg:max-w-lg w-full border py-2 px-4 border-2 border-blue-200 rounded-br-2xl text-black rounded-tr-2xl rounded-tl-2xl lg:text-lg text-sm"
                                                     >
                                                         <i className="fa-solid fa-file-arrow-down"></i>{" "}
                                                         {message.text}
                                                     </div>
                                                 )}
                                             </div>
-                                            <div>
+                                            <div className="w-16 w-16">
                                                 <img
-                                                    className="w-16 w-16 rounded-full m-auto"
+                                                    className="object-cover rounded-full m-auto min-w-full"
                                                     src={message.user.image}
                                                     alt=""
                                                 />

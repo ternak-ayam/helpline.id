@@ -210,6 +210,8 @@
             <td>{{ $question->question }}</td>
             @if($question->key == "counselling_date")
                 <td>{{ Str::replace('T', ' ', $issues[$question->key]) }}</td>
+            @elseif($question->key == "informed_consent")
+                <td><input type="checkbox" checked></td>
             @else
                 <td>{{ $issues[$question->key] }}</td>
             @endif

@@ -54,9 +54,11 @@ const PostCard = ({ posts, itemsPerPage }) => {
                                 className="border-1 border-blue-500 mt-8"
                                 key={key}
                             >
-                                <div className="lg:ml-8 lg:w-[80%] w-[90%] p-2 lg:p-8 border border-1 border-[#2769c5] rounded-2xl lg:mt-[-4rem] mt-[-1rem] ">
-                                    <div className="text-justify text-[#2769c5] lg:mt-16 mt-2 text-lg font-semibold p-2">
-                                        {post.coverText}
+                                <div className="break-all lg:ml-8 lg:w-[80%] w-[90%] p-2 lg:p-8 border border-1 border-[#2769c5] rounded-2xl lg:mt-[-4rem] mt-[-1rem] ">
+                                    <div>
+                                        <p className="text-[#2769c5] lg:mt-16 mt-2 text-lg font-semibold p-2">
+                                            {post.coverText}
+                                        </p>
                                     </div>
                                     <div className="mt-2 flex justify-end">
                                         <Link

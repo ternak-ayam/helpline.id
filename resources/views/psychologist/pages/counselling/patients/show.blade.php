@@ -216,6 +216,7 @@
                             <div class="form-group row">
                                 <label for="informed_consent" class="col-sm-4 col-form-label">Informed Consent</label>
                                 <div class="col-sm-8">
+                                    <input type="checkbox" class="d-none" name="issues[informed_consent]" id="informed_consent" checked>
                                     @if($counselling->user->isAgreeToTerm())
                                         <i class="fas fa-check text-success" style="font-size: 24px"></i>
                                     @endif

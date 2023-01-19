@@ -41,7 +41,7 @@ const Post = () => {
                                 </time>
                             </p>
                         </div>
-                        <div>
+                        <div className="break-all">
                             <div
                                 dangerouslySetInnerHTML={{
                                     __html: post.body?.replace(
