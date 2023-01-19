@@ -31,7 +31,7 @@ class CounsellorController extends Controller
         return view('admin.pages.psychologist.edit', [
             'psychologist' => $psychologist,
             'availables' => $psychologist->availables->pluck('day')->toArray(),
-            'methods' => json_decode($psychologist->methods, true)
+            'methods' => json_decode($psychologist->methods, true) ?? []
         ]);
     }
 

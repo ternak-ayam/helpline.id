@@ -11,7 +11,7 @@ import {
     USER_TEXT_CHAT,
 } from "./type";
 import moment from "moment";
-import { showErrorAlerts, showSuccessAlert } from "./alert";
+import {showErrorAlert, showErrorAlerts, showSuccessAlert} from "./alert";
 import { generateRtmToken } from "./text";
 
 export const updateUserProfile = (user) => (dispatch) => {
@@ -165,6 +165,10 @@ export const getDetailCounsellorForCallPage = (counsellingId) => (dispatch) => {
                 type: IS_LOADING,
                 payload: false,
             });
+
+            if(error.response.status === 401) {
+                showErrorAlert({message: "You should login first"})
+            }
 
             return Promise.reject();
         }

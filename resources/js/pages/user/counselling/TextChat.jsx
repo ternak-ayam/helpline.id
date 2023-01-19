@@ -111,7 +111,7 @@ const TextChat = () => {
 
     return (
         <div>
-            <Navbar />
+            <Navbar showUser={false} />
             <div className="container flex m-auto justify-center lg:h-[80vh] h-[45rem] p-2 lg:mb-0 mb-32">
                 <div className="border-blue-200 border border-2 rounded-xl w-full h-full flex flex-col  p-4 gap-4">
                     <div

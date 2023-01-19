@@ -22,15 +22,24 @@ export const getMessages = (channelId) => (dispatch) => {
             type: MESSAGES,
             payload: { message: response.data },
         });
+
+        return Promise.resolve()
+    }, error => {
+        if(error.response.status === 401) {
+            showErrorAlert({message: "You should login first"})
+        }
+
+        return Promise.reject()
     });
 };
 
-export const generateRtmToken = (channelId, userId) => (dispatch) => {
-    User.getCounsellingToken(channelId, userId, "rtmToken").then((response) => {
+export const generateRtmToken = (channelId, userId, user_type) => (dispatch) => {
+    let userIdNew = user_type+userId;
+    User.getCounsellingToken(channelId, userIdNew, "rtmToken").then((response) => {
         options.token = response.token;
-        options.userId = userId;
+        options.userId = userIdNew;
 
-        dispatch(joinTextChannel(channelId, userId));
+        dispatch(joinTextChannel(channelId, userIdNew));
     });
 
     return Promise.resolve();
@@ -44,7 +53,7 @@ export const initiateTextChannel = (token, channelId) => (dispatch) => {
                 payload: { data: response.data },
             });
 
-            dispatch(generateRtmToken(channelId, response.data.user_id));
+            dispatch(generateRtmToken(channelId, response.data.user_id, response.data.user_type));
 
             return Promise.resolve();
         },

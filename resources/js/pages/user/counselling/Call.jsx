@@ -3,7 +3,6 @@ import Navbar from "../../../components/layouts/Navbar";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getDetailCounsellorForCallPage } from "../../../actions/user";
 import {
     initiateCallChannel,
     joinChannel,

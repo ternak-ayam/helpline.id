@@ -16,6 +16,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UnhcrSeeder::class,
             AdminSeeder::class,
+            PatientRecordQuestionSeeder::class,
+            UserSeeder::class
         ]);
     }
 }
