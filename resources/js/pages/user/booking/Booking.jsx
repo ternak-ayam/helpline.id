@@ -15,7 +15,6 @@ const Booking = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const { counsellorId } = useParams();
-    const videoRef = useRef(null);
 
     const { counsellor } = useSelector((state) => state.user);
     const { bookDate } = useSelector((state) => state.booking);

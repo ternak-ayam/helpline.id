@@ -19,6 +19,7 @@ export const CALL_CONNECTED = "CALL_CONNECTED";
 export const CALL_DISCONNECTED = "CALL_DISCONNECTED";
 export const CALL_MIC_MUTED = "CALL_MIC_MUTED";
 export const CALL_AUDIO_MUTED = "CALL_AUDIO_MUTED";
+export const CALL_CAMERA_ON = "CALL_CAMERA_ON";
 export const USER_LEFT = "USER_LEFT";
 export const USER_JOIN = "USER_JOIN";
 export const USERS_JOIN_AMOUNT = "USERS_JOIN_AMOUNT";

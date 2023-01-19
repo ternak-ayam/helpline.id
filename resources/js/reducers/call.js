@@ -8,11 +8,13 @@ import {
     USER_LEFT,
     USER_TEXT_CHAT,
     USERS_JOIN_AMOUNT,
+    CALL_CAMERA_ON,
 } from "../actions/type";
 
 const initialState = {
     connected: false,
     audioMuted: false,
+    cameraOn: false,
     micMuted: false,
     user: {
         counselling_id: null,
@@ -42,6 +44,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 micMuted: payload,
+            };
+        case CALL_CAMERA_ON:
+            return {
+                ...state,
+                cameraOn: payload,
             };
         case USER_JOIN:
             return {

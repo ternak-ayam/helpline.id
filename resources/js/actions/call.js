@@ -8,6 +8,7 @@ import {
     IS_LOADING,
     USER_AUDIO_CHAT,
     USER_JOIN,
+    CALL_CAMERA_ON,
     USER_LEFT,
     USER_TEXT_CHAT,
 } from "./type";
@@ -24,6 +25,7 @@ let channelParameters = {
 
 let isMicMuted = false;
 let isAudioMuted = false;
+let isCameraOn = false;
 
 let options = {
     appId: process.env.MIX_AGORA_APP_ID,
@@ -73,7 +75,7 @@ export const initiateCallChannel = (channelId, token) => (dispatch) => {
 };
 
 const generateRtcToken = (channelId, userId, userType) => (dispatch) => {
-    User.getCounsellingToken(channelId, userId).then((response) => {
+    User.getCounsellingToken(channelId, userType + userId).then((response) => {
         options.token = response.token;
 
         dispatch(handleJoinChannel(channelId, userId, userType));
@@ -82,13 +84,21 @@ const generateRtcToken = (channelId, userId, userType) => (dispatch) => {
 
 export const handleJoinChannel =
     (channel, userId, userType) => async (dispatch) => {
+        const videoContainer = document.getElementById("videoContainer");
+        const remoteVideoContainer = document.getElementById(
+            "remoteVideoContainer"
+        );
+        const remotePlayerContainer = document.getElementById(
+            "remotePlayerContainer"
+        );
+
         agoraEngine = AgoraRTC.createClient({
             mode: "rtc",
-            codec: "vp8",
+            codec: "h264",
         });
 
         options.channel = channel;
-        options.uid = userId;
+        options.uid = userType + userId;
         options.userType = userType;
 
         agoraEngine.on("connection-state-change", (event) => {
@@ -97,7 +107,7 @@ export const handleJoinChannel =
 
                 User.updateDuration(
                     rtcStats.Duration,
-                    options.uid,
+                    userId,
                     options.channel,
                     options.userType
                 );
@@ -109,11 +119,7 @@ export const handleJoinChannel =
             }
 
             if (event === "CONNECTED") {
-                User.storeDuration(
-                    options.uid,
-                    options.channel,
-                    options.userType
-                );
+                User.storeDuration(userId, options.channel, options.userType);
             }
         });
 
@@ -135,9 +141,9 @@ export const handleJoinChannel =
                 remotePlayerContainer.id = user.uid.toString();
                 channelParameters.remoteUid = user.uid.toString();
 
-                document.body.append(remotePlayerContainer);
+                remoteVideoContainer.append(remotePlayerContainer);
 
-                channelParameters.remoteVideoTrack.play(remotePlayerContainer);
+                channelParameters.remoteVideoTrack.play(remoteVideoContainer);
             }
 
             if (mediaType == "audio") {
@@ -166,7 +172,16 @@ export const handleJoinChannel =
 
         channelParameters.localAudioTrack =
             await AgoraRTC.createMicrophoneAudioTrack();
-        await agoraEngine.publish([channelParameters.localAudioTrack]);
+
+        channelParameters.localVideoTrack =
+            await AgoraRTC.createCameraVideoTrack();
+
+        channelParameters.localVideoTrack.play(videoContainer);
+
+        await agoraEngine.publish([
+            channelParameters.localAudioTrack,
+            channelParameters.localVideoTrack,
+        ]);
 
         dispatch({
             type: CALL_CONNECTED,
@@ -189,6 +204,16 @@ export const toggleMic = () => (dispatch) => {
     });
 };
 
+export const toggleCamera = () => (dispatch) => {
+    channelParameters.localVideoTrack.setEnabled(isCameraOn);
+    isCameraOn = !isCameraOn;
+
+    dispatch({
+        type: CALL_CAMERA_ON,
+        payload: isCameraOn,
+    });
+};
+
 export const toggleAudio = () => (dispatch) => {
     if (channelParameters.remoteAudioTrack) {
         channelParameters.remoteAudioTrack.setVolume(!isAudioMuted ? 0 : 100);
@@ -204,6 +229,7 @@ export const toggleAudio = () => (dispatch) => {
 
 export const leaveChannel = () => async (dispatch) => {
     channelParameters.localAudioTrack.close();
+    channelParameters.localVideoTrack.close();
     await agoraEngine.leave();
 
     dispatch({
