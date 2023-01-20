@@ -249,7 +249,7 @@
                                                 <div class="col-5 px-1">
                                                     <div class="form-group mb-2">
                                                         <label for="inputState">End At</label>
-                                                        <input type="time" name="end_at[{{ Str::lower($day['day'])}}][]" class="form-control" value="{{ json_decode($day['end_at'], true)[$key] }}">
+                                                        {{-- <input type="time" name="end_at[{{ Str::lower($day['day'])}}][]" class="form-control" value="{{ json_decode($day['end_at'], true)[$key] }}"> --}}
                                                     </div>
                                                 </div>
                                                 @if($loop->index != 0)
