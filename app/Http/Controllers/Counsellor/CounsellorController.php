@@ -49,9 +49,9 @@ class CounsellorController extends Controller
         foreach($dayList as $dayName) {
             $days[] = [
                     "day" => Str::ucfirst($dayName),
-                    "is_checked" => $psychologist->availables()->where('day', $dayName)->exists(),
-                    "start_at" => $psychologist->availables()->where('day', $dayName)->first()->start_at ?? '',
-                    "end_at" => $psychologist->availables()->where('day', $dayName)->first()->end_at ?? '',
+                    "is_checked" => CounsellorAvailableTime::where('counsellor_id', $psychologist->id)->where('day', $dayName)->first() ? true : false,
+                    "start_at" => CounsellorAvailableTime::where('counsellor_id', $psychologist->id)->where('day', $dayName)->first()->start_at ?? '',
+                    "end_at" => CounsellorAvailableTime::where('counsellor_id', $psychologist->id)->where('day', $dayName)->first()->end_at ?? '',
                 ];
             }
 
