@@ -37,16 +37,19 @@ let options = {
 
 let agoraEngine = null;
 
-export const joinChannel = (channelId, userId, userType) => (dispatch) => {
-    dispatch({
-        type: IS_LOADING,
-        payload: true,
-    });
+export const joinChannel =
+    (channelId, userId, userType, counsellingMethod) => (dispatch) => {
+        dispatch({
+            type: IS_LOADING,
+            payload: true,
+        });
 
-    dispatch(generateRtcToken(channelId, userId, userType));
+        dispatch(
+            generateRtcToken(channelId, userId, userType, counsellingMethod)
+        );
 
-    return Promise.resolve();
-};
+        return Promise.resolve();
+    };
 
 export const initiateCallChannel = (channelId, token) => (dispatch) => {
     User.parseChatAccessToken(token).then(
@@ -74,16 +77,26 @@ export const initiateCallChannel = (channelId, token) => (dispatch) => {
     );
 };
 
-const generateRtcToken = (channelId, userId, userType) => (dispatch) => {
-    User.getCounsellingToken(channelId, userType + userId).then((response) => {
-        options.token = response.token;
+const generateRtcToken =
+    (channelId, userId, userType, counsellingMethod) => (dispatch) => {
+        User.getCounsellingToken(channelId, userType + userId).then(
+            (response) => {
+                options.token = response.token;
 
-        dispatch(handleJoinChannel(channelId, userId, userType));
-    });
-};
+                dispatch(
+                    handleJoinChannel(
+                        channelId,
+                        userId,
+                        userType,
+                        counsellingMethod
+                    )
+                );
+            }
+        );
+    };
 
 export const handleJoinChannel =
-    (channel, userId, userType) => async (dispatch) => {
+    (channel, userId, userType, counsellingMethod) => async (dispatch) => {
         const videoContainer = document.getElementById("videoContainer");
         const remoteVideoContainer = document.getElementById(
             "remoteVideoContainer"
@@ -134,7 +147,7 @@ export const handleJoinChannel =
                 },
             });
 
-            if (mediaType == "video") {
+            if (mediaType == "video" && counsellingMethod == "video-chat") {
                 channelParameters.remoteVideoTrack = user.videoTrack;
                 channelParameters.remoteAudioTrack = user.audioTrack;
                 channelParameters.remoteUid = user.uid.toString();
@@ -173,15 +186,19 @@ export const handleJoinChannel =
         channelParameters.localAudioTrack =
             await AgoraRTC.createMicrophoneAudioTrack();
 
-        channelParameters.localVideoTrack =
-            await AgoraRTC.createCameraVideoTrack();
+        if (counsellingMethod == "video-chat") {
+            channelParameters.localVideoTrack =
+                await AgoraRTC.createCameraVideoTrack();
 
-        channelParameters.localVideoTrack.play(videoContainer);
+            channelParameters.localVideoTrack.play(videoContainer);
 
-        await agoraEngine.publish([
-            channelParameters.localAudioTrack,
-            channelParameters.localVideoTrack,
-        ]);
+            await agoraEngine.publish([
+                channelParameters.localAudioTrack,
+                channelParameters.localVideoTrack,
+            ]);
+        } else {
+            await agoraEngine.publish([channelParameters.localAudioTrack]);
+        }
 
         dispatch({
             type: CALL_CONNECTED,
@@ -227,9 +244,12 @@ export const toggleAudio = () => (dispatch) => {
     });
 };
 
-export const leaveChannel = () => async (dispatch) => {
-    channelParameters.localAudioTrack.close();
-    channelParameters.localVideoTrack.close();
+export const leaveChannel = (counsellingMethod) => async (dispatch) => {
+    if (counsellingMethod == "video-chat") {
+        channelParameters.localVideoTrack.close();
+    } else {
+        channelParameters.localAudioTrack.close();
+    }
     await agoraEngine.leave();
 
     dispatch({

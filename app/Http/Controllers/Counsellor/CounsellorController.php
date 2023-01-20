@@ -11,6 +11,7 @@ use App\Models\CounsellorEducation;
 use App\Models\CounsellorLanguage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Str;
 
 class CounsellorController extends Controller
 {
@@ -23,15 +24,41 @@ class CounsellorController extends Controller
 
     public function create()
     {
-        return view('admin.pages.psychologist.create');
+        $days = [];
+        $dayList = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+
+        foreach($dayList as $dayName) {
+            $days[] = [
+                    "day" => Str::ucfirst($dayName),
+                    "is_checked" => false,
+                    "start_at" => null,
+                    "end_at" => null,
+                ];
+            }
+
+        return view('admin.pages.psychologist.create', [
+            'days' => $days
+        ]);
     }
 
     public function edit(Counsellor $psychologist)
     {
+        $days = [];
+        $dayList = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+
+        foreach($dayList as $dayName) {
+            $days[] = [
+                    "day" => Str::ucfirst($dayName),
+                    "is_checked" => $psychologist->availables()->where('day', $dayName)->exists(),
+                    "start_at" => $psychologist->availables()->where('day', $dayName)->first()->start_at ?? null,
+                    "end_at" => $psychologist->availables()->where('day', $dayName)->first()->end_at ?? null,
+                ];
+            }
+
         return view('admin.pages.psychologist.edit', [
             'psychologist' => $psychologist,
-            'availables' => $psychologist->availables->pluck('day')->toArray(),
-            'methods' => json_decode($psychologist->methods, true) ?? []
+            'methods' => json_decode($psychologist->methods, true) ?? [],
+            'days' => $days
         ]);
     }
 
@@ -66,13 +93,12 @@ class CounsellorController extends Controller
 
             CounsellorAvailableTime::where('counsellor_id', $counsellor->id)->delete();
 
-            foreach ($request->day as $day) {
-                CounsellorAvailableTime::updateOrCreate([
+             foreach ($request->day as $key => $day) {
+                CounsellorAvailableTime::create([
                     'counsellor_id' => $counsellor->id,
-                    'day' => $day,
-                ],[
-                    'counsellor_id' => $counsellor->id,
-                    'day' => $day,
+                    'day' => $key,
+                    'start_at' => json_encode($request->start_at[$key]),
+                    'end_at' => json_encode($request->end_at[$key])
                 ]);
             }
 
@@ -106,13 +132,12 @@ class CounsellorController extends Controller
 
             CounsellorAvailableTime::where('counsellor_id', $psychologist->id)->delete();
 
-            foreach ($request->day as $day) {
-                CounsellorAvailableTime::updateOrCreate([
+            foreach ($request->day as $key => $day) {
+                CounsellorAvailableTime::create([
                     'counsellor_id' => $psychologist->id,
-                    'day' => $day,
-                ],[
-                    'counsellor_id' => $psychologist->id,
-                    'day' => $day,
+                    'day' => $key,
+                    'start_at' => json_encode($request->start_at[$key]),
+                    'end_at' => json_encode($request->end_at[$key])
                 ]);
             }
 

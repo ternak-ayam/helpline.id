@@ -41,11 +41,7 @@ class GetDetailCounsellorResource extends JsonResource
             if (in_array(Str::lower($datetime->format('l')), $this->availables->pluck('day')->toArray())) {
                 $calendars[] = [
                     "date" => $date,
-                    "times" => [
-                        "09:15",
-                        "10:15",
-                        "11:15"
-                    ]
+                    "times" => json_decode($this->availables->where('day', Str::lower($datetime->format('l')))->first()->start_at ?? null, true) ?? []
                 ];
             }
 

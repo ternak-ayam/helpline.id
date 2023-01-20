@@ -53,7 +53,7 @@ const Web = () => {
                     exact
                 />
                 <Route
-                    path={"/audio-chat/:counsellingId"}
+                    path={"/:counsellingMethod/:counsellingId"}
                     component={Call}
                     exact
                 />

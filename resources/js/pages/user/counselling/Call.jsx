@@ -8,14 +8,14 @@ import {
     joinChannel,
     leaveChannel,
     toggleAudio,
-    toggleCamera,
     toggleMic,
 } from "../../../actions/call";
 import { useStopwatch } from "react-timer-hook";
 import useQuery from "../../../services/query/useQuery";
 
 const Call = () => {
-    const { counsellingId } = useParams();
+    const { counsellingId, counsellingMethod } = useParams();
+    const [showVideo, setShowVideo] = useState(false);
     const dispatch = useDispatch();
     const query = useQuery();
 
@@ -25,7 +25,7 @@ const Call = () => {
 
     const { counsellor } = useSelector((state) => state.user);
     const { status } = useSelector((state) => state.message);
-    const { user, micMuted, audioMuted, cameraOn, connected } = useSelector(
+    const { user, micMuted, audioMuted, connected } = useSelector(
         (state) => state.call
     );
 
@@ -33,30 +33,64 @@ const Call = () => {
         dispatch(initiateCallChannel(counsellingId, query.get("token")));
     }, []);
 
+    const handleStartCounselling = () => {
+        setShowVideo(true);
+
+        dispatch(
+            joinChannel(
+                counsellingId,
+                user.user_id,
+                user.user_type,
+                counsellingMethod
+            )
+        ).then(() => {
+            start();
+        });
+    };
+
     return (
         <App needAuth={false}>
             <Navbar showUser={false} />
             <div className="container flex m-auto justify-center p-2 mb-24 mt-20">
-                <div className="border-blue-200 border border-2  rounded-xl w-full flex flex-col justify-center p-2 h-full">
-                    <div className="flex gap-2 justify-center">
-                        <div
-                            id={"videoContainer"}
-                            className={
-                                "videoContainer w-72 h-48 flex justify-center"
-                            }
-                        ></div>
-                        <div
-                            id={"remoteVideoContainer"}
-                            className={"flex justify-center gap-2"}
-                        >
+                <div className="border-blue-200 border border-2 rounded-xl w-full flex flex-col justify-center p-2 h-full">
+                    {counsellingMethod == "video-chat" && showVideo && (
+                        <div className="flex gap-2 justify-center">
                             <div
-                                id="remotePlayerContainer"
-                                className={"videoContainer w-72 h-48"}
+                                id={"videoContainer"}
+                                className={
+                                    "videoContainer w-72 h-48 flex justify-center"
+                                }
                             ></div>
+                            <div
+                                id={"remoteVideoContainer"}
+                                className={"flex justify-center gap-2"}
+                            >
+                                <div
+                                    id="remotePlayerContainer"
+                                    className={"videoContainer w-72 h-48"}
+                                ></div>
+                            </div>
                         </div>
-                    </div>
+                    )}
 
-                    {!connected && (
+                    {counsellingMethod == "video-chat" && (
+                        <div>
+                            <p className="text-center text-base font-semibold text-[#2769c5]">
+                                Video Chat Counselling
+                            </p>
+                        </div>
+                    )}
+
+                    {counsellingMethod == "audio-chat" && (
+                        <div>
+                            <p className="text-center text-base font-semibold text-[#2769c5]">
+                                Audio Chat Counselling
+                            </p>
+                        </div>
+                    )}
+
+                    {(!connected ||
+                        (!connected && counsellingMethod == "audio-chat")) && (
                         <div className="mb-24">
                             <div className="flex-col flex justify-center p-2">
                                 <img
@@ -102,37 +136,6 @@ const Call = () => {
                     ) : null}
 
                     <div className="flex justify-center mb-2">
-                        {!connected ? (
-                            <button
-                                disabled={status}
-                                onClick={() => {
-                                    dispatch(
-                                        joinChannel(
-                                            counsellingId,
-                                            user.user_id,
-                                            user.user_type
-                                        )
-                                    ).then(() => {
-                                        start();
-                                    });
-                                }}
-                                className={`p-4 bg-[#28c484] rounded-full mx-1`}
-                            >
-                                <i className="fa-sharp fa-solid fa-phone fa-xl text-white"></i>
-                            </button>
-                        ) : (
-                            <button
-                                onClick={() => {
-                                    dispatch(leaveChannel());
-                                }}
-                                className={`p-4 bg-red-500 rounded-full mx-1`}
-                            >
-                                <i className="fa-sharp fa-solid fa-phone fa-xl text-white"></i>
-                            </button>
-                        )}
-                    </div>
-
-                    <div className="flex justify-center mb-2">
                         <div>
                             <button
                                 disabled={!connected}
@@ -145,7 +148,29 @@ const Call = () => {
                             >
                                 <i className="fa-solid fa-microphone fa-xl text-white"></i>
                             </button>
-                            <button
+                            {!connected ? (
+                                <button
+                                    disabled={status}
+                                    onClick={() => {
+                                        handleStartCounselling();
+                                    }}
+                                    className={`p-4 bg-[#28c484] rounded-full mx-1`}
+                                >
+                                    <i className="fa-sharp fa-solid fa-phone fa-xl text-white"></i>
+                                </button>
+                            ) : (
+                                <button
+                                    onClick={() => {
+                                        dispatch(
+                                            leaveChannel(counsellingMethod)
+                                        );
+                                    }}
+                                    className={`p-4 bg-red-500 rounded-full mx-1`}
+                                >
+                                    <i className="fa-sharp fa-solid fa-phone fa-xl text-white"></i>
+                                </button>
+                            )}
+                            {/* <button
                                 onClick={() => {
                                     dispatch(toggleCamera(cameraOn));
                                 }}
@@ -155,7 +180,7 @@ const Call = () => {
                                 } rounded-full mx-1`}
                             >
                                 <i className="fa-solid fa-camera fa-xl text-white"></i>
-                            </button>
+                            </button> */}
                             <button
                                 disabled={!connected}
                                 onClick={() => {

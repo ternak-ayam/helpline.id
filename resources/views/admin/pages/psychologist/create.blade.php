@@ -15,6 +15,8 @@
         const language = document.getElementById("language");
         const education = document.getElementById("education");
 
+        const btnAddTimes = document.querySelectorAll(".btn_add_time");
+
         imageInputElement?.addEventListener("change", (e) => {
             let imageUrl = URL.createObjectURL(e.target.files[0]);
 
@@ -48,6 +50,54 @@
 
             language.insertAdjacentHTML('beforeend', languageContent);
         });
+            
+
+        const initBtnAddTimes = () => {
+            const btnRemoveTimes = document.querySelectorAll(".btn_remove_time");
+            btnRemoveTimes.forEach((btnRemoveTime) => {
+                btnRemoveTime.addEventListener("click", (e) => {
+                    let day = e.target.name;
+                    const timeFieldElement = document.getElementById("timeField" + day);
+
+                    timeFieldElement.remove();
+                })
+            });
+        }
+
+        btnAddTimes.forEach((btnAddTime, key) => {
+            btnAddTime.addEventListener("click", (e) => {
+                let day = e.target.name;
+                
+            let scheduleContent = `
+                                                <div class="row" id="timeField${key + 3}">
+                                                    <div class="col-5">
+                                                    <div class="form-group mb-2">
+                                                        <label for="inputState">Start At</label>
+                                                        <input type="time" name="start_at[${day}][]" class="form-control">
+                                                        </div>
+                                                        </div>
+                                                        <div class="col-5">
+                                                            <div class="form-group mb-2">
+                                                                <label for="inputState">End At</label>
+                                                                <input type="time" name="end_at[${day}][]" class="form-control">
+                                                                </div>
+                                                                </div>
+                                                                      <div class="col-2 my-auto pt-4 pl-1">
+                                                    <button class="btn btn-danger btn_remove_time w-100" name="${key + 3}" type="button">-</button>
+                                                </div>
+                                                                </div>
+                                                                `;
+                                                                const timeContainer = document.getElementById("timeContainer" + day);
+                                                                timeContainer.insertAdjacentHTML('beforeend', scheduleContent);
+
+                                                                initBtnAddTimes();
+
+            
+        });
+    });
+    
+
+    initBtnAddTimes();
 
     </script>
 @endsection
@@ -166,55 +216,58 @@
                                     </button>
                                 </div>
                                 <div class="section-title mt-0">Schedule Information</div>
-                                <div class="form-group">
-                                    <div class="selectgroup selectgroup-pills">
-                                        <label class="selectgroup-item">
-                                            <input type="checkbox" name="day[]" value="monday" class="selectgroup-input"
-                                                   checked>
-                                            <span class="selectgroup-button">Monday</span>
-                                        </label>
-                                        <label class="selectgroup-item">
-                                            <input type="checkbox" name="day[]" value="tuesday"
-                                                   class="selectgroup-input" checked>
-                                            <span class="selectgroup-button">Tuesday</span>
-                                        </label>
-                                        <label class="selectgroup-item">
-                                            <input type="checkbox" name="day[]" value="wednesday"
-                                                   class="selectgroup-input" checked>
-                                            <span class="selectgroup-button">Wednesday</span>
-                                        </label>
-                                        <label class="selectgroup-item">
-                                            <input type="checkbox" name="day[]" value="thursday"
-                                                   class="selectgroup-input" checked>
-                                            <span class="selectgroup-button">Thursday</span>
-                                        </label>
-                                        <label class="selectgroup-item">
-                                            <input type="checkbox" name="day[]" value="friday" class="selectgroup-input"
-                                                   checked>
-                                            <span class="selectgroup-button">Friday</span>
-                                        </label>
-                                        <label class="selectgroup-item">
-                                            <input type="checkbox" name="day[]" value="saturday"
-                                                   class="selectgroup-input">
-                                            <span class="selectgroup-button">Saturday</span>
-                                        </label>
-                                        <label class="selectgroup-item">
-                                            <input type="checkbox" name="day[]" value="sunday"
-                                                   class="selectgroup-input">
-                                            <span class="selectgroup-button">Sunday</span>
-                                        </label>
+                                
+                                @foreach($days as $day)
+                                <div class="row">
+                                    <div class="form-group col-4">
+                                        <label>Day</label>
+                                        <div class="custom-control custom-checkbox">
+                                            <input type="checkbox" class="custom-control-input" id="customCheck1{{ $day['day'] }}" name="day[{{ Str::lower($day['day']) }}]" @if($day['is_checked']) checked @endif>
+                                            <label class="custom-control-label" for="customCheck1{{ $day['day'] }}">{{ $day['day'] }}</label>
+                                        </div>
                                     </div>
-                                    @error('day')
-                                    <div class="invalid-feedback d-block">{{ $message }}</div>
-                                    @enderror
+                                    
+                                    <div class="col-8 mt-4">
+                                        <div id="timeContainer{{ Str::lower($day['day']) }}">
+                                            @foreach(json_decode($day['start_at'], true) ?? [''] as $key => $time)
+                                            <div class="row" id="timeField{{ $key }}">
+                                                <div class="col-5 pr-1">
+                                                    <div class="form-group mb-2">
+                                                        <label for="inputState">Start At</label>
+                                                        <input type="time" name="start_at[{{ Str::lower($day['day'])}}][]" class="form-control" value="{{ $time }}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-5 px-1">
+                                                    <div class="form-group mb-2">
+                                                        <label for="inputState">End At</label>
+                                                        <input type="time" name="end_at[{{ Str::lower($day['day'])}}][]" class="form-control" value="{{ json_decode($day['end_at'], true)[$key] }}">
+                                                    </div>
+                                                </div>
+                                                @if($loop->index != 0)
+                                                <div class="col-2 my-auto pt-4 pl-1">
+                                                    <button class="btn btn-danger btn_remove_time w-100" name="{{ $key }}" type="button">-</button>
+                                                </div>
+                                                @endif
+                                            </div>
+                                            @endforeach
+                                        </div>
+                                        <button class="btn btn-success w-100 btn_add_time" id="btnAddTime{{ Str::lower($day['day']) }}" name="{{ Str::lower($day['day']) }}" type="button">Add New Time</button>
+                                    </div>
                                 </div>
+                                @endforeach
+
                                 <div class="section-title mt-0">Counselling Methods</div>
                                 <div class="form-group">
                                     <div class="selectgroup selectgroup-pills">
                                         <label class="selectgroup-item">
                                             <input type="checkbox" name="methods[]" value="audio-chat"
                                                    class="selectgroup-input" checked>
-                                            <span class="selectgroup-button">Audio/Video Chat</span>
+                                            <span class="selectgroup-button">Audio Chat</span>
+                                        </label>
+                                        <label class="selectgroup-item">
+                                            <input type="checkbox" name="methods[]" value="video-chat"
+                                                   class="selectgroup-input">
+                                            <span class="selectgroup-button">Video Chat</span>
                                         </label>
                                         <label class="selectgroup-item">
                                             <input type="checkbox" name="methods[]" value="text-chat"

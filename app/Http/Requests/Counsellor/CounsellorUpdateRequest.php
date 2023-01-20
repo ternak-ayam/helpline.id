@@ -27,8 +27,7 @@ class CounsellorUpdateRequest extends FormRequest
             'name' => 'required',
             'email' => 'required',
             'password' => 'confirmed',
-            'methods' => 'required|array',
-            'day' => 'required|array'
+            'methods' => 'required|array'
         ];
     }
 }

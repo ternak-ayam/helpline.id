@@ -12,5 +12,7 @@ class CounsellorAvailableTime extends Model
     protected $fillable = [
         'counsellor_id',
         'day',
+        'start_at',
+        'end_at'
     ];
 }
