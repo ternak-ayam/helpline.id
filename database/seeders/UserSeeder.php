@@ -86,7 +86,7 @@ stories–and give them deeper meaning.",
             'name' => 'Translator Demo',
             'email' => 'translator@helpline.id',
             'language' => 'Arabic',
-            'timezone' => 'ASia/Jakarta',
+            'timezone' => 'Asia/Jakarta',
             'password' => Hash::make('!ntegrat3.22'),
         ]);
     }
