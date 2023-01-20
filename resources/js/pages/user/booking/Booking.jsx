@@ -281,7 +281,7 @@ const Booking = () => {
                                                     e.target.value,
                                             });
                                         }}
-                                        value={"audio-chat"}
+                                        value={"video-chat"}
                                         id="callCounsellingMethod"
                                     />
                                     <label
