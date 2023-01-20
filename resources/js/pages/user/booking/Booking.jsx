@@ -282,11 +282,11 @@ const Booking = () => {
                                             });
                                         }}
                                         value={"video-chat"}
-                                        id="callCounsellingMethod"
+                                        id="videoCounsellingMethod"
                                     />
                                     <label
                                         className=" flex gap-2 form-check-label inline-block text-[#2769c5] font-medium text-xs py-2 px-4 bg-[#fff4dc] rounded-lg"
-                                        htmlFor="callCounsellingMethod"
+                                        htmlFor="videoCounsellingMethod"
                                     >
                                         <img
                                             src={
