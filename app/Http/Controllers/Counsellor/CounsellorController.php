@@ -31,8 +31,8 @@ class CounsellorController extends Controller
             $days[] = [
                     "day" => Str::ucfirst($dayName),
                     "is_checked" => false,
-                    "start_at" => null,
-                    "end_at" => null,
+                    "start_at" => '',
+                    "end_at" => '',
                 ];
             }
 
@@ -50,8 +50,8 @@ class CounsellorController extends Controller
             $days[] = [
                     "day" => Str::ucfirst($dayName),
                     "is_checked" => $psychologist->availables()->where('day', $dayName)->exists(),
-                    "start_at" => $psychologist->availables()->where('day', $dayName)->first()->start_at ?? null,
-                    "end_at" => $psychologist->availables()->where('day', $dayName)->first()->end_at ?? null,
+                    "start_at" => $psychologist->availables()->where('day', $dayName)->first()->start_at ?? '',
+                    "end_at" => $psychologist->availables()->where('day', $dayName)->first()->end_at ?? '',
                 ];
             }
 

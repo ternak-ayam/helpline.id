@@ -229,18 +229,18 @@
                                     
                                     <div class="col-8 mt-4">
                                         <div id="timeContainer{{ Str::lower($day['day']) }}">
-                                            @foreach(json_decode($day['start_at'], true) ?? [''] as $key => $time)
+                                            @foreach([''] as $key => $time)
                                             <div class="row" id="timeField{{ $key }}">
                                                 <div class="col-5 pr-1">
                                                     <div class="form-group mb-2">
                                                         <label for="inputState">Start At</label>
-                                                        <input type="time" name="start_at[{{ Str::lower($day['day'])}}][]" class="form-control" value="{{ $time }}">
+                                                        <input type="time" name="start_at[{{ Str::lower($day['day'])}}][]" class="form-control">
                                                     </div>
                                                 </div>
                                                 <div class="col-5 px-1">
                                                     <div class="form-group mb-2">
                                                         <label for="inputState">End At</label>
-                                                        <input type="time" name="end_at[{{ Str::lower($day['day'])}}][]" class="form-control" value="{{ json_decode($day['end_at'], true)[$key] }}">
+                                                        <input type="time" name="end_at[{{ Str::lower($day['day'])}}][]" class="form-control">
                                                     </div>
                                                 </div>
                                                 @if($loop->index != 0)

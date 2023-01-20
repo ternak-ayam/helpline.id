@@ -243,7 +243,7 @@
                                                 <div class="col-5 pr-1">
                                                     <div class="form-group mb-2">
                                                         <label for="inputState">Start At</label>
-                                                        <input type="time" name="start_at[{{ Str::lower($day['day'])}}][]" class="form-control" value="{{ $time }}">
+                                                        <input type="time" name="start_at[{{ Str::lower($day['day'])}}][]" class="form-control" value="{{ $time ?? '' }}">
                                                     </div>
                                                 </div>
                                                 <div class="col-5 px-1">
