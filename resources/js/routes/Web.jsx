@@ -21,6 +21,7 @@ const Web = () => {
             <Switch>
                 <Route path={"/login"} component={Login} exact />
                 <Route path={"/register"} component={Register} exact />
+                <Route path={"/posts/:postId"} component={Post} exact />
                 <Route
                     path={"/password/reset"}
                     component={SendResetPasswordLink}
@@ -63,7 +64,6 @@ const Web = () => {
                     exact
                 />
                 <Route path={"/profile"} component={Profile} exact />
-                <Route path={"/posts/:postId"} component={Post} exact />
                 <Route component={NotFound} />
             </Switch>
         </React.Fragment>
