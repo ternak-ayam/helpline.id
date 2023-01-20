@@ -63,7 +63,7 @@
                         @endforeach
                     </div>
                 </div>
-                <div class="d-flex justify-content-between border-bottom">
+                {{-- <div class="d-flex justify-content-between border-bottom">
                     <div class="my-2">
                         <span>Schedules</span>
                     </div>
@@ -74,10 +74,10 @@
                             </div>
                         @endforeach
                     </div>
-                </div>
+                </div> --}}
                 <div class="d-flex justify-content-between border-bottom">
                     <div class="my-2">
-                        <span>Counselliong Methods</span>
+                        <span>Counselling Methods</span>
                     </div>
                     <div class="my-2">
                         @foreach(json_decode($psychologist->methods, true) ?? [] as $method)

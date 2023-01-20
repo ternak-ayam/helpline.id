@@ -30,6 +30,7 @@ class Counselling extends Model
 
     const TEXTCHAT  = "text-chat";
     const AUDIOCHAT  = "audio-chat";
+    const VIDEOCHAT  = "video-chat";
 
     protected $attributes = [
         'status' => self::BOOKED
@@ -58,6 +59,8 @@ class Counselling extends Model
     {
         if($this->counselling_method === self::TEXTCHAT) {
             return "Text Chat";
+        } else if($this->counselling_method === self::VIDEOCHAT) {
+            return "Video Chat";
         }
 
         return "Audio Chat";
