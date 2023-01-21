@@ -34,6 +34,19 @@
                                 <p>Please fill in the following questions according to the information obtained during the counselling! If a question cannot be answered, please skip it. Please remember that patient data is confidential.</p>
                             </div>
 
+                            <div class="form-group row">
+                                <label for="emergency_support" class="col-sm-4 col-form-label">
+                                    Does the patient require emergency support?
+                                </label>
+                                <div class="col-sm-8">
+                                    <select type="text" class="form-control" name="issues[emergency_support]"
+                                            id="emergency_support">
+                                        <option value="YES" @if($issues['emergency_support'] == \App\Models\PatientRecord::YES) selected @endif>Yes</option>
+                                        <option value="NO" @if($issues['emergency_support'] == \App\Models\PatientRecord::NO) selected @endif>No</option>
+                                    </select>
+                                </div>
+                            </div>
+
                             @include('psychologist.pages.counselling.patients.question.patient')
                             @include('psychologist.pages.counselling.patients.question.counsellor')
                             @include('psychologist.pages.counselling.patients.question.psychologist')
@@ -99,7 +112,7 @@
                             <div class="section-title">Mandated Disclosure</div>
                             <div class="form-group row">
                                 <label for="is_sex_harassment" class="col-sm-4 col-form-label">
-                                    Is this a case of sexual violence, harassment, or bullying, or is it another case of legal interest?
+                                    Is this a case of sexual violence, harassment, or bullying?
                                 </label>
                                 <div class="col-sm-8">
                                     <select type="text" class="form-control" name="issues[is_sex_harassment]"

@@ -3,10 +3,10 @@
     <div class="col-sm-8">
 
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[discrimination]"
-                   id="discrimination" @if(old('discrimination', $issues['discrimination'])) checked @endif>
+            <input type="checkbox" class="custom-control-input" name="issues[adjustment]"
+                   id="discrimination" @if(old('adjustment', $issues['adjustment'])) checked @endif>
             <label class="custom-control-label"
-                   for="discrimination">Discrimination/Racism</label>
+                   for="discrimination">Adjustment issues</label>
         </div>
 
         <div class="custom-control custom-checkbox">

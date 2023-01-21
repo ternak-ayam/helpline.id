@@ -160,6 +160,89 @@
         "default_value": false
     },
     {
+        "question": "Adjustment issues",
+        "type": "CHECKBOX",
+        "key": "sexual",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Aggression and Violence",
+        "type": "CHECKBOX",
+        "key": "sexual",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Agoraphobia",
+        "type": "CHECKBOX",
+        "key": "sexual",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Alcohol and substance abuse",
+        "type": "CHECKBOX",
+        "key": "sexual",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Anger",
+        "type": "CHECKBOX",
+        "key": "sexual",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Anxiety",
+        "type": "CHECKBOX",
+        "key": "sexual",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Borderline Personality",
+        "type": "CHECKBOX",
+        "key": "sexual",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Bullying",
+        "type": "CHECKBOX",
+        "key": "sexual",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Caregiver Stress",
+        "type": "CHECKBOX",
+        "key": "sexual",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Children Issues",
+        "type": "CHECKBOX",
+        "key": "sexual",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+
+
+
+    {
         "no": "1",
         "question": "Counsellor/Psychologist",
         "type": "TEXT",
