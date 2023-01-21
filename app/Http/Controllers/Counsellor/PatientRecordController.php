@@ -43,7 +43,6 @@ class PatientRecordController extends Controller
         foreach ($request->issues as $key => $issue) {
             $question = PatientRecordQuestion::where('key', $key)->first();
 
-
             PatientRecordDetail::updateOrCreate([
                 'patient_record_id' => $patientRecord->id,
                 'question_id' => $question->id,

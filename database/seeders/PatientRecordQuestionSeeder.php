@@ -16,13 +16,15 @@ class PatientRecordQuestionSeeder extends Seeder
     {
         $patientRecordQuestions = file_get_contents(storage_path('app/patientRecordQuestions.json'));
 
+        PatientRecordQuestion::truncate();
+
         foreach (json_decode($patientRecordQuestions, true) as $patient) {
             PatientRecordQuestion::create([
                 'no' => $patient['no'] ?? "",
                 'question' => $patient['question'],
                 'type' => $patient['type'],
                 'key' => $patient['key'],
-                'max_value' => $patient['max_value'],
+                'max_value' => $patient['max_value'] ?? 250,
                 'questionable' => $patient['questionable'],
                 'default_value' => $patient['default_value'],
             ]);

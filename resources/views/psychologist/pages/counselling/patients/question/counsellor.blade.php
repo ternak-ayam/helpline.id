@@ -3,10 +3,10 @@
     <div class="col-sm-8">
 
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[adjustment]"
-                   id="adjustment" @if(old('adjustment', $issues['adjustment'])) checked @endif>
+            <input type="checkbox" class="custom-control-input" name="issues[adjustment_issues]"
+                   id="adjustment_issues" @if(old('adjustment_issues', $issues['adjustment_issues'])) checked @endif>
             <label class="custom-control-label"
-                   for="adjustment">Adjustment issues</label>
+                   for="adjustment_issues">Adjustment issues</label>
         </div>
 
         <div class="custom-control custom-checkbox">
@@ -76,9 +76,9 @@
         </div>
 
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[depression]"
-                   id="depression" @if(old('depression', $issues['depression'])) checked @endif>
-            <label class="custom-control-label" for="depression">Depression</label>
+            <input type="checkbox" class="custom-control-input" name="issues[depression_counsellor]"
+                   id="depression_counsellor" @if(old('depression_counsellor', $issues['depression_counsellor'])) checked @endif>
+            <label class="custom-control-label" for="depression_counsellor">Depression</label>
         </div>
 
         <div class="custom-control custom-checkbox">
@@ -106,21 +106,21 @@
         </div>
 
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[emotional]" id="emotional"
-                   @if(old('emotional', $issues['emotional'])) checked @endif>
-            <label class="custom-control-label" for="emotional">Emotional Abuse</label>
+            <input type="checkbox" class="custom-control-input" name="issues[emotional_abuse]" id="emotional_abuse"
+                   @if(old('emotional_abuse', $issues['emotional_abuse'])) checked @endif>
+            <label class="custom-control-label" for="emotional_abuse">Emotional Abuse</label>
         </div>
 
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[emotional]" id="emotional"
-                   @if(old('emotional', $issues['emotional'])) checked @endif>
-            <label class="custom-control-label" for="emotional">Emotional Overwhelm</label>
+            <input type="checkbox" class="custom-control-input" name="issues[emotional_overwhelm]" id="emotional_overwhelm"
+                   @if(old('emotional_overwhelm', $issues['emotional_overwhelm'])) checked @endif>
+            <label class="custom-control-label" for="emotional_overwhelm">Emotional Overwhelm</label>
         </div>
 
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[family]" id="family"
-                   @if(old('family', $issues['family'])) checked @endif>
-            <label class="custom-control-label" for="family">Family Problems</label>
+            <input type="checkbox" class="custom-control-input" name="issues[family_problems]" id="family_problems"
+                   @if(old('family_problems', $issues['family_problems'])) checked @endif>
+            <label class="custom-control-label" for="family_problems">Family Problems</label>
         </div>
         <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" name="issues[fear]" id="fear"
@@ -128,9 +128,9 @@
             <label class="custom-control-label" for="fear">Fear</label>
         </div>
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[grief]" id="grief"
-                   @if(old('grief', $issues['grief'])) checked @endif>
-            <label class="custom-control-label" for="grief">Grief, Loss, and Bereavement </label>
+            <input type="checkbox" class="custom-control-input" name="issues[grief_loss]" id="grief_loss"
+                   @if(old('grief_loss', $issues['grief_loss'])) checked @endif>
+            <label class="custom-control-label" for="grief_loss">Grief, Loss, and Bereavement </label>
         </div>
         <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" name="issues[gender]" id="gender"
@@ -158,19 +158,19 @@
             <label class="custom-control-label" for="marriage">Marriage relation issue</label>
         </div>
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[mens]" id="mens"
-                   @if(old('mens', $issues['mens'])) checked @endif>
-            <label class="custom-control-label" for="mens">Men’s Issues and Problems</label>
+            <input type="checkbox" class="custom-control-input" name="issues[men_issues]" id="men_issues"
+                   @if(old('men_issues', $issues['men_issues'])) checked @endif>
+            <label class="custom-control-label" for="men_issues">Men’s Issues and Problems</label>
         </div>
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[money]" id="money"
-                   @if(old('money', $issues['money'])) checked @endif>
-            <label class="custom-control-label" for="money">Money and Financial Issues</label>
+            <input type="checkbox" class="custom-control-input" name="issues[money_issues]" id="money_issues"
+                   @if(old('money_issues', $issues['money_issues'])) checked @endif>
+            <label class="custom-control-label" for="money_issues">Money and Financial Issues</label>
         </div>
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[mood]" id="mood"
-                   @if(old('mood', $issues['mood'])) checked @endif>
-            <label class="custom-control-label" for="mood">Mood Swings</label>
+            <input type="checkbox" class="custom-control-input" name="issues[mood_swings]" id="mood_swings"
+                   @if(old('mood_swings', $issues['mood_swings'])) checked @endif>
+            <label class="custom-control-label" for="mood_swings">Mood Swings</label>
         </div>
         <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" name="issues[minority]" id="minority"
@@ -203,9 +203,9 @@
             <label class="custom-control-label" for="phobias">Phobias</label>
         </div>
         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[physical]" id="physical"
-                   @if(old('physical', $issues['physical'])) checked @endif>
-            <label class="custom-control-label" for="physical">Physical Abuse</label>
+            <input type="checkbox" class="custom-control-input" name="issues[physical_abuse]" id="physical_abuse"
+                   @if(old('physical_abuse', $issues['physical_abuse'])) checked @endif>
+            <label class="custom-control-label" for="physical_abuse">Physical Abuse</label>
         </div>
         <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" name="issues[postpartum]" id="postpartum"
@@ -228,9 +228,9 @@
             <label class="custom-control-label" for="rejection">Rejection</label>
         </div>
          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[relationships ]" id="relationships "
-                   @if(old('relationships ', $issues['relationships '])) checked @endif>
-            <label class="custom-control-label" for="relationships ">Relationships </label>
+            <input type="checkbox" class="custom-control-input" name="issues[relationships]" id="relationships"
+                   @if(old('relationships', $issues['relationships'])) checked @endif>
+            <label class="custom-control-label" for="relationships">Relationships </label>
         </div>
          <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" name="issues[religious]" id="religious"
@@ -238,44 +238,44 @@
             <label class="custom-control-label" for="religious">Religious Issues</label>
         </div>
          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[self]" id="self"
-                   @if(old('self', $issues['self'])) checked @endif>
-            <label class="custom-control-label" for="self">Self-Actualization</label>
+            <input type="checkbox" class="custom-control-input" name="issues[self_actualization]" id="self_actualization"
+                   @if(old('self_actualization', $issues['self_actualization'])) checked @endif>
+            <label class="custom-control-label" for="self_actualization">Self-Actualization</label>
         </div>
          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[sexual]" id="sexual"
-                   @if(old('sexual', $issues['sexual'])) checked @endif>
-            <label class="custom-control-label" for="sexual">Sexual identity concern</label>
+            <input type="checkbox" class="custom-control-input" name="issues[sexual_identity]" id="sexual_identity"
+                   @if(old('sexual_identity', $issues['sexual_identity'])) checked @endif>
+            <label class="custom-control-label" for="sexual_identity">Sexual identity concern</label>
         </div>
          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[sexual]" id="sexual"
-                   @if(old('sexual', $issues['sexual'])) checked @endif>
-            <label class="custom-control-label" for="sexual">Sexual abuse</label>
+            <input type="checkbox" class="custom-control-input" name="issues[sexual_abuse]" id="sexual_abuse"
+                   @if(old('sexual_abuse', $issues['sexual_abuse'])) checked @endif>
+            <label class="custom-control-label" for="sexual_abuse">Sexual abuse</label>
         </div>
          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[sexual]" id="sexual"
-                   @if(old('sexual', $issues['sexual'])) checked @endif>
-            <label class="custom-control-label" for="sexual">Sexual harassment</label>
+            <input type="checkbox" class="custom-control-input" name="issues[sexual_harassment]" id="sexual_harassment"
+                   @if(old('sexual_harassment', $issues['sexual_harassment'])) checked @endif>
+            <label class="custom-control-label" for="sexual_harassment">Sexual harassment</label>
         </div>
          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[physical]" id="physical"
-                   @if(old('physical', $issues['physical'])) checked @endif>
-            <label class="custom-control-label" for="physical">Physical harassment</label>
+            <input type="checkbox" class="custom-control-input" name="issues[physical_harassment]" id="physical_harassment"
+                   @if(old('physical_harassment', $issues['physical_harassment'])) checked @endif>
+            <label class="custom-control-label" for="physical_harassment">Physical harassment</label>
         </div>
          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[online]" id="online"
-                   @if(old('online', $issues['online'])) checked @endif>
-            <label class="custom-control-label" for="online">Online harassment</label>
+            <input type="checkbox" class="custom-control-input" name="issues[online_harassment]" id="online_harassment"
+                   @if(old('online_harassment', $issues['online_harassment'])) checked @endif>
+            <label class="custom-control-label" for="online_harassment">Online harassment</label>
         </div>
          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[sleep]" id="sleep"
-                   @if(old('sleep', $issues['sleep'])) checked @endif>
-            <label class="custom-control-label" for="sleep">Sleep Problem</label>
+            <input type="checkbox" class="custom-control-input" name="issues[sleep_problem]" id="sleep_problem"
+                   @if(old('sleep_problem', $issues['sleep_problem'])) checked @endif>
+            <label class="custom-control-label" for="sleep_problem">Sleep Problem</label>
         </div>
          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[social]" id="social"
-                   @if(old('social', $issues['social'])) checked @endif>
-            <label class="custom-control-label" for="social">Social Anxiety / Phobia</label>
+            <input type="checkbox" class="custom-control-input" name="issues[social_anxiety]" id="social_anxiety"
+                   @if(old('social_anxiety', $issues['social_anxiety'])) checked @endif>
+            <label class="custom-control-label" for="social_anxiety">Social Anxiety / Phobia</label>
         </div>
          <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" name="issues[spirituality]" id="spirituality"
@@ -288,14 +288,14 @@
             <label class="custom-control-label" for="stress">Stress</label>
         </div>
          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[self-harm]" id="self-harm"
-                   @if(old('self-harm', $issues['self-harm'])) checked @endif>
-            <label class="custom-control-label" for="self-harm">Self-harm</label>
+            <input type="checkbox" class="custom-control-input" name="issues[self_harm_counsellor]" id="self_harm_counsellor"
+                   @if(old('self_harm_counsellor', $issues['self_harm_counsellor'])) checked @endif>
+            <label class="custom-control-label" for="self_harm_counsellor">Self-harm</label>
         </div>
          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[suicide]" id="suicide"
-                   @if(old('suicide', $issues['suicide'])) checked @endif>
-            <label class="custom-control-label" for="suicide">Suicide</label>
+            <input type="checkbox" class="custom-control-input" name="issues[suicide_counsellor]" id="suicide_counsellor"
+                   @if(old('suicide_counsellor', $issues['suicide_counsellor'])) checked @endif>
+            <label class="custom-control-label" for="suicide_counsellor">Suicide</label>
         </div>
          <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" name="issues[teenage]" id="teenage"
@@ -308,14 +308,13 @@
             <label class="custom-control-label" for="trust">Trust Issues</label>
         </div>
          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[womens]" id="womens"
-                   @if(old('womens', $issues['womens'])) checked @endif>
-            <label class="custom-control-label" for="womens">Women’s Issues</label>
+            <input type="checkbox" class="custom-control-input" name="issues[womens_issues]" id="womens_issues"
+                   @if(old('womens_issues', $issues['womens_issues'])) checked @endif>
+            <label class="custom-control-label" for="womens_issues">Women’s Issues</label>
         </div>
-         <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" name="issues[others]" id="others"
-                   @if(old('others', $issues['others'])) checked @endif>
-            <label class="custom-control-label" for="others:">Others:</label>
+        <div class="form-group">
+            <label for="others">Others</label>
+            <input type="text" class="form-control" name="issues[others]" id="others" value="{{ old('others', $issues['others']) }}">
         </div>
     </div>
 </div>

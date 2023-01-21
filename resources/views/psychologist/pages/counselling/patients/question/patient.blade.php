@@ -126,10 +126,5 @@
                    @if(old('sexual', $issues['sexual'])) checked @endif>
             <label class="custom-control-label" for="sexual">Sexual Harassment</label>
         </div>
-
-
-
-
-
     </div>
 </div>
