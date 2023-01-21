@@ -172,9 +172,13 @@
                    @if(old('violent', $issues['violent'])) checked @endif>
             <label class="custom-control-label" for="violent">Violent behaviour</label>
         </div>
+        @if($textView ?? false)
+            Others: {{ $issues['others_psychologist'] }}
+        @else
          <div class="form-group">
-            <label for="others">Others</label>
-            <input type="text" class="form-control" name="issues[others]" id="others" value="{{ old('others', $issues['others']) }}">
+            <label for="others_psychologist">Others</label>
+            <input type="text" class="form-control" name="issues[others_psychologist]" id="others_psychologist" value="{{ old('others_psychologist', $issues['others_psychologist']) }}">
         </div>
+        @endif
     </div>
 </div>

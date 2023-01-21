@@ -312,9 +312,13 @@
                    @if(old('womens_issues', $issues['womens_issues'])) checked @endif>
             <label class="custom-control-label" for="womens_issues">Women’s Issues</label>
         </div>
-        <div class="form-group">
-            <label for="others">Others</label>
-            <input type="text" class="form-control" name="issues[others]" id="others" value="{{ old('others', $issues['others']) }}">
-        </div>
+        @if($textView ?? false)
+            Others: {{ $issues['others_counsellor'] }}
+        @else
+            <div class="form-group">
+                <label for="others_counsellor">Others</label>
+                <input type="text" class="form-control" name="issues[others_counsellor]" id="others_counsellor" value="{{ old('others_counsellor', $issues['others_counsellor']) }}">
+            </div>
+        @endif
     </div>
 </div>

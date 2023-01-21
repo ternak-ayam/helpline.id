@@ -634,7 +634,7 @@
     {
         "question": "Others",
         "type": "CHECKBOX",
-        "key": "others",
+        "key": "others_counsellor",
         "max_value": 250,
         "questionable": "",
         "default_value": false
@@ -882,7 +882,7 @@
     {
         "question": "Others",
         "type": "CHECKBOX",
-        "key": "others",
+        "key": "others_psychologist",
         "max_value": 250,
         "questionable": "",
         "default_value": false

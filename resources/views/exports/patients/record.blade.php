@@ -33,6 +33,31 @@
             margin-top: 1rem;
         }
 
+        .ml-2 {
+            margin-left: 1rem;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .my-2 {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .p-4 {
+            padding: 1rem;
+        }
+
+        .bg-green {
+            background-color: #3bb557;
+        }
+
+        .bg-red {
+            background-color: #b02a37;
+        }
+
         .text-small {
             font-size: 12px;
         }
@@ -40,6 +65,16 @@
         .text-left {
             text-align: left;
         }
+        .label {
+            color: white;
+            padding: 8px;
+        }
+
+        .success {background-color: #04AA6D;} /* Green */
+        .info {background-color: #2196F3;} /* Blue */
+        .warning {background-color: #ff9800;} /* Orange */
+        .danger {background-color: #f44336;} /* Red */
+        .other {background-color: #e7e7e7; color: black;} /* Gray */
     </style>
 </head>
 
@@ -56,138 +91,20 @@
         the counselling! If a question cannot be answered, please skip it. Please remember that patient data is
         confidential.</p>
 </div>
-<div>
-    <p class="text-small text-left">Issues experienced by the patient:</p>
-    <div class="mt-2">
-        <div class="col-sm-8">
-
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="issues[discrimination]"
-                       id="discrimination" @if(old('discrimination', $issues['discrimination'])) checked @endif>
-                <label class="custom-control-label"
-                       for="discrimination">Discrimination/Racism</label>
-            </div>
-
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="issues[relationship]"
-                       id="relationship" @if(old('relationship', $issues['relationship'])) checked @endif>
-                <label class="custom-control-label" for="relationship">Relationship
-                    Issues</label>
-            </div>
-
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="issues[family]" id="family"
-                       @if(old('family', $issues['family'])) checked @endif>
-                <label class="custom-control-label" for="family">Family Issues</label>
-            </div>
-
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="issues[anxiety]"
-                       id="anxiety" @if(old('anxiety', $issues['anxiety'])) checked @endif>
-                <label class="custom-control-label" for="anxiety">Anxiety Disorders</label>
-            </div>
-
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="issues[bipolar]"
-                       id="bipolar" @if(old('bipolar', $issues['bipolar'])) checked @endif>
-                <label class="custom-control-label" for="bipolar">Bipolar Disorders</label>
-            </div>
-
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="issues[depression]"
-                       id="depression" @if(old('depression', $issues['depression'])) checked @endif>
-                <label class="custom-control-label" for="depression">Depression</label>
-            </div>
-
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="issues[dissociative]"
-                       id="dissociative" @if(old('dissociative', $issues['dissociative'])) checked @endif>
-                <label class="custom-control-label" for="dissociative">Dissociative
-                    Disorders</label>
-            </div>
-
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="issues[eating]" id="eating"
-                       @if(old('eating', $issues['eating'])) checked @endif>
-                <label class="custom-control-label" for="eating">Eating Disorders</label>
-            </div>
-
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="issues[grief]" id="grief"
-                       @if(old('grief', $issues['grief'])) checked @endif>
-                <label class="custom-control-label" for="grief">Grief and Bereavement</label>
-            </div>
-
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="issues[obsessive]"
-                       id="obsessive" @if(old('obsessive', $issues['obsessive'])) checked @endif>
-                <label class="custom-control-label" for="obsessive">Obsessive-Compulsive
-                    Disorders</label>
-            </div>
-
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="issues[psychosis]"
-                       id="psychosis" @if(old('psychosis', $issues['psychosis'])) checked @endif>
-                <label class="custom-control-label" for="psychosis">Psychosis</label>
-            </div>
-
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="issues[schizoaffective]"
-                       id="schizoaffective" @if(old('schizoaffective', $issues['schizoaffective'])) checked @endif>
-                <label class="custom-control-label" for="schizoaffective">Schizoaffective
-                    Disorder</label>
-            </div>
-
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="issues[schizophrenia]"
-                       id="schizophrenia" @if(old('schizophrenia', $issues['schizophrenia'])) checked @endif>
-                <label class="custom-control-label" for="schizophrenia">Schizophrenia</label>
-            </div>
-
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="issues[self_harm]" id="self_harm"
-                       @if(old('self_harm', $issues['self_harm'])) checked @endif>
-                <label class="custom-control-label" for="self_harm">Self Harm/Suicidal
-                    Attempt</label>
-            </div>
-
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="issues[suicidal]"
-                       id="suicidal" @if(old('suicidal', $issues['suicidal'])) checked @endif>
-                <label class="custom-control-label" for="suicidal">Suicidal Ideation</label>
-            </div>
-
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="issues[domestic]"
-                       id="domestic" @if(old('domestic', $issues['domestic'])) checked @endif>
-                <label class="custom-control-label" for="domestic">Domestic Violence</label>
-            </div>
-
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="issues[physical]"
-                       id="physical" @if(old('physical', $issues['physical'])) checked @endif>
-                <label class="custom-control-label" for="physical">Physical Harassment</label>
-            </div>
-
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="issues[verbal]" id="verbal"
-                       @if(old('verbal', $issues['verbal'])) checked @endif>
-                <label class="custom-control-label" for="verbal">Verbal Harassment</label>
-            </div>
-
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="issues[online]" id="online"
-                       @if(old('online', $issues['online'])) checked @endif>
-                <label class="custom-control-label" for="online">Online Harassment</label>
-            </div>
-
-            <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input" name="issues[sexual]" id="sexual"
-                       @if(old('sexual', $issues['sexual'])) checked @endif>
-                <label class="custom-control-label" for="sexual">Sexual Harassment</label>
-            </div>
-        </div>
+<div class="my-2">
+    <p>Does the patient require emergency support?</p>
+    <div>
+        @if($issues['emergency_support'] === "YES")
+            <span class="label success">YES</span>
+        @else
+            <span class="label danger">NO</span>
+        @endif
     </div>
+</div>
+<div>
+    @include('psychologist.pages.counselling.patients.question.patient')
+    @include('psychologist.pages.counselling.patients.question.counsellor', ['textView' => true])
+    @include('psychologist.pages.counselling.patients.question.psychologist', ['textView' => true])
 </div>
 <table class="table table-striped mt-4">
     <thead>
@@ -200,6 +117,7 @@
     <tbody>
 
     @foreach($questions as $question)
+        @if($question->key != "emergency_support")
         <tr>
             @if($question->no == 9)
                 <td rowspan="2">{{ $question->no }}</td>
@@ -216,6 +134,7 @@
                 <td>{{ $issues[$question->key] }}</td>
             @endif
         </tr>
+        @endif
     @endforeach
 
     </tbody>
