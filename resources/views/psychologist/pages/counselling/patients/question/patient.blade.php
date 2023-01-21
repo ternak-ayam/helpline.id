@@ -1,8 +1,7 @@
 <div class="form-group row mt-4">
     <div class="col-sm-4">Issues experienced by the patient:</div>
     <div class="col-sm-8">
-
-        <div class="custom-control custom-checkbox">
+     <div class="custom-control custom-checkbox">
             <input type="checkbox" class="custom-control-input" name="issues[discrimination]"
                    id="discrimination" @if(old('discrimination', $issues['discrimination'])) checked @endif>
             <label class="custom-control-label"
@@ -127,5 +126,10 @@
                    @if(old('sexual', $issues['sexual'])) checked @endif>
             <label class="custom-control-label" for="sexual">Sexual Harassment</label>
         </div>
+
+
+
+
+
     </div>
 </div>

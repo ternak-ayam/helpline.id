@@ -162,7 +162,7 @@
     {
         "question": "Adjustment issues",
         "type": "CHECKBOX",
-        "key": "sexual",
+        "key": "adjustment",
         "max_value": 250,
         "questionable": "",
         "default_value": false
@@ -170,7 +170,7 @@
     {
         "question": "Aggression and Violence",
         "type": "CHECKBOX",
-        "key": "sexual",
+        "key": "aggression",
         "max_value": 250,
         "questionable": "",
         "default_value": false
@@ -178,7 +178,7 @@
     {
         "question": "Agoraphobia",
         "type": "CHECKBOX",
-        "key": "sexual",
+        "key": "agoraphobia",
         "max_value": 250,
         "questionable": "",
         "default_value": false
@@ -186,7 +186,7 @@
     {
         "question": "Alcohol and substance abuse",
         "type": "CHECKBOX",
-        "key": "sexual",
+        "key": "alcohol",
         "max_value": 250,
         "questionable": "",
         "default_value": false
@@ -194,7 +194,7 @@
     {
         "question": "Anger",
         "type": "CHECKBOX",
-        "key": "sexual",
+        "key": "anger",
         "max_value": 250,
         "questionable": "",
         "default_value": false
@@ -202,7 +202,7 @@
     {
         "question": "Anxiety",
         "type": "CHECKBOX",
-        "key": "sexual",
+        "key": "anxiety",
         "max_value": 250,
         "questionable": "",
         "default_value": false
@@ -210,7 +210,7 @@
     {
         "question": "Borderline Personality",
         "type": "CHECKBOX",
-        "key": "sexual",
+        "key": "borderline",
         "max_value": 250,
         "questionable": "",
         "default_value": false
@@ -218,7 +218,7 @@
     {
         "question": "Bullying",
         "type": "CHECKBOX",
-        "key": "sexual",
+        "key": "bullying",
         "max_value": 250,
         "questionable": "",
         "default_value": false
@@ -226,7 +226,7 @@
     {
         "question": "Caregiver Stress",
         "type": "CHECKBOX",
-        "key": "sexual",
+        "key": "caregiver",
         "max_value": 250,
         "questionable": "",
         "default_value": false
@@ -234,13 +234,645 @@
     {
         "question": "Children Issues",
         "type": "CHECKBOX",
-        "key": "sexual",
+        "key": "children",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Communication Problems",
+        "type": "CHECKBOX",
+        "key": "communication",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Depression",
+        "type": "CHECKBOX",
+        "key": "depression",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Dissociation",
+        "type": "CHECKBOX",
+        "key": "dissociation",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Divorce / Divorce Adjustment",
+        "type": "CHECKBOX",
+        "key": "divorce",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Domestic Violence",
+        "type": "CHECKBOX",
+        "key": "domestic",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Eating concern",
+        "type": "CHECKBOX",
+        "key": "eating",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Emotional Abuse",
+        "type": "CHECKBOX",
+        "key": "Emotional",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Emotional Overwhelm",
+        "type": "CHECKBOX",
+        "key": "emotional_overwhelm",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Family Problems",
+        "type": "CHECKBOX",
+        "key": "family",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Fear",
+        "type": "CHECKBOX",
+        "key": "fear",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Grief, Loss, and Bereavement ",
+        "type": "CHECKBOX",
+        "key": "grief",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Gender identity",
+        "type": "CHECKBOX",
+        "key": "gender",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Health / Illness / Medical Issues",
+        "type": "CHECKBOX",
+        "key": "health",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Helplessness / Victimhood",
+        "type": "CHECKBOX",
+        "key": "helplessness",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Isolation",
+        "type": "CHECKBOX",
+        "key": "isolation",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Marriage relation issue",
+        "type": "CHECKBOX",
+        "key": "marriage",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Men’s Issues and Problems",
+        "type": "CHECKBOX",
+        "key": "men’s",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Money and Financial Issues",
+        "type": "CHECKBOX",
+        "key": "money",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Mood Swings",
+        "type": "CHECKBOX",
+        "key": "mood",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Minority Concerns",
+        "type": "CHECKBOX",
+        "key": "minority",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "OCD / Obsessions and Compulsions",
+        "type": "CHECKBOX",
+        "key": "ocd",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Panic and Panic Attacks",
+        "type": "CHECKBOX",
+        "key": "panic",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Paranoia",
+        "type": "CHECKBOX",
+        "key": "paranoia",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Parenting",
+        "type": "CHECKBOX",
+        "key": "parenting",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "phobias",
+        "type": "CHECKBOX",
+        "key": "phobias",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Physical Abuse",
+        "type": "CHECKBOX",
+        "key": "physical",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Postpartum Depression",
+        "type": "CHECKBOX",
+        "key": "postpartum",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Pregnancy and Birthing",
+        "type": "CHECKBOX",
+        "key": "pregnancy",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Prejudice / Discrimination",
+        "type": "CHECKBOX",
+        "key": "prejudice ",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Rejection",
+        "type": "CHECKBOX",
+        "key": "rejection",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Relationships",
+        "type": "CHECKBOX",
+        "key": "relationships ",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Religious Issues",
+        "type": "CHECKBOX",
+        "key": "religious",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Self-Actualization",
+        "type": "CHECKBOX",
+        "key": "self_actualization",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Sexual identity concern",
+        "type": "CHECKBOX",
+        "key": "sexual_identity",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Sexual abuse",
+        "type": "CHECKBOX",
+        "key": "sexual_abuse",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Sexual harassment",
+        "type": "CHECKBOX",
+        "key": "sexual_harassment",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Physical harassment",
+        "type": "CHECKBOX",
+        "key": "physical_harassment",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Online harassment",
+        "type": "CHECKBOX",
+        "key": "online_harassment",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Sleep Problem",
+        "type": "CHECKBOX",
+        "key": "sleep",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Social Anxiety / Phobia",
+        "type": "CHECKBOX",
+        "key": "social_Anxiety",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Spirituality",
+        "type": "CHECKBOX",
+        "key": "spirituality",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Stress",
+        "type": "CHECKBOX",
+        "key": "stress",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Self-harm",
+        "type": "CHECKBOX",
+        "key": "self_harm",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Suicide",
+        "type": "CHECKBOX",
+        "key": "suicide",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Teenage Issues",
+        "type": "CHECKBOX",
+        "key": "teenage",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Trust Issues",
+        "type": "CHECKBOX",
+        "key": "trust",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Womens Issues",
+        "type": "CHECKBOX",
+        "key": "womens_issues",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Others",
+        "type": "CHECKBOX",
+        "key": "others",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Acute stress reaction",
+        "type": "CHECKBOX",
+        "key": "acute",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Anxiety disorder",
+        "type": "CHECKBOX",
+        "key": "anxiety",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Adjustment disorde",
+        "type": "CHECKBOX",
+        "key": "adjustment",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Bipolar disorder",
+        "type": "CHECKBOX",
+        "key": "bipolar",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Brief Psychotic disorder",
+        "type": "CHECKBOX",
+        "key": "brief ",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Delusional disorders",
+        "type": "CHECKBOX",
+        "key": "delusional",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Depression episode",
+        "type": "CHECKBOX",
+        "key": "depression",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Dissociative and conversion disorder, unspecified",
+        "type": "CHECKBOX",
+        "key": "dissociative",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Eating Disorder",
+        "type": "CHECKBOX",
+        "key": "eating",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Generalized anxiety disorder",
+        "type": "CHECKBOX",
+        "key": "generalize",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Intentional self-harm",
+        "type": "CHECKBOX",
+        "key": "intentional",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Impulse disorders",
+        "type": "CHECKBOX",
+        "key": "impulse_disorders",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Impulse disorder, unspecified",
+        "type": "CHECKBOX",
+        "key": "impulse_unspecified",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Major depressive disorder",
+        "type": "CHECKBOX",
+        "key": "major",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Manic episode",
+        "type": "CHECKBOX",
+        "key": "manic",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Mixed anxiety and depressive disorder",
+        "type": "CHECKBOX",
+        "key": "mixed_anxiety",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Mood disorder due to known physiological condition, unspecified",
+        "type": "CHECKBOX",
+        "key": "mood_disorder",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Other mental disorder due to known physiological condition",
+        "type": "CHECKBOX",
+        "key": "other_mental",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Obsessive-compulsive disorder, unspecified",
+        "type": "CHECKBOX",
+        "key": "obsessive_compulsive",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Post-traumatic stress disorder (PTSD)",
+        "type": "CHECKBOX",
+        "key": "post_traumatic",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Panic Disorder",
+        "type": "CHECKBOX",
+        "key": "panic_disorder",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Personality disorder, unspecified",
+        "type": "CHECKBOX",
+        "key": "personality",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Psychosis",
+        "type": "CHECKBOX",
+        "key": "psychosis",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Sleep disorder",
+        "type": "CHECKBOX",
+        "key": "sleep",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Somatoform disorder",
+        "type": "CHECKBOX",
+        "key": "somatoform",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Schizoaffective disorders",
+        "type": "CHECKBOX",
+        "key": "schizoaffective",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Schizophrenia",
+        "type": "CHECKBOX",
+        "key": "schizophrenia",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Suicide attempt",
+        "type": "CHECKBOX",
+        "key": "suicide",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Suicidal ideations",
+        "type": "CHECKBOX",
+        "key": "suicidal",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Violent behaviour",
+        "type": "CHECKBOX",
+        "key": "violent",
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "",
+        "type": "CHECKBOX",
+        "key": "",
         "max_value": 250,
         "questionable": "",
         "default_value": false
     },
 
 
+    
 
     {
         "no": "1",
