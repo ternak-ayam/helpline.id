@@ -16,7 +16,7 @@ class CreateTranslatorsTable extends Migration
         Schema::create('translators', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

@@ -10,10 +10,13 @@ use App\Models\Admin;
 use App\Models\Counselling;
 use App\Models\CounsellorSchedule;
 use App\Models\Translator;
+use App\Models\TranslatorAvailableTime;
 use App\Notifications\SendBookingDetailNotification;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
+use Illuminate\Validation\ValidationException;
 
 class CounsellingController extends Controller
 {
@@ -31,7 +34,7 @@ class CounsellingController extends Controller
                 ]);
             }
 
-            $translatorId = $this->needTranslator($request) ? Translator::where('language', $request->translator_language)->inRandomOrder()->first()->id : null;
+            $translatorId = $this->needTranslator($request) ? $this->getAvailableTranslator($request) : null;
 
             $counselling = Counselling::create([
                 'counselling_id' => $counsellingId,
@@ -73,6 +76,24 @@ class CounsellingController extends Controller
     public function needTranslator($request): bool
     {
         return !blank($request->translator_language);
+    }
+
+    /**
+     * @throws ValidationException
+     */
+    public function getAvailableTranslator($request)
+    {
+        $day = Carbon::create($request->schedule)->format('l');
+        $scheduleAvailable = TranslatorAvailableTime::where('day',  Str::lower($day))->get();
+        $translator = Translator::whereIn('id', $scheduleAvailable->pluck('translator_id'))->where('language', $request->translator_language)->first();
+
+        if(! $translator) {
+            throw ValidationException::withMessages([
+                'translator_language' => ['Translator is not available'],
+            ]);
+        }
+
+        return $translator->id;
     }
 
     public function show(Counselling $counselling)

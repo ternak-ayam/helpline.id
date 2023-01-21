@@ -58,7 +58,7 @@
 {{--                    <button data-target="#importTranslatorModal" data-toggle="modal" class="btn btn-sm btn-success">--}}
 {{--                        Import Translator <i class="fas fa-upload"></i>--}}
 {{--                    </button>--}}
-                    <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#createTranslator">
+                    <a href="{{ route('admin.user.translator.create') }}" class="btn btn-sm btn-primary">
                         Add New Translator <i class="fas fa-plus"></i>
                     </a>
                 </div>
