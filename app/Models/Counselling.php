@@ -103,6 +103,16 @@ class Counselling extends Model
         return $this->hasOne(PatientRecord::class, 'counselling_id');
     }
 
+    public function isEmergency()
+    {
+        $question = PatientRecordQuestion::where('key', 'emergency_support')->first();
+        $patientRecord = optional($this->patientRecords);
+
+        $answer = optional(PatientRecordDetail::where([['question_id', $question->id], ['patient_record_id', $patientRecord->id]])->first());
+
+        return $answer->answer === PatientRecord::YES;
+    }
+
     public function fetchPatientRecords()
     {
         $issues = [];

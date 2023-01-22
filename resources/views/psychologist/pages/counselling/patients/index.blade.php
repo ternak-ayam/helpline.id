@@ -38,12 +38,15 @@
                                 <td>{{ $schedule->due->timezone(auth()->user()->timezone)->format('F j, Y H:i') }}</td>
                                 <td>{{ $schedule->getCounsellingMethod() }}</td>
                                 <td>
-                                    <a href="{{ route('psychologist.counselling.patient.show', $schedule->counselling_id) }}" class="btn btn-danger"><i
+                                    <a href="{{ route('psychologist.counselling.patient.show', $schedule->counselling_id) }}" class="btn btn-primary"><i
                                             class="fas fa-eye"></i>
                                     </a>
                                     <a target="_blank" href="{{ route('psychologist.patient.download', $schedule->counselling_id) }}" class="btn btn-success"><i
                                             class="fas fa-download"></i>
                                     </a>
+                                    @if($schedule->isEmergency())
+                                    <a class="btn btn-danger"><i class="fas fa-exclamation text-white"></i></a>
+                                    @endif
                                 </td>
                             </tr>
                         @empty

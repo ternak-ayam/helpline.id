@@ -102,7 +102,6 @@
     </div>
 </div>
 <div>
-    @include('psychologist.pages.counselling.patients.question.patient')
     @include('psychologist.pages.counselling.patients.question.counsellor', ['textView' => true])
     @include('psychologist.pages.counselling.patients.question.psychologist', ['textView' => true])
 </div>

@@ -41,16 +41,13 @@
                                 <div class="col-sm-8">
                                     <select type="text" class="form-control" name="issues[emergency_support]"
                                             id="emergency_support">
-                                        <option value="YES" @if($issues['emergency_support'] == \App\Models\PatientRecord::YES) selected @endif>Yes</option>
                                         <option value="NO" @if($issues['emergency_support'] == \App\Models\PatientRecord::NO) selected @endif>No</option>
+                                        <option value="YES" @if($issues['emergency_support'] == \App\Models\PatientRecord::YES) selected @endif>Yes</option>
                                     </select>
                                 </div>
                             </div>
-
-                            @include('psychologist.pages.counselling.patients.question.patient')
                             @include('psychologist.pages.counselling.patients.question.counsellor')
                             @include('psychologist.pages.counselling.patients.question.psychologist')
-
                             <div class="form-group row">
                                 <label for="counsellor_name" class="col-sm-4 col-form-label">Counsellor/Psychologist</label>
                                 <div class="col-sm-8">
