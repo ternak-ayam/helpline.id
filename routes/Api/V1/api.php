@@ -47,4 +47,10 @@ Route::get('chat/{counsellingId}', [\App\Http\Controllers\Api\V1\Counselling\Cha
 Route::get('parse/accesstoken/{accessToken}', [\App\Http\Controllers\Api\V1\AccessTokenController::class, 'parse']);
 
 Route::get('posts', [\App\Http\Controllers\Api\V1\Blog\PostController::class, 'index']);
+
 Route::get('posts/{post}', [\App\Http\Controllers\Api\V1\Blog\PostController::class, 'show']);
+
+
+Route::post('/contact/email', function (Request $request) {
+    \Illuminate\Support\Facades\Mail::to('mail@support.helpline.id')->send(new \App\Mail\SendMailToContact($request));
+});

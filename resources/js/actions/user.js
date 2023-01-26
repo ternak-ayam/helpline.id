@@ -11,7 +11,7 @@ import {
     USER_TEXT_CHAT,
 } from "./type";
 import moment from "moment";
-import {showErrorAlert, showErrorAlerts, showSuccessAlert} from "./alert";
+import { showErrorAlert, showErrorAlerts, showSuccessAlert } from "./alert";
 import { generateRtmToken } from "./text";
 
 export const updateUserProfile = (user) => (dispatch) => {
@@ -111,6 +111,48 @@ export const getCounsellor = (page) => (dispatch) => {
     );
 };
 
+export const sendContactMessage = (messageData) => (dispatch) => {
+    dispatch({
+        type: IS_LOADING,
+        payload: true,
+    });
+
+    return User.sendMessage(messageData).then(
+        (response) => {
+            dispatch({
+                type: SET_MESSAGE,
+                payload: { data: response.data },
+            });
+
+            dispatch({
+                type: IS_LOADING,
+                payload: false,
+            });
+
+            showSuccessAlert("Send Message Successfully");
+
+            window.location.reload();
+
+            return Promise.resolve();
+        },
+        (error) => {
+            const message = error.response.data.error;
+
+            dispatch({
+                type: SET_MESSAGE,
+                payload: message,
+            });
+
+            dispatch({
+                type: IS_LOADING,
+                payload: false,
+            });
+
+            return Promise.reject();
+        }
+    );
+};
+
 export const getDetailCounsellor = (counsellorId) => (dispatch) => {
     return User.getDetailCounsellor(counsellorId).then(
         (response) => {
@@ -166,8 +208,8 @@ export const getDetailCounsellorForCallPage = (counsellingId) => (dispatch) => {
                 payload: false,
             });
 
-            if(error.response.status === 401) {
-                showErrorAlert({message: "You should login first"})
+            if (error.response.status === 401) {
+                showErrorAlert({ message: "You should login first" });
             }
 
             return Promise.reject();

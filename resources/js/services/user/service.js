@@ -85,6 +85,18 @@ const UpdateUserProfile = (user) => {
         });
 };
 
+const sendMessage = (user) => {
+    return axios
+        .post(API_URL + "/contact/email", {
+            name: user.name,
+            email: user.email,
+            body: user.body,
+        })
+        .then((response) => {
+            return response.data;
+        });
+};
+
 const getCounsellingToken = (counsellingId, userId, tokenType = "rtcToken") => {
     return axios
         .get(
@@ -181,4 +193,5 @@ export default {
     getMessages,
     UpdateUserProfile,
     storeMessages,
+    sendMessage,
 };

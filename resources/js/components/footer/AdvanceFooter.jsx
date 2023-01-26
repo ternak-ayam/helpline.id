@@ -1,8 +1,89 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
+import MainModal from "../modals/MainModal";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import { useDispatch } from "react-redux";
+import { sendContactMessage } from "../../actions/user";
 
 const AdvanceFooter = ({ bottomFooter = "bottom-10" }) => {
+    const dispatch = useDispatch();
+    const [openModal, setOpenModal] = useState(false);
+    const [data, setData] = useState({
+        name: "",
+        email: "",
+        body: "",
+    });
+
     return (
         <>
+            <MainModal
+                onClick={() => {
+                    dispatch(sendContactMessage(data));
+                }}
+                openModal={openModal}
+                onClose={() => {
+                    setOpenModal(false);
+                }}
+            >
+                <Box>
+                    <TextField
+                        sx={{
+                            label: { color: "#1565c0" },
+                        }}
+                        className={"bg-blue-50 border-0"}
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="name"
+                        label="Name"
+                        name="name"
+                        onChange={(e) => {
+                            setData({ ...data, name: e.target.value });
+                        }}
+                        value={data.name}
+                        autoComplete="name"
+                        autoFocus
+                    />
+                    <TextField
+                        sx={{
+                            label: { color: "#1565c0" },
+                        }}
+                        className={"bg-blue-50 border-0"}
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="email"
+                        label="Email"
+                        name="email"
+                        onChange={(e) => {
+                            setData({ ...data, email: e.target.value });
+                        }}
+                        value={data.email}
+                        autoComplete="email"
+                    />
+                    <TextField
+                        sx={{
+                            label: { color: "#1565c0" },
+                        }}
+                        className={"bg-blue-50 border-0"}
+                        margin="normal"
+                        multiline
+                        rows={2}
+                        maxRows={4}
+                        required
+                        fullWidth
+                        id="body"
+                        label="Body"
+                        name="body"
+                        onChange={(e) => {
+                            setData({ ...data, body: e.target.value });
+                        }}
+                        value={data.body}
+                        autoComplete="body"
+                    />
+                </Box>
+            </MainModal>
             <footer className="mt-16">
                 <div className="grid lg:grid-cols-4  grid-cols-1">
                     <div className="col-span-1 flex justify-center">
@@ -77,10 +158,12 @@ const AdvanceFooter = ({ bottomFooter = "bottom-10" }) => {
                         <div className="text-white text-lg font-thin flex gap-4">
                             <div>
                                 <a
-                                    target={"_blank"}
-                                    href="https://bullyid.org/privacy-policy/"
+                                    className={"cursor-pointer"}
+                                    onClick={() => {
+                                        setOpenModal(true);
+                                    }}
                                 >
-                                    Policies
+                                    Contact
                                 </a>
                             </div>
                             <div>

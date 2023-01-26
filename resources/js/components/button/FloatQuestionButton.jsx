@@ -3,7 +3,7 @@ const FloatQuestionButton = () => {
         <a
             target={"_blank"}
             href={
-                "mailto:support@helpline.id?subject=%3A%20Helpline.id%3A%20Ask%20for%20Help&body=Hi%2C%20I%20would%20like%20to%20get%20guidance%20on%20how%20to"
+                "mailto:mail@support.helpline.id?subject=%3A%20Helpline.id%3A%20Ask%20for%20Help&body=Hi%2C%20I%20would%20like%20to%20get%20guidance%20on%20how%20to"
             }
             className="flex items-center gap-2 fixed bottom-4 right-4"
         >
