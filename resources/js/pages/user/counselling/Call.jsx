@@ -54,13 +54,16 @@ const Call = () => {
             <div className="container flex m-auto justify-center p-2 mb-24 mt-20">
                 <div className="border-blue-200 border border-2 rounded-xl w-full flex flex-col justify-center p-2 h-full">
                     {counsellingMethod == "video-chat" && showVideo && (
-                        <div className="flex gap-2 justify-center">
-                            <div
-                                id={"videoContainer"}
-                                className={
-                                    "videoContainer w-72 h-48 flex justify-center"
-                                }
-                            ></div>
+                        <div>
+                            <div className="flex gap-2 justify-center">
+                                <div
+                                    id={"videoContainer"}
+                                    className={
+                                        "videoContainer w-72 h-48 flex justify-center"
+                                    }
+                                ></div>
+                            </div>
+                            <br />
                             <div
                                 id={"remoteVideoContainer"}
                                 className={"flex justify-center gap-2"}

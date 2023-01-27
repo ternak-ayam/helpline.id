@@ -63,7 +63,7 @@ const TextChat = () => {
                     user.user_type === "counsellor"
                         ? user.counsellor_image
                         : user.user_type === "translator"
-                        ? user.translator_image
+                        ? "https://i.stack.imgur.com/dr5qp.jpg"
                         : process.env.MIX_DEFAULT_PROFILE_PICTURE,
             },
             userType: user.user_type,
@@ -90,7 +90,7 @@ const TextChat = () => {
                     user.user_type === "counsellor"
                         ? user.counsellor_image
                         : user.user_type === "translator"
-                        ? user.translator_image
+                        ? "https://i.stack.imgur.com/dr5qp.jpg"
                         : process.env.MIX_DEFAULT_PROFILE_PICTURE,
             },
             text: file.name,
