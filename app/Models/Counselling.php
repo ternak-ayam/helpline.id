@@ -43,14 +43,17 @@ class Counselling extends Model
     public function getChatUrl()
     {
         $userId = $this->user_id;
+        $userType = 'user';
 
         if(auth('counsellor')->check()) {
             $userId = $this->counsellor_id;
+            $userType = 'counsellor';
         } else if(auth('translator')->check()) {
             $userId = $this->translator_id;
+            $userType = 'translator';
         }
 
-        $token = ChatAccessToken::where([['user_id', $userId], ['counselling_id', $this->id]])->first();
+        $token = ChatAccessToken::where([['user_id', $userId], ['counselling_id', $this->id], ['owner_type', $userType]])->first();
 
         return $this->chat_url . '?token=' . $token->token;
     }
