@@ -62,7 +62,8 @@ export const initiateCallChannel = (channelId, token) => (dispatch) => {
             dispatch(
                 getDetailCounsellorForCallPage(
                     channelId,
-                    response.data.user_type
+                    response.data.user_type,
+                    response.data.user_id
                 )
             );
 

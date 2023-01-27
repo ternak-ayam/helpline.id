@@ -29,9 +29,9 @@ Route::middleware('auth:sanctum,counsellor,translator')->group(function () {
     Route::get('profile', [\App\Http\Controllers\Api\V1\Counselling\User\ProfileController::class, 'index']);
     Route::put('profile', [\App\Http\Controllers\Api\V1\Counselling\User\ProfileController::class, 'update']);
 
-
-    Route::get('counselling/{counselling:counselling_id}', [\App\Http\Controllers\Api\V1\Counselling\User\CounsellingController::class, 'show']);
 });
+
+Route::get('counselling/{counselling:counselling_id}', [\App\Http\Controllers\Api\V1\Counselling\User\CounsellingController::class, 'show']);
 
 Route::get('parse/accesstoken/{accessToken}', [\App\Http\Controllers\Api\V1\AccessTokenController::class, 'parse']);
 

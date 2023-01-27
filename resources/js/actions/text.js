@@ -16,8 +16,8 @@ let options = {
 
 let client = null;
 
-export const getMessages = (channelId, UserType) => (dispatch) => {
-    User.getMessages(channelId).then(
+export const getMessages = (channelId, userType, userId) => (dispatch) => {
+    User.getMessages(channelId, userType, userId).then(
         (response) => {
             dispatch({
                 type: MESSAGES,
@@ -27,10 +27,6 @@ export const getMessages = (channelId, UserType) => (dispatch) => {
             return Promise.resolve();
         },
         (error) => {
-            if (error.response.status === 401) {
-                showErrorAlert({ message: "You should login first" });
-            }
-
             return Promise.reject();
         }
     );
@@ -67,7 +63,13 @@ export const initiateTextChannel = (token, channelId) => (dispatch) => {
                 )
             );
 
-            dispatch(getMessages(channelId, response.data.user_type));
+            dispatch(
+                getMessages(
+                    channelId,
+                    response.data.user_type,
+                    response.data.user_id
+                )
+            );
 
             return Promise.resolve();
         },

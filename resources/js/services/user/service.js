@@ -21,11 +21,24 @@ const getDetailCounsellor = (counsellorId) => {
         });
 };
 
-const getCounsellorForCallPage = (counsellingId) => {
+const getCounsellorForCallPage = (
+    counsellingId,
+    userType = null,
+    userId = 0
+) => {
     return axios
-        .get(API_URL + "/counselling/" + counsellingId, {
-            headers: authHeader(),
-        })
+        .get(
+            API_URL +
+                "/counselling/" +
+                counsellingId +
+                "?userType=" +
+                userType +
+                "&userId=" +
+                userId,
+            {
+                headers: authHeader(),
+            }
+        )
         .then((response) => {
             return response.data;
         });
@@ -161,11 +174,20 @@ const storeMessages = (channelId, message, attachment = null) => {
         });
 };
 
-const getMessages = (channelId) => {
+const getMessages = (channelId, userType, userId) => {
     return axios
-        .get(API_URL + "/chat/" + channelId, {
-            headers: authHeader(),
-        })
+        .get(
+            API_URL +
+                "/chat/" +
+                channelId +
+                "?userType=" +
+                userType +
+                "&userId=" +
+                userId,
+            {
+                headers: authHeader(),
+            }
+        )
         .then((response) => {
             return response.data;
         });

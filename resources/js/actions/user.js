@@ -177,13 +177,17 @@ export const getDetailCounsellor = (counsellorId) => (dispatch) => {
 };
 
 export const getDetailCounsellorForCallPage =
-    (counsellingId, userType = "user") =>
+    (counsellingId, userType = "user", userId) =>
     (dispatch) => {
         dispatch({
             type: IS_LOADING,
             payload: true,
         });
-        return User.getCounsellorForCallPage(counsellingId).then(
+        return User.getCounsellorForCallPage(
+            counsellingId,
+            userType,
+            userId
+        ).then(
             (response) => {
                 dispatch({
                     type: GET_COUNSELLOR,
@@ -209,22 +213,6 @@ export const getDetailCounsellorForCallPage =
                     type: IS_LOADING,
                     payload: false,
                 });
-
-                if (error.response.status === 401) {
-                    showErrorAlert({ message: "You should login first" });
-
-                    if (userType === "counsellor") {
-                        window.location.href = "/psychologist/login";
-                    }
-
-                    if (userType === "translator") {
-                        window.location.href = "/translator/login";
-                    }
-
-                    if (userType === "user") {
-                        window.location.href = "/login";
-                    }
-                }
 
                 return Promise.reject();
             }
