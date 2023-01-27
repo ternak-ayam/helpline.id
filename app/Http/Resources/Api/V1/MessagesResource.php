@@ -19,6 +19,8 @@ class MessagesResource extends JsonResource
 
         if($this->user_type === "counsellor") {
             $image = $this->counsellor->getImageUrl();
+        } else if($this->user_type === "translator") {
+            $image = "https://i.stack.imgur.com/dr5qp.jpg";
         }
 
         return [
