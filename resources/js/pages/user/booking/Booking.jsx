@@ -344,8 +344,8 @@ const Booking = () => {
                                                         date.date,
                                                         time
                                                     ) === bookDate
-                                                        ? "bg-blue-200"
-                                                        : "bg-blue-100 hover:bg-blue-200"
+                                                        ? "bg-red-200"
+                                                        : "bg-blue-100 hover:bg-red-200"
                                                 } flex flex-col p-4 mt-2 cursor-pointer`}
                                             >
                                                 <div className="text-xs text-center font-medium">

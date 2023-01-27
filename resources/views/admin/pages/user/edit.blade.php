@@ -31,7 +31,7 @@
                             <div class="form-group">
                                 <div class="my-2">
                                     <label for="name">Name</label>
-                                    <input type="text" name="name" id="name" class="form-control" required>
+                                    <input type="text" name="name" id="name" class="form-control" value="{{ $user->name }}"  required>
                                     <div class="invalid-feedback"></div>
                                 </div>
                             </div>
