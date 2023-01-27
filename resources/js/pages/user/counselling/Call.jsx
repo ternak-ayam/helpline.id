@@ -58,7 +58,7 @@ const Call = () => {
                             <div
                                 id={"videoContainer"}
                                 className={
-                                    "videoContainer md:w-72 md:h-48 w-48 h-64 flex justify-center col-span-1 mx-auto"
+                                    "videoContainer md:w-72 md:h-64 w-48 h-24 flex justify-center col-span-1 mx-auto"
                                 }
                             ></div>
                             <br />
