@@ -19,7 +19,7 @@ class ChatAccessTokenResource extends JsonResource
             'counselling_id' => $this->counselling_id,
             'user_id' => $this->user_id,
             'user_type' => $this->owner_type,
-            'counsellor_image' => $this->counselling['counsellor']->getImageUrl()
+            'counsellor_image' => $this->counselling['counsellor']->getImageUrl(),
         ];
     }
 }

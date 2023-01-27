@@ -176,46 +176,60 @@ export const getDetailCounsellor = (counsellorId) => (dispatch) => {
     );
 };
 
-export const getDetailCounsellorForCallPage = (counsellingId) => (dispatch) => {
-    dispatch({
-        type: IS_LOADING,
-        payload: true,
-    });
-    return User.getCounsellorForCallPage(counsellingId).then(
-        (response) => {
-            dispatch({
-                type: GET_COUNSELLOR,
-                payload: { data: response.data },
-            });
+export const getDetailCounsellorForCallPage =
+    (counsellingId, userType = "user") =>
+    (dispatch) => {
+        dispatch({
+            type: IS_LOADING,
+            payload: true,
+        });
+        return User.getCounsellorForCallPage(counsellingId).then(
+            (response) => {
+                dispatch({
+                    type: GET_COUNSELLOR,
+                    payload: { data: response.data },
+                });
 
-            dispatch({
-                type: IS_LOADING,
-                payload: false,
-            });
+                dispatch({
+                    type: IS_LOADING,
+                    payload: false,
+                });
 
-            return Promise.resolve();
-        },
-        (error) => {
-            const message = error.response.data.error;
+                return Promise.resolve();
+            },
+            (error) => {
+                const message = error.response.data.error;
 
-            dispatch({
-                type: SET_MESSAGE,
-                payload: message,
-            });
+                dispatch({
+                    type: SET_MESSAGE,
+                    payload: message,
+                });
 
-            dispatch({
-                type: IS_LOADING,
-                payload: false,
-            });
+                dispatch({
+                    type: IS_LOADING,
+                    payload: false,
+                });
 
-            if (error.response.status === 401) {
-                showErrorAlert({ message: "You should login first" });
+                if (error.response.status === 401) {
+                    showErrorAlert({ message: "You should login first" });
+
+                    if (userType === "counsellor") {
+                        window.location.href = "/psychologist/login";
+                    }
+
+                    if (userType === "translator") {
+                        window.location.href = "/translator/login";
+                    }
+
+                    if (userType === "user") {
+                        window.location.href = "/login";
+                    }
+                }
+
+                return Promise.reject();
             }
-
-            return Promise.reject();
-        }
-    );
-};
+        );
+    };
 
 export const getDetailCounsellorForTextPage =
     (counsellingId, userId) => (dispatch) => {

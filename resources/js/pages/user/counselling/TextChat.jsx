@@ -27,7 +27,6 @@ const TextChat = () => {
 
     useEffect(() => {
         dispatch(initiateTextChannel(query.get("token"), counsellingId));
-        dispatch(getMessages(counsellingId));
     }, []);
 
     useEffect(() => {

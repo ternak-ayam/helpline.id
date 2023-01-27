@@ -16,34 +16,40 @@ let options = {
 
 let client = null;
 
-export const getMessages = (channelId) => (dispatch) => {
-    User.getMessages(channelId).then((response) => {
-        dispatch({
-            type: MESSAGES,
-            payload: { message: response.data },
-        });
+export const getMessages = (channelId, UserType) => (dispatch) => {
+    User.getMessages(channelId).then(
+        (response) => {
+            dispatch({
+                type: MESSAGES,
+                payload: { message: response.data },
+            });
 
-        return Promise.resolve()
-    }, error => {
-        if(error.response.status === 401) {
-            showErrorAlert({message: "You should login first"})
+            return Promise.resolve();
+        },
+        (error) => {
+            if (error.response.status === 401) {
+                showErrorAlert({ message: "You should login first" });
+            }
+
+            return Promise.reject();
         }
-
-        return Promise.reject()
-    });
+    );
 };
 
-export const generateRtmToken = (channelId, userId, user_type) => (dispatch) => {
-    let userIdNew = user_type+userId;
-    User.getCounsellingToken(channelId, userIdNew, "rtmToken").then((response) => {
-        options.token = response.token;
-        options.userId = userIdNew;
+export const generateRtmToken =
+    (channelId, userId, user_type) => (dispatch) => {
+        let userIdNew = user_type + userId;
+        User.getCounsellingToken(channelId, userIdNew, "rtmToken").then(
+            (response) => {
+                options.token = response.token;
+                options.userId = userIdNew;
 
-        dispatch(joinTextChannel(channelId, userIdNew));
-    });
+                dispatch(joinTextChannel(channelId, userIdNew));
+            }
+        );
 
-    return Promise.resolve();
-};
+        return Promise.resolve();
+    };
 
 export const initiateTextChannel = (token, channelId) => (dispatch) => {
     User.parseChatAccessToken(token).then(
@@ -53,7 +59,15 @@ export const initiateTextChannel = (token, channelId) => (dispatch) => {
                 payload: { data: response.data },
             });
 
-            dispatch(generateRtmToken(channelId, response.data.user_id, response.data.user_type));
+            dispatch(
+                generateRtmToken(
+                    channelId,
+                    response.data.user_id,
+                    response.data.user_type
+                )
+            );
+
+            dispatch(getMessages(channelId, response.data.user_type));
 
             return Promise.resolve();
         },

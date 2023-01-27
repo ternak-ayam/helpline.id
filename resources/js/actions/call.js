@@ -59,18 +59,23 @@ export const initiateCallChannel = (channelId, token) => (dispatch) => {
                 payload: { data: response.data },
             });
 
-            dispatch(getDetailCounsellorForCallPage(channelId));
+            dispatch(
+                getDetailCounsellorForCallPage(
+                    channelId,
+                    response.data.user_type
+                )
+            );
 
             return Promise.resolve();
         },
         (error) => {
             const errorData = error.response.data;
 
-            showErrorAlert(errorData);
+            showErrorAlert(errorData.error);
 
-            setTimeout(() => {
-                window.location.href = "/";
-            }, 1000);
+            // setTimeout(() => {
+            //     window.location.href = "/";
+            // }, 1000);
 
             return Promise.reject();
         }
