@@ -25,6 +25,7 @@
                     <table class="table table-striped">
                         <tbody>
                         <tr>
+                            <th>No</th>
                             <th>Counselling ID</th>
                             <th>Counselling Method</th>
                             <th>Date & Time</th>
@@ -34,6 +35,7 @@
                         </tr>
                         @forelse($schedules as $schedule)
                             <tr>
+                                <td>{{ $schedules->firstItem() + $loop->index }}</td>
                                 <td>{{ $schedule->counselling_id }}</td>
                                 <td>{{ $schedule->getCounsellingMethod() }}</td>
                                 <td>{{ $schedule->due->timezone(auth()->user()->timezone)->format('F j, Y H:i') }}</td>

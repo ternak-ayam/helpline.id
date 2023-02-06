@@ -120,11 +120,11 @@
                             <th>Session</th>
                             <th>Status</th>
                             <th>Created At</th>
-                            <th>Action</th>
+                            <th width="140">Action</th>
                         </tr>
                         @forelse($counsellingDetails as $counselling)
                             <tr>
-                                <td>{{ $counselling->index + $counsellingDetails->firstItem() }}</td>
+                                <td>{{ $loop->index + $counsellingDetails->firstItem() }}</td>
                                 <td>{{ $counselling->counselling_id }}</td>
                                 <td>{{ $counselling->counsellor['name'] }}</td>
                                 <td>{{ $counselling->getCounsellingMethod() }}</td>

@@ -25,16 +25,18 @@
                     <table class="table table-striped">
                         <tbody>
                         <tr>
+                            <th>No</th>
                             <th>Counselling ID</th>
                             <th>Counsellor</th>
                             <th>Counselling Method</th>
                             <th>Date & Time</th>
                             <th>Session</th>
                             <th>Status</th>
-                            <th>Action</th>
+                            <th width="140">Action</th>
                         </tr>
                         @forelse($schedules as $schedule)
                             <tr>
+                                <td>{{ $schedules->firstItem() + $loop->index }}</td>
                                 <td>{{ $schedule->counselling['counselling_id'] }}</td>
                                 <td>{{ $schedule->counsellor['name'] }}</td>
                                 <td>{{ $schedule->counselling->getCounsellingMethod() }}</td>
