@@ -3,6 +3,7 @@
 use App\Http\Controllers\Translator\TranslatorController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\CityController;
 
 Route::get('login', [\App\Http\Controllers\Admin\Auth\LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [\App\Http\Controllers\Admin\Auth\LoginController::class, 'login'])->name('login');
@@ -24,6 +25,10 @@ Route::middleware('auth:admin')->group(function () {
 
         Route::resource('/translator', App\Http\Controllers\Translator\TranslatorController::class);
         Route::resource('/psychologist', App\Http\Controllers\Counsellor\CounsellorController::class);
+        Route::get('/city' , [CityController::class, 'index'])->name('city.list');
+        Route::post('/city/create' , [CityController::class, 'createCity'])->name('city.list.create');
+        Route::post('/city/update' , [CityController::class, 'updateCity'])->name('city.list.update');
+        Route::get('/city/delete/{id}' , [CityController::class, 'deleteCity'])->name('city.list.delete');
     });
 
     Route::prefix('counselling')->as('counselling.')->group(function () {
@@ -40,12 +45,10 @@ Route::middleware('auth:admin')->group(function () {
     Route::prefix('blog')->as('blog.')->group(function () {
         Route::get('/posts', [\App\Http\Controllers\Admin\PostController::class, 'index'])->name('post.index');
         Route::get('/post/{id}/create', [\App\Http\Controllers\Admin\PostController::class, 'create'])->name('post.create');
-        Route::get('/posts/{post}/edit', [\App\Http\Controllers\Admin\PostController::class, 'edit'])->name('post.edit')
-        ;
+        Route::get('/posts/{post}/edit', [\App\Http\Controllers\Admin\PostController::class, 'edit'])->name('post.edit');
         Route::post('/posts/{id}', [\App\Http\Controllers\Admin\PostController::class, 'store'])->name('post.store');
         Route::put('/posts/{post}', [\App\Http\Controllers\Admin\PostController::class, 'update'])->name('post.update');
         Route::post('upload/posts/image', [\App\Http\Controllers\Admin\PostController::class, 'storeImage'])->name('post.storeImage');
-
         Route::delete('/posts/{post}', [\App\Http\Controllers\Admin\PostController::class, 'destroy'])->name('post.destroy');
     });
 });
