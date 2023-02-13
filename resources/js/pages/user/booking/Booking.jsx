@@ -189,8 +189,7 @@ const Booking = () => {
                             </div>
                         </div>
                         <span className="bg-[#fff4dc] text-xs font-normal text-[#2769c5] p-2 w-full rounded-xl">
-                            *You will be connected with Counsellor and
-                            Translator
+                            *Translator only available for Live Audio method, once selected you will be connected with Counsellor and Translator during audio call counselling.
                         </span>
                     </div>
                 </div>

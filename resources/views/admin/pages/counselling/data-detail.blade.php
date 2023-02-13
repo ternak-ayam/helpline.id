@@ -54,6 +54,15 @@
                                 <span class="text-title">Client Information</span>
                             </div>
                             <div>
+                                <span>{{ $schedule->counselling['user']['name'] }}</span>
+                            </div>
+                            <div>
+                                <span>{{ $schedule->counselling['user']['unhcr_number'] }}</span>
+                            </div>
+                            <div>
+                                <span>{{ $schedule->counselling['user']['city'] }}</span>
+                            </div>
+                            <div>
                                 <span>{{ $schedule->counselling['user']['email'] }}</span>
                             </div>
                             <div>
