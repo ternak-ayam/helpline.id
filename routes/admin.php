@@ -25,10 +25,13 @@ Route::middleware('auth:admin')->group(function () {
 
         Route::resource('/translator', App\Http\Controllers\Translator\TranslatorController::class);
         Route::resource('/psychologist', App\Http\Controllers\Counsellor\CounsellorController::class);
-        Route::get('/city' , [CityController::class, 'index'])->name('city.list');
-        Route::post('/city/create' , [CityController::class, 'createCity'])->name('city.list.create');
-        Route::post('/city/update' , [CityController::class, 'updateCity'])->name('city.list.update');
-        Route::get('/city/delete/{id}' , [CityController::class, 'deleteCity'])->name('city.list.delete');
+    });
+
+    Route::prefix('cities')->as('city.')->group(function () {
+        Route::get('/' , [CityController::class, 'index'])->name('list');
+        Route::post('/create' , [CityController::class, 'createCity'])->name('list.create');
+        Route::post('/update' , [CityController::class, 'updateCity'])->name('list.update');
+        Route::get('/delete/{id}' , [CityController::class, 'deleteCity'])->name('list.delete');
     });
 
     Route::prefix('counselling')->as('counselling.')->group(function () {

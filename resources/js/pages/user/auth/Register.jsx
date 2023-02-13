@@ -9,7 +9,6 @@ import Navbar from "../../../components/layouts/Navbar";
 import Guest from "../../../components/layouts/Guest";
 import { useHistory, Link } from "react-router-dom";
 import countries from "../../../../../storage/app/local/countries.json";
-import cities from "../../../../../storage/app/local/cities.json";
 import {
     Checkbox,
     FormControl,
@@ -194,7 +193,7 @@ const Register = () => {
                                 id="city"
                                 name="city"
                             >
-                                {cities.map((item, i) => (
+                                {[].map((item, i) => (
                                     <MenuItem key={i} value={item.name}>
                                         {item.name}
                                     </MenuItem>
@@ -395,7 +394,15 @@ const Register = () => {
                                 }
                                 label={
                                     <Typography variant="body3" color="primary">
-                                       I understand that if I am actively experiencing hallucinations and delusional thinking or experiencing a mental health crisis that cannot be addressed remotely, it may be determined that tele-mental health services are insufficient, and a higher level of professional mental health care is required.
+                                        I understand that if I am actively
+                                        experiencing hallucinations and
+                                        delusional thinking or experiencing a
+                                        mental health crisis that cannot be
+                                        addressed remotely, it may be determined
+                                        that tele-mental health services are
+                                        insufficient, and a higher level of
+                                        professional mental health care is
+                                        required.
                                     </Typography>
                                 }
                                 labelPlacement="end"
@@ -408,14 +415,21 @@ const Register = () => {
                                         onChange={(e) => {
                                             setUserData({
                                                 ...userData,
-                                                informedLimitation: e.target.value,
+                                                informedLimitation:
+                                                    e.target.value,
                                             });
                                         }}
                                     />
                                 }
                                 label={
                                     <Typography variant="body3" color="primary">
-                                        I understand that there are certain limitations, benefits, and consequences associated with tele-mental health, including but not limited to disruption of transmission by technology failures and/or limited ability to respond to emergencies.
+                                        I understand that there are certain
+                                        limitations, benefits, and consequences
+                                        associated with tele-mental health,
+                                        including but not limited to disruption
+                                        of transmission by technology failures
+                                        and/or limited ability to respond to
+                                        emergencies.
                                     </Typography>
                                 }
                                 labelPlacement="end"

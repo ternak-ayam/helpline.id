@@ -8,7 +8,7 @@
 
 @section('js')
 <script>
-  
+
     const btnAddCity = document.getElementById('btn_add_city');
     const city = document.getElementById('city');
 
@@ -18,7 +18,7 @@
                         <label class="sr-only" for="inlineFormInputName2">Name</label>
                         <input type="text" name="name[]" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2"
                             placeholder="Name">
-                        <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+                        <label class="sr-only" for="inlineFormInputGroupUsername2">Email</label>
                         <div class="input-group mb-2 mr-sm-2">
                             <input type="email" name='email[]' class="form-control" id="inlineFormInputGroupUsername2"
                                 placeholder="Email">
@@ -78,12 +78,12 @@
                         <label class="sr-only" for="inlineFormInputName2">Name</label>
                         <input type="text" class="form-control mb-2 mr-sm-2" id="inlineFormInputName2"
                             placeholder="Name">
-                        <label class="sr-only" for="inlineFormInputGroupUsername2">Username</label>
+                        <label class="sr-only" for="inlineFormInputGroupUsername2">Email</label>
                         <div class="input-group mb-2 mr-sm-2">
                             <input type="email" class="form-control" id="inlineFormInputGroupUsername2"
                                 placeholder="Email">
                         </div>
-                        
+
                         <button id="btn_add_city" class="btn btn-primary mb-2">Add New City</button>
                     </div>
                     <div id="city"></div>

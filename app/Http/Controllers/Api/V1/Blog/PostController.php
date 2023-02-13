@@ -11,7 +11,7 @@ class PostController extends Controller
 {
     public function index()
     {
-        $posts = Post::orderby('id', 'DESC')->get();
+        $posts = Post::orderby('created_at', 'DESC')->get();
 
         return PostResource::collection($posts);
     }

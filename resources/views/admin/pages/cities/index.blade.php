@@ -87,7 +87,7 @@
                                     <i class="far fa-edit"></i>
                                 </a>
 
-                                <a  onclick="confirmdelete()" href="{{route('admin.user.city.list.delete'  ,['id' => $citie->id])}}"><button  class="btn btn-sm btn-danger delete">
+                                <a  onclick="confirmdelete()" href="{{route('admin.city.list.delete'  ,['id' => $citie->id])}}"><button  class="btn btn-sm btn-danger delete">
                                     <i class="fas fa-trash"></i>
                                 </button></a>
                             </td>
@@ -125,16 +125,15 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="p-4" action="{{ route('admin.user.city.list.create') }}" method="post">
+            <form class="p-4" action="{{ route('admin.city.list.create') }}" method="post">
                 @csrf
                 <div class="form-group">
                     <label for="exampleInputEmail1">Name</label>
-                    <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="Name">
+                    <input type="text" name="name" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Email</label>
-                    <input type="email" name="email" class="form-control" id="exampleInputPassword1" placeholder="email">
+                    <input type="email" name="email" class="form-control" id="exampleInputPassword1">
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>
@@ -152,17 +151,16 @@
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form class="p-4" action="{{ route('admin.user.city.list.update') }}" method="post">
+            <form class="p-4" action="{{ route('admin.city.list.update') }}" method="post">
                 @csrf
                 <input type="hidden" type="text" name="id" id="id">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Name</label>
-                    <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp"
-                        placeholder="Name">
+                    <input type="text" name="name" class="form-control" id="name" aria-describedby="emailHelp">
                 </div>
                 <div class="form-group">
                     <label for="exampleInputPassword1">Email</label>
-                    <input type="email" name="email" class="form-control" id="email" placeholder="email">
+                    <input type="email" name="email" class="form-control" id="email">
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
             </form>

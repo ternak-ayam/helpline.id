@@ -12,6 +12,7 @@ const Post = () => {
     const { post } = useSelector((state) => state.blog);
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         dispatch(getPostDetail(postId));
     }, [postId]);
 

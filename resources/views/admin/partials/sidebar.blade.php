@@ -78,13 +78,13 @@
                 </li>
             </ul>
         </li>
-          <li class="dropdown {{ is_drop_active('admin/list/city') }}">
+          <li class="dropdown {{ is_drop_active('admin/cities') }}">
             <a href="#" class="nav-link has-dropdown">
                 <i class="fas fa-city"></i> <span>Cities</span>
             </a>
             <ul class="dropdown-menu">
-                <li {{ is_nav_active('admin/list/city') }}>
-                    <a class="nav-link" href="{{ route('admin.user.city.list') }}">
+                <li {{ is_nav_active('admin/cities') }}>
+                    <a class="nav-link" href="{{ route('admin.city.list') }}">
                         <i class="fas fa-list"></i> <span>Cities List</span>
                     </a>
                 </li>
