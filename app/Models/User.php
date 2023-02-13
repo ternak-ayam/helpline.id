@@ -30,6 +30,7 @@ class User extends Authenticatable implements CanResetPassword
         'timezone',
         'birthdate',
         'password',
+        'city',
         'deleted_at',
     ];
 

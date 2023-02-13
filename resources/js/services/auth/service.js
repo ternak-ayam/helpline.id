@@ -27,11 +27,14 @@ const register = (userData) => {
             name: userData.name,
             email: userData.email,
             unhcr_number: userData.unhcr,
+            city: userData.city,
             country: userData.country,
             birthdate: userData.birthdate,
             sex: userData.sex,
             password: userData.password,
             informed_consent: userData.informedConsent,
+            informed_address: userData.informedAddress,
+            informed_limitation: userData.informedLimitation,
             timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
         })
         .then((response) => {

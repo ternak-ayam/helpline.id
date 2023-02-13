@@ -12,7 +12,7 @@ require("./routes/Web");
 import ReactDOM from "react-dom";
 import React from "react";
 import Web from "./routes/Web";
-import store from "./store";
+import store from "./store"; 
 
 ReactDOM.render(
     <Provider store={store}>

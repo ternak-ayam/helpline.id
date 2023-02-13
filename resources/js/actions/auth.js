@@ -17,7 +17,6 @@ export const register = (userData) => (dispatch) => {
                 type: REGISTER_SUCCESS,
                 payload: { user: response.data },
             });
-
             return Promise.resolve();
         },
         (error) => {
@@ -31,7 +30,6 @@ export const register = (userData) => (dispatch) => {
                 type: SET_MESSAGE,
                 payload: message,
             });
-
             showErrorAlerts(message.errors);
 
             return Promise.reject();

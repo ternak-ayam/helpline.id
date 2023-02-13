@@ -9,6 +9,7 @@ import Navbar from "../../../components/layouts/Navbar";
 import Guest from "../../../components/layouts/Guest";
 import { useHistory, Link } from "react-router-dom";
 import countries from "../../../../../storage/app/local/countries.json";
+import cities from "../../../../../storage/app/local/cities.json";
 import {
     Checkbox,
     FormControl,
@@ -30,11 +31,14 @@ const Register = () => {
         name: "",
         email: "",
         unhcr: "",
+        city: "",
         birthdate: "",
         country: "",
         sex: "",
         password: "",
         informedConsent: "",
+        informedAddress: "",
+        informedLimitation: "",
     });
 
     const [loading, setLoading] = useState(false);
@@ -166,6 +170,36 @@ const Register = () => {
                                 name="unhcr"
                                 InputLabelProps={{ shrink: true }}
                             />
+                            <InputLabel
+                                id="select-city"
+                                className={"text-[#1565c0] font-bold mt-2"}
+                            >
+                                City
+                            </InputLabel>
+                            <Select
+                                sx={{
+                                    label: { color: "#1565c0" },
+                                }}
+                                className={"bg-blue-50 border-0"}
+                                required
+                                fullWidth
+                                onChange={(e) =>
+                                    setUserData({
+                                        ...userData,
+                                        city: e.target.value,
+                                    })
+                                }
+                                value={userData.city}
+                                labelid="select-city"
+                                id="city"
+                                name="city"
+                            >
+                                {cities.map((item, i) => (
+                                    <MenuItem key={i} value={item.name}>
+                                        {item.name}
+                                    </MenuItem>
+                                ))}
+                            </Select>
                             <InputLabel
                                 id="select-country"
                                 className={"text-[#1565c0] font-bold mt-2"}
@@ -342,6 +376,46 @@ const Register = () => {
                                         requests or complaints concerning your
                                         personal data, please contact Bullyid
                                         Indonesia at legal@bullyid.org.
+                                    </Typography>
+                                }
+                                labelPlacement="end"
+                            />
+                            <FormControlLabel
+                                className={"text-[#1565c0] text-xs"}
+                                value="end"
+                                control={
+                                    <Checkbox
+                                        onChange={(e) => {
+                                            setUserData({
+                                                ...userData,
+                                                informedAddress: e.target.value,
+                                            });
+                                        }}
+                                    />
+                                }
+                                label={
+                                    <Typography variant="body3" color="primary">
+                                       I understand that if I am actively experiencing hallucinations and delusional thinking or experiencing a mental health crisis that cannot be addressed remotely, it may be determined that tele-mental health services are insufficient, and a higher level of professional mental health care is required.
+                                    </Typography>
+                                }
+                                labelPlacement="end"
+                            />
+                            <FormControlLabel
+                                className={"text-[#1565c0] text-xs"}
+                                value="end"
+                                control={
+                                    <Checkbox
+                                        onChange={(e) => {
+                                            setUserData({
+                                                ...userData,
+                                                informedLimitation: e.target.value,
+                                            });
+                                        }}
+                                    />
+                                }
+                                label={
+                                    <Typography variant="body3" color="primary">
+                                        I understand that there are certain limitations, benefits, and consequences associated with tele-mental health, including but not limited to disruption of transmission by technology failures and/or limited ability to respond to emergencies.
                                     </Typography>
                                 }
                                 labelPlacement="end"

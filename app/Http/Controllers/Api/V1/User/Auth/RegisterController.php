@@ -49,6 +49,7 @@ class RegisterController extends Controller
             'unhcr_number' => ['required', 'string', 'exists:unhcrs'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
+            'city' => ['required', 'string'],
             'country' => ['required', 'string'],
             'timezone' => ['nullable', 'string'],
             'birthdate' => ['required', 'string'],
@@ -57,9 +58,13 @@ class RegisterController extends Controller
                 'female',
                 'others'
             ])],
-            'informed_consent' => ['required']
+            'informed_consent' => ['required'],
+            'informed_address' => ['required'],
+            'informed_limitation' => ['required'],
         ], [
-            'informed_consent.required' => 'Please check the informed consent'
+            'informed_consent.required' => 'Please check the informed consent',
+            'informed_address.required' => 'Please check the informed address',
+            'informed_limitation.required' => 'Please check the informed limitation',
         ]);
     }
 
@@ -80,6 +85,7 @@ class RegisterController extends Controller
             'birthdate' => $data['birthdate'],
             'sex' => $data['sex'],
             'password' => Hash::make($data['password']),
+            'city' => $data['city'],
         ]);
     }
 
