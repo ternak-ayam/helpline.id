@@ -15,7 +15,7 @@
             </div>
 
             <div class="card-footer text-right">
-                {{ $footer }}
+                {{ $footer ?? '' }}
             </div>
     </div>
 </section>
