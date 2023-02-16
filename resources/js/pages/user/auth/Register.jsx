@@ -21,8 +21,8 @@ import {
     Select,
 } from "@mui/material";
 import { useDispatch, useSelector } from "react-redux";
-import { register } from "../../../actions/auth";
-import { useState } from "react";
+import { register, getCities } from "../../../actions/auth";
+import { useEffect, useState } from "react";
 import LoadingButton from "@mui/lab/LoadingButton";
 
 const Register = () => {
@@ -45,7 +45,11 @@ const Register = () => {
     const history = useHistory();
     const dispatch = useDispatch();
 
-    const { isLoggedIn } = useSelector((state) => state.auth);
+    const { isLoggedIn, cities } = useSelector((state) => state.auth);
+
+    useEffect(() => {
+        dispatch(getCities());
+    }, []);
 
     if (isLoggedIn) history.push("/counsellors");
 
@@ -193,11 +197,14 @@ const Register = () => {
                                 id="city"
                                 name="city"
                             >
-                                {[].map((item, i) => (
-                                    <MenuItem key={i} value={item.name}>
-                                        {item.name}
-                                    </MenuItem>
-                                ))}
+                                {cities?.map(
+                                    (item, i) =>
+                                        item.name !== "Global" && (
+                                            <MenuItem key={i} value={item.name}>
+                                                {item.name}
+                                            </MenuItem>
+                                        )
+                                )}
                             </Select>
                             <InputLabel
                                 id="select-country"

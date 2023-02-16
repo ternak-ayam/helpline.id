@@ -19,6 +19,8 @@ Route::post('register', [\App\Http\Controllers\Api\V1\User\Auth\RegisterControll
 Route::post('password/email', [\App\Http\Controllers\Api\V1\User\Auth\ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 Route::post('password/reset', [\App\Http\Controllers\Api\V1\User\Auth\ResetPasswordController::class, 'reset'])->name('password.update');
 
+Route::get('cities', [\App\Http\Controllers\Api\V1\User\CityController::class, 'index'])->name('city.index');
+
 Route::middleware('auth:sanctum,counsellor,translator')->group(function () {
     Route::post('logout', [\App\Http\Controllers\Api\V1\User\Auth\LoginController::class, 'logout'])->name('logout');
     Route::get('counsellors', [\App\Http\Controllers\Api\V1\Counsellor\User\CounsellorController::class, 'index']);

@@ -6,6 +6,7 @@ import {
     LOGOUT,
     SET_MESSAGE,
     IS_LOADING,
+    CITIES,
 } from "./type";
 import Auth from "../services/auth/service";
 import { showErrorAlerts, showSuccessAlert } from "./alert";
@@ -148,6 +149,31 @@ export const updatePassword = (data) => (dispatch) => {
                 type: IS_LOADING,
                 payload: false,
             });
+
+            return Promise.reject();
+        }
+    );
+};
+
+export const getCities = () => (dispatch) => {
+    return Auth.cities().then(
+        (response) => {
+            dispatch({
+                type: CITIES,
+                payload: response.data,
+            });
+
+            return Promise.resolve();
+        },
+        (error) => {
+            const message = error.response.data.error;
+
+            dispatch({
+                type: SET_MESSAGE,
+                payload: message,
+            });
+
+            showErrorAlerts(message.errors);
 
             return Promise.reject();
         }

@@ -48,6 +48,12 @@ const register = (userData) => {
         });
 };
 
+const cities = () => {
+    return axios.get(API_URL + "/cities").then((response) => {
+        return response.data;
+    });
+};
+
 const logout = () => {
     return axios
         .post(API_URL + "/logout", {}, { headers: authHeader() })
@@ -89,4 +95,5 @@ export default {
     logout,
     sendResetPasswordLink,
     updatePassword,
+    cities,
 };
