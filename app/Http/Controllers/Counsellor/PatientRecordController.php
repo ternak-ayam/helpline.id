@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Counsellor;
 
 use App\Http\Controllers\Controller;
+use App\Models\City;
 use App\Models\Counselling;
 use App\Models\PatientRecord;
 use App\Models\PatientRecordDetail;
 use App\Models\PatientRecordQuestion;
+use App\Notifications\EmergencySupportNotification;
 use Illuminate\Http\Request;
 
 class PatientRecordController extends Controller
@@ -52,6 +54,19 @@ class PatientRecordController extends Controller
                     'patient_record_id' => $patientRecord->id,
                     'answer' => $issue,
                 ]);
+        }
+
+        if ($request->issues['emergency_support'] == PatientRecord::YES) {
+            $city = City::where('name', $counselling->user['city'])->first();
+            $global = City::where('name', City::GLOBAL)->first();
+
+            if ($city) {
+                $city->notify(new EmergencySupportNotification($counselling->saveAndGetUrl(), $counselling->user));
+            }
+
+            if ($global) {
+                $global->notify(new EmergencySupportNotification($counselling->saveAndGetUrl(), $counselling->user));
+            }
         }
 
         return redirect(route('psychologist.counselling.patient.index'));

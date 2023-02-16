@@ -118,7 +118,7 @@
     @foreach($questions as $question)
         @if($question->key != "emergency_support")
         <tr>
-            @if($question->no == 9)
+            @if($question->no == 12)
                 <td rowspan="2">{{ $question->no }}</td>
             @elseif(blank($question->no))
             @else

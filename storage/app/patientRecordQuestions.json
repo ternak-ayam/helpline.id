@@ -8,6 +8,30 @@
         "default_value": false
     },
     {
+        "question": "Patient initiated self-harm/requires immediate help (Hospital/Police)",
+        "type": "CHECKBOX",
+        "key": "patient_indicated_ideation_self",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Patient indicated suicidal ideation/requires a follow-up with a Psychologist",
+        "type": "CHECKBOX",
+        "key": "patient_indicated_ideation",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
+        "question": "Patient indicated a suicidal attempt/requires a follow-up with a Psychiatrist",
+        "type": "CHECKBOX",
+        "key": "patient_indicated_attempt",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": false
+    },
+    {
         "question": "Discrimination/Racism",
         "type": "CHECKBOX",
         "key": "discrimination",
@@ -943,15 +967,42 @@
     },
     {
         "no": "7",
-        "question": "Client's Domicile (Regency/ City, Province, if any)",
+        "question": "City",
         "type": "TEXT",
-        "key": "patient_address",
+        "key": "city",
         "max_value": 250,
         "questionable": "",
         "default_value": true
     },
     {
         "no": "8",
+        "question": "Unhcr Number",
+        "type": "TEXT",
+        "key": "unhcr_number",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": true
+    },
+    {
+        "no": "9",
+        "question": "Country",
+        "type": "TEXT",
+        "key": "country",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": true
+    },
+    {
+        "no": "10",
+        "question": "Sex",
+        "type": "TEXT",
+        "key": "sex",
+        "max_value": 250,
+        "questionable": "",
+        "default_value": true
+    },
+    {
+        "no": "11",
         "question": "Informed Consent",
         "type": "TEXT",
         "key": "informed_consent",
@@ -960,7 +1011,7 @@
         "default_value": true
     },
     {
-        "no": "9",
+        "no": "12",
         "question": "Is this a case of sexual violence, harassment, or bullying, or is it another case of legal interest?",
         "type": "SELECT",
         "key": "is_sex_harassment",
@@ -978,7 +1029,7 @@
         "default_value": false
     },
     {
-        "no": "10",
+        "no": "13",
         "question": "Referenced by",
         "type": "TEXT",
         "key": "referenced_by",
@@ -987,7 +1038,7 @@
         "default_value": false
     },
     {
-        "no": "11",
+        "no": "14",
         "question": "Reason for referral (if any)",
         "type": "TEXT",
         "key": "reason_for_referral",
@@ -996,7 +1047,7 @@
         "default_value": false
     },
     {
-        "no": "12",
+        "no": "18",
         "question": "Reasons for seeking help",
         "type": "TEXTAREA",
         "key": "reason_for_seeking_help",
@@ -1005,7 +1056,7 @@
         "default_value": false
     },
     {
-        "no": "13",
+        "no": "16",
         "question": "Method of the assessment conducted (if any)",
         "type": "TEXTAREA",
         "key": "method_of_assessment",
@@ -1014,7 +1065,7 @@
         "default_value": false
     },
     {
-        "no": "14",
+        "no": "17",
         "question": "Assessment results (if any)",
         "type": "TEXTAREA",
         "key": "assessment_result",
@@ -1023,7 +1074,7 @@
         "default_value": false
     },
     {
-        "no": "15",
+        "no": "17",
         "question": "Patient background history",
         "type": "TEXTAREA",
         "key": "patient_background_history",
@@ -1032,7 +1083,7 @@
         "default_value": false
     },
     {
-        "no": "15.a",
+        "no": "18.a",
         "question": "Patient's Personal Data (age, marital status, number of children, occupation, education, etc.)",
         "type": "TEXTAREA",
         "key": "patient_personal_data",
@@ -1041,7 +1092,7 @@
         "default_value": false
     },
     {
-        "no": "15.b",
+        "no": "18.b",
         "question": "Psychological history (diagnosis/previous treatment)",
         "type": "TEXTAREA",
         "key": "psychological_history",
@@ -1050,7 +1101,7 @@
         "default_value": false
     },
     {
-        "no": "15.c",
+        "no": "18.c",
         "question": "Medical history (health conditions, medical history, drug consumption, etc.)",
         "type": "TEXTAREA",
         "key": "medical_history",
@@ -1059,7 +1110,7 @@
         "default_value": false
     },
     {
-        "no": "15.d",
+        "no": "18.d",
         "question": "Anamnesis/history of the client (family, childhood development, etc.)",
         "type": "TEXTAREA",
         "key": "patient_history",
@@ -1068,7 +1119,7 @@
         "default_value": false
     },
     {
-        "no": "15.e",
+        "no": "18.e",
         "question": "Legal History (Ever or not the client became a victim/perpetrator of a crime)",
         "type": "TEXTAREA",
         "key": "legal_history",
@@ -1077,7 +1128,7 @@
         "default_value": false
     },
     {
-        "no": "15.f",
+        "no": "18.f",
         "question": "Traumatic Experience History (if any)",
         "type": "TEXTAREA",
         "key": "traumatic_experience",
@@ -1086,7 +1137,7 @@
         "default_value": false
     },
     {
-        "no": "16",
+        "no": "22",
         "question": "Observation Results (behaviour & mental status)",
         "type": "TEXTAREA",
         "key": "observation_result",
@@ -1095,7 +1146,7 @@
         "default_value": false
     },
     {
-        "no": "17",
+        "no": "20",
         "question": "Psychological Symptoms (if any)",
         "type": "TEXTAREA",
         "key": "psychological_symptoms",
@@ -1104,7 +1155,7 @@
         "default_value": false
     },
     {
-        "no": "18",
+        "no": "21",
         "question": "Management of current symptoms (e.g. coping strategies)",
         "type": "TEXTAREA",
         "key": "symptoms_management",
@@ -1113,7 +1164,7 @@
         "default_value": false
     },
     {
-        "no": "19.a",
+        "no": "22.a",
         "question": "Self-Harm Behavior",
         "type": "SELECT",
         "key": "self_harm",
@@ -1122,7 +1173,7 @@
         "default_value": false
     },
     {
-        "no": "19.b",
+        "no": "22.b",
         "question": "Suicidal Thoughts",
         "type": "SELECT",
         "key": "suicidal_thoughts",
@@ -1131,7 +1182,7 @@
         "default_value": false
     },
     {
-        "no": "19.c",
+        "no": "22.c",
         "question": "Suicidal Behavior/Attempt",
         "type": "SELECT",
         "key": "suicidal_behavior",
@@ -1140,7 +1191,7 @@
         "default_value": false
     },
     {
-        "no": "19.d",
+        "no": "22.d",
         "question": "Other risks (if any)",
         "type": "SELECT",
         "key": "other_risks",
@@ -1149,7 +1200,7 @@
         "default_value": false
     },
     {
-        "no": "19.e",
+        "no": "22.e",
         "question": "Need to be referred to local services (offline psychological services)",
         "type": "SELECT",
         "key": "need_referred",
@@ -1158,7 +1209,7 @@
         "default_value": false
     },
     {
-        "no": "19.f",
+        "no": "22.f",
         "question": "Barriers during Session (if any)",
         "type": "TEXTAREA",
         "key": "session_obstacle",
@@ -1167,7 +1218,7 @@
         "default_value": false
     },
     {
-        "no": "20",
+        "no": "23",
         "question": "Conclusion, Diagnosis and Prognosis (if any)",
         "type": "TEXTAREA",
         "key": "conclusion",
@@ -1176,7 +1227,7 @@
         "default_value": false
     },
     {
-        "no": "21",
+        "no": "24",
         "question": "Treatment recommendation (if any)",
         "type": "TEXTAREA",
         "key": "treatment_recommendation",

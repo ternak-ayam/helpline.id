@@ -54,10 +54,23 @@ trait SavePdfTrait {
         return Storage::disk('public')->download($this->getFullFilePath());
     }
 
+    public function url()
+    {
+        return Storage::disk('public')->url($this->getFullFilePath());
+    }
+
     public function export()
     {
         $pdf = Pdf::setOption('isRemoteEnabled', true)->loadView($this->view(), $this->data());
 
         return $pdf->stream();
+    }
+
+    public function saveAndGetUrl()
+    {
+        $pdf = Pdf::setOption('isRemoteEnabled', true)->loadView($this->view(), $this->data());
+        Storage::disk('public')->put($this->getFullFilePath(), $pdf->output());
+
+        return $this->url();
     }
 }

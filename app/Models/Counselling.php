@@ -126,6 +126,11 @@ class Counselling extends Model
         return $issues;
     }
 
+    public function filename()
+    {
+        return $this->counselling_id . '.pdf';
+    }
+
     public function data()
     {
         return [
