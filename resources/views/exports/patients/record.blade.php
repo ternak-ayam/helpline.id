@@ -101,6 +101,40 @@
         @endif
     </div>
 </div>
+@if($issues['emergency_support'] === "YES")
+<div>
+    <div class="mt-4" id="emergency_support_choice">
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input"
+                   name="issues[patient_indicated_ideation_self]"
+                   id="patient_indicated_ideation_self"
+                   @if(old('patient_indicated_ideation_self', $issues['patient_indicated_ideation_self'])) checked @endif>
+            <label class="custom-control-label"
+                   for="patient_indicated_ideation_self">Patient initiated
+                self-harm/requires immediate help (Hospital/Police)</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input"
+                   name="issues[patient_indicated_ideation]"
+                   id="patient_indicated_ideation"
+                   @if(old('patient_indicated_ideation', $issues['patient_indicated_ideation'])) checked @endif>
+            <label class="custom-control-label"
+                   for="patient_indicated_ideation">Patient indicated suicidal
+                ideation/requires a follow-up with a Psychologist</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input"
+                   name="issues[patient_indicated_attempt]"
+                   id="patient_indicated_attempt"
+                   @if(old('patient_indicated_attempt', $issues['patient_indicated_attempt'])) checked @endif>
+            <label class="custom-control-label"
+                   for="patient_indicated_attempt">Patient indicated a suicidal
+                attempt/requires a follow-up with a Psychiatrist
+            </label>
+        </div>
+    </div>
+</div>
+@endif
 <div>
     @include('psychologist.pages.counselling.patients.question.counsellor', ['textView' => true])
     @include('psychologist.pages.counselling.patients.question.psychologist', ['textView' => true])
