@@ -17,8 +17,8 @@ class CounsellingHistoryResource extends JsonResource
     {
         return [
           'counselling_id' => $this->counselling_id,
-          'counsellor' => $this->counsellor['name'],
-          'translator' => $this->translator['name'],
+          'counsellor' => isset($this->counsellor['name']) ? $this->counsellor['name'] : null,
+          'translator' => isset($this->translato['name']) ? $this->translator['name'] : null,
           'counselling_time' => $this->due
         ];
     }
