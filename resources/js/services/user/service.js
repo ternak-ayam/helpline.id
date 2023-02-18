@@ -87,6 +87,7 @@ const UpdateUserProfile = (user) => {
                 name: user.name,
                 email: user.email,
                 country: user.country,
+                city: user.city,
                 birthdate: user.birthdate,
                 sex: user.sex,
                 password: user.password,

@@ -3,6 +3,7 @@
 namespace App\Http\Resources\Api\V1\User\Profile;
 
 use App\Http\Resources\Api\V1\User\Counselling\CounsellingHistoryResource;
+use App\Models\City;
 use App\Models\Counselling;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -25,7 +26,8 @@ class ProfileResource extends JsonResource
             'city' => $this->city,
             'birthdate' => $this->birthdate,
             'sex' => $this->sex,
-            'counselling_histories' => CounsellingHistoryResource::collection($this->counsellings()->where('status', '<>', Counselling::BOOKED)->get())
+            'counselling_histories' => CounsellingHistoryResource::collection($this->counsellings()->where('status', '<>', Counselling::BOOKED)->get()),
+            'cities' => City::where('name', '<>', "Global")->get()
         ];
     }
 }

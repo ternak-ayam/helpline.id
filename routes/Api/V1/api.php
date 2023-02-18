@@ -29,7 +29,7 @@ Route::middleware('auth:sanctum,counsellor,translator')->group(function () {
     Route::post('counselling', [\App\Http\Controllers\Api\V1\Counselling\User\CounsellingController::class, 'store']);
 
     Route::get('profile', [\App\Http\Controllers\Api\V1\Counselling\User\ProfileController::class, 'index']);
-    Route::put('profile/update', [\App\Http\Controllers\Api\V1\Counselling\User\ProfileController::class, 'update']);
+    Route::put('profile', [\App\Http\Controllers\Api\V1\Counselling\User\ProfileController::class, 'update']);
 });
 
 Route::get('counselling/{counselling:counselling_id}', [\App\Http\Controllers\Api\V1\Counselling\User\CounsellingController::class, 'show']);

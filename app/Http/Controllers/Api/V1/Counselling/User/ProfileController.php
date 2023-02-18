@@ -25,6 +25,7 @@ class ProfileController extends Controller
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users,email,'.$user->id],
             'password' => ['required', 'string', 'min:8'],
             'country' => ['required', 'string'],
+            'city' => ['required', 'string'],
             'birthdate' => ['required', 'string'],
             'sex' => ['required', 'string', Rule::in([
                 'male',

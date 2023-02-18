@@ -179,28 +179,60 @@ const Profile = () => {
                                 </Select>
                             </Grid>
                         </Grid>
-
-                        <InputLabel
-                            id="select-birthdate"
-                            className={"text-[#1565c0] font-bold mt-3"}
-                        >
-                            Birthdate
-                        </InputLabel>
-                        <TextField
-                            sx={{
-                                label: { color: "#1565c0" },
-                            }}
-                            className={"bg-blue-50 border-0 mt-0"}
-                            labelid="select-birthdate"
-                            required
-                            fullWidth
-                            onChange={(e) => handleChangeInput(e)}
-                            value={moment(user.birthdate).format("YYYY-MM-DD")}
-                            type="date"
-                            id="birthdate"
-                            name="birthdate"
-                            InputLabelProps={{ shrink: true }}
-                        />
+                        <Grid container spacing={2}>
+                            <Grid item md={6} xs={12}>
+                                <InputLabel
+                                    id="select-birthdate"
+                                    className={"text-[#1565c0] font-bold mt-3"}
+                                >
+                                    Birthdate
+                                </InputLabel>
+                                <TextField
+                                    sx={{
+                                        label: { color: "#1565c0" },
+                                    }}
+                                    className={"bg-blue-50 border-0 mt-0"}
+                                    labelid="select-birthdate"
+                                    required
+                                    fullWidth
+                                    onChange={(e) => handleChangeInput(e)}
+                                    value={moment(user.birthdate).format(
+                                        "YYYY-MM-DD"
+                                    )}
+                                    type="date"
+                                    id="birthdate"
+                                    name="birthdate"
+                                    InputLabelProps={{ shrink: true }}
+                                />
+                            </Grid>
+                            <Grid item md={6} xs={12}>
+                                <InputLabel
+                                    id="select-city"
+                                    className={"text-[#1565c0] font-bold mt-3"}
+                                >
+                                    City
+                                </InputLabel>
+                                <Select
+                                    sx={{
+                                        label: { color: "#1565c0" },
+                                    }}
+                                    className={"bg-blue-50 border-0"}
+                                    required
+                                    fullWidth
+                                    onChange={(e) => handleChangeInput(e)}
+                                    value={user.city}
+                                    labelid="select-city"
+                                    id="city"
+                                    name="city"
+                                >
+                                    {user.cities?.map((item, i) => (
+                                        <MenuItem key={i} value={item.name}>
+                                            {item.name}
+                                        </MenuItem>
+                                    ))}
+                                </Select>
+                            </Grid>
+                        </Grid>
                         <div>
                             <FormControl>
                                 <FormLabel

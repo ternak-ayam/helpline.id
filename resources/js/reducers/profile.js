@@ -6,6 +6,7 @@ const initialState = {
         email: null,
         unhcr_number: null,
         country: null,
+        city: null,
         birthdate: null,
         sex: null,
         counselling_histories: [],
