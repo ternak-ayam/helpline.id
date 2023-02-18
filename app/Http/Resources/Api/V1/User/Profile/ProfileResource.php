@@ -22,6 +22,7 @@ class ProfileResource extends JsonResource
             'email' => $this->email,
             'unhcr_number' => $this->unhcr_number,
             'country' => $this->country,
+            'city' => $this->city,
             'birthdate' => $this->birthdate,
             'sex' => $this->sex,
             'counselling_histories' => CounsellingHistoryResource::collection($this->counsellings()->where('status', '<>', Counselling::BOOKED)->get())

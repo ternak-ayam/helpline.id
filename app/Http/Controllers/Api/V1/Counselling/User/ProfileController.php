@@ -11,14 +11,14 @@ class ProfileController extends Controller
 {
     public function index()
     {
-        $user = auth()->user();
+        $user = request()->user();
 
         return new ProfileResource($user);
     }
 
     public function update(Request $request)
     {
-        $user = auth()->user();
+        $user = $request->user();
 
         $request->validate([
             'name' => ['required', 'string', 'unique:users,name,'.$user->id],
@@ -33,7 +33,7 @@ class ProfileController extends Controller
             ])],
         ]);
 
-        auth()->user()->update($request->all());
+        $request->user()->update($request->all());
 
         return $this->success();
     }
