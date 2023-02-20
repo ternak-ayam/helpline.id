@@ -58,21 +58,21 @@ class PatientRecordController extends Controller
             }
         }
 
-        if ($request->issues['emergency_support'] == PatientRecord::YES) {
+        if ($request->issues['emergency_support'] === PatientRecord::YES) {
             $city = City::where('name', $counselling->user['city'])->first();
             $global = City::where('name', City::GLOBAL)->get();
 
-            // if($url = $counselling->saveAndGetUrl()) {
-                if ($city) {
-                    $city->notify(new EmergencySupportNotification('', $counselling->user));
-                }
+            if($url = $counselling->saveAndGetUrl()) {
+                // if ($city) {
+                //     $city->notify(new EmergencySupportNotification($url, $counselling->user));
+                // }
 
                 if (count($global) > 0) {
                     foreach($global as $glo) {   
-                        $glo->notify(new EmergencySupportNotification('', $counselling->user));
+                        $glo->notify(new EmergencySupportNotification($url, $counselling->user));
                     }
                 }
-            // }
+            }
         }
 
         return redirect(route('psychologist.counselling.patient.index'));
