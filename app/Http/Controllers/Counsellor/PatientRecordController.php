@@ -62,7 +62,7 @@ class PatientRecordController extends Controller
             $city = City::where('name', $counselling->user['city'])->first();
             $global = City::where('name', City::GLOBAL)->get();
 
-            if($url = $counselling->saveAndGetUrl()) {
+            // if($url = $counselling->saveAndGetUrl()) {
                 if ($city) {
                     $city->notify(new EmergencySupportNotification('', $counselling->user));
                 }
@@ -72,7 +72,7 @@ class PatientRecordController extends Controller
                         $glo->notify(new EmergencySupportNotification('', $counselling->user));
                     }
                 }
-            }
+            // }
         }
 
         return redirect(route('psychologist.counselling.patient.index'));
