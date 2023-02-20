@@ -45,27 +45,33 @@ class PatientRecordController extends Controller
         foreach ($request->issues as $key => $issue) {
             $question = PatientRecordQuestion::where('key', $key)->first();
 
-            PatientRecordDetail::updateOrCreate([
-                'patient_record_id' => $patientRecord->id,
-                'question_id' => $question->id,
-            ],
+            if($question) {
+                PatientRecordDetail::updateOrCreate([
+                    'patient_record_id' => $patientRecord->id,
+                    'question_id' => $question->id,
+                ],
                 [
                     'question_id' => $question->id,
                     'patient_record_id' => $patientRecord->id,
                     'answer' => $issue,
                 ]);
+            }
         }
 
         if ($request->issues['emergency_support'] == PatientRecord::YES) {
             $city = City::where('name', $counselling->user['city'])->first();
-            $global = City::where('name', City::GLOBAL)->first();
+            $global = City::where('name', City::GLOBAL)->get();
 
-            if ($city) {
-                $city->notify(new EmergencySupportNotification($counselling->saveAndGetUrl(), $counselling->user));
-            }
+            if($url = $counselling->saveAndGetUrl()) {
+                if ($city) {
+                    $city->notify(new EmergencySupportNotification($url, $counselling->user));
+                }
 
-            if ($global) {
-                $global->notify(new EmergencySupportNotification($counselling->saveAndGetUrl(), $counselling->user));
+                if (count($global) > 0) {
+                    foreach($global as $glo) {   
+                        $glo->notify(new EmergencySupportNotification($url, $counselling->user));
+                    }
+                }
             }
         }
 
