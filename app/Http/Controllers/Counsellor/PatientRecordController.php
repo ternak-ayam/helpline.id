@@ -64,12 +64,12 @@ class PatientRecordController extends Controller
 
             if($url = $counselling->saveAndGetUrl()) {
                 if ($city) {
-                    $city->notify(new EmergencySupportNotification($url, $counselling->user));
+                    $city->notify(new EmergencySupportNotification('', $counselling->user));
                 }
 
                 if (count($global) > 0) {
                     foreach($global as $glo) {   
-                        $glo->notify(new EmergencySupportNotification($url, $counselling->user));
+                        $glo->notify(new EmergencySupportNotification('', $counselling->user));
                     }
                 }
             }
