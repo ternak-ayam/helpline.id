@@ -126,9 +126,9 @@
                         </div>
 
                         @if($schedule->counselling['status'] === \App\Models\Counselling::BOOKED)
-                            <div class="mx-1">
+                            {{-- <div class="mx-1">
                                 <a href="{{ route('psychologist.counselling.schedule.update', $schedule->id) }}" class="btn btn-success">Done</a>
-                            </div>
+                            </div> --}}
                             <div class="mx-1">
                                 <a href="{{ $schedule->counselling->getChatUrl() }}" target="_blank" class="btn btn-danger"
                                    type="button">Start Counselling</a>

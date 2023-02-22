@@ -60,6 +60,9 @@
                             </tr>
                         @endforelse
                         </tbody>
+                        <tfoot>
+                            {{ $schedules->withQueryString()->onEachSide(2)->appends($_GET)->links('admin.partials.pagination') }}
+                        </tfoot>
                     </table>
                 </div>
             </div>

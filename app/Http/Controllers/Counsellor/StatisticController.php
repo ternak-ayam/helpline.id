@@ -12,22 +12,22 @@ class StatisticController extends Controller
     {
         $totalCounselling = Counselling::where('counsellor_id', auth()->user()->id)->count();
         $todayCounselling = Counselling::where('counsellor_id', auth()->user()->id)->whereDate('due', today()->format('Y-m-d'))->count();
-        $completedCounselling = Counselling::where([['counsellor_id', auth()->user()->id], ['status', Counselling::DONE]])->count();
-        $upcomingCounselling = Counselling::where([['counsellor_id', auth()->user()->id], ['status', Counselling::BOOKED]])->whereDate('due', '>', today()->format('Y-m-d'))->count();
+        $failedCounselling = Counselling::where([['counsellor_id', auth()->user()->id], ['status', Counselling::FAILED]])->count();
+        $successCounselling = Counselling::where([['counsellor_id', auth()->user()->id], ['status', Counselling::SUCCESS]])->whereDate('due', '>', today()->format('Y-m-d'))->count();
         $recentCounsellings = Counselling::where('counsellor_id', auth()->user()->id)->whereDate('due', '<=', today()->format('Y-m-d'))->orderby('id', 'DESC')->limit(5)->get();
 
         $dates = [];
-        $counsellings = [];
-        $completeds = [];
+        $successes = [];
+        $faileds = [];
 
         for($today = 1; $today <= 7; $today++) {
             $dates[] = now()->subDays($today)->format('F j, Y');
-            $counsellings[] = Counselling::where('counsellor_id', auth()->user()->id)->whereDate('due', now()->subDays($today)->format('Y-m-d'))->count();
-            $completeds[] = Counselling::where([['counsellor_id', auth()->user()->id], ['status', Counselling::DONE]])->whereDate('due', now()->subDays($today)->format('Y-m-d'))->count();
+            $successes[] = Counselling::where('counsellor_id', auth()->user()->id)->whereDate('due', now()->subDays($today)->format('Y-m-d'))->where('status', Counselling::SUCCESS)->count();
+            $faileds[] = Counselling::where([['counsellor_id', auth()->user()->id], ['status', Counselling::FAILED]])->whereDate('due', now()->subDays($today)->format('Y-m-d'))->count();
         }
 
         return view('psychologist.pages.counselling.statistics',
-            compact('todayCounselling', 'completedCounselling',
-                'totalCounselling', 'upcomingCounselling', 'recentCounsellings', 'dates', 'counsellings', 'completeds'));
+            compact('todayCounselling', 'failedCounselling',
+                'totalCounselling', 'successCounselling', 'recentCounsellings', 'dates', 'successes', 'faileds'));
     }
 }

@@ -25,6 +25,8 @@ class Counselling extends Model
     ];
 
     const BOOKED = "BOOKED";
+    const SUCCESS  = "SUCCESS";
+    const FAILED  = "FAILED";
     const DONE  = "DONE";
     const ENDED  = "ENDED";
 
@@ -128,7 +130,7 @@ class Counselling extends Model
 
     public function filename()
     {
-        return $this->counselling_id . '.pdf';
+        return 'Patient-Record-'.$this->counselling_id . '.pdf';
     }
 
     public function data()

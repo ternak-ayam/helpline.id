@@ -16,6 +16,18 @@ class CallController extends Controller
         $counselling = Counselling::where('counselling_id', $counsellingId)->first();
         $userCall = UserCall::where([['counselling_id', $counselling->id], ['user_id', $request->userId]])->first();
 
+        $userNeed = 2;
+
+        if($counselling->is_need_translator) {
+            $userNeed = 3;
+        }
+
+        if(count($userCall) == $userNeed) {
+            Counselling::where('counselling_id', $counsellingId)->update([
+                'status' => Counselling::SUCCESS
+            ]);
+        }
+
         if (!$userCall) {
             UserCall::create([
                 'counselling_id' => $counselling->id,

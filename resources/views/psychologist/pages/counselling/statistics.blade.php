@@ -16,12 +16,12 @@
             data: {
                 labels: [@foreach ($dates as $date) "{{ $date }}", @endforeach],
                 datasets: [{
-                    label: 'Total Counselling',
-                    data: [@foreach ($counsellings as $counselling) {{ $counselling }}, @endforeach],
+                    label: 'Success Counselling',
+                    data: [@foreach ($successes as $success) {{ $success }}, @endforeach],
                     borderWidth: 1
                 }, {
-                    label: 'Completed Counselling',
-                    data: [@foreach ($completeds as $completed) {{ $completed }}, @endforeach],
+                    label: 'Failed Counselling',
+                    data: [@foreach ($faileds as $failed) {{ $failed }}, @endforeach],
                     borderWidth: 1
                 }]
             },
@@ -62,14 +62,14 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <div class="card card-statistic-1">
                         <div class="card-icon bg-danger">
-                            <i class="fas fa-check"></i>
+                            <i class="fas fa-times"></i>
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Completed Counselling</h4>
+                                <h4>Failed Counselling</h4>
                             </div>
                             <div class="card-body">
-                                {{ $completedCounselling }}
+                                {{ $failedCounselling }}
                             </div>
                         </div>
                     </div>
@@ -92,14 +92,14 @@
                 <div class="col-lg-3 col-md-6 col-sm-6 col-12">
                     <div class="card card-statistic-1">
                         <div class="card-icon bg-success">
-                            <i class="fas fa-calendar-week"></i>
+                            <i class="fas fa-check"></i>
                         </div>
                         <div class="card-wrap">
                             <div class="card-header">
-                                <h4>Upcoming Counselling</h4>
+                                <h4>Success Counselling</h4>
                             </div>
                             <div class="card-body">
-                                {{ $upcomingCounselling }}
+                                {{ $successCounselling }}
                             </div>
                         </div>
                     </div>

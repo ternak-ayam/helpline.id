@@ -11,7 +11,7 @@ class ScheduleController extends Controller
 {
     public function index()
     {
-        $schedules = CounsellorSchedule::where('counsellor_id', auth('counsellor')->user()->id)->orderBy('id', 'DESC')->paginate(10);
+        $schedules = Counselling::where('counsellor_id', auth('counsellor')->user()->id)->orderBy('id', 'DESC')->paginate(10);
 
         return view('psychologist.pages.counselling.schedule', [
             'schedules' => $schedules
@@ -28,7 +28,7 @@ class ScheduleController extends Controller
     public function update(Request $request, CounsellorSchedule $schedule)
     {
         $schedule->counselling()->update([
-            'status' => Counselling::DONE
+            'status' => Counselling::SUCCESS
         ]);
 
         return back();
