@@ -45,9 +45,8 @@ class EmergencySupportNotification extends Notification
     {
         return (new MailMessage)
                     ->subject($this->user['name'] . ' Need Emergency Support')
-                    ->line('Please check patient record below')
                     ->action('Patient Record', $this->url)
-                    ->line('Thank you for your support!');
+                    ->markdown('mail.emergency');
     }
 
     /**
