@@ -44,7 +44,7 @@ class EmergencySupportNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject($this->user['name'] . ' Need Emergency Support')
+                    ->subject('⚠️ '. $this->user['unhcr_number'] . ' Emergency Support')
                     ->action('Patient Record', $this->url)
                     ->markdown('mail.emergency');
     }

@@ -1,12 +1,11 @@
 @component('mail::message')
-Please check patient record below
+Please see the patient record below
 
 @component('mail::button', ['url' => $actionUrl, 'color' => 'error'])
 {{ $actionText }}
 @endcomponent
 
-Thank you for your support
-
-Regards,<br>
-{{ config('app.name') }}
+Thank you,
+<br>
+Support Team {{ config('app.name') }}
 @endcomponent
