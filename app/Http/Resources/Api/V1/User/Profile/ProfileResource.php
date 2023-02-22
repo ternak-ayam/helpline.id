@@ -27,7 +27,7 @@ class ProfileResource extends JsonResource
             'birthdate' => $this->birthdate,
             'sex' => $this->sex,
             'counselling_histories' => CounsellingHistoryResource::collection($this->counsellings()->where('status', '<>', Counselling::BOOKED)->get()),
-            'cities' => City::where('name', '<>', "Global")->get()
+            'cities' => City::where('name', '<>', "Global")->get()->unique('name')
         ];
     }
 }
