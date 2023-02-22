@@ -63,9 +63,9 @@ class PatientRecordController extends Controller
             $global = City::where('name', City::GLOBAL)->get();
 
             if($url = $counselling->saveAndGetUrl()) {
-                // if ($city) {
-                //     $city->notify(new EmergencySupportNotification($url, $counselling->user));
-                // }
+                if ($city) {
+                    $city->notify(new EmergencySupportNotification($url, $counselling->user));
+                }
 
                 if (count($global) > 0) {
                     foreach($global as $glo) {   
