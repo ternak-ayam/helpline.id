@@ -37,14 +37,11 @@ class CallController extends Controller
     public function storeCounsellor(Request $request, $counsellingId)
     {
         $counselling = Counselling::where('counselling_id', $counsellingId)->first();
-        $counsellorCall = CounsellorCall::where([['counselling_id', $counselling->id], ['counsellor_id', $request->userId]])->first();
 
-        if (!$counsellorCall) {
-            CounsellorCall::create([
-                'counselling_id' => $counselling->id,
-                'counsellor_id' => $request->userId,
-            ]);
-        }
+        CounsellorCall::create([
+            'counselling_id' => $counselling->id,
+            'counsellor_id' => $request->userId,
+        ]);
     }
 
     public function updateCounsellor(Request $request, $counsellingId)
@@ -89,18 +86,18 @@ class CallController extends Controller
 
         $status = false;
 
-        if($counselling->is_need_translator) {
+        if((bool) $counselling->is_need_translator) {
             $status = !blank($userCall) && !blank($transCall) && !blank($counsellorCall);
         } else {
             $status = !blank($userCall) && !blank($counsellorCall);
         }
 
         if((bool) $status) {
-            Counselling::where('counselling_id', $counsellingId)->update([
+            Counselling::where('id', $counselling->id)->update([
                 'status' => Counselling::SUCCESS
             ]);
         } else {
-            Counselling::where('counselling_id', $counsellingId)->update([
+            Counselling::where('id', $counselling->id)->update([
                 'status' => Counselling::FAILED
             ]);
         }
