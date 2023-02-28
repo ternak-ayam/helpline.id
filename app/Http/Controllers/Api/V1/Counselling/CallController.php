@@ -62,14 +62,11 @@ class CallController extends Controller
     public function storeTranslator(Request $request, $counsellingId)
     {
         $counselling = Counselling::where('counselling_id', $counsellingId)->first();
-        $translatorCall = CounsellorCall::where([['counselling_id', $counselling->id], ['translator_id', $request->userId]])->first();
 
-        if (!$translatorCall) {
-            TranslatorCall::create([
-                'counselling_id' => $counselling->id,
-                'translator_id' => $request->userId,
-            ]);
-        }
+        TranslatorCall::create([
+            'counselling_id' => $counselling->id,
+            'translator_id' => $request->userId,
+        ]);
     }
 
     public function updateTranslator(Request $request, $counsellingId)
@@ -93,12 +90,12 @@ class CallController extends Controller
         $status = false;
 
         if($counselling->is_need_translator) {
-            $status = $userCall && $transCall && $counsellorCall;
+            $status = !blank($userCall) && !blank($transCall) && !blank($counsellorCall);
         } else {
-            $status = $userCall && $counsellorCall;
+            $status = !blank($userCall) && !blank($counsellorCall);
         }
 
-        if($status) {
+        if((bool) $status) {
             Counselling::where('counselling_id', $counsellingId)->update([
                 'status' => Counselling::SUCCESS
             ]);
