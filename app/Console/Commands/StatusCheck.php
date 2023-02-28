@@ -66,33 +66,6 @@ class StatusCheck extends Command
                     'status' => Counselling::FAILED
                 ]);
             }
-
-            $this->solveLogic($value);
-        }
-    }
-
-    public function solveLogic($counselling)
-    {
-        $userCall = UserCall::where([['counselling_id', $counselling->id]])->first();
-        $transCall = TranslatorCall::where([['counselling_id', $counselling->id]])->first();
-        $counsellorCall = CounsellorCall::where([['counselling_id', $counselling->id]])->first();
-
-        $status = false;
-
-        if((bool) $counselling->is_need_translator) {
-            $status = !blank($userCall) && !blank($transCall) && !blank($counsellorCall);
-        } else {
-            $status = !blank($userCall) && !blank($counsellorCall);
-        }
-
-        if($status) {
-            Counselling::where('id', $counselling->id)->update([
-                'status' => Counselling::SUCCESS
-            ]);
-        } else {
-            Counselling::where('id', $counselling->id)->update([
-                'status' => Counselling::FAILED
-            ]);
         }
     }
 }
