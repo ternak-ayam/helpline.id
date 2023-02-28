@@ -14,31 +14,19 @@ class CallController extends Controller
     public function storeUser(Request $request, $counsellingId)
     {
         $counselling = Counselling::where('counselling_id', $counsellingId)->first();
-        $userCall = UserCall::where([['counselling_id', $counselling->id], ['user_id', $request->userId]])->first();
 
-        $userNeed = 2;
-
-        if($counselling->is_need_translator) {
-            $userNeed = 3;
-        }
-
-        if(count($userCall) == $userNeed) {
-            Counselling::where('counselling_id', $counsellingId)->update([
-                'status' => Counselling::SUCCESS
-            ]);
-        }
-
-        if (!$userCall) {
             UserCall::create([
                 'counselling_id' => $counselling->id,
                 'user_id' => $request->userId,
             ]);
-        }
+    
     }
 
     public function updateUser(Request $request, $counsellingId)
     {
         $counselling = Counselling::where('counselling_id', $counsellingId)->first();
+
+        $this->solveLogic($counselling, $counsellingId);
 
         UserCall::where([['counselling_id', $counselling->id], ['user_id', $request->userId]])->update([
             'duration' => $request->duration,
@@ -62,6 +50,8 @@ class CallController extends Controller
     public function updateCounsellor(Request $request, $counsellingId)
     {
         $counselling = Counselling::where('counselling_id', $counsellingId)->first();
+        
+         $this->solveLogic($counselling, $counsellingId);
 
         CounsellorCall::where([['counselling_id', $counselling->id], ['counsellor_id', $request->userId]])->update([
             'duration' => $request->duration,
@@ -86,9 +76,32 @@ class CallController extends Controller
     {
         $counselling = Counselling::where('counselling_id', $counsellingId)->first();
 
+        $this->solveLogic($counselling, $counsellingId);
+
         TranslatorCall::where([['counselling_id', $counselling->id], ['translator_id', $request->userId]])->update([
             'duration' => $request->duration,
             'end_at' => now()
         ]);
+    }
+
+    public function solveLogic($counselling, $counsellingId)
+    {
+        $userCall = UserCall::where([['counselling_id', $counselling->id]])->get();
+
+        $userNeed = 2;
+
+        if($counselling->is_need_translator) {
+            $userNeed = 3;
+        }
+
+        if(count($userCall) == $userNeed) {
+            Counselling::where('counselling_id', $counsellingId)->update([
+                'status' => Counselling::SUCCESS
+            ]);
+        } else {
+            Counselling::where('counselling_id', $counsellingId)->update([
+                'status' => Counselling::FAILED
+            ]);
+        }
     }
 }
