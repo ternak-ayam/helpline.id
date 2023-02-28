@@ -27,9 +27,9 @@ class DataController extends Controller
 
         return view('admin.pages.counselling.data', [
             'schedules' => $schedules->paginate(10),
-            'booked' => $schedules->where('status', Counselling::BOOKED)->count(),
-            'success' => $schedules->where('status', Counselling::SUCCESS)->count(),
-            'failed' => $schedules->where('status', Counselling::FAILED)->count(),
+            'booked' => Counselling::where('status', Counselling::BOOKED)->count(),
+            'success' => Counselling::where('status', Counselling::SUCCESS)->count(),
+            'failed' => Counselling::where('status', Counselling::FAILED)->count(),
         ]);
     }
 
