@@ -41,11 +41,9 @@
                                 <td>{{ $schedule->due->timezone(auth()->user()->timezone)->format('F j, Y H:i') }}</td>
                                 <td>{{ Str::ucfirst($schedule->translator_language) }}</td>
                                 <td>
-                                    @if(in_array($schedule->status, [\App\Models\Counselling::BOOKED, \App\Models\Counselling::DONE]))
-                                        <div class="badge badge-success">{{ Str::lower($schedule->status) }}</div>
-                                    @elseif($schedule->status === \App\Models\Counselling::ENDED)
-                                        <div class="badge badge-danger">{{ Str::lower($schedule->status) }}</div>
-                                    @endif
+                                    <div
+                                        class="badge @if($schedule->status == App\Models\Counselling::FAILED) badge-danger @else badge-success @endif text-capitalize">{{ Str::lower($schedule->status) }}
+                                    </div>
                                 </td>
                                 <td>
                                     <a href="{{ $schedule->getChatUrl() }}" target="_blank" class="btn btn-danger">Start <i

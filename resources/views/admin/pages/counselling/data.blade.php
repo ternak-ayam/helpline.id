@@ -74,7 +74,8 @@
                                 <td>{{ $schedule->getSessionQuantity() }}</td>
                                 <td>
                                     <div
-                                        class="badge badge-success text-capitalize">{{ Str::lower($schedule->status) }}</div>
+                                        class="badge @if($schedule->status == App\Models\Counselling::FAILED) badge-danger @else badge-success @endif text-capitalize">{{ Str::lower($schedule->status) }}
+                                    </div>
                                 </td>
                                 <td>
                                     <a href="{{ route('admin.counselling.data.show', $schedule->id) }}"

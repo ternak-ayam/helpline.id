@@ -86,15 +86,19 @@ class CallController extends Controller
 
     public function solveLogic($counselling, $counsellingId)
     {
-        $userCall = UserCall::where([['counselling_id', $counselling->id]])->get();
+        $userCall = UserCall::where([['counselling_id', $counselling->id]])->first();
+        $transCall = TranslatorCall::where([['counselling_id', $counselling->id]])->first();
+        $counsellorCall = CounsellorCall::where([['counselling_id', $counselling->id]])->first();
 
-        $userNeed = 2;
+        $status = false;
 
         if($counselling->is_need_translator) {
-            $userNeed = 3;
+            $status = $userCall && $transCall && $counsellorCall;
+        } else {
+            $status = $userCall && $counsellorCall;
         }
 
-        if(count($userCall) == $userNeed) {
+        if($status) {
             Counselling::where('counselling_id', $counsellingId)->update([
                 'status' => Counselling::SUCCESS
             ]);
