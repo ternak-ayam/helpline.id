@@ -58,7 +58,7 @@ class CounsellingController extends Controller
 
             $token = (new AccessTokenController())->generate($counselling);
 
-            $admin = Admin::where('email', 'hellohelpline@gmail.com')->first();
+            $admin = Admin::where('email', 'hellohelpline.id@gmail.com')->first();
 
             $admin->notify(new SendBookingDetailNotification($counselling, $token['user_token'], $admin));
 
