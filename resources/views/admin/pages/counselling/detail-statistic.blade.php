@@ -16,12 +16,12 @@
             data: {
                 labels: [@foreach ($dates as $date) "{{ $date }}", @endforeach],
                 datasets: [{
-                    label: 'Total Counselling',
-                    data: [@foreach ($counsellings as $counselling) {{ $counselling }}, @endforeach],
+                    label: 'Success Counselling',
+                    data: [@foreach ($successes as $success) {{ $success }}, @endforeach],
                     borderWidth: 1
                 }, {
-                    label: 'Completed Counselling',
-                    data: [@foreach ($completeds as $completed) {{ $completed }}, @endforeach],
+                    label: 'Failed Counselling',
+                    data: [@foreach ($faileds as $failed) {{ $failed }}, @endforeach],
                     borderWidth: 1
                 }]
             },

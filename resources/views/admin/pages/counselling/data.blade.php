@@ -19,6 +19,36 @@
         <div class="card">
             <div class="card-header">
                 <h4>Counselling Data</h4>
+                <div class="card-header-form">
+                <div>
+                    <form>
+                        <div class="input-group">
+                            <select type="text" name="filter" id="filter" class="form-control" onchange="this.form.submit()">
+                                <option value="all" @if(!request()->get('filter')) selected @endif>All</option>
+                                <option value="today" @if(request()->get('filter') == 'today') selected @endif>Today</option>
+                                <option value="this_month" @if(request()->get('filter') == 'this_month') selected @endif>This Month</option>
+                                <option value="last_30" @if(request()->get('filter') == 'last_30') selected @endif>Last 30 Days</option>
+                                <option value="last_7" @if(request()->get('filter') == 'last_7') selected @endif>Last 7 Days</option>
+                            </select>
+                        </div>
+                    </form>
+                </div>
+                <div>
+                    <span>
+                        Booked: {{ $booked }}
+                    </span>
+                </div>
+                <div>
+                    <span>
+                        Success: {{ $success }}
+                    </span>
+                </div>
+                <div>
+                    <span>
+                        Failed: {{ $failed }}
+                    </span>
+                </div>
+            </div>
             </div>
             <div class="card-body p-0">
                 <div class="table-responsive table-invoice">
@@ -37,14 +67,15 @@
                         @forelse($schedules as $schedule)
                             <tr>
                                 <td>{{ $schedules->firstItem() + $loop->index }}</td>
-                                <td>{{ $schedule->counselling['counselling_id'] }}</td>
+                                <td>{{ $schedule->counselling_id }}</td>
                                 <td>{{ $schedule->counsellor['name'] }}</td>
-                                <td>{{ $schedule->counselling->getCounsellingMethod() }}</td>
-                                <td>{{ $schedule->counselling['due']->timezone(auth()->user()->timezone)->format('F j, Y H:i') }}</td>
-                                <td>{{ $schedule->counselling->getSessionQuantity() }}</td>
+                                <td>{{ $schedule->getCounsellingMethod() }}</td>
+                                <td>{{ $schedule->due->timezone(auth()->user()->timezone)->format('F j, Y H:i') }}</td>
+                                <td>{{ $schedule->getSessionQuantity() }}</td>
                                 <td>
                                     <div
-                                        class="badge badge-success text-capitalize">{{ Str::lower($schedule->counselling['status']) }}</div>
+                                        class="badge @if($schedule->status == App\Models\Counselling::FAILED) badge-danger @else badge-success @endif text-capitalize">{{ Str::lower($schedule->status) }}
+                                    </div>
                                 </td>
                                 <td>
                                     <a href="{{ route('admin.counselling.data.show', $schedule->id) }}"
@@ -62,6 +93,9 @@
                         @endforelse
                         </tbody>
                     </table>
+                </div>
+                <div>
+                    {{ $schedules->withQueryString()->onEachSide(2)->appends($_GET)->links('admin.partials.pagination') }}
                 </div>
             </div>
         </div>

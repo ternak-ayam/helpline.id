@@ -35,12 +35,13 @@
                         @forelse($schedules as $schedule)
                             <tr>
                                 <td>{{ $schedules->firstItem() + $loop->index }}</td>
-                                <td>{{ $schedule->counselling['counselling_id'] }}</td>
-                                <td>{{ $schedule->counselling->getCounsellingMethod() }}</td>
-                                <td>{{ $schedule->counselling['due']->timezone(auth()->user()->timezone)->format('F j, Y H:i') }}</td>
+                                <td>{{ $schedule->counselling_id }}</td>
+                                <td>{{ $schedule->getCounsellingMethod() }}</td>
+                                <td>{{ $schedule->due->timezone(auth()->user()->timezone)->format('F j, Y H:i') }}</td>
                                 <td>
                                     <div
-                                        class="badge badge-success text-capitalize">{{ Str::lower($schedule->counselling['status']) }}</div>
+                                        class="badge @if($schedule->status == App\Models\Counselling::FAILED) badge-danger @else badge-success @endif text-capitalize">{{ Str::lower($schedule->status) }}
+                                    </div>
                                 </td>
                                 <td>
                                     <a href="{{ route('psychologist.counselling.schedule.show', $schedule->id) }}"
@@ -58,6 +59,9 @@
                         @endforelse
                         </tbody>
                     </table>
+                </div>
+                <div>
+                    {{ $schedules->withQueryString()->onEachSide(2)->appends($_GET)->links('admin.partials.pagination') }}
                 </div>
             </div>
         </div>

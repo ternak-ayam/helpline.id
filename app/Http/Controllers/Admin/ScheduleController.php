@@ -11,7 +11,7 @@ class ScheduleController extends Controller
 {
     public function index()
     {
-        $schedules = CounsellorSchedule::orderBy('id', 'DESC')->paginate(10);
+        $schedules = Counselling::orderBy('id', 'DESC')->where('status', Counselling::BOOKED)->paginate(10);
 
         return view('admin.pages.counselling.schedule', [
             'schedules' => $schedules

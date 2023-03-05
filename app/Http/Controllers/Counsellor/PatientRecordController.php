@@ -59,13 +59,15 @@ class PatientRecordController extends Controller
         }
 
         if ($request->issues['emergency_support'] === PatientRecord::YES) {
-            $city = City::where('name', $counselling->user['city'])->first();
+            $cities = City::where('name', $counselling->user['city'])->get();
             $global = City::where('name', City::GLOBAL)->get();
 
             if($url = $counselling->saveAndGetUrl()) {
-                // if ($city) {
-                //     $city->notify(new EmergencySupportNotification($url, $counselling->user));
-                // }
+                if (count($cities) > 0) {
+                    foreach($cities as $city) {   
+                        $city->notify(new EmergencySupportNotification($url, $counselling->user));
+                    }
+                }
 
                 if (count($global) > 0) {
                     foreach($global as $glo) {   

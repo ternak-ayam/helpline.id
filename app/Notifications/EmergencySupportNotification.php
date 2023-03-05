@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class EmergencySupportNotification extends Notification
+class EmergencySupportNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -44,10 +44,9 @@ class EmergencySupportNotification extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->subject('Need Emergency Support')
-                    ->line('Please check patient record below')
+                    ->subject('⚠️ '. $this->user['unhcr_number'] . ' Emergency Support')
                     ->action('Patient Record', $this->url)
-                    ->line('Thank you for your support!');
+                    ->markdown('mail.emergency');
     }
 
     /**

@@ -2,18 +2,34 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\CounsellorSchedule;
+use App\Models\Counselling;
 use Illuminate\Http\Request;
+use App\Models\CounsellorSchedule;
+use App\Http\Controllers\Controller;
 
 class DataController extends Controller
 {
     public function index()
     {
-        $schedules = CounsellorSchedule::orderBy('id', 'DESC')->paginate(10);
+        $filter = \request()->get('filter');
+        
+        $schedules = Counselling::orderBy('id', 'DESC');
+
+        if($filter == 'today') {
+            $schedules = Counselling::orderBy('id', 'DESC')->whereDay('due', now()->format('d'));
+        } else if($filter == 'this_month') {
+            $schedules = Counselling::orderBy('id', 'DESC')->whereMonth('due', now()->month);
+        } else if($filter == 'last_30') {
+            $schedules = Counselling::orderBy('id', 'DESC')->whereBetween('due', [now()->subDays(90)->format('Y-m-d H:i:s'), now()->format('Y-m-d h:i:s')]);
+        } else if($filter == 'last_7') {
+            $schedules = Counselling::orderBy('id', 'DESC')->whereBetween('due', [now()->subDays(7)->format('Y-m-d H:i:s'), now()->format('Y-m-d h:i:s')]);
+        }
 
         return view('admin.pages.counselling.data', [
-            'schedules' => $schedules
+            'schedules' => $schedules->paginate(10),
+            'booked' => Counselling::where('status', Counselling::BOOKED)->count(),
+            'success' => Counselling::where('status', Counselling::SUCCESS)->count(),
+            'failed' => Counselling::where('status', Counselling::FAILED)->count(),
         ]);
     }
 
