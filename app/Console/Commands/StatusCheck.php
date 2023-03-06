@@ -50,22 +50,23 @@ class StatusCheck extends Command
             if($value->is_need_translator) {
                 $userNeed = 3;
             }
-            
-            if(Carbon::create($value->due) < now()->timezone('Asia/Jakarta')->format('Y-m-d H:i:s')) {
-                Counselling::where('counselling_id', $value->counselling_id)->update([
-                    'status' => Counselling::FAILED
-                ]);
-            }
 
             if(($userJoins == $userNeed) && $value->counselling_method == Counselling::TEXTCHAT) {
                 Counselling::where('counselling_id', $value->counselling_id)->update([
                     'status' => Counselling::SUCCESS
                 ]);
-            } else if(($userJoins != $userNeed) && $value->counselling_method == Counselling::TEXTCHAT) {
+            }
+            
+            if($this->past($value)) {
                 Counselling::where('counselling_id', $value->counselling_id)->update([
                     'status' => Counselling::FAILED
                 ]);
             }
         }
+    }
+
+    public function past($value)
+    {
+        return Carbon::create($value->due) < now()->timezone('Asia/Jakarta')->format('Y-m-d H:i:s');
     }
 }
