@@ -4,7 +4,10 @@ namespace App\Console\Commands;
 
 use Carbon\Carbon;
 use App\Models\Message;
+use App\Models\UserCall;
 use App\Models\Counselling;
+use App\Models\CounsellorCall;
+use App\Models\TranslatorCall;
 use Illuminate\Console\Command;
 
 class StatusCheck extends Command
@@ -52,13 +55,19 @@ class StatusCheck extends Command
             }
 
             if(($userJoins == $userNeed) && $value->counselling_method == Counselling::TEXTCHAT) {
-                Counselling::where('counselling_id', $value->counselling_id)->update([
+                Counselling::where('id', $value->id)->update([
                     'status' => Counselling::SUCCESS
                 ]);
             }
-            
-            if($this->past($value)) {
-                Counselling::where('counselling_id', $value->counselling_id)->update([
+
+            $this->solveLogic($value);
+        }
+
+        $counsellings = Counselling::where([['status', Counselling::BOOKED]])->get();
+        
+        foreach ($counsellings as $key => $value) {
+            if((bool) $this->past($value)) {
+                Counselling::where('id', $value->id)->update([
                     'status' => Counselling::FAILED
                 ]);
             }
@@ -67,6 +76,27 @@ class StatusCheck extends Command
 
     public function past($value)
     {
-        return Carbon::create($value->due)->addMinutes(30)->format('Y-m-d H:i') >= now()->timezone('Asia/Jakarta')->format('Y-m-d H:i');
+        return Carbon::create($value->due)->addMinutes(15)->format('Y-m-d H:i') <= now()->timezone('Asia/Jakarta')->format('Y-m-d H:i');
+    }
+    
+    public function solveLogic($counselling)
+    {
+        $userCall = UserCall::where([['counselling_id', $counselling->id]])->first();
+        $transCall = TranslatorCall::where([['counselling_id', $counselling->id]])->first();
+        $counsellorCall = CounsellorCall::where([['counselling_id', $counselling->id]])->first();
+
+        $status = false;
+
+        if((bool) $counselling->is_need_translator) {
+            $status = !blank($userCall) && !blank($transCall) && !blank($counsellorCall);
+        } else {
+            $status = !blank($userCall) && !blank($counsellorCall);
+        }
+
+        if((bool) $status) {
+            Counselling::where('id', $counselling->id)->update([
+                'status' => Counselling::SUCCESS
+            ]);
+        }
     }
 }
