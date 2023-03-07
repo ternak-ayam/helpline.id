@@ -67,6 +67,6 @@ class StatusCheck extends Command
 
     public function past($value)
     {
-        return Carbon::create($value->due) < now()->timezone('Asia/Jakarta')->format('Y-m-d H:i:s');
+        return Carbon::create($value->due)->addMinutes(30)->format('Y-m-d H:i') >= now()->timezone('Asia/Jakarta')->format('Y-m-d H:i');
     }
 }
