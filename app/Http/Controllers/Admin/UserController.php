@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\User\UserStoreRequest;
 use App\Http\Requests\User\UserUpdateRequest;
 use App\Imports\Admin\ImportUser;
+use App\Models\City;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Maatwebsite\Excel\Facades\Excel;
@@ -37,19 +38,23 @@ class UserController extends Controller
     public function create()
     {
         $countries = json_decode(file_get_contents(storage_path('app/local/countries.json')), true);
+        $cities = City::select('name', 'email')->where('name', '<>', 'Global')->get()->unique('name');
 
         return view('admin.pages.user.create', [
-            'countries' => $countries
+            'countries' => $countries,
+            'cities' => $cities
         ]);
     }
 
     public function edit(User $user)
     {
         $countries = json_decode(file_get_contents(storage_path('app/local/countries.json')), true);
+        $cities = City::select('name', 'email')->where('name', '<>', 'Global')->get()->unique('name');
 
         return view('admin.pages.user.edit', [
             'user' => $user,
-            'countries' => $countries
+            'countries' => $countries,
+            'cities' => $cities
         ]);
     }
 

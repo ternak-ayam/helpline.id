@@ -28,6 +28,7 @@ class UserStoreRequest extends FormRequest
             'unhcr_number' => ['required', 'string', 'unique:users', 'exists:unhcrs'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8'],
+            'city' => ['required', 'string'],
             'country' => ['required', 'string'],
             'birthdate' => ['required', 'string'],
             'sex' => ['required', 'string', Rule::in([

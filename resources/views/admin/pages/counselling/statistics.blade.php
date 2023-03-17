@@ -93,6 +93,7 @@
                                 <tr>
                                     <th>No</th>
                                     <th>Email</th>
+                                    <th>City</th>
                                     <th>Country</th>
                                     <th>Sex</th>
                                     <th>Action</th>
@@ -101,6 +102,7 @@
                                     <tr>
                                         <td>{{ $users->firstItem() + $loop->index }}</td>
                                         <td>{{ $user->email }}</td>
+                                        <td>{{ $user->city }}</td>
                                         <td>{{ $user->country }}</td>
                                         <td>{{ Str::ucfirst($user->sex) }}</td>
                                         <td>

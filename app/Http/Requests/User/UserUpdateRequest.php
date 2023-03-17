@@ -29,6 +29,7 @@ class UserUpdateRequest extends FormRequest
                 Rule::unique('users')->ignore($this->route('user'), 'id')],
             'password' => ['required', 'string', 'min:8'],
             'country' => ['required', 'string'],
+            'city' => ['required', 'string'],
             'name' => ['required', 'string'],
             'birthdate' => ['required', 'string'],
             'sex' => ['required', 'string', Rule::in([

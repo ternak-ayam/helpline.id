@@ -75,6 +75,7 @@
                             <th>No</th>
                             <th>UNHCR Number</th>
                             <th>Email</th>
+                            <th>City</th>
                             <th>Country</th>
                             <th>Birthdate</th>
                             <th>Sex</th>
@@ -87,6 +88,7 @@
                             <td>{{ $loop->index + $users->firstItem() }}</td>
                             <td>{{ $user->unhcr_number }}</td>
                             <td>{{ $user->email }}</td>
+                            <td>{{ $user->city }}</td>
                             <td>{{ $user->country }}</td>
                             <td>{{ $user->birthdate->format('F j, Y') }}</td>
                             <td>{{ Str::ucfirst($user->sex) }}</td>

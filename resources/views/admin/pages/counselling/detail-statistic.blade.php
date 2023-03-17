@@ -81,7 +81,8 @@
                                         <span class="text-small text-muted">{{ $recent->getCounsellingMethod() }}</span>
                                         <br>
                                         <div
-                                            class="badge badge-success text-capitalize">{{ Str::lower($recent->status) }}</div>
+                                            class="badge @if($recent->status == App\Models\Counselling::FAILED) badge-danger @else badge-success @endif text-capitalize">{{ Str::lower($recent->status) }}
+                                        </div>
                                     </div>
                                 </li>
                             @endforeach
@@ -132,7 +133,8 @@
                                 <td>{{ $counselling->getSessionQuantity() }}</td>
                                 <td>
                                     <div
-                                        class="badge badge-success text-capitalize">{{ Str::lower($counselling->status) }}</div>
+                                        class="badge @if($counselling->status == App\Models\Counselling::FAILED) badge-danger @else badge-success @endif text-capitalize">{{ Str::lower($counselling->status) }}
+                                    </div>
                                 </td>
                                 <td>{{ $counselling->created_at->timezone(auth()->user()->timezone)->format('F j, Y H:i') }}</td>
                                 <td>

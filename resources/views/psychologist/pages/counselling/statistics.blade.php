@@ -131,7 +131,9 @@
                                     <div class="media-title">{{ $recent->counselling_id }}</div>
                                     <span class="text-small text-muted">{{ $recent->getCounsellingMethod() }}</span>
                                     <br>
-                                    <div class="badge badge-success text-capitalize">{{ Str::lower($recent->status) }}</div>
+                                    <div
+                                        class="badge @if($recent->status == App\Models\Counselling::FAILED) badge-danger @else badge-success @endif text-capitalize">{{ Str::lower($recent->status) }}
+                                    </div>
                                 </div>
                             </li>
                             @endforeach

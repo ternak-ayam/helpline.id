@@ -26,8 +26,8 @@
                                 <h4>{{ $schedule->counselling['counselling_id'] }}</h4>
                             </div>
                             <div class="col-6 px-0 text-right">
-                                <div class="badge badge-success text-capitalize">
-                                    {{ Str::lower($schedule->counselling['status']) }}
+                                <div
+                                    class="badge @if($schedule->counselling['status'] == App\Models\Counselling::FAILED) badge-danger @else badge-success @endif text-capitalize">{{ Str::lower($schedule->counselling['status']) }}
                                 </div>
                             </div>
                         </div>

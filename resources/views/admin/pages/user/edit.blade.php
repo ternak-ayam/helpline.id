@@ -47,6 +47,15 @@
                                     <div class="invalid-feedback"></div>
                                 </div>
                                 <div class="my-2">
+                                    <label for="city">City</label>
+                                    <select class="form-control" id="city" name="city">
+                                        @foreach($cities as $city)
+                                            <option value="{{ $city->name }}" @if($user->city === $city->name) selected @endif>{{ $city->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                                <div class="my-2">
                                     <label for="country">Country</label>
                                     <select class="form-control" id="country" name="country">
                                         @foreach($countries as $country)
