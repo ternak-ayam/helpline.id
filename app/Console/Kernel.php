@@ -16,7 +16,7 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         $schedule->command('counselling:check')->everyFifteenMinutes();
-        $schedule->command('counselling:reminder')->everyFiveMinutes();
+        $schedule->command('counselling:reminder')->everyFifteenMinutes();
     }
 
     /**
