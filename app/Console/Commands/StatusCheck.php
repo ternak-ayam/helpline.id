@@ -49,7 +49,7 @@ class StatusCheck extends Command
 
         foreach ($counsellings as $key => $value) {
             $userJoins = Message::where([['counselling_id', $value->id]])->get()->unique('user_type')->count();
-            
+
             if($value->is_need_translator) {
                 $userNeed = 3;
             }
@@ -64,9 +64,9 @@ class StatusCheck extends Command
         }
 
         $counsellings = Counselling::where([['status', Counselling::BOOKED]])->get();
-        
+
         foreach ($counsellings as $key => $value) {
-            if((bool) $this->past($value)) {
+            if($this->past($value)) {
                 Counselling::where('id', $value->id)->update([
                     'status' => Counselling::FAILED
                 ]);
@@ -76,9 +76,9 @@ class StatusCheck extends Command
 
     public function past($value)
     {
-        return Carbon::create($value->due)->addMinutes(15)->format('Y-m-d H:i') <= now()->timezone('Asia/Jakarta')->format('Y-m-d H:i');
+        return  (new Carbon($value->due, 'Asia/Jakarta'))->addMinutes(15)->timestamp <= now()->timestamp;
     }
-    
+
     public function solveLogic($counselling)
     {
         $userCall = UserCall::where([['counselling_id', $counselling->id]])->first();
