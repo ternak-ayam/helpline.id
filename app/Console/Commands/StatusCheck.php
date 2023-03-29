@@ -76,7 +76,7 @@ class StatusCheck extends Command
 
     public function past($value)
     {
-        return  (new Carbon($value->due, 'Asia/Jakarta'))->addMinutes(15)->timestamp <= now()->timestamp;
+        return  ((new Carbon($value->due, 'Asia/Jakarta'))->addMinutes(15)->timestamp - now()->timestamp) < 0;
     }
 
     public function solveLogic($counselling)

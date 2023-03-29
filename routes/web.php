@@ -14,6 +14,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('test', function () {
+    if(((new Carbon('2023-03-28 12:40:00', 'Asia/Jakarta'))->addMinutes(15)->timestamp - now()->timestamp) < 0) {
+        return "OK";
+    } else {
+        return "BAD";
+    };
+});
+
 Route::get('{reactRoutes}', function () {
     return view('welcome');
 })->where('reactRoutes', '^((?!api).)*$');
